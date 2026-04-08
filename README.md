@@ -9,7 +9,7 @@
 [![GitHub License](https://img.shields.io/github/license/odleer/ratgore?style=for-the-badge)](./LEGAL-RU.md)
 [![.NET](https://img.shields.io/badge/.NET-9.0-512BD4?&style=for-the-badge)](https://dotnet.microsoft.com/)
 
-[Discord](https://discord.gg/SMMQ6Fj3n9) • [Legal (Лицензия)](./LEGAL-RU.md) • [Legal (English)](./README-EN.md)
+[Discord](https://discord.gg/SMMQ6Fj3n9) • [Legal (Лицензия)](./LEGAL-RU.md) • [Legal (English)](./LEGAL-EN.md)
 
 </div>
 
