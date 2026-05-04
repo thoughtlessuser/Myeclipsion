@@ -31,7 +31,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 100
+      projectileSpeed: 40
       burstCooldown: 2.5
       shotsPerBurst: 2
       burstFireRate: 8
@@ -79,7 +79,7 @@
                 collection: MetalGlassBreak
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 140
+      projectileSpeed: 40
       burstCooldown: 2.5
       shotsPerBurst: 3
       burstFireRate: 8
@@ -128,7 +128,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 180
+      projectileSpeed: 60
       fireRate: 4
       selectedMode: FullAuto
       availableModes:
@@ -179,7 +179,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 180
+      projectileSpeed: 60
       fireRate: 4
       selectedMode: FullAuto
       availableModes:
@@ -225,7 +225,7 @@
                 collection: MetalGlassBreak
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 170
+      projectileSpeed: 70
       fireRate: 3
       selectedMode: FullAuto
       availableModes:
@@ -268,7 +268,7 @@
                 collection: MetalGlassBreak
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 190
+      projectileSpeed: 90
       fireRate: 5
       selectedMode: FullAuto
       availableModes:
@@ -318,7 +318,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 160
+      projectileSpeed: 60
       fireRate: 1.2
       selectedMode: FullAuto
       availableModes:
@@ -369,7 +369,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 180
+      projectileSpeed: 80
       fireRate: 1.5
       selectedMode: FullAuto
       availableModes:
@@ -420,7 +420,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 150
+      projectileSpeed: 50
       fireRate: 1
       selectedMode: FullAuto
       availableModes:
@@ -479,7 +479,7 @@
       zeroVisible: true
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 120
+      projectileSpeed: 30
       fireRate: 0.25
       selectedMode: FullAuto
       availableModes:
@@ -536,7 +536,7 @@
       zeroVisible: true
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 110
+      projectileSpeed: 30
       fireRate: 0.2
       selectedMode: FullAuto
       availableModes:
@@ -593,7 +593,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 200
+      projectileSpeed: 40
       fireRate: 0.35
       selectedMode: FullAuto
       availableModes:
@@ -621,7 +621,7 @@
   id: BaseWeaponTurretPila
   suffix: ShipGun
   name: 30mm 'Pila' Micromissile Launcher
-  description: Capable of launching a rapid swarm of small missiles this is nothing to shake a stick at.
+  description: Capable of launching a rapid swarm of small missiles - this is nothing to shake a stick at.
   components:
     - type: Sprite
       sprite: _Crescent/Objects/Turrets/Missile/pila.rsi
@@ -647,7 +647,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 80
+      projectileSpeed: 30
       fireRate: 4
       selectedMode: FullAuto
       availableModes:

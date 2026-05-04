@@ -30,7 +30,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 150
+      projectileSpeed: 60
       fireRate: 8
       selectedMode: FullAuto
       availableModes:
@@ -92,7 +92,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 180
+      projectileSpeed: 70
       fireRate: 4
       selectedMode: FullAuto
       availableModes:
@@ -154,7 +154,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 220
+      projectileSpeed: 100
       fireRate: 1
       selectedMode: FullAuto
       availableModes:

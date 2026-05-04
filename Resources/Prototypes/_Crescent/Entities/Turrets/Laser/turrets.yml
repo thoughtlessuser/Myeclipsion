@@ -31,7 +31,7 @@
       machine_parts: !type:Container
   - type: Gun
     fireOnDropChance: 0
-    projectileSpeed: 65
+    projectileSpeed: 40
     fireRate: 1
     selectedMode: SemiAuto
     angleDecay: 45
@@ -96,7 +96,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 120
+      projectileSpeed: 80
       fireRate: .5
       selectedMode: FullAuto
       availableModes:
@@ -155,7 +155,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 120
+      projectileSpeed: 85
       fireRate: .5
       selectedMode: FullAuto
       availableModes:
@@ -216,8 +216,8 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 200
-      fireRate: 6
+      projectileSpeed: 90
+      fireRate: 8
       selectedMode: FullAuto
       availableModes:
         - FullAuto
@@ -229,7 +229,7 @@
         params:
           variation: 0.12
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 0.2
+      rechargeCooldown: 0.12
       rechargeSound:
         path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
         params:
@@ -275,8 +275,8 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 200
-      fireRate: 6
+      projectileSpeed: 90
+      fireRate: 10
       selectedMode: FullAuto
       availableModes:
         - FullAuto
@@ -336,7 +336,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 200
+      projectileSpeed: 85
       burstFireRate: 20 #6.67 effective RPS
       burstCooldown: 1
       shotsPerBurst: 10
@@ -397,7 +397,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 200
+      projectileSpeed: 90
       burstFireRate: 40 #8 effective RPS
       burstCooldown: 1
       shotsPerBurst: 10
@@ -460,7 +460,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 200
+      projectileSpeed: 70
       fireRate: 2.5
       minAngle: 0.1
       maxAngle: 0.1
@@ -518,7 +518,7 @@
           ents: []
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 200
+      projectileSpeed: 75
       minAngle: 0.1
       maxAngle: 0.1
       fireRate: 3
