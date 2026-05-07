@@ -746,5 +746,12 @@ Entries:
     id: 93
     time: '2026-05-05T03:30:44.0000000+00:00'
     url: https://github.com/ss14-art/ratgore/pull/176
+  - author: NEirotoXiN00
+    changes:
+      - type: Add
+        message: Coordinates in the PDA
+    id: 94
+    time: '2026-05-07T11:34:41.0000000+00:00'
+    url: https://github.com/ss14-art/ratgore/pull/180
 Name: Rat
 Order: -1
