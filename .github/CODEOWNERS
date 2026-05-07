@@ -2,13 +2,13 @@
 # НЕ ИЗМЕНЯТЬ ФАЙЛ ПРИ АПСТРИМЕ/ОБНОВЛЕНИИ.
 
 # C#
-/Content.*/** @Odleer # Временная строка пока не будет больше ревьюверов
+/Content.*/** @Odleer @NEirotoXiN00 # Временная строка пока не будет больше ревьюверов
 
 # Ресурсы
-/Resources/** @Odleer # Временная строка пока не будет больше ревьюверов
+/Resources/** @Odleer @NEirotoXiN00 # Временная строка пока не будет больше ревьюверов
 
 # /Resources/Textures/** 
-# /Resources/Maps/**
+/Resources/Maps/** @Gr-avity
 # /Resources/Prototypes/**
 # /Resources/Locale/**
 
