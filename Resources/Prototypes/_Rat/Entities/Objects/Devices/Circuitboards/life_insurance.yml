@@ -1,0 +1,9 @@
+- type: entity
+  parent: BaseComputerCircuitboard
+  id: LifeInsuranceComputerCircuitboard
+  name: консоль страхования Interdyne (машинная плата)
+  components:
+  - type: Sprite
+    state: cpu_medical
+  - type: ComputerBoard
+    prototype: ComputerIntredyneLifeInsurance

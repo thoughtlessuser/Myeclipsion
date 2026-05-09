@@ -1,19 +1,20 @@
 - type: entity
+  parent: BaseComputer
   id: ComputerIntredyneLifeInsurance
-  parent: [BaseStructureDisableToolUse, BaseStructureIndestructible, BaseStructureComputer]
   name: консоль страхования Interdyne
   description: Управление страховкой жизни людей. Позволяет удаленно ускорить создание клона, обойдя ограничение на количество должностей на станции клиента.
   placement:
     mode: SnapgridCenter
   components:
+  - type: Computer
+    board: LifeInsuranceComputerCircuitboard
+  - type: ContainerFill
+    containers:
+      board: [ LifeInsuranceComputerCircuitboard ]
   - type: MeleeSound
     soundGroups:
       Brute:
         collection: MetalGlassBreak
-  - type: ApcPowerReceiver
-    powerLoad: 200
-  - type: ExtensionCableReceiver
-  - type: ActivatableUIRequiresPower
   - type: AccessReader
     access: [["SyndicateInterdyne"]]
   - type: ActivatableUIRequiresAccess
@@ -31,18 +32,34 @@
       state: tcboss
     - map: ["computerLayerKeys"]
       state: tech_key
+    - map: ["enum.WiresVisualLayers.MaintenancePanel"]
+      state: generic_panel_open
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+        computerLayerKeys:
+          True: { visible: true, shader: unshaded }
+          False: { visible: true, shader: shaded }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
   - type: ActivatableUI
     key: enum.LifeInsuranceUiKey.Key
   - type: UserInterface
     interfaces:
       enum.LifeInsuranceUiKey.Key:
-        type: LifeInsuranceBoundUserInterface
+        type: Content.Client._Rat.LifeInsurance.LifeInsuranceBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
   - type: LifeInsuranceConsole
   - type: MaterialStorage
     materialWhiteList:
     - ExoticProteins
     storageLimit: 100000
-  - type: LitOnPowered
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -52,8 +69,6 @@
     autoRot: true
     offset: "0, 0.4"
     castShadows: false
-#  - type: WirelessNetworkConnection
-#    range: 200
   - type: DeviceLinkSource
     range: 200
     ports:
