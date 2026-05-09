@@ -87,6 +87,10 @@
     sprite: Objects/Tanks/oxygen.rsi
   - type: Clothing
     sprite: Objects/Tanks/oxygen.rsi
+  - type: GasTank
+    air:
+      volume: 20
+      temperature: 293.15
 
 - type: entity
   parent: GasTankRoundBase
@@ -100,6 +104,10 @@
     sprite: Objects/Tanks/red.rsi
   - type: Clothing
     sprite: Objects/Tanks/red.rsi
+  - type: GasTank
+    air:
+      volume: 20
+      temperature: 293.15
 
 - type: entity
   parent: GasTankRoundBase
@@ -330,6 +338,9 @@
   components:
   - type: GasTank
     outputPressure: 101.3
+    air:
+      volume: 20
+      temperature: 293.15
 
 - type: entity
   parent: GasTankRoundBase
