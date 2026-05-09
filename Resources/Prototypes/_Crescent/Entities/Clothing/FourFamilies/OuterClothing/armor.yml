@@ -107,8 +107,8 @@
         Heat: 30
         Caustic: 25
   - type: ClothingSpeedModifier
-    walkModifier: 1.1
-    sprintModifier: 1.1
+    walkModifier: 1
+    sprintModifier: 1
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitIzdari
   - type: StaticPrice
@@ -151,8 +151,8 @@
         Caustic: 25
         Radiation: 35
   - type: ClothingSpeedModifier
-    walkModifier: 1.1
-    sprintModifier: 1.1
+    walkModifier: 1
+    sprintModifier: 1
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitThukker
   - type: StaticPrice
