@@ -5,7 +5,7 @@ namespace Content.Client._Rat.Cloning;
 
 public sealed class CloneOrganVisualsSystem : EntitySystem
 {
-    private const string ShaderName = "CloneOrganLimeOverlay";
+    private const string ShaderName = "CloneOrganOverlay";
 
     public override void Initialize()
     {
