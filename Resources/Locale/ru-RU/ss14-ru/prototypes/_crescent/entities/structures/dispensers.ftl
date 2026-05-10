@@ -15,7 +15,7 @@ ent-HuntersBounty = терминал охотничьей награды
 hunters-bounty-invalid-head = Это недостойная добыча.
 bioprocessor-interdyne-clone-organ-denied = Этот образец не имеет экзотических белков.
 clone-organ-examine-line-1 = [color=purple]Этот орган покрыт перламуторной маслянистой жидкостью.[/color]
-clone-organ-examine-line-2 = [color=purple]Этот орган был изъят из клона, созданного в полевых условиях. В нем нет экзотических частиц.[/color]
+clone-organ-examine-line-2 = [color=purple]Этот орган был изъят из клона, созданного по дешевой и не надежной технологии клонировая. В нем нет экзотических частиц.[/color]
 ent-OnionWallchute = грузовой желоб ONION
     .desc = Желоб, ведущий в недра станции и доставляющий груз в неизвестное место.
 ent-CountsmanCargoChute = приёмный грузовой желоб Империи
