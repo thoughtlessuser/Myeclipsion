@@ -23,4 +23,10 @@ public sealed partial class LifeInsuranceComponent : Component
 
     [DataField]
     public EntityUid? PendingRespawnStation;
+
+    /// <summary>
+    /// Spawn machine this mind should respawn at when insurance pays out. Set from the insurance console.
+    /// </summary>
+    [DataField]
+    public EntityUid? PreferredSpawnMachine;
 }

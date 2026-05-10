@@ -19,6 +19,7 @@ public sealed class LifeInsuranceBoundUserInterface : BoundUserInterface
         _window.InsurePressed += OnInsurePressed;
         _window.VoidPressed += OnVoidPressed;
         _window.EjectPressed += OnEjectPressed;
+        _window.SpawnMachineSelected += OnSpawnMachineSelected;
         _window.OpenCentered();
     }
 
@@ -33,13 +34,14 @@ public sealed class LifeInsuranceBoundUserInterface : BoundUserInterface
             _window.InsurePressed -= OnInsurePressed;
             _window.VoidPressed -= OnVoidPressed;
             _window.EjectPressed -= OnEjectPressed;
+            _window.SpawnMachineSelected -= OnSpawnMachineSelected;
             _window.Dispose();
         }
     }
 
-    private void OnInsurePressed(NetEntity target)
+    private void OnInsurePressed(NetEntity target, NetEntity spawnMachine)
     {
-        SendMessage(new LifeInsuranceSelectTargetMessage(target));
+        SendMessage(new LifeInsuranceSelectTargetMessage(target, spawnMachine));
     }
 
     private void OnVoidPressed(NetEntity target)
@@ -50,6 +52,11 @@ public sealed class LifeInsuranceBoundUserInterface : BoundUserInterface
     private void OnEjectPressed()
     {
         SendMessage(new LifeInsuranceEjectProteinsMessage());
+    }
+
+    private void OnSpawnMachineSelected(NetEntity target, NetEntity spawnMachine)
+    {
+        SendMessage(new LifeInsuranceSetSpawnMachineMessage(target, spawnMachine));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)

@@ -19360,52 +19360,16 @@ entities:
     - type: Transform
       pos: 2.5,5.5
       parent: 1
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1019
-          - 1017
-          - 1021
-          - 1018
-          - 1022
-          - 1020
   - uid: 1023
     components:
     - type: Transform
       pos: 2.5,6.5
       parent: 1
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1028
-          - 1024
-          - 1025
-          - 1029
-          - 1026
-          - 1027
   - uid: 1030
     components:
     - type: Transform
       pos: 2.5,7.5
       parent: 1
-    - type: ContainerContainer
-      containers:
-        entity_storage: !type:Container
-          showEnts: False
-          occludes: True
-          ents:
-          - 1031
-          - 1036
-          - 1034
-          - 1032
-          - 1035
-          - 1033
 - proto: SuitStorageWallmount
   entities:
   - uid: 1038

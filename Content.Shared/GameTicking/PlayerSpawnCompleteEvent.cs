@@ -23,6 +23,11 @@ public sealed class PlayerSpawnCompleteEvent : EntityEventArgs
     // Ex. If this is the 27th person to join, this will be 27.
     public int JoinOrder { get; }
 
+    /// <summary>
+    /// When true, lobby character loadouts (preferences screen) are not applied on spawn.
+    /// </summary>
+    public bool SkipCharacterLoadout { get; }
+
     public PlayerSpawnCompleteEvent(EntityUid mob,
         ICommonSession player,
         string? jobId,
@@ -30,7 +35,8 @@ public sealed class PlayerSpawnCompleteEvent : EntityEventArgs
         bool silent,
         int joinOrder,
         EntityUid station,
-        HumanoidCharacterProfile profile)
+        HumanoidCharacterProfile profile,
+        bool skipCharacterLoadout = false)
     {
         Mob = mob;
         Player = player;
@@ -40,5 +46,6 @@ public sealed class PlayerSpawnCompleteEvent : EntityEventArgs
         Station = station;
         Profile = profile;
         JoinOrder = joinOrder;
+        SkipCharacterLoadout = skipCharacterLoadout;
     }
 }

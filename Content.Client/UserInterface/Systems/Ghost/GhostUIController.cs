@@ -209,6 +209,6 @@ public sealed class GhostUIController : UIController, IOnSystemChanged<GhostSyst
         }
 
         var left = _system.InsuranceRespawnAt - _timing.CurTime;
-        Gui.UpdateInsuranceRespawn(true, left);
+        Gui.UpdateInsuranceRespawn(true, left, _system.InsuranceSpawnMachineReady);
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Content.Server._Rat.LifeInsurance.Components;
 using Content.Server.Bank;
@@ -5,6 +6,7 @@ using Content.Server.GameTicking;
 using Content.Server.Materials;
 using Content.Server.Mind;
 using Content.Server.Popups;
+using Content.Server.Standing;
 using Content.Server.Station.Systems;
 using Content.Shared._Rat.LifeInsurance;
 using Content.Shared.Access.Systems;
@@ -18,10 +20,15 @@ using Content.Shared.Popups;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.GameTicking;
+using Content.Shared.Inventory;
 using Content.Shared._Shitmed.Body.Organ;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Rat.LifeInsurance;
@@ -42,7 +49,23 @@ public sealed class LifeInsuranceSystem : EntitySystem
     [Dependency] private readonly AccessReaderSystem _accessReader = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly SharedRoleSystem _roles = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
+    [Dependency] private readonly LayingDownSystem _layingDown = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     private TimeSpan _nextGhostSync = TimeSpan.Zero;
+
+    /// <summary>
+    /// Starting gear slots kept on insurance clone bodies (PDA, headset, uniform, shoes, gloves).
+    /// </summary>
+    private static readonly HashSet<string> InsuranceCloneRoleGearSlots = new()
+    {
+        "id",
+        "ears",
+        "jumpsuit",
+        "shoes",
+        "gloves",
+    };
 
     public override void Initialize()
     {
@@ -51,6 +74,8 @@ public sealed class LifeInsuranceSystem : EntitySystem
         SubscribeLocalEvent<LifeInsuranceConsoleComponent, LifeInsuranceSelectTargetMessage>(OnSelectTarget);
         SubscribeLocalEvent<LifeInsuranceConsoleComponent, LifeInsuranceVoidInsuranceMessage>(OnVoidInsurance);
         SubscribeLocalEvent<LifeInsuranceConsoleComponent, LifeInsuranceEjectProteinsMessage>(OnEjectProteins);
+        SubscribeLocalEvent<LifeInsuranceConsoleComponent, LifeInsuranceSetSpawnMachineMessage>(OnSetSpawnMachine);
+        SubscribeLocalEvent<LifeInsuranceSpawnMachineComponent, EntityTerminatingEvent>(OnSpawnMachineTerminating);
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<MindComponent, MindGotRemovedEvent>(OnMindGotRemovedFromContainer);
         SubscribeLocalEvent<GhostComponent, ComponentStartup>(OnGhostStartup);
@@ -100,6 +125,23 @@ public sealed class LifeInsuranceSystem : EntitySystem
 
         var life = EnsureComp<LifeInsuranceComponent>(targetMindId);
 
+        if (args.SpawnMachine.Valid)
+        {
+            var spawnEnt = GetEntity(args.SpawnMachine);
+            var consoleStation = _station.GetOwningStation(uid);
+            if (spawnEnt == EntityUid.Invalid
+                || !HasComp<LifeInsuranceSpawnMachineComponent>(spawnEnt)
+                || consoleStation == null
+                || _station.GetOwningStation(spawnEnt) != consoleStation)
+            {
+                _popup.PopupEntity(Loc.GetString("life-insurance-popup-invalid-spawn-machine"), uid, user, PopupType.Small);
+                return;
+            }
+
+            life.PreferredSpawnMachine = spawnEnt;
+            Dirty(targetMindId, life);
+        }
+
         if (TryComp<MobStateComponent>(target, out var targetMob))
         {
             if (targetMob.CurrentState != MobState.Alive)
@@ -118,6 +160,12 @@ public sealed class LifeInsuranceSystem : EntitySystem
         if (life.PendingRespawnAt != null)
         {
             _popup.PopupEntity(Loc.GetString("life-insurance-popup-pending-respawn"), uid, user, PopupType.Small);
+            return;
+        }
+
+        if (!MindSpawnMachineReady(targetMindId))
+        {
+            _popup.PopupEntity(Loc.GetString("life-insurance-popup-no-spawn-machine-policy"), uid, user, PopupType.Small);
             return;
         }
 
@@ -186,6 +234,8 @@ public sealed class LifeInsuranceSystem : EntitySystem
         if (life.IsInsured)
             life.IsInsured = false;
 
+        life.PreferredSpawnMachine = null;
+
         if (life.PendingRespawnAt != null)
         {
             life.PendingRespawnAt = null;
@@ -216,6 +266,104 @@ public sealed class LifeInsuranceSystem : EntitySystem
 
         _materialStorage.EjectMaterial(uid, component.ProteinMaterialId);
         UpdateUi(uid, component);
+    }
+
+    private void OnSetSpawnMachine(EntityUid uid, LifeInsuranceConsoleComponent component, LifeInsuranceSetSpawnMachineMessage args)
+    {
+        if (args.Actor is not { Valid: true } user)
+            return;
+
+        if (!HasConsoleAccess(uid, user))
+        {
+            _popup.PopupEntity(Loc.GetString("life-insurance-popup-access-denied"), uid, user, PopupType.Small);
+            return;
+        }
+
+        var consoleStation = _station.GetOwningStation(uid);
+        var target = GetEntity(args.Target);
+        var spawnMachine = GetEntity(args.SpawnMachine);
+
+        if (target == EntityUid.Invalid || !_mind.TryGetMind(target, out var targetMindId, out _))
+        {
+            _popup.PopupEntity(Loc.GetString("life-insurance-popup-invalid-target"), uid, user, PopupType.Small);
+            return;
+        }
+
+        if (spawnMachine == EntityUid.Invalid
+            || !HasComp<LifeInsuranceSpawnMachineComponent>(spawnMachine)
+            || _station.GetOwningStation(spawnMachine) != consoleStation)
+        {
+            _popup.PopupEntity(Loc.GetString("life-insurance-popup-invalid-spawn-machine"), uid, user, PopupType.Small);
+            return;
+        }
+
+        var life = EnsureComp<LifeInsuranceComponent>(targetMindId);
+        life.PreferredSpawnMachine = spawnMachine;
+        Dirty(targetMindId, life);
+
+        if (TryComp<MindComponent>(targetMindId, out var mindComp)
+            && mindComp.Session != null
+            && life.PendingRespawnAt != null)
+        {
+            PushInsuranceStatusToMind(targetMindId, true, life.PendingRespawnAt.Value);
+        }
+
+        UpdateUi(uid, component);
+    }
+
+    private void OnSpawnMachineTerminating(EntityUid uid, LifeInsuranceSpawnMachineComponent component, ref EntityTerminatingEvent args)
+    {
+        var station = _station.GetOwningStation(uid);
+        ReassignSpawnMachinesAfterRemoval(uid, station);
+    }
+
+    private void ReassignSpawnMachinesAfterRemoval(EntityUid removed, EntityUid? stationFilter)
+    {
+        var query = EntityQueryEnumerator<LifeInsuranceComponent>();
+        while (query.MoveNext(out var mindId, out var life))
+        {
+            if (life.PreferredSpawnMachine != removed)
+                continue;
+
+            life.PreferredSpawnMachine = TryPickRandomSpawnMachine(stationFilter, removed);
+            Dirty(mindId, life);
+
+            if (!TryComp<MindComponent>(mindId, out var mind) || mind.Session == null)
+                continue;
+
+            if (life.PendingRespawnAt is { } at)
+                PushInsuranceStatusToMind(mindId, true, at);
+        }
+    }
+
+    private EntityUid? TryPickRandomSpawnMachine(EntityUid? stationFilter, EntityUid? exclude = null)
+    {
+        var candidates = new List<EntityUid>();
+        var enumerator = EntityQueryEnumerator<LifeInsuranceSpawnMachineComponent>();
+        while (enumerator.MoveNext(out var machineUid, out _))
+        {
+            if (exclude != null && machineUid == exclude.Value)
+                continue;
+
+            if (stationFilter != null && _station.GetOwningStation(machineUid) != stationFilter)
+                continue;
+
+            candidates.Add(machineUid);
+        }
+
+        if (candidates.Count == 0)
+            return null;
+
+        return _random.Pick(candidates);
+    }
+
+    private bool MindSpawnMachineReady(EntityUid mindId)
+    {
+        if (!TryComp<LifeInsuranceComponent>(mindId, out var life)
+            || life.PreferredSpawnMachine is not { } sm)
+            return false;
+
+        return !TerminatingOrDeleted(sm) && HasComp<LifeInsuranceSpawnMachineComponent>(sm);
     }
 
     private bool HasConsoleAccess(EntityUid console, EntityUid user)
@@ -337,10 +485,18 @@ public sealed class LifeInsuranceSystem : EntitySystem
         if (station == null || TerminatingOrDeleted(station))
             station = _station.GetStations().FirstOrDefault();
 
-        var profile = _ticker.GetPlayerProfile(eventArgs.SenderSession);
-        var spawned = _stationSpawning.SpawnPlayerCharacterOnStation(station, job, profile);
-        if (spawned is not { } spawnedUid)
+        if (life.PreferredSpawnMachine is not { } spawnMachineEnt
+            || TerminatingOrDeleted(spawnMachineEnt)
+            || !HasComp<LifeInsuranceSpawnMachineComponent>(spawnMachineEnt))
+        {
+            _popup.PopupEntity(Loc.GetString("life-insurance-popup-no-spawn-machine"), ghostUid, ghostUid, PopupType.Small);
             return;
+        }
+
+        var profile = _ticker.GetPlayerProfile(eventArgs.SenderSession);
+        var coords = Transform(spawnMachineEnt).Coordinates;
+        // Full job starting gear, then trim to uniform basics; lobby loadout skipped via PlayerSpawnCompleteEvent.
+        var spawnedUid = _stationSpawning.SpawnPlayerMob(coords, job, profile, station);
 
         _mind.TransferTo(mindId, spawnedUid, ghostCheckOverride: true, createGhost: false);
 
@@ -363,8 +519,19 @@ public sealed class LifeInsuranceSystem : EntitySystem
             silent: true,
             _ticker.PlayersJoinedRoundNormally,
             stationUid,
-            profile);
+            profile,
+            skipCharacterLoadout: true);
         RaiseLocalEvent(spawnedUid, spawnDone, true);
+
+        RestrictInsuranceCloneToBasicRoleGear(spawnedUid);
+
+        _layingDown.TryLieDown(spawnedUid);
+
+        _audio.PlayPvs(new SoundPathSpecifier("/Audio/Effects/Fluids/splat.ogg"), spawnedUid);
+        _popup.PopupEntity(
+            Loc.GetString("life-insurance-popup-clone-emerged", ("name", Name(spawnedUid))),
+            spawnedUid,
+            PopupType.Medium);
 
         QueueDel(ghostUid);
 
@@ -425,21 +592,48 @@ public sealed class LifeInsuranceSystem : EntitySystem
                 roleName = proto.LocalizedName;
 
             var nextCredits = GetCurrentPrice(component.BaseRequiredCredits, life.RespawnCount);
+            NetEntity? boundSpawn = null;
+            if (life.PreferredSpawnMachine is { } preferred && !TerminatingOrDeleted(preferred))
+                boundSpawn = GetNetEntity(preferred);
+
             targets.Add(new LifeInsuranceTargetEntry(
                 GetNetEntity(playerUid),
                 Name(playerUid),
                 roleName,
                 life.IsInsured,
                 life.PendingRespawnAt != null,
-                nextCredits));
+                nextCredits,
+                boundSpawn));
         }
 
         targets.Sort((a, b) => string.CompareOrdinal(a.Name, b.Name));
 
+        var spawnMachines = BuildSpawnMachineList(consoleStation);
+
         return new LifeInsuranceConsoleState(
             storedProteins,
             component.RequiredProteins,
-            targets);
+            targets,
+            spawnMachines);
+    }
+
+    private List<LifeInsuranceSpawnMachineEntry> BuildSpawnMachineList(EntityUid? consoleStation)
+    {
+        var list = new List<LifeInsuranceSpawnMachineEntry>();
+        if (consoleStation == null)
+            return list;
+
+        var enumerator = EntityQueryEnumerator<LifeInsuranceSpawnMachineComponent, MetaDataComponent>();
+        while (enumerator.MoveNext(out var machineUid, out _, out var meta))
+        {
+            if (_station.GetOwningStation(machineUid) != consoleStation)
+                continue;
+
+            list.Add(new LifeInsuranceSpawnMachineEntry(GetNetEntity(machineUid), meta.EntityName));
+        }
+
+        list.Sort((a, b) => string.CompareOrdinal(a.Name, b.Name));
+        return list;
     }
 
     private ProtoId<JobPrototype>? TryGetCurrentJob(EntityUid mindId)
@@ -508,6 +702,25 @@ public sealed class LifeInsuranceSystem : EntitySystem
         if (!TryComp<MindComponent>(mindId, out var mind) || mind.Session == null)
             return;
 
-        RaiseNetworkEvent(new GhostInsuranceRespawnStatusEvent(available, respawnAt), mind.Session.Channel);
+        var spawnReady = !available || MindSpawnMachineReady(mindId);
+        RaiseNetworkEvent(new GhostInsuranceRespawnStatusEvent(available, respawnAt, spawnReady), mind.Session.Channel);
+    }
+
+    /// <summary>
+    /// Removes job starting gear except PDA, headset, jumpsuit, shoes, and gloves.
+    /// </summary>
+    private void RestrictInsuranceCloneToBasicRoleGear(EntityUid uid)
+    {
+        if (!_inventory.TryGetSlots(uid, out var slots))
+            return;
+
+        foreach (var slotDef in slots)
+        {
+            if (InsuranceCloneRoleGearSlots.Contains(slotDef.Name))
+                continue;
+
+            if (_inventory.TryUnequip(uid, slotDef.Name, out var removed, silent: true, force: true))
+                QueueDel(removed.Value);
+        }
     }
 }

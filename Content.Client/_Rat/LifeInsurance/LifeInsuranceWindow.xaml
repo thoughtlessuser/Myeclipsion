@@ -21,6 +21,8 @@
                     <Label Name="DetailsRole" />
                     <Label Name="DetailsStatus" />
                     <Label Name="DetailsQuoteText" Margin="0 12 0 0" Visible="False" />
+                    <Label Name="SpawnMachineTitle" Text="{Loc life-insurance-spawn-machine-title}" Margin="0 12 0 4" />
+                    <OptionButton Name="SpawnMachineOption" HorizontalExpand="True" />
                     <Control VerticalExpand="True" />
                     <Button Name="InsureButton" Text="{Loc life-insurance-insure-button}" />
                     <Button Name="VoidButton" Text="{Loc life-insurance-void-button}" Margin="0 6 0 0" />
