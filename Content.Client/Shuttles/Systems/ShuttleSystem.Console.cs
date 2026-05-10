@@ -35,9 +35,33 @@ public sealed partial class ShuttleSystem
         switch (mapObj)
         {
             case ShuttleBeaconObject beacon:
-                return GetCoordinates(beacon.Coordinates).ToMap(EntityManager, XformSystem);
+                try
+                {
+                    var coords = GetCoordinates(beacon.Coordinates);
+                    if (coords.EntityId == EntityUid.Invalid || !coords.IsValid(EntityManager))
+                    {
+                        return MapCoordinates.Nullspace;
+                    }
+                    return XformSystem.ToMapCoordinates(coords);
+                }
+                catch (KeyNotFoundException)
+                {
+                    return MapCoordinates.Nullspace;
+                }
             case ShuttleExclusionObject exclusion:
-                return GetCoordinates(exclusion.Coordinates).ToMap(EntityManager, XformSystem);
+                try
+                {
+                    var coords = GetCoordinates(exclusion.Coordinates);
+                    if (coords.EntityId == EntityUid.Invalid || !coords.IsValid(EntityManager))
+                    {
+                        return MapCoordinates.Nullspace;
+                    }
+                    return XformSystem.ToMapCoordinates(coords);
+                }
+                catch (KeyNotFoundException)
+                {
+                    return MapCoordinates.Nullspace;
+                }
             case GridMapObject grid:
                 var gridXform = Transform(grid.Entity);
 
