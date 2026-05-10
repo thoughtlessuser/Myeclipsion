@@ -80,6 +80,10 @@
         IFFFaction: TAP
         randomOffsetX: 2000
         randomOffsetY: 2000
+      IronRing:
+        gameMapID: IronRing
+        posX: -3000
+        posY: 500
       RatFakel:
         gameMapID: RatFakel
         posX: 0

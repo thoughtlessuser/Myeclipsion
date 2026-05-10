@@ -1,0 +1,32 @@
+- type: gameMap
+  id: IronRing
+  mapName: 'Железное Кольцо'
+  mapPath: /Maps/_Rat/Stations/ironring.yml
+  minPlayers: 0
+  stations:
+    IronRing:
+      stationProto: StandardCrescentStation
+      gridComponents:
+        - type: BlockShipWeaponProjectileGrid
+        - type: MapIcon
+          iconType: Station
+      components:
+        - type: VesselIcon
+          iffIcon:
+            sprite: _Crescent/ShipIcons/ifficons.rsi
+            state: outpost
+        - type: StationNameSetup
+          mapNameTemplate: 'Железное Кольцо'
+        - type: VesselDesignation
+          designation: vessel-designation-headquarters
+        - type: VesselDescription
+          description: Когда-то это место было важным местом обитания шахтеров Тайпана, а теперь это заброшенный пристанище для отбросов.
+        #- type: VesselMusic
+          #ambientMusicPrototype: CountsmanMusic
+        - type: Grammar
+          attributes:
+            proper: true
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            Vagrant: [ 10, 10 ]
