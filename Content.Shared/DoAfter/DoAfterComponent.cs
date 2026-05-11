@@ -1,17 +1,18 @@
 using System.Threading.Tasks;
+using Content.Shared.FixedPoint;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.DoAfter;
 
 [RegisterComponent, NetworkedComponent]
-[Access(typeof(SharedDoAfterSystem))]
+[Access(typeof(SharedDoAfterSystem), Other = AccessPermissions.ReadExecute)] // Mono
 public sealed partial class DoAfterComponent : Component
 {
-    [DataField("nextId")]
+    [DataField]
     public ushort NextId;
 
-    [DataField("doAfters")]
+    [DataField]
     public Dictionary<ushort, DoAfter> DoAfters = new();
 
     // Used by obsolete async do afters

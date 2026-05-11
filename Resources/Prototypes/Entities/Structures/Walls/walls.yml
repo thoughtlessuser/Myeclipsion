@@ -50,7 +50,9 @@
   - type: RadiationBlocker
     resistance: 1
   - type: BlockWeather
-
+  - type: ShipRepairable
+    repairTime: 3
+    repairCost: 6
 
 
 - type: entity
