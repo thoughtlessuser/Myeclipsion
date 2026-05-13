@@ -15,10 +15,9 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
 
     private EntityQuery<PhysicsComponent> _physicsQuery;
     private EntityQuery<FixturesComponent> _fixturesQuery;
-    private EntityQuery<TransformComponent> _transformQuery;
+    private EntityQuery<TransformComponent> _xformQuery;
 
-    private readonly Dictionary<EntityUid, (ProjectilePhasePreventComponent Phase, ProjectileComponent Projectile)>
-        _projectiles = new();
+    private readonly Dictionary<EntityUid, Entity<ProjectilePhasePreventComponent, ProjectileComponent>> _projectiles = new();
 
     private ISawmill _sawmill = default!;
 
@@ -37,7 +36,8 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
 
         _physicsQuery = GetEntityQuery<PhysicsComponent>();
         _fixturesQuery = GetEntityQuery<FixturesComponent>();
-        _transformQuery = GetEntityQuery<TransformComponent>();
+        _xformQuery = GetEntityQuery<TransformComponent>();
+
         _sawmill = _logs.GetSawmill("Phase-Prevention");
     }
 
@@ -53,14 +53,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
         comp.start = _trans.GetWorldPosition(uid);
         comp.mapId = _trans.GetMapId(uid);
 
-        if (projectile.Weapon != null &&
-            _transformQuery.TryGetComponent(projectile.Weapon, out var weaponXform) &&
-            weaponXform.GridUid != null)
-        {
-            comp.ignoredGrid = weaponXform.GridUid.Value;
-        }
-
-        _projectiles[uid] = (comp, projectile);
+        _projectiles[uid] = (uid, comp, projectile);
     }
 
     private void OnShutdown(EntityUid uid, ProjectilePhasePreventComponent comp, ref ComponentShutdown args)
@@ -72,7 +65,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        foreach (var (owner, (phase, projectile)) in _projectiles)
+        foreach (var (owner, phase, projectile) in _projectiles.Values)
         {
             if (TerminatingOrDeleted(owner))
                 continue;
@@ -106,14 +99,18 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
 
             var direction = delta / distance;
 
-            string bulletFixtureKey = null!;
-            foreach (var (key, _) in bulletFixtures.Fixtures)
-            {
-                bulletFixtureKey = key;
-                break;
-            }
+            KeyValuePair<string, Fixture> bulletFixturePair = default;
+            foreach (var kv in bulletFixtures.Fixtures) { bulletFixturePair = kv; break; }
+            var bulletFixtureKey = bulletFixturePair.Key;
 
-            var ignoredGrid = phase.ignoredGrid;
+            var ignoredGrid = EntityUid.Invalid;
+
+            if (projectile.Weapon != null &&
+                _xformQuery.TryGetComponent(projectile.Weapon, out var weaponXform) &&
+                weaponXform.GridUid != null)
+            {
+                ignoredGrid = weaponXform.GridUid.Value;
+            }
 
             var ray = new CollisionRay(previousPos, direction, phase.relevantBitmasks);
 
@@ -135,7 +132,7 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
                 if (projectile.IgnoredEntities.Contains(hitEntity))
                     continue;
 
-                if (!_transformQuery.TryGetComponent(hitEntity, out var hitXform))
+                if (!_xformQuery.TryGetComponent(hitEntity, out var hitXform))
                     continue;
 
                 if (projectile.IgnoreWeaponGrid &&
@@ -154,22 +151,16 @@ public sealed class ProjectilePhasePreventerSystem : EntitySystem
                 if (targetFixtures.Fixtures.Count == 0)
                     continue;
 
-                string targetFixtureKey = null!;
-                Fixture targetFixture = null!;
-                foreach (var (key, value) in targetFixtures.Fixtures)
-                {
-                    targetFixtureKey = key;
-                    targetFixture = value;
-                    break;
-                }
+                KeyValuePair<string, Fixture> targetFixturePair = default;
+                foreach (var kv in targetFixtures.Fixtures) { targetFixturePair = kv; break; }
 
                 var bulletEvent = new HullrotBulletHitEvent
                 {
                     selfEntity = owner,
                     hitEntity = hitEntity,
                     selfFixtureKey = bulletFixtureKey,
-                    targetFixture = targetFixture,
-                    targetFixtureKey = targetFixtureKey,
+                    targetFixture = targetFixturePair.Value,
+                    targetFixtureKey = targetFixturePair.Key,
                     selfPhys = bulletPhysics
                 };
 

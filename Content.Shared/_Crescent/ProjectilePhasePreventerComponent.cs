@@ -23,7 +23,6 @@ public sealed partial class ProjectilePhasePreventComponent : Component
 {
     public Vector2 start = Vector2.Zero;
     public MapId mapId = MapId.Nullspace;
-    public EntityUid ignoredGrid = EntityUid.Invalid;
     [ViewVariables(VVAccess.ReadWrite), DataField("mask", customTypeSerializer: typeof(FlagSerializer<CollisionMask>))]
     public int relevantBitmasks = 0;
 }
