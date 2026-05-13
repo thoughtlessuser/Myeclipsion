@@ -837,5 +837,22 @@ Entries:
     id: 104
     time: '2026-05-11T14:53:43.0000000+00:00'
     url: https://github.com/ss14-art/ratgore/pull/199
+  - author: ChangelingRUES
+    changes:
+      - type: Tweak
+        message: Маленький ремап Нанда на предложенную версию от Soot
+      - type: Tweak
+        message: Полный ремап всего атмоса Авроры и починка атмоса в доках, снижение ХП щита до стандартного Т3
+      - type: Tweak
+        message: Усиление обороноспособности Марсовы и так же починка недостающего атмоса в доках
+      - type: Tweak
+        message: Шаттл Rokh получил чуть больше скорости
+      - type: Fix
+        message: 'Фикс: Исправил всю энергопроводку Цань'
+      - type: Fix
+        message: 'Фикс: Вернул гравген на "Судью" минитменов'
+    id: 105
+    time: '2026-05-13T05:15:04.0000000+00:00'
+    url: https://github.com/ss14-art/ratgore/pull/201
 Name: Rat
 Order: -1
