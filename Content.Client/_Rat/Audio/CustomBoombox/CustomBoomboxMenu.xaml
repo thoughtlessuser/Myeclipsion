@@ -8,6 +8,7 @@
         <BoxContainer Orientation="Vertical" Margin="3">
             <Label Name="SongSelected" Text="{Loc 'custom-boombox-menu-track'}" />
             <Label Name="SongName" Text="---" />
+            <LineEdit Name="TrackNameInput" PlaceHolder="{Loc 'custom-boombox-menu-track-name-placeholder'}" Margin="0 4 0 0" />
             <Slider Name="PlaybackSlider" HorizontalExpand="True" />
         </BoxContainer>
         <BoxContainer Orientation="Vertical" Margin="3">

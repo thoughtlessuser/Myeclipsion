@@ -68,7 +68,7 @@ public sealed partial class CustomBoomboxMenu : FancyWindow
         if (stream == null)
             return;
 
-        var fileName = stream is FileStream fs ? Path.GetFileName(fs.Name) : "track.ogg";
+        var fileName = string.IsNullOrWhiteSpace(TrackNameInput.Text) ? "uploaded.ogg" : $"{TrackNameInput.Text}.ogg";
         var data = stream.CopyToArray();
         OnUploadRequested?.Invoke(data, fileName);
     }

@@ -5,10 +5,14 @@ using Content.Shared.Audio.Jukebox;
 using Content.Shared.Interaction;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
+using Robust.Server.Upload;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.ContentPack;
 using Robust.Shared.GameObjects;
+using Robust.Shared.IoC;
+using Robust.Shared.Log;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Upload;
@@ -21,14 +25,20 @@ public sealed class CustomBoomboxSystem : SharedCustomBoomboxSystem
     private const int MaxUploadBytes = 5 * 1024 * 1024;
     private static ReadOnlySpan<byte> OggMagic => "OggS"u8;
 
+    private readonly MemoryContentRoot _serverUploadedRoot = new();
+
     [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly IServerNetManager _net = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IResourceManager _resourceMan = default!;
 
     public override void Initialize()
     {
         base.Initialize();
+
+        // Add server-side root for uploaded files
+        _resourceMan.AddRoot(new ResPath("/Uploaded"), _serverUploadedRoot);
 
         _net.RegisterNetMessage<MsgCustomBoomboxUpload>(OnUploadNet);
 
@@ -118,8 +128,14 @@ public sealed class CustomBoomboxSystem : SharedCustomBoomboxSystem
 
         var fullPath = $"/Uploaded/custom_boombox/b{uid.Id}_{component.UploadRevision}.ogg";
         component.SelectedTrackResourcePath = fullPath;
+        component.SelectedTrackData = msg.Data;
         component.SelectedTrackDisplayName = baseName;
         component.AutoPlayAfterSelect = wasPlaying;
+
+        Logger.Info($"Uploaded boombox track: {fullPath} ({msg.Data.Length} bytes)");
+
+        // Add file to server's root so server can play it
+        _serverUploadedRoot.AddOrUpdateFile(rel, msg.Data);
 
         DirectSetVisualState(uid, JukeboxVisualState.Select);
         component.Selecting = true;
@@ -139,11 +155,20 @@ public sealed class CustomBoomboxSystem : SharedCustomBoomboxSystem
         component.AudioStream = Audio.Stop(component.AudioStream);
 
         if (component.SelectedTrackResourcePath is not { } pathStr)
+        {
+            Logger.Warning($"No track selected for boombox {uid}");
             return;
+        }
+
+        Logger.Info($"Playing boombox audio: {pathStr}");
 
         component.AudioStream = Audio.PlayPvs(
             new SoundPathSpecifier(pathStr), uid,
             AudioParams.Default.WithMaxDistance(10f).WithVolume(GetVolumeDb(component.Volume)))?.Entity;
+
+        if (component.AudioStream == null)
+            Logger.Warning($"Failed to play audio stream for boombox {uid}");
+
         Dirty(uid, component);
     }
 
