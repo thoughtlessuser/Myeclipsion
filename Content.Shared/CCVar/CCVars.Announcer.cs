@@ -30,6 +30,12 @@ public sealed partial class CCVars
         CVarDef.Create("announcer.volume", 0.5f, CVar.ARCHIVE | CVar.CLIENTONLY);
 
     /// <summary>
+    ///     Changes how loud communications/announcements/jukebox are for the client
+    /// </summary>
+    public static readonly CVarDef<float> CommunicationsVolume =
+        CVarDef.Create("audio.communications_volume", 0.5f, CVar.ARCHIVE | CVar.CLIENTONLY);
+
+    /// <summary>
     ///     Disables multiple announcement sounds from playing at once
     /// </summary>
     public static readonly CVarDef<bool> AnnouncerDisableMultipleSounds =

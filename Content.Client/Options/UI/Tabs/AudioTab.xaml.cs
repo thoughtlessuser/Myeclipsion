@@ -44,6 +44,7 @@ namespace Content.Client.Options.UI.Tabs
                 LobbyVolumeSlider,
                 InterfaceVolumeSlider,
                 AnnouncerVolumeSlider,
+                CommunicationsVolumeSlider,
                 TTSVolumeSlider, // Art-TTS
 
                 CombatMusicCheckBox,
@@ -93,6 +94,7 @@ namespace Content.Client.Options.UI.Tabs
                 LobbyVolumeSlider,
                 InterfaceVolumeSlider,
                 AnnouncerVolumeSlider,
+                CommunicationsVolumeSlider,
                 TTSVolumeSlider, // Art-TTS
 
                 CombatMusicCheckBox,
@@ -137,6 +139,7 @@ namespace Content.Client.Options.UI.Tabs
             _cfg.SetCVar(CCVars.LobbyMusicVolume, LobbyVolumeSlider.Value / 100f * ContentAudioSystem.LobbyMultiplier);
             _cfg.SetCVar(CCVars.InterfaceVolume, InterfaceVolumeSlider.Value / 100f * ContentAudioSystem.InterfaceMultiplier);
             _cfg.SetCVar(CCVars.AnnouncerVolume, AnnouncerVolumeSlider.Value / 100f * ContentAudioSystem.AnnouncerMultiplier);
+            _cfg.SetCVar(CCVars.CommunicationsVolume, CommunicationsVolumeSlider.Value / 100f * ContentAudioSystem.CommunicationsMultiplier);
             _cfg.SetCVar(ArtCVars.TTSVolume, TTSVolumeSlider.Value / 100f * ContentAudioSystem.TTSMultiplier); // Art-TTS
 
             _cfg.SetCVar(CCVars.MaxAmbientSources, (int)AmbienceSoundsSlider.Value);
@@ -167,6 +170,7 @@ namespace Content.Client.Options.UI.Tabs
             LobbyVolumeSlider.Value = _cfg.GetCVar(CCVars.LobbyMusicVolume) * 100f / ContentAudioSystem.LobbyMultiplier;
             InterfaceVolumeSlider.Value = _cfg.GetCVar(CCVars.InterfaceVolume) * 100f / ContentAudioSystem.InterfaceMultiplier;
             AnnouncerVolumeSlider.Value = _cfg.GetCVar(CCVars.AnnouncerVolume) * 100f / ContentAudioSystem.AnnouncerMultiplier;
+            CommunicationsVolumeSlider.Value = _cfg.GetCVar(CCVars.CommunicationsVolume) * 100f / ContentAudioSystem.CommunicationsMultiplier;
             TTSVolumeSlider.Value = _cfg.GetCVar(ArtCVars.TTSVolume) * 100f / ContentAudioSystem.TTSMultiplier; // Art-TTS
 
             AmbienceSoundsSlider.Value = _cfg.GetCVar(CCVars.MaxAmbientSources);
@@ -200,6 +204,8 @@ namespace Content.Client.Options.UI.Tabs
                 Math.Abs(InterfaceVolumeSlider.Value - _cfg.GetCVar(CCVars.InterfaceVolume) * 100f / ContentAudioSystem.InterfaceMultiplier) < 0.01f;
             var isAnnouncerVolumeSame =
                 Math.Abs(AnnouncerVolumeSlider.Value - _cfg.GetCVar(CCVars.AnnouncerVolume) * 100f / ContentAudioSystem.AnnouncerMultiplier) < 0.01f;
+            var isCommunicationsVolumeSame =
+                Math.Abs(CommunicationsVolumeSlider.Value - _cfg.GetCVar(CCVars.CommunicationsVolume) * 100f / ContentAudioSystem.CommunicationsMultiplier) < 0.01f;
             var isTTSVolumeSame =
                 Math.Abs(TTSVolumeSlider.Value - _cfg.GetCVar(ArtCVars.TTSVolume) * 100f / ContentAudioSystem.TTSMultiplier) < 0.01f; // Art-TTS
 
@@ -214,7 +220,7 @@ namespace Content.Client.Options.UI.Tabs
             var isEverythingSame = isMasterVolumeSame && isMidiVolumeSame && isAmbientVolumeSame && isCombatMusicVolumeSame
                 && isAmbientMusicVolumeSame && isAmbientSoundsSame && isCombatSame && isLobbySame && isRestartSoundsSame && isEventSame
                 && isAnnouncerDisableMultipleSoundsSame && isAdminSoundsSame && isLobbyVolumeSame
-                && isInterfaceVolumeSame && isAnnouncerVolumeSame && isTTSVolumeSame && isTTSSoundsSame;
+                && isInterfaceVolumeSame && isAnnouncerVolumeSame && isCommunicationsVolumeSame && isTTSVolumeSame && isTTSSoundsSame;
             ApplyButton.Disabled = isEverythingSame;
             ResetButton.Disabled = isEverythingSame;
             MasterVolumeLabel.Text =
@@ -233,6 +239,8 @@ namespace Content.Client.Options.UI.Tabs
                 Loc.GetString("ui-options-volume-percent", ("volume", InterfaceVolumeSlider.Value / 100));
             AnnouncerVolumeLabel.Text =
                 Loc.GetString("ui-options-volume-percent", ("volume", AnnouncerVolumeSlider.Value / 100));
+            CommunicationsVolumeLabel.Text =
+                Loc.GetString("ui-options-volume-percent", ("volume", CommunicationsVolumeSlider.Value / 100));
             AmbienceSoundsLabel.Text = ((int) AmbienceSoundsSlider.Value).ToString();
             TTSVolumeLabel.Text =
                 Loc.GetString("ui-options-volume-percent", ("volume", TTSVolumeSlider.Value / 100));

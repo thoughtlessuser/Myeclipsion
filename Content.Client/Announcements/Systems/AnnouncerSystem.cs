@@ -21,6 +21,7 @@ public sealed class AnnouncerSystem : SharedAnnouncerSystem
 
     public List<IAudioSource> AnnouncerSources { get; } = new();
     public float AnnouncerVolume { get; private set; }
+    public float CommunicationsVolume { get; private set; }
 
 
     public override void Initialize()
@@ -28,8 +29,10 @@ public sealed class AnnouncerSystem : SharedAnnouncerSystem
         base.Initialize();
 
         AnnouncerVolume = _config.GetCVar(CCVars.AnnouncerVolume) * 100f / ContentAudioSystem.AnnouncerMultiplier;
+        CommunicationsVolume = _config.GetCVar(CCVars.CommunicationsVolume) * 100f / ContentAudioSystem.CommunicationsMultiplier;
 
         _config.OnValueChanged(CCVars.AnnouncerVolume, OnAnnouncerVolumeChanged);
+        _config.OnValueChanged(CCVars.CommunicationsVolume, OnCommunicationsVolumeChanged);
         _config.OnValueChanged(CCVars.AnnouncerDisableMultipleSounds, OnAnnouncerDisableMultipleSounds);
 
         SubscribeNetworkEvent<AnnouncementSendEvent>(OnAnnouncementReceived);
@@ -40,6 +43,7 @@ public sealed class AnnouncerSystem : SharedAnnouncerSystem
         base.Shutdown();
 
         _config.UnsubValueChanged(CCVars.AnnouncerVolume, OnAnnouncerVolumeChanged);
+        _config.UnsubValueChanged(CCVars.CommunicationsVolume, OnCommunicationsVolumeChanged);
         _config.UnsubValueChanged(CCVars.AnnouncerDisableMultipleSounds, OnAnnouncerDisableMultipleSounds);
     }
 
@@ -50,6 +54,14 @@ public sealed class AnnouncerSystem : SharedAnnouncerSystem
 
         foreach (var source in AnnouncerSources)
             source.Gain = AnnouncerVolume;
+    }
+
+    private void OnCommunicationsVolumeChanged(float value)
+    {
+        CommunicationsVolume = value;
+
+        foreach (var source in AnnouncerSources)
+            source.Gain = CommunicationsVolume;
     }
 
     private void OnAnnouncerDisableMultipleSounds(bool value)
@@ -76,7 +88,14 @@ public sealed class AnnouncerSystem : SharedAnnouncerSystem
         if (source == null)
             return;
 
-        source.Gain = AnnouncerVolume * SharedAudioSystem.VolumeToGain(ev.AudioParams.Volume);
+        // Use CommunicationsVolume for diplomacy and communications announcements
+        var isCommunications = ev.AnnouncementId.StartsWith("diplomacy-") ||
+                              ev.AnnouncementId == "announce" ||
+                              ev.AnnouncementId == "commandreport" ||
+                              ev.AnnouncementId == "shuttleCalled" ||
+                              ev.AnnouncementId == "shuttleRecalled" ||
+                              ev.AnnouncementId == "shuttleDock";
+        source.Gain = (isCommunications ? CommunicationsVolume : AnnouncerVolume) * SharedAudioSystem.VolumeToGain(ev.AudioParams.Volume);
         source.Global = true;
 
         if (_config.GetCVar(CCVars.AnnouncerDisableMultipleSounds))

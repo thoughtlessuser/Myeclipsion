@@ -46,6 +46,14 @@
     - id: shuttleDock # The shuttle has arrived at the station
       path: comms/announce.ogg
 
+    # Diplomacy
+    - id: diplomacy-war # War declared
+      path: diplomacy/war-declared.ogg
+    - id: diplomacy-peace # Peace signed
+      path: diplomacy/peace-signed.ogg
+    - id: diplomacy-alliance # Alliance formed
+      path: diplomacy/alliance-formed.ogg
+
     # Fallback # REQUIRED
     - id: fallback # Any announcement sent without a valid announcement on this announcer will use this
       path: comms/announce.ogg
