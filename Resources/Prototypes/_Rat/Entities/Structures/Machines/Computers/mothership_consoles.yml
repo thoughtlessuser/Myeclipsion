@@ -279,9 +279,9 @@
   - type: ShipyardListing
     iffColor: IndianRed
     shuttles:
-    #- Hulk
+    - Hulk
     - Meatwagon
-    #- Harpy
+    - Harpy
     - Matabele
     - Fridge
 
@@ -293,6 +293,7 @@
   - type: ShipyardListing
     iffColor: IndianRed
     shuttles:
+    - Dugong
     - Shanty
     - Rockchipper
     - Hyena

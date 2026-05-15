@@ -106,9 +106,9 @@
     shuttles:
     - Hulk
     - Meatwagon
-    - Harpy
     - Matabele
     - Fridge
+    - Harpy
 
 - type: entity
   id: SawsMothershipComputer
@@ -126,7 +126,7 @@
     - Thanapod
     - Mercurymk2
     - Scarab
-
+    
 - type: entity
   id: TatsumotoMothershipComputer
   parent: BaseMothershipComputer

@@ -1,12 +1,14 @@
 # Author Info
 # Discord: fleshangel
-#
 - type: vessel
   id: Harpy
   name: БИ Гарпия
-  description: Ракетный корвет среднего размера со стационарной клиникой на борту.
-  price: 75000
-  category: Medium
+  description: | 
+    Мобильное хирургическое судно, способное предоставлять особые услуги клиентам.
+    ВООРУЖЕНИЕ: 1x 150сс Плазма-Гатлинг. 1x 200сс лазер.
+    МИНИМАЛЬНЫЙ ЭКИПАЖ: 1x Пилот, 1х Хирург
+  price: 55000
+  category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/NCSP/harpy.yml
 
