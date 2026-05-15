@@ -52,4 +52,4 @@ faction-IPM = IPM
 faction-SAW = SOP
 faction-GSC = GSC
 faction-CD = CD
-faction-TFSC = TFSC
+faction-TSP = TSP

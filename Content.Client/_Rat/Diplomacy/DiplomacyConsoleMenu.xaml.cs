@@ -13,7 +13,7 @@ namespace Content.Client._Rat.Diplomacy;
 public sealed partial class DiplomacyConsoleMenu : DefaultWindow
 {
     private static readonly string[] AllFactions =
-        ["DSM", "NCWL", "SHI", "SRM", "TAP", "IPM", "SAW", "GSC", "CD", "TFSC"];
+        ["DSM", "NCWL", "SHI", "SRM", "TAP", "IPM", "SAW", "GSC", "CD", "TSP"];
 
     private static readonly Color WarBg = Color.FromHex("#6B1A1A");
     private static readonly Color AllyBg = Color.FromHex("#1A4D2E");

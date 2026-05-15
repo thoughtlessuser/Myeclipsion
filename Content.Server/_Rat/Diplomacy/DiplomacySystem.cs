@@ -18,7 +18,7 @@ public sealed class DiplomacySystem : EntitySystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     private static readonly string[] AllFactions =
-        ["DSM", "NCWL", "SHI", "SRM", "TAP", "IPM", "SAW", "GSC", "CD", "TFSC"];
+        ["DSM", "NCWL", "SHI", "SRM", "TAP", "IPM", "SAW", "GSC", "CD", "TSP"];
 
     private readonly Dictionary<string, Dictionary<string, FactionRelation>> _relations = new();
     private readonly Dictionary<string, List<PendingProposal>> _pending = new();
@@ -60,6 +60,21 @@ public sealed class DiplomacySystem : EntitySystem
 
             _pending[factionId] = new List<PendingProposal>();
         }
+
+        // Set Gorlex (GSC) to war with everyone except IPM, SAW, and CD
+        var gorlexAllies = new[] { "IPM", "SAW", "CD" };
+        foreach (var factionId in AllFactions)
+        {
+            if (factionId != "GSC" && !gorlexAllies.Contains(factionId))
+            {
+                _relations["GSC"][factionId] = FactionRelation.War;
+                _relations[factionId]["GSC"] = FactionRelation.War;
+            }
+        }
+
+        // Set Cyberdon (CD) to war with Shinogara (SHI)
+        _relations["CD"]["SHI"] = FactionRelation.War;
+        _relations["SHI"]["CD"] = FactionRelation.War;
     }
 
     private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs args)

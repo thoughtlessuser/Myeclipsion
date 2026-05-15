@@ -52,4 +52,4 @@ faction-IPM = ИНТР
 faction-SAW = ПрофСоюз
 faction-GSC = ГОРЛЕКС
 faction-CD = КД
-faction-TFSC = КВСТ
+faction-TSP = Минитмены
