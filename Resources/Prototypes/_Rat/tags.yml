@@ -1,0 +1,8 @@
+- type: Tag
+  id: TransmitterPartCircuitBoard
+
+- type: Tag
+  id: TransmitterPartAntenna
+
+- type: Tag
+  id: TransmitterPartPowerModule
