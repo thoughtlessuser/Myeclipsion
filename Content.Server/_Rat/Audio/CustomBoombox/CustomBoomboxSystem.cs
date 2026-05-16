@@ -37,7 +37,6 @@ public sealed class CustomBoomboxSystem : SharedCustomBoomboxSystem
     {
         base.Initialize();
 
-        // Add server-side root for uploaded files
         _resourceMan.AddRoot(new ResPath("/Uploaded"), _serverUploadedRoot);
 
         _net.RegisterNetMessage<MsgCustomBoomboxUpload>(OnUploadNet);
@@ -57,38 +56,9 @@ public sealed class CustomBoomboxSystem : SharedCustomBoomboxSystem
         _appearance.SetData(uid, JukeboxVisuals.VisualState, JukeboxVisualState.On);
     }
 
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        var query = EntityQueryEnumerator<CustomBoomboxComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            if (!comp.Selecting)
-                continue;
-
-            comp.SelectAccumulator += frameTime;
-            if (comp.SelectAccumulator < 0.5f)
-                continue;
-
-            comp.SelectAccumulator = 0f;
-            comp.Selecting = false;
-            TryUpdateVisualState(uid, comp);
-
-            if (comp.AutoPlayAfterSelect && comp.SelectedTrackResourcePath is { } autoPath)
-            {
-                comp.AutoPlayAfterSelect = false;
-                comp.AudioStream = Audio.PlayPvs(
-                    new SoundPathSpecifier(autoPath), uid,
-                    AudioParams.Default.WithMaxDistance(10f).WithVolume(GetVolumeDb(comp.Volume)))?.Entity;
-                Dirty(uid, comp);
-            }
-        }
-    }
-
     private void OnShutdown(EntityUid uid, CustomBoomboxComponent component, ComponentShutdown args)
     {
-        component.AudioStream = Audio.Stop(component.AudioStream);
+        StopAndCleanup(uid, component);
     }
 
     private void OnUploadNet(MsgCustomBoomboxUpload msg)
@@ -120,7 +90,11 @@ public sealed class CustomBoomboxSystem : SharedCustomBoomboxSystem
             baseName = baseName[..80];
 
         var wasPlaying = Audio.IsPlaying(component.AudioStream);
+
+        // Stop current stream and remove old file from memory
+        CleanupAudioFile(uid, component);
         component.AudioStream = Audio.Stop(component.AudioStream);
+        component.AutoPlayAfterSelect = false;
 
         component.UploadRevision++;
         var rel = new ResPath($"custom_boombox/b{uid.Id}_{component.UploadRevision}.ogg").ToRelativePath();
@@ -128,20 +102,42 @@ public sealed class CustomBoomboxSystem : SharedCustomBoomboxSystem
 
         var fullPath = $"/Uploaded/custom_boombox/b{uid.Id}_{component.UploadRevision}.ogg";
         component.SelectedTrackResourcePath = fullPath;
-        component.SelectedTrackData = msg.Data;
         component.SelectedTrackDisplayName = baseName;
-        component.AutoPlayAfterSelect = wasPlaying;
 
-        Logger.Info($"Uploaded boombox track: {fullPath} ({msg.Data.Length} bytes)");
-
-        // Add file to server's root so server can play it
         _serverUploadedRoot.AddOrUpdateFile(rel, msg.Data);
+
+        if (wasPlaying)
+        {
+            component.AudioStream = Audio.PlayPvs(
+                new SoundPathSpecifier(fullPath), uid,
+                AudioParams.Default.WithMaxDistance(10f).WithVolume(GetVolumeDb(component.Volume)))?.Entity;
+        }
 
         DirectSetVisualState(uid, JukeboxVisualState.Select);
         component.Selecting = true;
         component.SelectAccumulator = 0f;
 
         Dirty(uid, component);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<CustomBoomboxComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (!comp.Selecting)
+                continue;
+
+            comp.SelectAccumulator += frameTime;
+            if (comp.SelectAccumulator < 0.5f)
+                continue;
+
+            comp.SelectAccumulator = 0f;
+            comp.Selecting = false;
+            TryUpdateVisualState(uid, comp);
+        }
     }
 
     private void OnPlay(EntityUid uid, CustomBoomboxComponent component, ref CustomBoomboxPlayingMessage args)
@@ -152,22 +148,12 @@ public sealed class CustomBoomboxSystem : SharedCustomBoomboxSystem
             return;
         }
 
-        component.AudioStream = Audio.Stop(component.AudioStream);
-
         if (component.SelectedTrackResourcePath is not { } pathStr)
-        {
-            Logger.Warning($"No track selected for boombox {uid}");
             return;
-        }
-
-        Logger.Info($"Playing boombox audio: {pathStr}");
 
         component.AudioStream = Audio.PlayPvs(
             new SoundPathSpecifier(pathStr), uid,
             AudioParams.Default.WithMaxDistance(10f).WithVolume(GetVolumeDb(component.Volume)))?.Entity;
-
-        if (component.AudioStream == null)
-            Logger.Warning($"Failed to play audio stream for boombox {uid}");
 
         Dirty(uid, component);
     }
@@ -178,7 +164,7 @@ public sealed class CustomBoomboxSystem : SharedCustomBoomboxSystem
     }
 
     private static float GetVolumeDb(float volumePercent)
-        => -30f + volumePercent * 0.3f; // MapToRange
+        => -30f + volumePercent * 0.3f;
 
     private void OnSetVolume(EntityUid uid, CustomBoomboxComponent component, CustomBoomboxSetVolumeMessage args)
     {
@@ -189,10 +175,9 @@ public sealed class CustomBoomboxSystem : SharedCustomBoomboxSystem
 
     private void OnClear(EntityUid uid, CustomBoomboxComponent component, CustomBoomboxClearMessage args)
     {
-        component.AudioStream = Audio.Stop(component.AudioStream);
+        StopAndCleanup(uid, component);
         component.SelectedTrackResourcePath = null;
         component.SelectedTrackDisplayName = null;
-        component.AutoPlayAfterSelect = false;
         TryUpdateVisualState(uid, component);
         Dirty(uid, component);
     }
@@ -208,8 +193,30 @@ public sealed class CustomBoomboxSystem : SharedCustomBoomboxSystem
 
     private void OnStop(Entity<CustomBoomboxComponent> entity, ref CustomBoomboxStopMessage args)
     {
-        Audio.SetState(entity.Comp.AudioStream, AudioState.Stopped);
+        entity.Comp.AudioStream = Audio.Stop(entity.Comp.AudioStream);
         Dirty(entity);
+    }
+
+    /// <summary>
+    /// Stops audio and removes uploaded file from server memory.
+    /// </summary>
+    private void StopAndCleanup(EntityUid uid, CustomBoomboxComponent component)
+    {
+        component.AudioStream = Audio.Stop(component.AudioStream);
+        component.AutoPlayAfterSelect = false;
+        CleanupAudioFile(uid, component);
+    }
+
+    /// <summary>
+    /// Removes uploaded audio file from server memory.
+    /// </summary>
+    private void CleanupAudioFile(EntityUid uid, CustomBoomboxComponent component)
+    {
+        if (component.UploadRevision > 0)
+        {
+            var oldRel = new ResPath($"custom_boombox/b{uid.Id}_{component.UploadRevision}.ogg").ToRelativePath();
+            _serverUploadedRoot.RemoveFile(oldRel);
+        }
     }
 
     private void DirectSetVisualState(EntityUid uid, JukeboxVisualState state)

@@ -24,9 +24,6 @@ public sealed partial class CustomBoomboxComponent : Component
     [DataField, AutoNetworkedField]
     public string? SelectedTrackResourcePath;
 
-    [DataField]
-    public byte[]? SelectedTrackData;
-
     [DataField, AutoNetworkedField]
     public float Volume = 100f;
 
