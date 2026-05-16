@@ -899,5 +899,12 @@ Entries:
     id: 108
     time: '2026-05-15T14:15:43.0000000+00:00'
     url: https://github.com/ss14-art/ratgore/pull/208
+  - author: NEirotoXiN00
+    changes:
+      - type: Add
+        message: Новое космическое событие с аномальной станцией (временно старый глисс)
+    id: 109
+    time: '2026-05-16T15:03:13.0000000+00:00'
+    url: https://github.com/ss14-art/ratgore/pull/214
 Name: Rat
 Order: -1
