@@ -23,7 +23,8 @@ public sealed class RoundEndCreditsSystem : EntitySystem
 
             var playerName = info.PlayerOOCName;
             var charName = info.PlayerICName ?? "Unknown";
-            players.Add(new CreditsPlayerInfo(playerName, charName, info.PlayerNetEntity));
+            var role = info.Role ?? "Unknown";
+            players.Add(new CreditsPlayerInfo(playerName, charName, role, info.PlayerNetEntity));
         }
 
         RaiseNetworkEvent(new RoundEndCreditsEvent(players));

@@ -60,16 +60,6 @@ public sealed partial class RoundEndCreditsWindow : DefaultWindow
         AddSeparatorLine(ref childOffset);
         AddSpacing(40, ref childOffset);
 
-        // === EPILOGUE ===
-        AddCenteredLabel(Loc.GetString("round-end-credits-epilogue-1"), Color.FromHex("#888888"), 1f, ref childOffset);
-        AddSpacing(6, ref childOffset);
-        AddCenteredLabel(Loc.GetString("round-end-credits-epilogue-2"), Color.FromHex("#888888"), 1f, ref childOffset);
-        AddSpacing(12, ref childOffset);
-        AddCenteredLabel(Loc.GetString("round-end-credits-epilogue-3"), Color.FromHex("#999999"), 1f, ref childOffset);
-        AddSpacing(6, ref childOffset);
-        AddCenteredLabel(Loc.GetString("round-end-credits-epilogue-4"), Color.FromHex("#999999"), 1f, ref childOffset);
-        AddSpacing(50, ref childOffset);
-
         // === PARTICIPANTS HEADER ===
         AddSeparatorLine(ref childOffset);
         AddCenteredLabel(Loc.GetString("round-end-credits-participants"), Color.FromHex("#DDDDDD"), 1.5f, ref childOffset);
@@ -116,23 +106,6 @@ public sealed partial class RoundEndCreditsWindow : DefaultWindow
             AddThinSeparator(ref childOffset);
             AddSpacing(10, ref childOffset);
         }
-
-        // === TEAM ===
-        AddSpacing(60, ref childOffset);
-        AddSeparatorLine(ref childOffset);
-        AddCenteredLabel(Loc.GetString("round-end-credits-team-header"), Color.FromHex("#DDDDDD"), 1.5f, ref childOffset);
-        AddSeparatorLine(ref childOffset);
-        AddSpacing(20, ref childOffset);
-
-        AddTeamMember(Loc.GetString("round-end-credits-team-mirage"), Loc.GetString("round-end-credits-role-tech"), ref childOffset);
-        AddTeamMember(Loc.GetString("round-end-credits-team-pilka"), Loc.GetString("round-end-credits-role-writer"), ref childOffset);
-        AddTeamMember(Loc.GetString("round-end-credits-team-kompotik"), Loc.GetString("round-end-credits-role-mapper"), ref childOffset);
-        AddTeamMember(Loc.GetString("round-end-credits-team-mentor"), Loc.GetString("round-end-credits-role-coordinator"), ref childOffset);
-
-        AddSpacing(20, ref childOffset);
-        AddCenteredLabel(Loc.GetString("round-end-credits-team-others"), Color.FromHex("#888888"), 1f, ref childOffset);
-        AddSpacing(30, ref childOffset);
-        AddCenteredLabel(Loc.GetString("round-end-credits-thanks"), Color.FromHex("#CCCC66"), 1f, ref childOffset);
 
         // === BOTTOM SEPARATOR ===
         AddSpacing(50, ref childOffset);
@@ -253,14 +226,9 @@ public sealed partial class RoundEndCreditsWindow : DefaultWindow
             control.Modulate = Color.White.WithAlpha(alpha);
         }
 
-        if (_elapsed >= 60f && !CloseButton.Visible)
+        if (_scrollOffset >= _totalHeight && !CloseButton.Visible)
         {
             CloseButton.Visible = true;
-            _creditsFinished = true;
-        }
-
-        if (_scrollOffset >= _totalHeight)
-        {
             _creditsFinished = true;
         }
     }

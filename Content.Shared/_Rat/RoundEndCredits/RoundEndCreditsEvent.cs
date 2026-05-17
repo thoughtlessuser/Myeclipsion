@@ -21,12 +21,14 @@ public sealed class CreditsPlayerInfo
 {
     public string PlayerName { get; }
     public string CharacterName { get; }
+    public string Role { get; }
     public NetEntity? Entity { get; }
 
-    public CreditsPlayerInfo(string playerName, string characterName, NetEntity? entity)
+    public CreditsPlayerInfo(string playerName, string characterName, string role, NetEntity? entity)
     {
         PlayerName = playerName;
         CharacterName = characterName;
+        Role = role;
         Entity = entity;
     }
 }

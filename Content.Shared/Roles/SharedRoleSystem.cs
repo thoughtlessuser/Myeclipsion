@@ -477,7 +477,7 @@ public abstract class SharedRoleSystem : EntitySystem
                 if (_prototypes.TryIndex(comp.JobPrototype, out var job))
                 {
                     playTimeTracker = job.PlayTimeTracker;
-                    name = job.Name;
+                    name = job.LocalizedName;
                     valid = true;
                 }
                 else
@@ -490,7 +490,7 @@ public abstract class SharedRoleSystem : EntitySystem
                 prototype = comp.AntagPrototype;
                 if (_prototypes.TryIndex(comp.AntagPrototype, out var antag))
                 {
-                    name = antag.Name;
+                    name = Loc.GetString(antag.Name);
                     valid = true;
                 }
                 else
