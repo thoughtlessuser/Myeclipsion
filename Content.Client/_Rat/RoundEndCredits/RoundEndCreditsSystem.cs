@@ -12,7 +12,7 @@ public sealed class RoundEndCreditsSystem : EntitySystem
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
-    private static readonly SoundPathSpecifier CreditsMusic = new("/Audio/_Rat/barotrauma-FragileWaves.ogg");
+    private static readonly SoundPathSpecifier CreditsMusic = new("/Audio/_Rat/Task-Force-Friendly-Fire.ogg");
 
     private RoundEndCreditsWindow? _window;
     private EntityUid? _musicStream;
