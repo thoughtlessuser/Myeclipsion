@@ -4,7 +4,7 @@
     sprite: Objects/Specific/Medical/firstaidkits.rsi
     state: firstaid
   product: CrateMedicalSupplies
-  cost: 1500
+  cost: 3000
   category: cargoproduct-category-name-medical
   group: freeport
 
@@ -24,7 +24,7 @@
     sprite: _Crescent/Objects/Materials/ore.rsi
     state: plasmaisotope
   product: CrateIsotopes
-  cost: 9000
+  cost: 8500
   category: cargoproduct-category-name-medical
   group: freeport
 
