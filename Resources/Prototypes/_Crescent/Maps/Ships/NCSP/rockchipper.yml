@@ -3,20 +3,20 @@
 
 - type: vessel
   id: Rockchipper
-  name: ПК Кабитель
+  name: ПК Рокчиппер
   description: |
     Шаттл собранный из разрушенных "Термитов". Создана для интенсивных горных работ.
     LOADOUT: 2x 250c Exhumer mining guns
     MINIMUM CREW: 1x Pilot
-  price: 40000
+  price: 25000
   category: Small
   group: None
-  path: /Maps/_Rat/Shuttles/Civilian/exhumer.yml
+  path: /Maps/_Crescent/Shuttles/NCSP/rockchipper.yml
 
 - type: gameMap
   id: Rockchipper
-  mapName: 'ПК Кабитель'
-  mapPath: /Maps/_Rat/Shuttles/Civilian/exhumer.yml
+  mapName: 'ПК Рокчиппер'
+  mapPath: /Maps/_Crescent/Shuttles/NCSP/rockchipper.yml
   minPlayers: 0
   stations:
     Rockchipper:
@@ -30,7 +30,7 @@
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: miner
         - type: StationNameSetup
-          mapNameTemplate: 'ПК Кабитель {1}'
+          mapNameTemplate: 'ПК Рокчиппер {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
