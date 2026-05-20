@@ -217,7 +217,7 @@
     - type: Gun
       fireOnDropChance: 0
       projectileSpeed: 90
-      fireRate: 8
+      fireRate: 7
       selectedMode: FullAuto
       availableModes:
         - FullAuto
@@ -229,7 +229,7 @@
         params:
           variation: 0.12
     - type: RechargeBasicEntityAmmo
-      rechargeCooldown: 0.12
+      rechargeCooldown: 0.25
       rechargeSound:
         path: /Audio/Weapons/Guns/Bolt/lmg_bolt_closed.ogg
         params:
