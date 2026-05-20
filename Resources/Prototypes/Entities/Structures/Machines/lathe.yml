@@ -1284,6 +1284,9 @@
         - MagazineBoxHeavyRifle
         - MagazineBoxRifle
         - MagazineBoxLightRifle
+        - MagazinePistolCaselessRifle
+        - MagazineCaselessRifleShort
+        - MagazineCaselessRifle
         - MagazineBoxCaselessRifle
         - MagazineBoxCaselessRifleBig
         - BoxShotgunFlash4g
