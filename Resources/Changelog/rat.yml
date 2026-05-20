@@ -944,5 +944,12 @@ Entries:
     id: 113
     time: '2026-05-19T12:00:33.0000000+00:00'
     url: https://github.com/ss14-art/ratgore/pull/220
+  - author: ChangelingRUES
+    changes:
+      - type: Fix
+        message: Исправлен шаттл ПК Rockchipper
+    id: 114
+    time: '2026-05-20T12:31:25.0000000+00:00'
+    url: https://github.com/ss14-art/ratgore/pull/227
 Name: Rat
 Order: -1
