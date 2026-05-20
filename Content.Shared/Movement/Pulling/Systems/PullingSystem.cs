@@ -86,6 +86,7 @@ public sealed class PullingSystem : EntitySystem
     [Dependency] private readonly SharedCombatModeSystem _combatMode = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly ContestsSystem _contests = default!; // Goobstation - Grab Intent
+    [Dependency] private readonly MobStateSystem _mobState = default!; // Ratgore
 
     public override void Initialize()
     {
@@ -507,6 +508,11 @@ public sealed class PullingSystem : EntitySystem
             if (TryComp<PhysicsComponent>(pullableUid, out var pullablePhysics))
             {
                 _physics.SetFixedRotation(pullableUid, pullableComp.PrevFixedRotation, body: pullablePhysics);
+
+                // Rat start Fix collision after pulling
+                if (_mobState.IsDead(pullableUid))
+                    _physics.SetCanCollide(pullableUid, false, body: pullablePhysics);
+                // Rat end
             }
         }
 
