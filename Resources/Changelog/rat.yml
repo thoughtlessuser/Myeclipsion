@@ -972,5 +972,12 @@ Entries:
     id: 117
     time: '2026-05-22T12:44:27.0000000+00:00'
     url: https://github.com/ss14-art/ratgore/pull/231
+  - author: Gr-avity
+    changes:
+      - type: Add
+        message: Научная станция by Vladislaiv
+    id: 118
+    time: '2026-05-22T16:08:58.0000000+00:00'
+    url: https://github.com/ss14-art/ratgore/pull/234
 Name: Rat
 Order: -1
