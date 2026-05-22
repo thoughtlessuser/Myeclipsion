@@ -26,7 +26,7 @@
   - MarshalCMM
   - Spacer
   - GliessianDockhand
-  editorHidden: false
+  editorHidden: true
 
 - type: department
   id: Command
