@@ -5,7 +5,7 @@
   - ratadventure
   name: Свободная игра
   showInVote: true
-  description: Последние дни Тайпана. Длится 2-4 часа. 
+  description: Последние дни Тайпана. Длится 2-4 часа.
   rules:
   - RatAdventure
   - HullrotEventScheduler
@@ -91,6 +91,10 @@
         gameMapID: RatKovf
         posX: 500
         posY: -4300
+      RatResearchLabratory:
+        gameMapID: RatResearchLabratory
+        posX: -2000
+        posY: 2000
 
 - type: gamePreset
   id: RatAdventureWar
@@ -98,7 +102,7 @@
   - ratwar
   name: ЛРНП vs БМС
   showInVote: true
-  description: Последние дни Тайпана. Длится 2-4 часа. 
+  description: Последние дни Тайпана. Длится 2-4 часа.
   rules:
   - RatAdventureWar
   - HullrotEventScheduler

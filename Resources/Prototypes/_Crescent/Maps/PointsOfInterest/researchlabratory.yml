@@ -1,0 +1,18 @@
+- type: gameMap
+  id: RatResearchLabratory
+  mapName: 'НТ Раски'
+  mapPath: /Maps/_Rat/POI/researchlabratory.yml
+  minPlayers: 0
+  stations:
+    RatResearchLabratory:
+      stationProto: StandardCrescentPOI
+      gridComponents:
+        - type: VesselIcon
+          iffIcon:
+            sprite: _Crescent/ShipIcons/ifficons.rsi
+            state: asteroids
+        - type: MapIcon
+          iconType: Station
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'НТ Раски'
