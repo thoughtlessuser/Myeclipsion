@@ -23,6 +23,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Threading;
 using Content.Client._Rat.SpaceEvents; // Rat
+using Content.Shared.PointCannons; // Rat
 
 namespace Content.Client.Shuttles.UI;
 
@@ -75,6 +76,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
     private Vector2 MouseUIPosition = Vector2.Zero;
     private Angle LastRotation = Angle.Zero;
     private Vector2 LastWorldCoordinates = Vector2.Zero;
+	public List<NetEntity>? ActiveCannons { get; set; } // Rat
     public bool keepWorldAligned = false;
     private List<Entity<MapGridComponent>> _grids = new();
 
@@ -318,6 +320,7 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
         OnRadarMouseMove?.Invoke(returned);
         OnRadarMouseMoveRelative?.Invoke(RelativeAngleFromFace(returned));
         MouseUIPosition = args.RelativePosition;
+		MousePosition = _transform.ToMapCoordinates(returned).Position; // Rat
     }
 
     private EntityCoordinates RelativePositionToEntityCoords(Vector2 pos)
@@ -642,7 +645,64 @@ public sealed partial class ShuttleNavControl : BaseShuttleControl
             DrawIFFSearchLines(handle, xform.MapID, ourGridId.Value, viewAABB, ourWorldMatrixInvert, mapPos.Position, rot,
                 fixturesQuery, bodyQuery);
         }
+
+		DrawCannonLines(handle, ourWorldMatrixInvert); // Rat
     }
+
+    // Rat-start
+    private void DrawCannonLines(DrawingHandleScreen handle, Matrix3x2 worldMatrixInvert)
+    {
+        if (ActiveCannons == null || ActiveCannons.Count == 0)
+            return;
+
+        var cannonQuery = EntManager.GetEntityQuery<PointCannonComponent>();
+        var xformQuery = EntManager.GetEntityQuery<TransformComponent>();
+
+        foreach (var netEntity in ActiveCannons)
+        {
+            if (!EntManager.TryGetEntity(netEntity, out var cannonUid))
+                continue;
+            if (!cannonQuery.TryGetComponent(cannonUid.Value, out var cannon))
+                continue;
+            if (!xformQuery.TryGetComponent(cannonUid.Value, out var xform))
+                continue;
+
+            var cannonWorldPos = _transform.GetWorldPosition(cannonUid.Value);
+            var dirToMouse = MousePosition - cannonWorldPos;
+            if (dirToMouse.LengthSquared() < 0.001f)
+                continue;
+
+            var worldAngle = Angle.FromWorldVec(dirToMouse);
+            var gridRot = Angle.Zero;
+            if (xform.GridUid is { } gridUid)
+                gridRot = _transform.GetWorldRotation(gridUid);
+
+            var localAngle = worldAngle - gridRot - Math.PI / 2;
+            localAngle = localAngle.Reduced();
+            if (localAngle < 0)
+                localAngle += Math.Tau;
+
+            var isBlocked = false;
+            foreach (var (start, width) in cannon.ObstructedRanges)
+            {
+                var dist = Angle.ShortestDistance(start, localAngle);
+                bool inSector = Math.Sign(width) == Math.Sign(dist)
+                    ? Math.Abs(width) >= Math.Abs(dist)
+                    : Math.Abs(width) >= Math.Tau - Math.Abs(dist);
+                if (inSector) { isBlocked = true; break; }
+            }
+
+            if (isBlocked)
+                continue;
+
+            var cannonLocal = Vector2.Transform(cannonWorldPos, worldMatrixInvert);
+            cannonLocal.Y = -cannonLocal.Y;
+            var cannonUIPos = ScalePosition(cannonLocal);
+
+            handle.DrawLine(cannonUIPos, MouseUIPosition, Color.Red.WithAlpha(0.1f));
+        }
+    }
+	// Rat-end
 
     private void DrawIFFSearchLines(
         DrawingHandleScreen handle,

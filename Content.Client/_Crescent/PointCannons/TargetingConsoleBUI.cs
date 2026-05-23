@@ -104,6 +104,8 @@ public sealed class TargetingConsoleBoundUserInterface : BoundUserInterface
 
         _controlled = consoleState.ControlledCannons;
         _window?.UpdateState(consoleState);
+        if (_window != null) // Rat
+            _window.Radar.ActiveCannons = _controlled; // Rat
     }
 
     private void OnRefreshServer()
