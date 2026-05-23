@@ -111,6 +111,7 @@ public sealed class DegradeableArmorSystem : EntitySystem
 
         }
     }
+
     private void afterEquipped(EntityUid owner, DegradeableArmorComponent comp, ref ClothingGotEquippedEvent args)
     {
         comp.wearer = args.Wearer;
