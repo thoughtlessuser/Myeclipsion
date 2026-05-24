@@ -27,7 +27,7 @@
   - type: UseDelay
   - type: Spray
     transferAmount: 10
-    pushbackAmount: 1
+    pushbackAmount: 0.5
     spraySound:
       path: /Audio/Effects/extinguish.ogg
     sprayedPrototype: ExtinguisherSpray
