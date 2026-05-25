@@ -7,6 +7,7 @@
   startingGear: VagrantGear
   icon: "JobIconPassenger"
   supervisors: job-supervisors-hire
+  singleLifeRound: true
   requirements:
     - !type:FactionRequirement
       inverted: true
@@ -17,6 +18,7 @@
       inverted: true
       species:
         - Voidborn
+    - !type:CharacterSingleLifeJob
   accessGroups:
   - GeneralAccess
   special:

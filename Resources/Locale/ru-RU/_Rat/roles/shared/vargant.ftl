@@ -3,3 +3,5 @@ department-Independents-description = Выживание не гарантиро
 
 job-name-vagrant = Варгант
 job-description-vagrant = Будь независимым кочевником Тайпана. Выживай и не высовывайся.
+
+character-not-played-this-round-requirement = Вы уже играли эту роль в этом раунде.

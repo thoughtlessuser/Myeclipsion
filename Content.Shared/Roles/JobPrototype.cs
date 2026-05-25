@@ -182,6 +182,10 @@ namespace Content.Shared.Roles
         [DataField("chatNameColor")]
         public Color? ChatNameColor { get; private set; }
 
+		// Rat-start
+        [DataField]
+        public bool SingleLifeRound = false;
+		// Rat-start
     }
 
     [DataDefinition]
