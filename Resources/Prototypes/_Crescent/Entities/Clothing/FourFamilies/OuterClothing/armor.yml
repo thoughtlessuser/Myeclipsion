@@ -16,7 +16,7 @@
   - type: ExplosionResistance
     damageCoefficient: 0.6
   - type: DegradeableArmor
-    armorMaxHealth: 430
+    armorMaxHealth: 510
     armorType: Ceramic
     armorRepair: NTCeramic
     initialModifiers:

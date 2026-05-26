@@ -7,7 +7,7 @@
   - type: Projectile
     damage:
       types:
-        Piercing: 38
+        Piercing: 30
     harmorPenetration: 25
     stoppingPower: 8
 
