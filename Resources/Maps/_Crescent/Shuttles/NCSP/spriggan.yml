@@ -726,6 +726,8 @@ entities:
     - type: Transform
       pos: 0.5,-9.5
       parent: 1
+    - type: IFFConsole
+      allowColorChange: True
 - proto: CrescentSuitStorageWallmountTSFCVacsuit
   entities:
   - uid: 107
