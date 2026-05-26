@@ -74,7 +74,7 @@
   icon: { sprite: _Crescent/Objects/Misc/lpcchip.rsi, state: icon }
   productEntity: ShipVoucherSinn
   cost:
-    PlunderGSC: 30
+    PlunderGSC: 20
   categories:
   - StoreCategoryGSCLPC
 
@@ -85,7 +85,7 @@
   icon: { sprite: _Crescent/Objects/Misc/lpcchip.rsi, state: icon }
   productEntity: ShipVoucherEradicator
   cost:
-    PlunderGSC: 30
+    PlunderGSC: 22
   categories:
   - StoreCategoryGSCLPC
 
@@ -96,7 +96,7 @@
   icon: { sprite: _Crescent/Objects/Misc/lpcchip.rsi, state: icon }
   productEntity: ShipVoucherWolf
   cost:
-    PlunderGSC: 30
+    PlunderGSC: 26
   categories:
   - StoreCategoryGSCLPC
 
@@ -107,7 +107,7 @@
   icon: { sprite: _Crescent/Objects/Misc/lpcchip.rsi, state: icon }
   productEntity: ShipVoucherOuroboros
   cost:
-    PlunderGSC: 25
+    PlunderGSC: 17
   categories:
   - StoreCategoryGSCLPC
 
@@ -118,7 +118,7 @@
   icon: { sprite: _Crescent/Objects/Misc/lpcchip.rsi, state: icon }
   productEntity: ShipVoucherCleaver
   cost:
-    PlunderGSC: 10
+    PlunderGSC: 7
   categories:
   - StoreCategoryGSCLPC
 
@@ -129,7 +129,7 @@
   icon: { sprite: _Crescent/Objects/Misc/lpcchip.rsi, state: icon }
   productEntity: ShipVoucherBodybag
   cost:
-    PlunderGSC: 20
+    PlunderGSC: 12
   categories:
   - StoreCategoryGSCLPC
 
