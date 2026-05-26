@@ -495,7 +495,7 @@
         ballistic-ammo: !type:Container
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 130
+      projectileSpeed: 170
       fireRate: 0.3
       selectedMode: FullAuto
       availableModes:
@@ -550,7 +550,7 @@
                 collection: MetalGlassBreak
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 70
+      projectileSpeed: 100
       burstFireRate: 8
       burstCooldown: 2
       selectedMode: Burst
@@ -612,7 +612,7 @@
       powerLoad: 800
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 70
+      projectileSpeed: 100
       fireRate: 1.5
       angleDecay: 0.3
       minAngle: 0.75
@@ -660,7 +660,7 @@
         ballistic-ammo: !type:Container
     - type: Gun
       fireOnDropChance: 0
-      projectileSpeed: 150
+      projectileSpeed: 200
       fireRate: 0.2
       selectedMode: SemiAuto
       availableModes:
