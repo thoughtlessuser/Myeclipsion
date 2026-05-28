@@ -6,13 +6,12 @@ job-description-nt-utility-ipc = Load ammunition and upkeep nanotrasen ships. Co
 # ncwl
 
 job-description-ncwl-faction-leader = Lead the League from the external end. Maintain relations or war plans with other factions. Manage the Homeguard. Don't die.
-job-description-ncwl-kommissar = Lead the League from the internal end. Make sure Unions do their jobs. Execute traitors.
-job-description-ncwl-mvd-officer = Be the visible hand of the Central Committee. Lead your small team and follow the Kommissar's orders.
-job-description-ncwl-mvd-grunt = Be the visible hand of the Central Committee. Follow the Kommissar and obey his orders.
+job-description-ncwl-kommissar = Be the brain of the Communist Party's will. Keep the proletarian masses in line, and order around your small MVD detachment.
+job-description-ncwl-mvd-grunt = Be the hand of the Chengridz Communist Party. Ensure the proletariat are cohesive. 
 job-description-ncwl-fleetkapitan = Command the mass of Partisans. Listen to the Major. Maintain battlefield cohesion.
 job-description-ncwl-partisan = Defend the League. Listen to your Unionkapitan. Do what you're told.
 job-description-ncwl-industry-taskmaster = Ensure materials are being refined into trade goods and ammo. Organize fleet maintenance.
-job-description-ncwl-industry-artificer = Listen to the Starshina. Gather resources for the League. Do repairs and shipmods.
+job-description-ncwl-industry-artificer = Listen to the Overseer. Gather resources for the League. Do repairs and shipmods.
 job-description-ncwl-medical-director = Keep the League alive and healthy. Coordinate research. Order cybernetics and new drugs.
 job-description-ncwl-medical-doctor = Keep the Workers and the Homeguard alive. Assist the Homeguard on missions. Make drugs, save those lost in space.
 job-description-ncwl-worker-overboss = Organize salvage and mining. Make sure workers are working. Keep resources flowing to the League Industrial Complex. Organize trade routes.
@@ -86,15 +85,15 @@ job-description-marshal = Coordinate the Minutemen. Oversee martial and civil co
 
 # tap
 
-job-description-prophet = Lead the Four Families. Delve deep into the scientific and spiritual alike.
-job-description-acolytetap = Research, tend to wounds, be a mouth through which the Prophet speaks.
-job-description-tinkerer = Craft equipment, build and refit ships within the safety of the Hideout.
-job-description-hangartech = Construct grand vessels in the name of the Pact.
-job-description-techminer = Gather anything you can get your hands on. Aid the tinkerer in his efforts.
-job-description-beltrunner = Obey the Antiquarian. Defend him against pirates. Move freight.
-job-description-draugr = Fend off pirates, unruly customers, plug leaks and sabotage the enemies of the Pact.
-job-description-servile = Aid your draugr in protecting what remains of the Four Families.
-job-description-antiquarian = Strike trade deals, make money, represent the Pact.
+job-description-prophet = Lead your flock into the light. Ensure order within the Families.
+job-description-acolytetap = Follow your Prophet. Ensure their safety.
+job-description-tinkerer = Tend to the always-ailing Aasim. Ensure things are always operational. Research new technologies.
+job-description-hangartech = Tend to the Thukker storefront, move freight, mind the cargo hold of the Aasim.
+job-description-techminer = Go scavenging for scrap. Find artifacts and lost technology for the Tinkerers.
+job-description-beltrunner = Move the Izdari product from the Aasim to relevant parties. Ensure the security of your family's operations.
+job-description-draugr = Assert your superiority over the Serviles. Protect the war-freighter. Listen to the Prophet. Their word is law.
+job-description-servile = Listen to your Draugrs - earn your stay in the family. Make a name for yourself.
+job-description-antiquarian = Fulfill the system's blackmarketing needs. Make sure your office stays in one piece.
 
 # ath
 
@@ -114,7 +113,7 @@ job-description-arbeiter = The industrial life blood of the Authoritat. Follow t
 
 
 # misc
-
+job-description-vagrant = Be an independent nomad of Taypan. Survive and keep your head low.
 job-description-spacer = Be an independent citizen of Taypan.
 job-description-gliess-sheriff = Maintain law and order on Gliess Santo. Organize your militia, and protect the independent civilians of Taypan.
 job-description-gliess-deputy = Assist the Sheriff in keeping the law. Defend independent spacers and maintain peace with much bigger fish.
@@ -164,6 +163,11 @@ job-description-unionfall-dsm-officer = Lead small squads. Ensure cohesion. List
 job-description-unionfall-dsm-doctor = Keep your fellow men alive.
 job-description-unionfall-dsm-rifleman = Be the rank and file. Pilot fighters and ultralights. Listen to your superiors.
 job-description-unionfall-dsm-cadet = Listen to your superiors. Keep your head down and learn.
+
+# planetfall
+job-description-planetfall-team-subleader = Enact the team leader's orders. Ensure Cohesion.
+job-description-planetfall-team-member = Follow orders from your team leader. Do your part to ensure the success of the mission. Listen to your superiors.
+job-description-planetfall-team-leader = Lead your team. Ensure the success of your mission. Listen to your superiors.
 
 # event roles
 job-description-ncwl-conscript-event = Conscript from the NCWL ground forces militia. Armed with a semi automatic rifle and a dream.

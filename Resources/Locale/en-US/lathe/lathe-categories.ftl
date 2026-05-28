@@ -10,3 +10,11 @@ lathe-category-weapons = Weapons
 lathe-category-food = Food
 lathe-category-chemicals = Chemicals
 lathe-category-materials = Materials
+
+lathe-category-magazines = Magazines
+lathe-category-autocannon = Autocannon Ammo
+lathe-category-artillery = Artillery Ammo
+lathe-category-missile = Missiles
+lathe-category-armorplates = Armor Plates
+lathe-category-hardsuits = Hardsuits
+lathe-category-lpcs= LPCs
