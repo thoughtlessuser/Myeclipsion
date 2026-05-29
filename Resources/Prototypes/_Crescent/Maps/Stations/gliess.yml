@@ -17,7 +17,7 @@
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: outpost
         - type: StationNameSetup
-          mapNameTemplate: 'ОСР Убежище'
+          mapNameTemplate: 'OCP Логово охотника'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: Grammar
