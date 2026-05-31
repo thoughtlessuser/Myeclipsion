@@ -69,9 +69,9 @@ public sealed partial class TTSSystem : EntitySystem
         if (normal is null)
             return;
 
-        var obfuscated = await GenerateTTS(_language.ObfuscateSpeech(message, language), speaker);
-        if (obfuscated is null)
-            return;
+        // var obfuscated = await GenerateTTS(_language.ObfuscateSpeech(message, language), speaker);
+        // if (obfuscated is null)
+        //     return;
 
         var nilter = Filter.Empty();
         var lilter = Filter.Empty();
@@ -88,7 +88,7 @@ public sealed partial class TTSSystem : EntitySystem
         }
 
         RaiseNetworkEvent(new PlayTTSEvent(normal, GetNetEntity(uid)), nilter);
-        RaiseNetworkEvent(new PlayTTSEvent(obfuscated, GetNetEntity(uid)), lilter, false);
+        // RaiseNetworkEvent(new PlayTTSEvent(obfuscated, GetNetEntity(uid)), lilter, false);
     }
 
     private async void HandleWhisper(EntityUid uid, string message, LanguagePrototype language, string speaker)
@@ -97,9 +97,9 @@ public sealed partial class TTSSystem : EntitySystem
         if (normal is null)
             return;
 
-        var obfuscated = await GenerateTTS(_language.ObfuscateSpeech(message, language), speaker, true);
-        if (obfuscated is null)
-            return;
+        // var obfuscated = await GenerateTTS(_language.ObfuscateSpeech(message, language), speaker, true);
+        // if (obfuscated is null)
+        //     return;
 
         // TODO: Check obstacles
         var xformQuery = GetEntityQuery<TransformComponent>();
@@ -125,7 +125,7 @@ public sealed partial class TTSSystem : EntitySystem
         }
 
         RaiseNetworkEvent(new PlayTTSEvent(normal, GetNetEntity(uid), true), nilter);
-        RaiseNetworkEvent(new PlayTTSEvent(obfuscated, GetNetEntity(uid), true), lilter, false);
+        // RaiseNetworkEvent(new PlayTTSEvent(obfuscated, GetNetEntity(uid), true), lilter, false);
     }
 
     private readonly Dictionary<string, Task<byte[]?>> _ttsTasks = new();
