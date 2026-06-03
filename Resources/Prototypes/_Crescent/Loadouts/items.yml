@@ -1,6 +1,6 @@
-- type: loadout
-  id: LoadoutItemsBoombox
-  category: Items
-  cost: 6
-  items:
-    - Boombox
+# - type: loadout  Do not touch until fix BoomBox
+#   id: LoadoutItemsBoombox
+#   category: Items
+#   cost: 6
+#   items:
+#     - Boombox

@@ -1,7 +1,9 @@
 alert-console-title = Система оповещения
 alert-console-enabled = Включить систему
 alert-console-radius-label = Радиус обнаружения
-alert-console-channel-label = Канал фракции (ID канала связи)
+alert-console-channel-label = Канал фракции
+alert-console-channel-value = { $channel }
+alert-console-channel-unknown = не определён
 alert-console-cooldown-label = Кулдаун оповещений (сек)
 alert-console-station-msg-label = Сообщение для фракции
 alert-console-vars-hint = Переменные: {name} — имя шаттла, {dist} — расстояние в метрах
