@@ -1,6 +1,6 @@
 - type: gameMap
   id: Jackal
-  mapName: 'МГ Гидра'
+  mapName: 'GSC Jackal'
   mapPath: /Maps/_Crescent/Stations/jackal.yml
   minPlayers: 0
   stations:
@@ -12,7 +12,7 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'МГ Гидра'
+          mapNameTemplate: 'GSC Jackal'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: VesselMusic
