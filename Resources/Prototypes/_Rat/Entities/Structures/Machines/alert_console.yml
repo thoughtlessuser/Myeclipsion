@@ -1,8 +1,8 @@
 - type: entity
   parent: BaseComputer
   id: ComputerAlertConsole
-  name: консоль системы оповещения
-  description: Автоматически оповещает о приближающихся шаттлах
+  name: Alert System Console  
+  description: Automatically notifies about incoming shuttles.
   components:
   - type: AlertConsole
     enabled: false

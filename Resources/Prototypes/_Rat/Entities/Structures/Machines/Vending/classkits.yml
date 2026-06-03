@@ -1,8 +1,8 @@
 - type: entity
   parent: ColMarTechBase
   id: ColMarTechEquipmentNCWL
-  name: автоматическая стойка снаряжения коммунаров
-  description: Автоматизированный стеллаж, соединенный с колоссальным хранилищем стандартного снаряжения лиги.
+  name: automated communard equipment rack
+  description: An automated rack connected to a massive storage of standard League equipment.
   components:
   - type: AccessReader
     access:
@@ -13,57 +13,57 @@
     jobs:
     - PartisanNCWL
     sections:
-    - name: Классовый набор
+    - name: Class Kit
       choices: { CMClass: 1 }
       entries:
       - id: CMVendorBundleRiflemanApparelNCWL
-        name: базовый набор ЛРНП
+        name: basic NCWL kit
         recommended: true
-    - name: Броня
+    - name: Armor
       choices: { CMArmour: 1 }
       entries:
       - id: ClothingOuterHardsuitNCWLInfantry
-        name: скафандр ЛРНП
+        name: NCWL hardsuit
         recommended: true
       - id: ClothingOuterArmorNCWLHeavyCarapace
-        name: бронежилет ЛРНП
-    - name: Основное оружие
+        name: NCWL body armor
+    - name: Primary Weapon
       choices: { CMWeapon: 1 }
       entries:
       - id: WeaponRifleFAL
-        name: НКВЛ МК-2 Фалин 5.56x45 мм
+        name: NCWL MK-2 Falin 5.56x45mm
         recommended: true
       - id: WeaponShotgunProletar
-        name: НКВЛ Тоз-97 Пролетарий 12 кал
+        name: NCWL Toz-97 Proletariat 12 gauge
       - id: WeaponSubMachineGunNCWLWatchdog
-        name: НКВЛ ДС1 Страж 9x19mm
-    - name: Утилиты
+        name: NCWL DS1 Watchdog 9x19mm
+    - name: Utilities
       choices: { CMUtilities: 2 }
       entries:
       - id: ExGrenade
-        name: разрывная граната
+        name: fragmentation grenade
       - id: EmpGrenade
-        name: ЭМИ Граната
+        name: EMP Grenade
       - id: BreachingCharge
-        name: Прорывной заряд
+        name: breaching charge
       - id: HandHeldMassScannerEE
-        name: портативный сканер масс
+        name: handheld mass scanner
         recommended: true
-    - name: Боеприпасы
+    - name: Ammunition
       choices: { CMAmmo: 2 }
       entries:
       - id: MagazinePistolSubMachineGun
-        name: 35-зарядный магазин для пистолета-пулемета (9x19 мм PSTF auto)
+        name: 35-round SMG magazine (9x19mm PSTF auto)
       - id: MagazineLightRifle
-        name: 30-зарядный магазин (5,56x45 мм)
+        name: 30-round magazine (5.56x45mm)
       - id: MagazineShotgun
-        name: 10-зарядный магазин (12 калибр)
+        name: 10-round magazine (12 gauge)
 
 - type: entity
   parent: ColMarTechBase
   id: ColMarTechEquipmentDSM
-  name: автоматическая стойка снаряжения империи
-  description: Автоматизированный стеллаж, соединенный с колоссальным хранилищем стандартного снаряжения имперцев.
+  name: automated imperial equipment rack
+  description: An automated rack connected to a massive storage of standard Imperial equipment.
   components:
   - type: AccessReader
     access:
@@ -74,57 +74,57 @@
     jobs:
     - LevymanDSM
     sections:
-    - name: Классовый набор
+    - name: Class Kit
       choices: { CMClass: 1 }
       entries:
       - id: CMVendorBundleRiflemanApparelDSM
-        name: базовый набор БМС
+        name: basic DSM kit
         recommended: true
-    - name: Броня
+    - name: Armor
       choices: { CMArmour: 1 }
       entries:
       - id: ClothingOuterHardsuitImperialSoldier
-        name: скафандр БМС
+        name: DSM hardsuit
         recommended: true
       - id: ClothingOuterArmorImperialTrooperArmor
-        name: бронежилет БМС
-    - name: Основное оружие
+        name: DSM body armor
+    - name: Primary Weapon
       choices: { CMWeapon: 1 }
       entries:
       - id: WeaponShotgunReno
-        name: БМС ДА-13 Рено 12 кал.
+        name: DSM DA-13 Reno 12 gauge
       - id: WeaponRifleMiller
-        name: БМС ДА-8 Миллер 5.56x45 мм
+        name: DSM DA-8 Miller 5.56x45mm
         recommended: true
       - id: WeaponSubMachineGunBeetle
-        name: ХП Мак-11 Жук 9x19 мм
-    - name: Утилиты
+        name: HP Mac-11 Beetle 9x19mm
+    - name: Utilities
       choices: { CMUtilities: 2 }
       entries:
       - id: ExGrenade
-        name: разрывная граната
+        name: fragmentation grenade
       - id: EmpGrenade
-        name: ЭМИ Граната
+        name: EMP Grenade
       - id: BreachingCharge
-        name: Прорывной заряд
+        name: breaching charge
       - id: HandHeldMassScannerEE
-        name: портативный сканер масс
+        name: handheld mass scanner
         recommended: true
-    - name: Боеприпасы
+    - name: Ammunition
       choices: { CMAmmo: 2 }
       entries:
       - id: MagazinePistolSubMachineGun
-        name: 35-зарядный магазин для пистолета-пулемета (9x19 мм PSTF auto)
+        name: 35-round SMG magazine (9x19mm PSTF auto)
       - id: MagazineLightRifle
-        name: 30-зарядный магазин (5,56x45 мм)
+        name: 30-round magazine (5.56x45mm)
       - id: MagazineShotgun
-        name: 10-зарядный магазин (12 калибр)
+        name: 10-round magazine (12 gauge)
 
 - type: entity
   parent: ColMarTechBase
   id: ColMarTechEquipmentInterdyne
-  name: автоматическая стойка снаряжения интердайна
-  description: Автоматизированный стеллаж, соединенный с колоссальным хранилищем стандартного снаряжения Interdyne Pharmaceuticals.
+  name: automated Interdyne equipment rack
+  description: An automated rack connected to a massive storage of standard Interdyne Pharmaceuticals equipment.
   components:
   - type: AccessReader
     access:
@@ -137,56 +137,56 @@
     - RipperdocNCSP
     - CoordinatorNCSP
     sections:
-    - name: Стандартный набор
+    - name: Standard Kit
       choices: { CMClass: 1 }
       entries:
       - id: CMVendorBundleIPMApparel
-        name: стандартный набор
+        name: standard kit
         recommended: true
-    - name: Броня
+    - name: Armor
       choices: { CMArmour: 1 }
       entries:
       - id: ClothingOuterHardsuitTraumasec
-        name: скафандр Interdyne TraumaSec
+        name: Interdyne TraumaSec hardsuit
         recommended: true
       - id: ClothingOuterArmorSyndicateArmorvestInterdyne
-        name: баллистический жилет TraumaSec
-    - name: Основное оружие
+        name: TraumaSec ballistic vest
+    - name: Primary Weapon
       choices: { CMWeapon: 1 }
       entries:
       - id: WeaponRifleKrinkov
-        name: КВСТ АКС-74У Кринков 5.56x45 мм
+        name: KVST AKS-74U Krinkov 5.56x45mm
         recommended: true
       - id: WeaponSubMachineGunAtreides
-        name: Атрейдес
+        name: Atreides
       - id: WeaponShotgunNCSPSaiga12
-        name: КВСТ Сайга-12к Молот 12 кал.
-    - name: EVA и утилиты
+        name: KVST Saiga-12k Hammer 12 gauge
+    - name: EVA and Utilities
       choices: { CMUtilities: 2 }
       entries:
       - id: HandHeldMassScannerEE
-        name: портативный сканер масс
+        name: handheld mass scanner
         recommended: true
       - id: SHIHG7FlashbangHandgrenade
-        name: светошумовая граната ТПШ HG-07
+        name: TPSh HG-07 flashbang grenade
       - id: F1Handgrenade
-        name: Граната Ф-1
-    - name: Боеприпасы
+        name: F-1 Grenade
+    - name: Ammunition
       choices: { CMAmmo: 2 }
       entries:
       - id: MagazineLightRifle
-        name: 30-зарядный магазин (5,56x45 мм)
+        name: 30-round magazine (5.56x45mm)
         recommended: true
       - id: MagazinePistolSubMachineGun
-        name: 35-зарядный магазин для пистолета-пулемета (9x19 мм PSTF auto)
+        name: 35-round SMG magazine (9x19mm PSTF auto)
       - id: MagazineShotgun
-        name: 10-зарядный магазин (12 калибр)
+        name: 10-round magazine (12 gauge)
 
 - type: entity
   parent: ColMarTechBase
   id: ColMarTechEquipmentCMM
-  name: автоматическая стойка снаряжения минитменов
-  description: Автоматизированный стеллаж, соединенный с колоссальным хранилищем стандартного снаряжения минитменов.
+  name: automated minutemen equipment rack
+  description: An automated rack connected to a massive storage of standard Minutemen equipment.
   components:
   - type: AccessReader
     access:
@@ -203,69 +203,69 @@
     - DeputyMarshalCMM
     - MarshalCMM
     sections:
-    - name: Классовый набор
+    - name: Class Kit
       choices: { CMClass: 1 }
       entries:
       - id: CMVendorBundleRiflemanApparelCMM
-        name: базовый набор минитменов
+        name: basic minutemen kit
         recommended: true
-    - name: Броня
+    - name: Armor
       choices: { CMArmour: 1 }
       entries:
       - id: ClothingOuterHardsuitMidshipman
-        name: скафандр минитменов "Мичман"
+        name: Minutemen "Midshipman" hardsuit
         recommended: true
       - id: ClothingOuterArmorCMM
-        name: кираса патрульного
-    - name: Основное оружие
+        name: patrol cuirass
+    - name: Primary Weapon
       choices: { CMWeapon: 1 }
       entries:
       - id: WeaponShotgunSHIDoubleBarreled4g
-        name: SHI M135 Двустволка 12g
+        name: SHI M135 Double-Barrel 12g
       - id: WeaponRifleCMMNimrod
-        name: КММ M32 Нимрод 7.62x51mm
+        name: CMM M32 Nimrod 7.62x51mm
         recommended: true
       - id: WeaponSubMachineGunMP5
-        name: НТ MP5 9x19mm
-    - name: Дополнительное оружие
+        name: NT MP5 9x19mm
+    - name: Secondary Weapon
       choices: { CMPistol: 1 }
       entries:
       - id: WeaponRevolverSnubnose
-        name: НТ-6R Бульдог .327
+        name: NT-6R Bulldog .327
       - id: WeaponPistolHKUSP
-        name: НТ MX-32 Локвелл 9x19mm
+        name: NT MX-32 Lockwell 9x19mm
         recommended: true
-    - name: Утилиты
+    - name: Utilities
       choices: { CMUtilities: 2 }
       entries:
       - id: ExGrenade
-        name: разрывная граната
+        name: fragmentation grenade
       - id: EmpGrenade
-        name: ЭМИ Граната
+        name: EMP Grenade
       - id: BreachingCharge
-        name: Прорывной заряд
+        name: breaching charge
       - id: HandHeldMassScannerEE
-        name: портативный сканер масс
+        name: handheld mass scanner
         recommended: true
-    - name: Боеприпасы
+    - name: Ammunition
       choices: { CMAmmo: 4 }
       entries:
       - id: MagazinePistolSubMachineGun
-        name: 35-зарядный магазин для пистолета-пулемета (9x19 мм PSTF auto)
+        name: 35-round SMG magazine (9x19mm PSTF auto)
       - id: MagazineBoxRifle
-        name: коробка патронов (7.62x51mm)
+        name: ammunition box (7.62x51mm)
       - id: BoxLethalshot
-        name: коробка ружейных патронов (.50 летальные)
+        name: shotgun shell box (.50 lethal)
       - id: MagazinePistol
-        name: 18-зарядный пистолетный магазин (9x19 мм PSTF auto)
+        name: 18-round pistol magazine (9x19mm PSTF auto)
       - id: SpeedLoaderMagnum
-        name: спидлоадер (.45 магнум)
+        name: speed loader (.45 magnum)
 
 - type: entity
   parent: ColMarTechBase
   id: ColMarTechEquipmentSHI
-  name: автоматическая стойка снаряжения корпорации
-  description: Автоматизированный стеллаж, соединенный с колоссальным хранилищем стандартного снаряжения корпоративной безопасности Шиногары.
+  name: automated corporate equipment rack
+  description: An automated rack connected to a massive storage of standard Shinohara corporate security equipment.
   components:
   - type: AccessReader
     access:
@@ -283,66 +283,66 @@
     - BoardHRSHI
     - ExecutiveSHI
     sections:
-    - name: Стандартный набор
+    - name: Standard Kit
       choices: { CMClass: 1 }
       entries:
       - id: CMVendorBundleCorpSecApparel
-        name: стандартный корпоративный набор
+        name: standard corporate kit
         recommended: true
-    - name: Броня
+    - name: Armor
       choices: { CMArmour: 1 }
       entries:
       - id: ClothingOuterHardsuitHighsec
-        name: боевой скафандр "Шиногара" SVBT-2
+        name: Shinohara combat hardsuit SVBT-2
         recommended: true
       #- id: ClothingOuterHardsuitHighsecUA
-      #  name: боевой скафандр "Шиногара" SVBT-2-UA
+      #  name: Shinohara combat hardsuit SVBT-2-UA
       #  recommended: true
-    - name: Основное оружие
+    - name: Primary Weapon
       choices: { CMWeapon: 1 }
       entries:
       - id: WeaponRifleLecter
-        name: ТПШ Лектер
+        name: TPSh Lecter
         recommended: true
       - id: WeaponRifleHoundMarksman
-        name: ТПШ М215 "Хаунд" 5.56х45
+        name: TPSh M215 "Hound" 5.56x45
       - id: WeaponSubMachineGunMP49
-        name: ТПШ MP49 "Надзиратель" 9x19mm
-    - name: Дополнительное оружие
+        name: TPSh MP49 "Warden" 9x19mm
+    - name: Secondary Weapon
       choices: { CMPistol: 1 }
       entries:
       - id: WeaponPistolHimehabu
-        name: ТПШ М002 "Химехабу" 9х19
+        name: TPSh M002 "Himehabu" 9x19
         recommended: true
       - id: ClothingBeltSheathSHIKatanaFilled
-        name: Ножны для катаны (катана в комплекте)
-    - name: Утилиты
+        name: Katana sheath (katana included)
+    - name: Utilities
       choices: { CMUtilities: 3 }
       entries:
       - id: ExGrenade
-        name: разрывная граната
+        name: fragmentation grenade
       - id: EmpGrenade
-        name: ЭМИ Граната
+        name: EMP Grenade
       - id: BreachingCharge
-        name: Прорывной заряд
+        name: breaching charge
       - id: HandHeldMassScannerEE
-        name: портативный сканер масс
+        name: handheld mass scanner
         recommended: true
-    - name: Боеприпасы
+    - name: Ammunition
       choices: { CMAmmo: 4 }
       entries:
       - id: MagazinePistolSubMachineGun
-        name: 35-зарядный магазин для пистолета-пулемета (9x19 мм PSTF auto)
+        name: 35-round SMG magazine (9x19mm PSTF auto)
       - id: MagazineLightRifle
-        name: 30-зарядный магазин (5,56х45 мм Imperial)
+        name: 30-round magazine (5.56x45mm Imperial)
       - id: MagazinePistol
-        name: 18-зарядный пистолетный магазин (9x19 мм PSTF auto)
+        name: 18-round pistol magazine (9x19mm PSTF auto)
 
 - type: entity
   parent: ColMarTechBase
   id: ColMarTechEquipmentGSC
-  name: автоматическая стойка снаряжения наёмников
-  description: Автоматизированный стеллаж, соединенный с колоссальным хранилищем стандартного снаряжения вольных наёмников.
+  name: automated mercenary equipment rack
+  description: An automated rack connected to a massive storage of standard freelance mercenary equipment.
   components:
   - type: AccessReader
     access:
@@ -356,50 +356,50 @@
     - InfanteerNCSP
     - TechnicianNCSP
     sections:
-    - name: Стандартный набор
+    - name: Standard Kit
       choices: { CMClass: 1 }
       entries:
       - id: CMVendorBundleGSCApparel
-        name: стандартный набор наёмника
+        name: standard mercenary kit
         recommended: true
-    - name: Броня
+    - name: Armor
       choices: { CMArmour: 1 }
       entries:
       - id: ClothingOuterHardsuitSyndicateBG
-        name: скафандр штурмовика BULWARK mk.II
+        name: BULWARK mk.II assault hardsuit
         recommended: true
       - id: ClothingOuterHardsuitSyndicateSellsword
-        name: модифицированный скафандр SELLSWORD mk.IIB
+        name: modified SELLSWORD mk.IIB hardsuit
       - id: ClothingOuterHardsuitSyndicateFreiritter
-        name: кастомный скафандр FREIRITTER mkIIC
-    - name: Основное оружие
+        name: custom FREIRITTER mkIIC hardsuit
+    - name: Primary Weapon
       choices: { CMWeapon: 1 }
       entries:
       - id: WeaponRifleAk
-        name: АКМС
+        name: AKMS
         recommended: true
       - id: WeaponSubMachineGunAtreides
-        name: ПП Атрейдес
+        name: Atreides SMG
       - id: WeaponShotgunKammerer
-        name: Каммерер
-    - name: Утилиты
+        name: Kammerer
+    - name: Utilities
       choices: { CMUtilities: 4 }
       entries:
       - id: ExGrenade
-        name: разрывная граната
+        name: fragmentation grenade
       - id: EmpGrenade
-        name: ЭМИ Граната
+        name: EMP Grenade
       - id: BreachingCharge
-        name: Прорывной заряд
+        name: breaching charge
       - id: HandHeldMassScannerEE
-        name: портативный сканер масс
+        name: handheld mass scanner
         recommended: true
-    - name: Боеприпасы
+    - name: Ammunition
       choices: { CMAmmo: 4 }
       entries:
       - id: MagazinePistolSubMachineGun
-        name: 35-зарядный магазин для пистолета-пулемета (9x19 мм PSTF auto)
+        name: 35-round SMG magazine (9x19mm PSTF auto)
       - id: MagazineRifle
-        name: 25-зарядный магазин (7,62х51 мм USM)
+        name: 25-round magazine (7.62x51mm USM)
       - id: BoxLethalshot
-        name: коробка ружейных патронов (.50 летальные)
+        name: shotgun shell box (.50 lethal)
