@@ -320,7 +320,7 @@
   icon: { sprite: /Textures/_Crescent/Objects/Weapons/Grenades/ncsp_rgd5.rsi, state: icon }
   productEntity: NCSPRGD5Handgrenade
   cost:
-    PlunderGSC: 1
+    PlunderGSC: 0.5
   categories:
   - StoreCategoryGSCExplosives
 

@@ -39,7 +39,7 @@
     availableModes:
     - SemiAuto
     - FullAuto
-    fireRate: 12
+    fireRate: 10
     soundGunshot:
       path: /Audio/_Crescent/Weapons/Guns/supressed_2/supressed_gunshot_2.ogg
       params:

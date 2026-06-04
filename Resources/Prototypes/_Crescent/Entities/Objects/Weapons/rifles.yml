@@ -919,6 +919,7 @@
   - type: Clothing
     sprite: _Crescent/Objects/Weapons/Guns/mayflower.rsi
   - type: Gun
+    damageModifier: 1.15
     soundGunshot:
       path: /Audio/_Crescent/Weapons/Guns/rifle_1/rifle_gunshot_2.ogg
   - type: ItemSlots

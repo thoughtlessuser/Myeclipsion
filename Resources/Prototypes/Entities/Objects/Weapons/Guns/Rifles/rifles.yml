@@ -161,7 +161,7 @@
     shape:
     - 0,0,5,1
   - type: Gun
-    fireRate: 5
+    fireRate: 5.34
     soundGunshot:
       path: /Audio/_Crescent/Weapons/Guns/AK_74/rifle_gunshot_1.ogg
     fireOnDropChance: 0.5

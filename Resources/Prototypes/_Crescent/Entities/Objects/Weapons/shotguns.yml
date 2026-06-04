@@ -336,8 +336,13 @@
   - type: Clothing
     sprite: _Crescent/Objects/Weapons/Guns/spas13.rsi
   - type: BallisticAmmoProvider
+    capacity: 8
+  - type: Wieldable
+  - type: Gun
+    fireRate: 2.5 
   - type: StaticPrice
     price: 2500
+  - type: GunRequiresWield
   - type: ReverseEngineering # SectorCrescent
     difficulty: 2
     recipes:
@@ -448,8 +453,8 @@
   - type: AmmoCounter
   - type: GunRequiresWield #remove when inaccuracy on spreads is fixed
   - type: Gun
-    damageModifier: 0.85
-    fireRate: 1.5 #Magfed, and cyberdawn facbricated. Cant be better than Pozhar.
+    damageModifier: 0.7
+    fireRate: 3.34 #Magfed, and cyberdawn facbricated. Cant be better than Pozhar. 3.34
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
@@ -511,7 +516,7 @@
     staminaCost: 9.5
   - type: ExtendDescription
     descriptionList:
-      - description: This shotgun's damage is reduced due to its fire-rate. It deals 15% lower damage per shot.
+      - description: This shotgun's damage is reduced due to its fire-rate. It deals 30% lower damage per shot.
         fontSize: 12
         color: "#ff4f00"
         requireDetailRange: false
