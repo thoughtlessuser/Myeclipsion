@@ -59,10 +59,6 @@
         posY: -4000
         IFFColor: IndianRed
         IFFFaction: TFSC
-      IronRing:
-        gameMapID: IronRing
-        posX: -3000
-        posY: 500
       RatFakel:
         gameMapID: RatFakel
         posX: 0
