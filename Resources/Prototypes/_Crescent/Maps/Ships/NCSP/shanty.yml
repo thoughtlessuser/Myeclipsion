@@ -3,34 +3,31 @@
 #
 - type: vessel
   id: Shanty
-  name: ПК Лачужка
+  name: SAW Shanty
   description: |
-    Трофейный грузовой модуль Синдиката.
+    A salvaged Syndicate cargopod.
     LOADOUT: 1x 20mm 'Screamer' light carbine repeater cannon
     MINIMUM CREW: 1x Pilot
-  price: 24000
+  price: 23000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/NCSP/Shanty.yml
 
 - type: gameMap
   id: Shanty
-  mapName: 'ПК Лачужка'
+  mapName: 'SAW Shanty'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/Shanty.yml
   minPlayers: 0
   stations:
     Shanty:
       stationProto: StandardCrescentCivilianVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: civilian
         - type: StationNameSetup
-          mapNameTemplate: 'ПК Лачужка {1}'
+          mapNameTemplate: 'SAW Shanty {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

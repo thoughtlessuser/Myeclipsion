@@ -3,9 +3,9 @@
 
 - type: vessel
   id: Spriggan
-  name: ТК Сприган
+  name: CD Spriggan
   description: |
-    Результат экспериментов инженера ПК с тюнингом, "Сприган" — это мобильный контрабандистско-спасательный корабль, дешевый и легко модифицируемый во что угодно.
+    The result of a SAW engineer's experiment with hotrodding, the Spriggan is a mobile smuggler/salvage ship, cheap and easily modified to be anything you want.
     LOADOUT: 2x Exhumer mining guns
     MINIMUM CREW: 1x Pilot
   price: 28000
@@ -15,26 +15,23 @@
 
 - type: gameMap
   id: Spriggan
-  mapName: 'ТК Сприган'
+  mapName: 'CD Spriggan'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/spriggan.yml
   minPlayers: 0
   stations:
     Spriggan:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'ТК Сприган {1}'
+          mapNameTemplate: 'CD Spriggan {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-smuggling
         - type: VesselDescription
-          description: Результат действия килограмма неизвестных наркотиков, итог похмелья инженера ПК.
+          description: The result of two pounds of mystery drugs, this is the result of a SAW engineer's hangover.

@@ -3,11 +3,11 @@
 #
 - type: vessel
   id: Tick
-  name: МГ Клещ
+  name: GSC Tick
   description: |
-    Сверхлегкий истребитель Синдиката, вооруженный двумя сдвоенными торпедными установками. Способен наносить сокрушительный урон для своих размеров.
-    ВООРУЖЕНИЕ: 2x СХИ 180-мм малая торпедная установка "Идна"
-    ЭКИПАЖ: 1x Пилот
+    An ultralight Syndicate fighter, armed with two dual torpedo pods. Capable of dealing devastating damage for its small size.
+    LOADOUT: 2x SHI 180mm "Idna" Small Torpedo Pod
+    CREW: 1x Pilot
   price: 12500 #12000 appraisegrid
   category: Small
   group: None
@@ -15,26 +15,23 @@
 
 - type: gameMap
   id: Tick
-  mapName: 'МГ Клещ'
+  mapName: 'GSC Tick'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/tick.yml
   minPlayers: 0
   stations:
     Tick:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'МГ Клещ {1}'
+          mapNameTemplate: 'GSC Tick {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-fighter
         - type: VesselDescription
-          description: Быстрый мощный бомбардировщик, чтобы вскрывать ничего не подозревающих жертв.
+          description: A speedy, potent bomber for you to rip into unsuspecting victims.

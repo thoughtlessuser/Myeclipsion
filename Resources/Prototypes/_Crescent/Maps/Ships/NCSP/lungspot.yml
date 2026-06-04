@@ -3,38 +3,35 @@
 
 - type: vessel
   id: Lungspot
-  name: ТК Легято
+  name: CD Lungspot
   description: |
-    Результат потребности "Кибердав" в универсальном и эффективном корабле сопровождения класса фрегат. "Легятно" стабильно выполняет свою работу, что делает его основой операций "Кибердав".
+    The result of cyberdawn's need for a versatile, and effective escort frigate ship. The lungspot performs it's job consistently, making it a mainstay in cyberdawn's operations.
     LOADOUT: 2x 43mm Slugthrowers
     MINIMUM CREW: 1x Pilot
-  price: 27000
+  price: 31000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/NCSP/lungspot.yml
 
 - type: gameMap
   id: Lungspot
-  mapName: 'ТК Легято'
+  mapName: 'CD Lungspot'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/lungspot.yml
   minPlayers: 0
   stations:
     Lungspot:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'ТК Легято {1}'
+          mapNameTemplate: 'CD Lungspot {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-gunship
         - type: VesselDescription
-          description: Часто встречается в ролях эскорта и боевого корабля, этот корабль вас не подведет.
+          description: Often seen in escort and combat roles, this ship won't let you down.

@@ -2,8 +2,8 @@
 # Discord: baldy
 - type: vessel
   id: Lockjaw
-  name: ПК Трицепс
-  description: Шаттл эпохи НаноТрейзен, переделанный в вооруженный личный блокадопрорыватель. Относится к части "прорыватель" буквально.
+  name: SAW Lockjaw
+  description: An NT-era shuttle repurposed into an armed, personal blockade runner. Takes the 'runner' part literally.
   price: 89000
   category: Small
   group: None
@@ -11,22 +11,19 @@
 
 - type: gameMap
   id: Lockjaw
-  mapName: 'ПК Трицепс' 
+  mapName: 'SAW Lockjaw' 
   mapPath: /Maps/_Crescent/Shuttles/NCSP/lockjaw.yml
   minPlayers: 0
   stations:
     Lockjaw:
       stationProto: StandardCrescentVessel 
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components: 
         - type: StationNameSetup
-          mapNameTemplate: 'ПК Трицепс {1}' 
+          mapNameTemplate: 'SAW Lockjaw {1}' 
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-smuggling 
         - type: VesselDescription
-          description: Шаттл эпохи НаноТрейзен, переделанный в вооруженный личный блокадопрорыватель. Относится к части "прорыватель" буквально.
+          description: An NT-era shuttle repurposed into an armed, personal blockade runner. Takes the 'runner' part literally.

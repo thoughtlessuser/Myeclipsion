@@ -3,11 +3,11 @@
 #
 - type: vessel
   id: Piranha
-  name: МГ Пиранья
+  name: GSC Piranha
   description: |
-    Сверхлегкий ударный истребитель, почти такой же старый, как и сам бренд Горлекс, несущий одно надежное противокорабельное оружие.
-    ВООРУЖЕНИЕ: 1x СХИ 43-мм баллистический метатель слэгов "Рысак"
-    ЭКИПАЖ: 1x Пилот
+    An ultralight strike fighter almost as old as the Gorlex brand itself, carrying a single, rugged anti-ship weapon.
+    LOADOUT: 1x SHI 43mm "Dasher" Ballistic Slugthrower
+    CREW: 1x Pilot
   price: 15000
   category: Small
   group: None
@@ -15,26 +15,23 @@
 
 - type: gameMap
   id: Piranha
-  mapName: 'МГ Пиранья'
+  mapName: 'GSC Piranha'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/piranha.yml
   minPlayers: 0
   stations:
     Piranha:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'МГ Пиранья {1}'
+          mapNameTemplate: 'GSC Piranha {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-fighter
         - type: VesselDescription
-          description: Многие пилоты переставляют детали, чтобы облегчить перезарядку. Большинство не переживают свои атаки.
+          description: Many pilots move parts around to facilitate easier reloading. Most do not survive their attack runs.

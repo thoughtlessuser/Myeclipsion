@@ -3,8 +3,8 @@
 #
 - type: vessel
   id: Bodybag
-  name: МГ Мешок
-  description: Маленький скрытный абордажный шаттл.
+  name: GSC Bodybag
+  description: A small stealth boarding pod.
   price: 20000 #16000 appraisegrid
   category: Small
   group: None
@@ -12,22 +12,19 @@
 
 - type: gameMap
   id: Bodybag
-  mapName: 'МГ Мешок'
+  mapName: 'GSC Bodybag'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/bodybag.yml
   minPlayers: 0
   stations:
     Bodybag:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'МГ Мешок {1}'
+          mapNameTemplate: 'GSC Bodybag {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -3,7 +3,7 @@
 
 - type: vessel
   id: Gorn
-  name: ГПИ Горн
+  name: ICM Gorn
   description: |
     Промышленное судно небольшого размера. «Горн» отличается от стандартных добывающих шаттлов мощной буровой системой, наличием системы обработки полезных ископаемых, а также повышенной маневренностью.
     СНАРЯЖЕНИЕ: 2x ТПШ 250с "Экскаватор" кинетический импульсатор
@@ -15,7 +15,7 @@
 
 - type: gameMap
   id: Gorn
-  mapName: 'ГПИ Горн'
+  mapName: 'ICM Gorn'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/gorn.yml
   minPlayers: 0
   stations:
@@ -30,7 +30,7 @@
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: civilian
         - type: StationNameSetup
-          mapNameTemplate: 'ГПИ Горн {1}'
+          mapNameTemplate: 'ICM Gorn {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'
