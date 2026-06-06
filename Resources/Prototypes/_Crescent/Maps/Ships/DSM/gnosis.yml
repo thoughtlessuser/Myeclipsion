@@ -5,7 +5,7 @@
     An Imperial personal and long-term observation shuttle equipped and built for the Scribes Guild. Often utilized for providing reports on situations of interest towards the Scribes Guild, or information of use to the Imperial Navy.
     LOADOUT: UNARMED
     MINIMUM CREW: 1x Pilot
-  price: 45000
+  price: 25000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/DSM/gnosis.yml
