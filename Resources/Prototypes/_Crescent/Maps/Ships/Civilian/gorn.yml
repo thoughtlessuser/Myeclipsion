@@ -8,7 +8,7 @@
    A small industrial vessel. The “Gorn” differs from standard mining shuttles with its powerful drilling system, onboard ore processing system, and increased maneuverability.
    EQUIPMENT: 2x Exhumer
    MINIMUM CREW: 1 pilot
-  price: 34000
+  price: 31000
   category: Small
   group: Civilian
   path: /Maps/_Crescent/Shuttles/Civilian/gorn.yml

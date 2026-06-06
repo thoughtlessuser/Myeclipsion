@@ -5,7 +5,7 @@
     A heavy fighter equipped with an errant shield emitter, designed for ranging and harassment missions.
     LOADOUT: 2x 20mm Rotary Cannons
     MINIMUM CREW: 1x Pilot
-  price: 35000
+  price: 30000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/DSM/Fighters/ibis.yml
