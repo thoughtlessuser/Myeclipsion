@@ -159,7 +159,7 @@
   id: RatAdventureWar
   alias:
   - ratwar
-  name: NCWL vs DSM
+  name: Freeplay (DSM,NCWL and Gliess Santo)
   showInVote: true
   description: The final hours of Taypan. Last 2-4 hours.
   rules:
@@ -185,6 +185,11 @@
         posY: 5000
         IFFColor: "#C677A5"
         IFFFaction: DSM
+      GliessSanto:
+        gameMapID: GliessSanto
+        posX: -5000
+        posY: 0
+        IFFColor: "#429cbd"
       RatFakel:
         gameMapID: RatFakel
         posX: 0

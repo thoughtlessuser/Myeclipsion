@@ -68,5 +68,6 @@
             DeputyMarshalCMM: [ 1, 1 ]
             MinutemanCMM: [ 8, 8 ]
             GliessianDockhand: [ 3, 3 ]
+            Spacer: [ -1, -1 ]
 
 
