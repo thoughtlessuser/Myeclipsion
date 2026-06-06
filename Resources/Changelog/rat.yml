@@ -1042,5 +1042,16 @@ Entries:
     id: 125
     time: '2026-06-03T09:10:35.0000000+00:00'
     url: https://github.com/ss14-art/ratgore/pull/262
+  - author: NEirotoXiN00
+    changes:
+      - type: Add
+        message: ЕМП зоны  и аномальная станция теперь будут спавнится в процессе игры.
+      - type: Tweak
+        message: Вместо аномалий на ивентовой станции будут артефакты.
+      - type: Remove
+        message: Артефакты больше не спавнят сингулярность и теслу.
+    id: 126
+    time: '2026-06-05T23:18:15.0000000+00:00'
+    url: https://github.com/ss14-art/ratgore/pull/269
 Name: Rat
 Order: -1

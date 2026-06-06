@@ -3,9 +3,9 @@
   alias:
   - adventure
   - ratadventure
-  name: Freeplay
+  name: Свободная игра
   showInVote: true
-  description: The final hours of Taypan. Last 2-4 hours.
+  description: Последние дни Тайпана. Длится 2-4 часа.
   rules:
   - RatAdventure
   - HullrotEventScheduler
@@ -35,6 +35,14 @@
         posY: 1000
         IFFColor: White
         IFFFaction: SHI
+      Castle:
+        gameMapID: Castle
+        posX: -3000
+        posY: 7000
+        IFFColor: Green
+        IFFFaction: SRM
+        randomOffsetX: 2000
+        randomOffsetY: 2000
       Dochenskaya:
         gameMapID: Dochenskaya
         posX: 6000
@@ -59,6 +67,18 @@
         posY: -4000
         IFFColor: IndianRed
         IFFFaction: TFSC
+      TribalHideout:
+        gameMapID: TribalHideout
+        posX: 2000
+        posY: -7000
+        IFFColor: White
+        IFFFaction: TAP
+        randomOffsetX: 2000
+        randomOffsetY: 2000
+      IronRing:
+        gameMapID: IronRing
+        posX: -3000
+        posY: 500
       RatFakel:
         gameMapID: RatFakel
         posX: 0
@@ -80,9 +100,9 @@
   id: RatAdventureFreeport
   alias:
   - ratadventurefreeport
-  name: Free Play (Freeport)
+  name: Свободная игра (Фрипорт)
   showInVote: true
-  description: The final hours of Taypan. Last 2-4 hours.
+  description: Последние дни Тайпана. Длится 2-4 часа.
   rules:
   - RatAdventureFreeport
   - HullrotEventScheduler
@@ -112,8 +132,8 @@
         posY: 1000
         IFFColor: White
         IFFFaction: SHI
-      Refuge:
-        gameMapID: Refuge
+      Castle:
+        gameMapID: Castle
         posX: -3000
         posY: 7000
         IFFColor: Green
@@ -159,9 +179,9 @@
   id: RatAdventureWar
   alias:
   - ratwar
-  name: NCWL vs DSM
+  name: ЛРНП vs БМС
   showInVote: true
-  description: The final hours of Taypan. Last 2-4 hours.
+  description: Последние дни Тайпана. Длится 2-4 часа.
   rules:
   - RatAdventureWar
   - HullrotEventScheduler

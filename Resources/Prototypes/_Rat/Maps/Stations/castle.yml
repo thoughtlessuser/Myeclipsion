@@ -1,38 +1,33 @@
 - type: gameMap
-  id: GliessSanto
-  mapName: 'Gliess Santo'
-  mapPath: /Maps/_Crescent/Stations/gliess.yml
+  id: Castle
+  mapName: 'Крепость'
+  mapPath: /Maps/_Rat/Stations/castle.yml
   minPlayers: 0
   stations:
-    GliessSanto:
+    Castle:
       stationProto: StandardCrescentStation
       gridComponents:
         - type: BlockShipWeaponProjectileGrid
         - type: PreventPilot
+        - type: MapIcon
+          iconType: Station
+      components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: outpost
-        - type: MapIcon
-          iconType: Station
-      components:
         - type: StationNameSetup
-          mapNameTemplate: 'Gliess Santo'
+          mapNameTemplate: 'OCP Крепость охотников'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
-        - type: VesselDescription
-          description: An independent trade station that has long passed its prime.
-        - type: VesselMusic
-          ambientMusicPrototype: GliessMusic
         - type: Grammar
           attributes:
             proper: true
         - type: StationJobs
           overflowJobs: []
           availableJobs:
-            MarshalCMM: [ 1, 1 ]
-            DeputyMarshalCMM: [ 1, 1 ]
-            MinutemanCMM: [ 8, 8 ]
-            GliessianDockhand: [ 3, 3 ]
-
-
+            OverseerSRM: [ 1, 1 ]
+            MontagneSRM: [ 1, 1 ]
+            HunterSRM: [ 4, 4 ]
+            TenderSRM: [ 1, 1 ]
+            AcolyteSRM: [ 5, 5 ]

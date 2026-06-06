@@ -2,7 +2,7 @@
   id: Yanbue
   name: TAP Yanbue
   description: A small, cloaked shuttle hull. Comes with the bare minimum to fly, and nothing else.
-  price: 12000
+  price: 20000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/TAP/yanbue.yml
