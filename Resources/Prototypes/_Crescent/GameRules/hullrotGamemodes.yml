@@ -202,9 +202,9 @@
   alias:
   - unionfall
   - ratbiteunionfall
-  name: Падение Союза | ЛРНП против БМС
+  name: Unionfall | NCWL VS DSM
   showInVote: true
-  description: Домашняя гвардия ЛРНП бежит к новому дому после разрушения Марсовы. Карательный полк БМС перехватывает их, чтобы вернуть свою честь.
+  description: The NCWL Homeguard flees to a new home, after the destruction of Nova Belraska. A DSM punishment regimen intercepts them to regain their honor.
   rules:
   - Unionfall
 
