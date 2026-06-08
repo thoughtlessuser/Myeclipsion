@@ -10,12 +10,12 @@
   price: 40000
   category: Small
   group: None
-  path: /Maps/_Crescent/Shuttles/DSM/Corvettes/magnate.yml
+  path: /Maps/_Crescent/Shuttles/DSM/magnate.yml
 
 - type: gameMap
   id: Magnate
   mapName: 'DSM Magnate'
-  mapPath: /Maps/_Crescent/Shuttles/DSM/Corvettes/magnate.yml
+  mapPath: /Maps/_Crescent/Shuttles/DSM/magnate.yml
   minPlayers: 0
   stations:
     Magnate:

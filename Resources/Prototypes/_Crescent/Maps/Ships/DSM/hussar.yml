@@ -6,12 +6,12 @@
   price: 44000
   category: Small
   group: None
-  path: /Maps/_Crescent/Shuttles/DSM/Corvettes/hussar.yml
+  path: /Maps/_Crescent/Shuttles/DSM/hussar.yml
 
 - type: gameMap
   id: Hussar
   mapName: 'DSM Hussar'
-  mapPath: /Maps/_Crescent/Shuttles/DSM/Corvettes/hussar.yml
+  mapPath: /Maps/_Crescent/Shuttles/DSM/hussar.yml
   minPlayers: 0
   stations:
     Hussar:

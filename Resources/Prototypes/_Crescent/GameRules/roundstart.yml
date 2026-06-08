@@ -16,3 +16,8 @@
     children:
     - id: NanoTrasenProbe
     - id: InfestedStation
+
+    # Rat-start
+    - id: RatAnomalyStationEvent
+    - id: RatEmpZoneEvent
+    # Rat-stop

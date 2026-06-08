@@ -2,31 +2,31 @@
 # Discord: originally @fleshangel, later remade by @ninruB
 
 - type: vessel
-  id: Bogatyr
-  name: NCWL Bogatyr
-  description: An advanced communard heavy escort.
-  price: 90000
-  category: Small
+  id: Ivarod
+  name: NCWL Ivarod
+  description: A converted light destroyer, purpose-built with endurance in mind.
+  price: 200000
+  category: Large
   group: None
-  path: /Maps/_Crescent/Shuttles/NCWL/Destroyers/bogatyr.yml
+  path: /Maps/_Crescent/Shuttles/NCWL/ivarod.yml
 
 - type: gameMap
-  id: Bogatyr
-  mapName: 'NCWL Bogatyr'
-  mapPath: /Maps/_Crescent/Shuttles/NCWL/Destroyers/bogatyr.yml
+  id: Ivarod
+  mapName: 'NCWL Ivarod'
+  mapPath: /Maps/_Crescent/Shuttles/NCWL/ivarod.yml
   minPlayers: 0
   stations:
-    Bogatyr:
+    Ivarod:
       stationProto: StandardCrescentVessel
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
-            state: destroyer
+            state: cruiser
         - type: StationNameSetup
-          mapNameTemplate: 'NCWL Bogatyr {1}'
+          mapNameTemplate: 'NCWL Ivarod {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
-          designation: vessel-designation-stealth-bomber
+          designation: vessel-designation-destroyer

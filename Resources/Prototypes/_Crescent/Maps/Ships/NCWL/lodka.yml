@@ -8,12 +8,12 @@
   price: 30000
   category: Small
   group: None
-  path: /Maps/_Crescent/Shuttles/NCWL/Frigates/lodka.yml
+  path: /Maps/_Crescent/Shuttles/NCWL/lodka.yml
 
 - type: gameMap
   id: Lodka
   mapName: 'NCWL Lodka'
-  mapPath: /Maps/_Crescent/Shuttles/NCWL/Frigates/lodka.yml
+  mapPath: /Maps/_Crescent/Shuttles/NCWL/lodka.yml
   minPlayers: 0
   stations:
     Lodka:

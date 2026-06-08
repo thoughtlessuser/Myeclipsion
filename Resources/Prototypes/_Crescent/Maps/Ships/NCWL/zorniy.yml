@@ -7,12 +7,12 @@
   price: 25000
   category: Small
   group: None
-  path: /Maps/_Crescent/Shuttles/NCWL/Corvettes/zorniy.yml
+  path: /Maps/_Crescent/Shuttles/NCWL/zorniy.yml
 
 - type: gameMap
   id: Zorniy
   mapName: 'NCWL Zorniy'
-  mapPath: /Maps/_Crescent/Shuttles/NCWL/Corvettes/zorniy.yml
+  mapPath: /Maps/_Crescent/Shuttles/NCWL/zorniy.yml
   minPlayers: 0
   stations:
     Zorniy:

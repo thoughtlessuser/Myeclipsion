@@ -6,12 +6,12 @@
   price: 170000
   category: Large
   group: None
-  path: /Maps/_Crescent/Shuttles/DSM/Battlecruisers/sunesis.yml
+  path: /Maps/_Crescent/Shuttles/DSM/sunesis.yml
 
 - type: gameMap
   id: Sunesis
   mapName: 'DSM Sunesis'
-  mapPath: /Maps/_Crescent/Shuttles/DSM/Battlecruisers/sunesis.yml
+  mapPath: /Maps/_Crescent/Shuttles/DSM/sunesis.yml
   minPlayers: 0
   stations:
     Sunesis:

@@ -8,12 +8,12 @@
   price: 25000
   category: Small
   group: None
-  path: /Maps/_Crescent/Shuttles/NCWL/Fighters/vanguard.yml
+  path: /Maps/_Crescent/Shuttles/NCWL/vanguard.yml
 
 - type: gameMap
   id: Vanguard
   mapName: 'NCWL Vanguard'
-  mapPath: /Maps/_Crescent/Shuttles/NCWL/Fighters/vanguard.yml
+  mapPath: /Maps/_Crescent/Shuttles/NCWL/vanguard.yml
   minPlayers: 0
   stations:
     Vanguard:

@@ -8,12 +8,12 @@
   price: 30000
   category: Small
   group: None
-  path: /Maps/_Crescent/Shuttles/DSM/Fighters/ibis.yml
+  path: /Maps/_Crescent/Shuttles/DSM/ibis.yml
 
 - type: gameMap
   id: Ibis
   mapName: 'DSM Ibis'
-  mapPath: /Maps/_Crescent/Shuttles/DSM/Fighters/ibis.yml
+  mapPath: /Maps/_Crescent/Shuttles/DSM/ibis.yml
   minPlayers: 0
   stations:
     Ibis:
