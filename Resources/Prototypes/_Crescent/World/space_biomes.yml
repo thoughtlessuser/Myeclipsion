@@ -3,7 +3,7 @@
   id: default
   name: Taypani Abyss
   swapDuration: 2
-  parallax: AbyssParallax
+  parallax: RatAbyssParallax
 
 #example
 
@@ -31,7 +31,7 @@
   components:
   - type: SpaceBiomeSource
     biome: imperialbiome
-    swapDistance: 2500
+    swapDistance: 750
     priority: 2550
 
 - type: crescentFactionBiome
@@ -55,7 +55,7 @@
   id: hunterbiome
   name: The Hunter's Prowl
   swapDuration: 2
-  parallax: AspidParallax
+  parallax: RatAspidParallax
 
 #syndie
 
@@ -72,7 +72,7 @@
   id: syndicatebiome
   name: The Devil's Maw
   swapDuration: 2
-  parallax: SyndieParallax
+  parallax: RatSyndieParallax
 
 #graveyard
 
@@ -82,14 +82,14 @@
   components:
   - type: SpaceBiomeSource
     biome: graveyardbiome
-    swapDistance: 3500
+    swapDistance: 500
     priority: 5000
 
 - type: crescentFactionBiome
   id: graveyardbiome
   name: The Graveyard
   swapDuration: 2
-  parallax: GraveyardParallax
+  parallax: RatGraveyardParallax
 
 #corpie
 - type: entity
@@ -98,14 +98,14 @@
   components:
   - type: SpaceBiomeSource
     biome: corpiebiome
-    swapDistance: 2000
+    swapDistance: 300
     priority: 2493
 
 - type: crescentFactionBiome
   id: corpiebiome
   name: Corporate Demilitarized Zone
   swapDuration: 2
-  parallax: CorpieParallax
+  parallax: RatCorpieParallax
 
 #taypan-2 / oris
 
@@ -115,14 +115,14 @@
   components:
   - type: SpaceBiomeSource
     biome: orisbiome
-    swapDistance: 800
+    swapDistance: 1500
     priority: 2492
 
 - type: crescentFactionBiome
   id: orisbiome
   name: Taypan-2 Asteroid Belt
   swapDuration: 2
-  parallax: OrisParallax
+  parallax: RatOrisParallax
 
 #taypan-1
 
@@ -139,7 +139,7 @@
   id: taypanonebiome
   name: Taypan-1 Asteroid Belt
   swapDuration: 2
-  parallax: OrisParallax
+  parallax: RatOrisParallax
 
 # wilds
 
@@ -149,14 +149,14 @@
   components:
   - type: SpaceBiomeSource
     biome: wildbiome
-    swapDistance: 50
+    swapDistance: 6500
     priority: 2430
 
 - type: crescentFactionBiome
   id: wildbiome
   name: Taypan Wilds
   swapDuration: 2
-  parallax: WildParallax
+  parallax: RatWildParallax
 
 #generic debris
 
@@ -173,7 +173,7 @@
   id: debrisbiome
   name: Ruined Derelict
   swapDuration: 2
-  parallax: DebrisParallax
+  parallax: RatDebrisParallax
 
 #deepwilds
 
@@ -183,14 +183,14 @@
   components:
   - type: SpaceBiomeSource
     biome: deepwildbiome
-    swapDistance: 11500
+    swapDistance: 12500
     priority: 2420
 
 - type: crescentFactionBiome
   id: deepwildbiome
   name: The Deepwilds
   swapDuration: 2
-  parallax: WildParallax
+  parallax: RatWildParallax
 
 # breach
 
@@ -207,7 +207,7 @@
   id: hadalbiome
   name: The Fracture
   swapDuration: 2
-  parallax: Rupture
+  parallax: RatRupture
   description: "The remnants of Taypan I."
 
 
@@ -226,40 +226,24 @@
   id: moonapproach
   name: Lunar Approach
   swapDuration: 2
-  parallax: MoonApproach
+  parallax: RatMoonApproach
 
 #abyss
 
 - type: entity
-  id: TaypaniAbyssSource
-  name: taypani abyss
-  components:
-  - type: SpaceBiomeSource
-    biome: taypaniabyss
-    swapDistance: 25500
-    priority: 2400
-
-- type: crescentFactionBiome
-  id: taypaniabyss
-  name: Taypani Abyss
-  swapDuration: 2
-  parallax: AbyssParallax
-
-#Deadspace
-- type: entity
-  id: DeadspaceSource #WOKEOPWKWOEK AbyssParallax
+  id: DeadspaceSource
   name: hadal deadspace
   components:
   - type: SpaceBiomeSource
     biome: hadaldeadspace
-    swapDistance: 40500
-    priority: 2390
+    swapDistance: 1
+    priority: 2400
 
 - type: crescentFactionBiome
   id: hadaldeadspace
-  name: Hadal Deadspace
+  name: Taypani Abyss
   swapDuration: 2
-  parallax: Default
+  parallax: RatDefault
 #NEW BIOMES - V1
 
 #generic scrapyard
@@ -270,14 +254,14 @@
   components:
   - type: SpaceBiomeSource
     biome: scrapyardbiome
-    swapDistance: 3500
+    swapDistance: 1500
     priority: 2440
 
 - type: crescentFactionBiome
   id: scrapyardbiome
   name: Scrapyard
   swapDuration: 2
-  parallax: DebrisParallax
+  parallax: RatDebrisParallax
 
 #generic asteroid field
 
@@ -287,14 +271,14 @@
   components:
   - type: SpaceBiomeSource
     biome: asteroidbiome
-    swapDistance: 3000
+    swapDistance: 1500
     priority: 2440
 
 - type: crescentFactionBiome
   id: asteroidbiome
   name: Asteroid Field
   swapDuration: 2
-  parallax: OrisParallax
+  parallax: RatOrisParallax
 
 #gliess approach
 
@@ -311,7 +295,7 @@
   id: gliessbiome
   name: Taypan Core
   swapDuration: 2
-  parallax: AspidParallax
+  parallax: RatAspidParallax
 
 #tatsumoto approach
 
@@ -328,7 +312,7 @@
   id: tatsumotobiome
   name: Corporate Demilitarized Zone
   swapDuration: 2
-  parallax: CorpieParallax
+  parallax: RatCorpieParallax
 
 #balreska approach
 
@@ -345,7 +329,7 @@
   id: balreskabiome
   name: The Fracture
   swapDuration: 2
-  parallax: Rupture
+  parallax: RatRupture
 
 
   #PRIORITIES & DISTANCES:
@@ -375,7 +359,7 @@
   id: unionfallGraceNCWLBiome
   name: Hadal Storm
   swapDuration: 2
-  parallax: AbyssParallax
+  parallax: RatAbyssParallax
 
 #NCWL approaching vladzena
 - type: entity
@@ -391,7 +375,7 @@
   id: unionfallApproachingNCWLBiome
   name: Taypan Wilds
   swapDuration: 2
-  parallax: AbyssParallax
+  parallax: RatAbyssParallax
 
 #DSM grace period
 - type: entity
@@ -407,7 +391,7 @@
   id: unionfallGraceDSMBiome
   name: Hadal Storm
   swapDuration: 2
-  parallax: AbyssParallax
+  parallax: RatAbyssParallax
 
 #DSM approaching vladzena
 - type: entity
@@ -423,4 +407,4 @@
   id: unionfallApproachingDSMBiome
   name: Taypan Wilds
   swapDuration: 2
-  parallax: AbyssParallax
+  parallax: RatAbyssParallax
