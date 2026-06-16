@@ -1,86 +1,86 @@
 # Coordinator
 - type: rank
   id: RatRankTFSCCoordinatorHigh
-  name: Директор
-  prefix: Директор
+  name: Director
+  prefix: Director
   paygrade: ID-C5
 
 - type: rank
   id: RatRankTFSCCoordinatorLead
-  name: Заместитель директора
-  prefix: Зам. дир.
+  name: Deputy Director
+  prefix: Dep. Dir.
   paygrade: ID-C4
 
 - type: rank
   id: RatRankTFSCCoordinatorSenior
-  name: Старший супервайзер
-  prefix: Ст. суп.
+  name: Senior Supervisor
+  prefix: Sr. Sup.
   paygrade: ID-C3
 
 - type: rank
   id: RatRankTFSCCoordinatorMiddle
-  name: Супервайзер
-  prefix: Суперв.
+  name: Supervisor
+  prefix: Sup.
   paygrade: ID-C2
 
 - type: rank
   id: RatRankTFSCCoordinatorJunior
-  name: Младший супервайзер
-  prefix: Мл. суп.
+  name: Junior Supervisor
+  prefix: Jr. Sup.
   paygrade: ID-C1
 
 # Traumasec
 - type: rank
   id: RatRankTFSCTraumasecHead
-  name: Главный исполнитель
-  prefix: Гл. исп.
+  name: Chief Executor
+  prefix: Chief Exec.
   paygrade: ID-E5
 
 - type: rank
   id: RatRankTFSCTraumasecLead
-  name: Исполнитель-специалист
-  prefix: Спец.
+  name: Specialist Executor
+  prefix: Spec.
   paygrade: ID-E4
 
 - type: rank
   id: RatRankTFSCTraumasecSenior
-  name: Исполнитель 1го класса
-  prefix: Исп. 1го кл.
+  name: First-Class Executor
+  prefix: Exec. 1st Cl.
   paygrade: ID-E3
 
 - type: rank
   id: RatRankTFSCTraumasecMiddle
-  name: Исполнитель 2го класса
-  prefix: Исп. 2го кл.
+  name: Second-Class Executor
+  prefix: Exec. 2nd Cl.
   paygrade: ID-E2
 
 - type: rank
   id: RatRankTFSCTraumasecJunior
-  name: Исполнитель 3го класса
-  prefix: Исп. 3го кл.
+  name: Third-Class Executor
+  prefix: Exec. 3rd Cl.
   paygrade: ID-E1
 
 # Ripperdoc
 - type: rank
   id: RatRankTFSCRipperdocLead
-  name: Ведущий хирург
-  prefix: Вед. хир.
+  name: Lead Surgeon
+  prefix: Lead Surg.
   paygrade: ID-D4
 
 - type: rank
   id: RatRankTFSCRipperdocSenior
-  name: Старший хирург
-  prefix: Ст. хир.
+  name: Senior Surgeon
+  prefix: Sr. Surg.
   paygrade: ID-D3
 
 - type: rank
   id: RatRankTFSCRipperdocMiddle
-  name: Хирург
-  prefix: Хирург
+  name: Surgeon
+  prefix: Surg.
   paygrade: ID-D2
 
 - type: rank
   id: RatRankTFSCRipperdocJunior
-  name: Интерн
-  prefix: Интерн
+  name: Intern
+  prefix: Intern
   paygrade: ID-D1

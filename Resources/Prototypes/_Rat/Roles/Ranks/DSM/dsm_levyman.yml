@@ -1,29 +1,29 @@
 - type: rank
   id: RatRankLevymanHead
-  name: Центурион
-  prefix: Центурион
+  name: Centurion
+  prefix: Centurion
   paygrade: L5
 
 - type: rank
   id: RatRankLevymanLead
-  name: Трибун
-  prefix: Трибун
+  name: Tribune
+  prefix: Tribune
   paygrade: L4
 
 - type: rank
   id: RatRankLevymanSenior
-  name: Опцион
-  prefix: Опцион
+  name: Optio
+  prefix: Optio
   paygrade: L3
 
 - type: rank
   id: RatRankLevymanMiddle
-  name: Проктор
-  prefix: Проктор
+  name: Proctor
+  prefix: Proctor
   paygrade: L2
 
 - type: rank
   id: RatRankLevymanJunior
-  name: Леви
-  prefix: Леви
+  name: Levy
+  prefix: Levy
   paygrade: L1

@@ -27,6 +27,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using System.Text.RegularExpressions;
+using Content.Server._Rat.Economy;
 using Content.Server._Crescent;
 using Content.Shared._Crescent;
 using Robust.Shared.Containers;
@@ -95,6 +96,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
     [Dependency] private readonly CrescentHelperSystem _crescent = default!;
     [Dependency] private readonly DynamicCodeSystem _codes = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelists = default!;
+    [Dependency] private readonly EconomyPriceSystem _economyPrice = default!;
 
     public MapId? ShipyardMap { get; private set; }
     private float _shuttleIndex;
@@ -395,7 +397,8 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         }
 
         var name = vessel.Name;
-        if (vessel.Price <= 0)
+        var vesselPrice = _economyPrice.GetVesselPrice(vessel);
+        if (vesselPrice <= 0)
             return;
 
         if (_station.GetOwningStation(uid) is not { Valid: true } station)
@@ -412,16 +415,16 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
             return;
         }
 
-        if (bank.Balance <= vessel.Price)
+        if (bank.Balance <= vesselPrice)
         {
-            ConsolePopup(args.Actor, Loc.GetString("cargo-console-insufficient-funds", ("cost", vessel.Price)));
+            ConsolePopup(args.Actor, Loc.GetString("cargo-console-insufficient-funds", ("cost", vesselPrice)));
             PlayDenySound(uid, component);
             return;
         }
 
-        if (!_bank.TryBankWithdraw(player, vessel.Price))
+        if (!_bank.TryBankWithdraw(player, vesselPrice))
         {
-            ConsolePopup(args.Actor, Loc.GetString("cargo-console-insufficient-funds", ("cost", vessel.Price)));
+            ConsolePopup(args.Actor, Loc.GetString("cargo-console-insufficient-funds", ("cost", vesselPrice)));
             PlayDenySound(uid, component);
             return;
         }
@@ -511,7 +514,7 @@ public sealed partial class ShipyardSystem : SharedShipyardSystem
         ChatPurchaseLocation(uid, station, config);
 
         PlayConfirmSound(uid, component);
-        _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} purchased shuttle {ToPrettyString(shuttle.Owner)} for {vessel.Price} credits via {ToPrettyString(component.Owner)}");
+        _adminLogger.Add(LogType.ShipYardUsage, LogImpact.Low, $"{ToPrettyString(player):actor} purchased shuttle {ToPrettyString(shuttle.Owner)} for {vesselPrice} credits via {ToPrettyString(component.Owner)}");
         RefreshState(uid, bank.Balance, true, name, sellValue, true, (ShipyardConsoleUiKey) args.UiKey);
 
     }

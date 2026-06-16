@@ -1,71 +1,71 @@
 - type: rank
   id: RatRankNobleEmperor
-  name: Император
-  prefix: Император
+  name: Emperor
+  prefix: Emperor
   paygrade: EMP
 
 - type: rank
   id: RatRankNobleHighStellarch
-  name: Высший стелларх
-  prefix: Высший стелларх
+  name: High Stellarch
+  prefix: High Stellarch
   paygrade: N9
 
 - type: rank
   id: RatRankNobleStellarch
-  name: Стелларх
-  prefix: Стелларх
+  name: Stellarch
+  prefix: Stellarch
   paygrade: N8
 
 - type: rank
   id: RatRankNobleArchduke
-  name: Эрцгерцог
-  prefix: Лорд-адмирал
+  name: Archduke
+  prefix: Lord Admiral
   paygrade: N7
 
 - type: rank
   id: RatRankNobleGrandDuke
-  name: Великий герцог
-  prefix: Лорд-адмирал
+  name: Grand Duke
+  prefix: Lord Admiral
   paygrade: N6
 
 - type: rank
   id: RatRankNobleDuke
-  name: Герцог
-  prefix: Герцог
+  name: Duke
+  prefix: Duke
   paygrade: N6
 
 - type: rank
   id: RatRankNobleMarkgraf
-  name: Маркграф
-  prefix: Маркграф
+  name: Margrave
+  prefix: Margrave
   paygrade: N5
 
 - type: rank
   id: RatRankNobleMarquis
-  name: Маркиз
-  prefix: Маркиз
+  name: Marquis
+  prefix: Marquis
   paygrade: N5
 
 - type: rank
   id: RatRankNobleCount
-  name: Граф
-  prefix: Граф
+  name: Count
+  prefix: Count
   paygrade: N4
 
 - type: rank
   id: RatRankNobleViscount
-  name: Виконт
-  prefix: Виконт
+  name: Viscount
+  prefix: Viscount
   paygrade: N3
 
 - type: rank
   id: RatRankNobleBaron
-  name: Барон
-  prefix: Барон
+  name: Baron
+  prefix: Baron
   paygrade: N2
 
 - type: rank
   id: RatRankNoblePatrician
-  name: Патриций
-  prefix: Патриций
+  name: Patrician
+  prefix: Patrician
   paygrade: N1

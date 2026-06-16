@@ -1,90 +1,90 @@
 # CMM Ranks
 - type: rank
   id: RatRankCMMMarshalHigh
-  name: Секториальный маршал
-  prefix: Сект. маршал
+  name: Sector Marshal
+  prefix: Sect. Marshal
   paygrade: CMM-C5
 
 - type: rank
   id: RatRankCMMMarshalLead
-  name: Старший маршал
-  prefix: Ст. маршал
+  name: Senior Marshal
+  prefix: Sr. Marshal
   paygrade: CMM-C4
 
 - type: rank
   id: RatRankCMMMarshalSenior
-  name: Маршал
-  prefix: Маршал
+  name: Marshal
+  prefix: Marshal
   paygrade: CMM-C3
 
 - type: rank
   id: RatRankCMMMarshalMiddle
-  name: 2й Маршал
-  prefix: 2й Маршал
+  name: 2nd Marshal
+  prefix: 2nd Marshal
   paygrade: CMM-C2
 
 - type: rank
   id: RatRankCMMMarshalJunior
-  name: Майор ополчения
-  prefix: Майор
+  name: Militia Major
+  prefix: Major
   paygrade: CMM-C1
 
 - type: rank
   id: RatRankCMMMinutemanTop
-  name: Капитан ополчения
-  prefix: Капитан
+  name: Militia Captain
+  prefix: Captain
   paygrade: CMM10
 
 - type: rank
   id: RatRankCMMMinutemanFirst
-  name: 1й Лейтенант ополчения
-  prefix: 1й Лейт.
+  name: 1st Lieutenant (Militia)
+  prefix: 1st Lt.
   paygrade: CMM9
 
 - type: rank
   id: RatRankCMMMinutemanSecond
-  name: 2й Лейтенант ополчения
-  prefix: 2й Лейт.
+  name: 2nd Lieutenant (Militia)
+  prefix: 2nd Lt.
   paygrade: CMM8
 
 - type: rank
   id: RatRankCMMMinutemanThird
-  name: Комендор-сержант ополчения
-  prefix: Ком.-серж.
+  name: Gunnery Sergeant (Militia)
+  prefix: Gunn. Sgt.
   paygrade: CMM7
 
 - type: rank
   id: RatRankCMMMinutemanSrLead
-  name: Штаб-сержант ополчения
-  prefix: Штаб-сержант
+  name: Staff Sergeant (Militia)
+  prefix: Staff Sgt.
   paygrade: CMM6
 
 - type: rank
   id: RatRankCMMMinutemanLead
-  name: Сержант ополчения
-  prefix: Сержант
+  name: Sergeant (Militia)
+  prefix: Sergeant
   paygrade: CMM5
 
 - type: rank
   id: RatRankCMMMinutemanSenior
-  name: Капрал ополчения
-  prefix: Капрал
+  name: Corporal (Militia)
+  prefix: Corporal
   paygrade: CMM4
 
 - type: rank
   id: RatRankCMMMinutemanMiddle
-  name: Младший капрал ополчения
-  prefix: Мл. капрал
+  name: Junior Corporal (Militia)
+  prefix: Jr. Corporal
   paygrade: CMM3
 
 - type: rank
   id: RatRankCMMMinutemanJunior
-  name: Рядовой ополчения первого класса
-  prefix: Рядовой 1го кл.
+  name: Private First Class (Militia)
+  prefix: PFC
   paygrade: CMM2
 
 - type: rank
   id: RatRankCMMMinutemanNovice
-  name: Рядовой ополчения
-  prefix: Рядовой
+  name: Private (Militia)
+  prefix: Private
   paygrade: CMM1

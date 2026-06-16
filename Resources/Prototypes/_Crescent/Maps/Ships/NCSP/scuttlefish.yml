@@ -3,11 +3,11 @@
 #
 - type: vessel
   id: Scuttlefish
-  name: МГ Каракатица
+  name: GSC Scuttlefish
   description: |
-    Сверхлегкий бомбардировщик с мощным зарядом из четырех ракет, созданный, чтобы сеять хаос среди менее маневренных кораблей, достаточно неудачливых, чтобы оказаться в зоне его поражения.
-    ВООРУЖЕНИЕ: 2x Ракетная установка НКВЛ-3 48-мм "Куродава"
-    ЭКИПАЖ: 1x Пилот
+    An ultralight bomber with a powerful four-rocket payload designed to wreak havoc against less maneuverable ships unlucky enough to be caught within its firing range.
+    LOADOUT: 2x NCWL-3 48mm "Kurosawa" Rocket Pod
+    CREW: 1x Pilot
   price: 15000 
   category: Small
   group: None
@@ -15,26 +15,23 @@
 
 - type: gameMap
   id: Scuttlefish
-  mapName: 'МГ Каракатица'
+  mapName: 'GSC Scuttlefish'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/scuttlefish.yml
   minPlayers: 0
   stations:
     Scuttlefish:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'МГ Каракатица {1}'
+          mapNameTemplate: 'GSC Scuttlefish {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-fighter
         - type: VesselDescription
-          description: Новички часто зацикливаются на своей первой цели, что приводит к тому, что их сбивает вражеская ПВО или они врезаются в свою жертву.
+          description: Newbloods often tunnel vision on their first target, resulting in being shot down by enemy PDs or crashing into their victim.

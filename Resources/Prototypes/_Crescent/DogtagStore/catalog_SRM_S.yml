@@ -1,341 +1,308 @@
 - type: storeCategory
-  id: StoreCategorySRMLPC
-  name: LPC
+  id: StoreCategorySRMWeapons
+  name: Weapons
   priority: 4
 
 - type: storeCategory
-  id: StoreCategorySRMTools
-  name: Инструменты
+  id: StoreCategorySRMAmmo
+  name: Ammo
   priority: 6
 
 - type: storeCategory
-  id: StoreCategorySRMSupport
-  name: Медицина и поддержка
+  id: StoreCategorySRMSuits
+  name: Suits
   priority: 8
 
 - type: storeCategory
-  id: StoreCategorySRMMaterials
-  name: Материалы
+  id: StoreCategorySRMExplosives
+  name: Explosives
   priority: 10
 
 - type: storeCategory
-  id: StoreCategorySRMPietySerraine
-  name: Обрывки писания
+  id: StoreCategorySRMPietyRomaine
+  name: Piety Scraps
   priority: 12
 
-#LPCs
+#Weapons
 
 - type: listing
-  id: StoreListingSRMSpider
-  name: ОСР Паук LPC
-  description: Фабпринт-диск LPC с образцом шаттла-невидимки класса "Паук". Его необходимо обменять на консоли верфи.
-  icon: { sprite: _Crescent/Objects/Misc/lpcchip.rsi, state: icon }
-  productEntity: ShipVoucherSpider
+  id: StoreListingSRMVibrokhopesh
+  name: Vibrokhopesh
+  description: A vibrokhopesh, the signature weapon of the Militia.
+  icon: { sprite: _Crescent/Clothing/SRM/Belt/sheath.rsi, state: sheath-sabre }
+  productEntity: ClothingBeltSheathKhopeshFilled
   cost:
-    PietySRM: 10
+    PietySRM: 15
   categories:
-  - StoreCategorySRMLPC
+  - StoreCategorySRMWeapons
 
 - type: listing
-  id: StoreListingSRMSaintsfall
-  name: ОСР Сейнтсфол LPC
-  description: Фабпринт-диск LPC с образцом боевого корабля класса "Сейнтсфол". Его необходимо обменять на консоли верфи.
-  icon: { sprite: _Crescent/Objects/Misc/lpcchip.rsi, state: icon }
-  productEntity: ShipVoucherSaintsfall
+  id: StoreListingSRMDuelingKhopesh
+  name: Dueling Khopesh
+  description: A shipment of dueling khopeshes, lifted from a Mandate trading convoy.
+  icon: { sprite: _Crescent/Clothing/SRM/Belt/sheath.rsi, state: sheath-sabre }
+  productEntity: CrateSRMDuelingKhopesh
   cost:
-    PietySRM: 5
+    PietySRM: 2
   categories:
-  - StoreCategorySRMLPC
-
-#LPCs End
-
-#Tools
+  - StoreCategorySRMWeapons
 
 - type: listing
-  id: StoreListingSRMJaws
-  name: Челюсти жизни
-  description: Пара челюстей жизни, сорванных с какого-то невезучего ублюдка во время налёта на судно Cyberdawn.
-  icon: { sprite: Objects/Tools/jaws_of_life.rsi, state: syn_jaws_pry }
-  productEntity: SyndicateJawsOfLife
+  id: StoreListingSRMRifleHunter
+  name: The Hunter
+  description: The Hunter rifle, a reliable but poorly designed firearm for use by Militia forces, comes with a rifle and two magazines.
+  icon: { sprite: _Crescent/Objects/Weapons/Guns/hunter.rsi, state: icon }
+  productEntity: CrateSRMHunterDMR
   cost:
     PietySRM: 4
   categories:
-  - StoreCategorySRMTools
+  - StoreCategorySRMWeapons
 
 - type: listing
-  id: StoreListingSRMEVA
-  name: Набор EVA
-  description: Стандартные боевые ботинки и несколько реактивных ранцев, пригодных для абордажных действий... если вам повезёт.
-  icon: { sprite: _NF/Clothing/Shoes/Boots/magboots-combat.rsi, state: icon }
-  productEntity: CrateSRMEVA
+  id: StoreListingSRMBeetleSMG
+  name: The Beetle
+  description: The Beetle submachine gun, a compact if not poorly designed firearm for use by Militia forces, comes with a few SMGs and ammo.
+  icon: { sprite: _Crescent/Objects/Weapons/Guns/beetle.rsi, state: icon }
+  productEntity: CrateSRMBeetleSMG
   cost:
     PietySRM: 2
   categories:
-  - StoreCategorySRMTools
+  - StoreCategorySRMWeapons
 
 - type: listing
-  id: StoreListingSRMHeavyMagboots
-  name: Тяжёлые боевые магботинки
-  description: Тяжелые боевые ботинки, которые делают вас немного медленнее, но в них можно носить оружие. Некоторые из них поставляются в комплекте.
-  icon: { sprite: Clothing/Shoes/Boots/magboots-combat.rsi, state: icon }
-  productEntity: CrateSRMMagboots
+  id: StoreListingSRMLauncher
+  name: Stolen SHI LAM-17 84mm Shipment
+  description: The disposable SHI LAM-17 84mm rocket launcher, damaged in transit.. effectiveness varies, two to a shipment.
+  icon: { sprite: _Crescent/Objects/Weapons/Guns/disposablerpg.rsi, state: icon }
+  productEntity: CrateSRMLauncher
   cost:
-    PietySRM: 2
+    PietySRM: 4
   categories:
-  - StoreCategorySRMTools
+  - StoreCategorySRMWeapons
+
+#Weapons End
+
+#Ammo
 
 - type: listing
-  id: StoreListingSRMToolbox
-  name: Украденный ящик инструментов
-  description: Ящик с инструментами, украденный у какого-то бедолаги, только что покинувшего Фрипорт. Вряд ли он ему ещё понадобится. Некоторые из них приходят комплектами.
-  icon: { sprite: Objects/Tools/Toolboxes/toolbox_syn.rsi, state: icon }
-  productEntity: CrateSRMToolbox
-  cost:
-    PietySRM: 3
-  categories:
-  - StoreCategorySRMTools
-
-- type: listing
-  id: StoreListingSRMPinpointer
-  name: Отслеживающий пинпоинтер
-  description: С помощью пинпоинтера можно отследить все, что угодно, даже мелкие и незаметные предметы. Некоторые из них поставляются в комплектах.
-  icon: { sprite: Objects/Devices/pinpointer.rsi, state: pinpointer_thief }
-  productEntity: CrateSRMPinpointer
-  cost:
-    PietySRM: 2
-  categories:
-  - StoreCategorySRMTools
-
-#Tools End
-
-#Support
-
-- type: listing
-  id: StoreListingSRMMedkitShipment
-  name: Поставка аптечек
-  description: Пара крепких аптечек, которые часто используются смотрительницами для подлатывания охотников-идиотов.
-  icon: { sprite: Objects/Specific/Medical/firstaidkits.rsi, state: blackkit }
-  productEntity: CrateSRMMedkit
+  id: StoreListingSRMStandardRifleMag
+  name: 7.62x51mm Standard Magazine
+  description: A standard magazine for the Hunter rifle and compatible 7.62x51mm firearms, comes with a few magazines.
+  icon: { sprite: _Crescent/Objects/Weapons/Ammunition/Magazine/7.62mm_mag.rsi, state: icon }
+  productEntity: CrateSRMRifleMag
   cost:
     PietySRM: 1
   categories:
-  - StoreCategorySRMSupport
+  - StoreCategorySRMAmmo
 
 - type: listing
-  id: StoreListingSRMMedicalSupplies
-  name: Поставка медицинских припасов
-  description: Груз, полный всех медицинских принадлежностей, которые могут понадобиться для эффективной сортировки в полевых условиях.
-  icon: { sprite: _Shitmed/Clothing/Back/Duffels/abductor.rsi, state: icon }
-  productEntity: CrateSRMMedicalSupplies
+  id: StoreListingSRMUraniumRifleMag
+  name: 7.62x51mm Black-tipped Magazine
+  description: A black-tipped magazine for the Hunter rifle and compatible 7.62x51mm firearms, armor piercing. A few magazines come packaged.
+  icon: { sprite: _Crescent/Objects/Weapons/Ammunition/Magazine/7.62mm_mag.rsi, state: icon }
+  productEntity: CrateSRMRifleMagUranium
+  cost:
+    PietySRM: 2
+  categories:
+  - StoreCategorySRMAmmo
+
+- type: listing
+  id: StoreListingSRMStandardSMGMagBox
+  name: 9x19mm Standard Magazine Box
+  description: A box of standard magazines for the Beetle submachine gun and compatible 9x19mm firearms.
+  icon: { sprite: _Crescent/Objects/Weapons/Ammunition/Magazine/9x19mm_mag.rsi, state: icon }
+  productEntity: BoxMagazinePistolSubMachineGun
+  cost:
+    PietySRM: 1
+  categories:
+  - StoreCategorySRMAmmo
+
+- type: listing
+  id: StoreListingSRMUraniumSMGMag
+  name: 9x19mm Black-tipped Magazine
+  description: A black-tipped magazine for the Beetle submachine gun and compatible 9x19mm firearms, armor piercing. A few magazines come packaged.
+  icon: { sprite: _Crescent/Objects/Weapons/Ammunition/Magazine/9x19mm_mag.rsi, state: icon }
+  productEntity: CrateSRMSMGMagUranium
+  cost:
+    PietySRM: 2
+  categories:
+  - StoreCategorySRMAmmo
+
+- type: listing
+  id: StoreListingSRMSlugthrower
+  name: Slugthrower Ammunition Shipment
+  description: A shipment of slugthrower ammunition for use in slugthrower turrets.
+  icon: { sprite: _Crescent/Ammunition/conscript_ammo_box.rsi, state: base }
+  productEntity: CrateSlugthrowerAmmo
+  cost:
+    PietySRM: 1
+  categories:
+  - StoreCategorySRMAmmo
+
+- type: listing
+  id: StoreListingSRMSumimotoLow
+  name: Sumimoto Low-Yield Ammunition Shipment
+  description: A shipment of sumimoto low-yield rockets.
+  icon: { sprite: Objects/Weapons/Guns/Ammunition/Magazine/Grenade/grenade_cartridge.rsi, state: icon }
+  productEntity: CrateSRMAmmunitionMissileLowYield
+  cost:
+    PietySRM: 2
+  categories:
+  - StoreCategorySRMAmmo
+
+- type: listing
+  id: StoreListingSRMSumimotoHigh
+  name: Sumimoto High-Yield Ammunition Shipment
+  description: A shipment of sumimoto high-yield rockets.
+  icon: { sprite: Objects/Weapons/Guns/Ammunition/Magazine/Grenade/grenade_cartridge.rsi, state: icon }
+  productEntity: CrateSRMAmmunitionMissileHighYield
+  cost:
+    PietySRM: 2
+  categories:
+  - StoreCategorySRMAmmo
+
+#Ammo End
+
+#Suits
+
+- type: listing
+  id: StoreListingSRMHardsuitElite
+  name: Elite Hunter's Hardsuit
+  description: A hardsuit seen typically in the hands of elite hunters, made of proper armor and in House Romaine's colors.
+  icon: { sprite: _Crescent/Clothing/SRM/OuterClothing/hardsuitelite.rsi, state: icon }
+  productEntity: ClothingOuterHardsuitHunterElite
+  cost:
+    PietySRM: 15
+  categories:
+  - StoreCategorySRMSuits
+
+- type: listing
+  id: StoreListingSRMHardsuitHunter
+  name: Hunter's Hardsuit
+  description: A hardsuit made of stitched together materials to insulate and protect the hunter wearing it.
+  icon: { sprite: _Crescent/Clothing/SRM/OuterClothing/hardsuit.rsi, state: icon }
+  productEntity: ClothingOuterHardsuitHunter
   cost:
     PietySRM: 5
   categories:
-  - StoreCategorySRMSupport
+  - StoreCategorySRMSuits
+
+#Suits End
+
+#Explosives
 
 - type: listing
-  id: StoreListingSRMCompactDefibrillator
-  name: Компактный дефибриллятор
-  description: Компактный дефибриллятор, который можно пристегнуть к поясу для удобства использования в экстренных ситуациях. Некоторые из них поставляются в комплекте.
-  icon: { sprite: Objects/Specific/Medical/defibsmall.rsi, state: icon }
-  productEntity: CrateSRMDefibrillator
+  id: StoreListingSRMIncendiaryHandgrenade
+  name: M14 Incendiary Handgrenade
+  description: An M14 Incendiary handgrenade. A few come packaged.
+  icon: { sprite: _Crescent/Objects/Weapons/Grenades/incendiary.rsi, state: icon }
+  productEntity: CrateSRMIncendiaryGrenade
+  cost:
+    PietySRM: 1
+  categories:
+  - StoreCategorySRMExplosives
+
+- type: listing
+  id: StoreListingSRMSmokeHandgrenade
+  name: M18 Smoke Handgrenade
+  description: An M18 Smoke handgrenade. A few come packaged.
+  icon: { sprite: _Crescent/Objects/Weapons/Grenades/smoke.rsi, state: icon }
+  productEntity: CrateSRMSmokeGrenade
+  cost:
+    PietySRM: 1
+  categories:
+  - StoreCategorySRMExplosives
+
+- type: listing
+  id: StoreListingSRMF1Handgrenade
+  name: F1 Handgrenade
+  description: An F1 fragmentation handgrenade. A few come packaged.
+  icon: { sprite: _Crescent/Objects/Weapons/Grenades/f1.rsi, state: icon }
+  productEntity: CrateSRMFragGrenade
+  cost:
+    PietySRM: 1
+  categories:
+  - StoreCategorySRMExplosives
+
+- type: listing
+  id: StoreListingSRMG8PoisonHandgrenade
+  name: G-8 Poison Handgrenade
+  description: A G-8 Poison handgrenade. A few come packaged.
+  icon: { sprite: _Crescent/Objects/Weapons/Grenades/dsm_smoke.rsi, state: icon }
+  productEntity: CrateSRMPoisonGrenade
+  cost:
+    PietySRM: 1
+  categories:
+  - StoreCategorySRMExplosives
+
+- type: listing
+  id: StoreListingSRMG4TwistcapHandgrenade
+  name: G-4 Twistcap Handgrenade
+  description: A G-4 Twistcap handgrenade. A few come packaged.
+  icon: { sprite: _Crescent/Objects/Weapons/Grenades/dsm_twist.rsi, state: icon }
+  productEntity: CrateSRMTwistcapGrenade
+  cost:
+    PietySRM: 1
+  categories:
+  - StoreCategorySRMExplosives
+
+- type: listing
+  id: StoreListingSRMG3StickHandgrenade
+  name: G-3 Stick Handgrenade
+  description: A G-3 Stick handgrenade. A few come packaged.
+  icon: { sprite: _Crescent/Objects/Weapons/Grenades/dsm_stick.rsi, state: icon }
+  productEntity: CrateSRMStickGrenade
+  cost:
+    PietySRM: 1
+  categories:
+  - StoreCategorySRMExplosives
+
+- type: listing
+  id: StoreListingSRMExplosiveCharge
+  name: Box of Explsosive Charges
+  description: A box of explosive charges to effectively gain access to a vessel.
+  icon: { sprite: Objects/Weapons/Bombs/breaching.rsi, state: icon }
+  productEntity: CrateSRMExplosivesBreaching
   cost:
     PietySRM: 2
   categories:
-  - StoreCategorySRMSupport
+  - StoreCategorySRMExplosives
 
-- type: listing
-  id: StoreListingSRMNvg
-  name: Очки ночного виденья
-  description: Очки ночного видения, обычно используемые охотниками при выключенном свете.
-  icon: { sprite: Clothing/Eyes/Goggles/nightvision.rsi, state: icon }
-  productEntity: ClothingEyesNightVisionGoggles
-  cost:
-    PietySRM: 10
-  categories:
-  - StoreCategorySRMSupport
-
-- type: listing
-  id: StoreListingSRMNVgMedical
-  name: Медицинские очки ночного виденья
-  description: Очки ночного видения со встроенными медицинскими стёклами, пригодятся тем, кто работает в условиях низкой освещённости.
-  icon: { sprite: Clothing/Eyes/Goggles/medical_nightvision.rsi, state: icon }
-  productEntity: ClothingEyesNightVisionMedicalGoggles
-  cost:
-    PietySRM: 12
-  categories:
-  - StoreCategorySRMSupport
-
-- type: listing
-  id: StoreListingSRMNvgAdvanced
-  name: Продвинутые очки ночного видения
-  description: Усовершенствованные очки ночного видения, улучшенные возможностью считывать идентификационные данные человека издалека.
-  icon: { sprite: Clothing/Eyes/Goggles/security_nightvision.rsi, state: icon }
-  productEntity: ClothingEyesNightVisionSecurityGoggles
-  cost:
-    PietySRM: 12
-  categories:
-  - StoreCategorySRMSupport
-
-- type: listing
-  id: StoreListingSRMThermoMonocle
-  name: Термальный монокль
-  description: Монокль, который позволяет владельцу видеть тепловые сигналы, полезен сам по себе.
-  icon: { sprite: Clothing/Eyes/Goggles/monocle_thermal.rsi, state: icon }
-  productEntity: ClothingEyesThermalVisionMonocle
-  cost:
-    PietySRM: 10
-  categories:
-  - StoreCategorySRMSupport
-
-- type: listing
-  id: StoreListingSRMMassScanner
-  name: Сканер масс
-  description: Портативное устройство, удобное для работы в космосе. Некоторые из них поставляются в комплекте.
-  icon: { sprite: Objects/Tools/handheld_mass_scanner.rsi, state: icon }
-  productEntity: CrateSRMMassScanner
-  cost:
-    PietySRM: 1
-  categories:
-  - StoreCategorySRMSupport
-
-- type: listing
-  id: StoreListingSRMMedScanner
-  name: Медицинский сканер
-  description: Сканер, используемый в медицинских целях, полезен для проведения операций смотрительницами на местах.
-  icon: { sprite: Objects/Specific/Medical/healthanalyzer.rsi, state: icon }
-  productEntity: HandheldHealthAnalyzer
-  cost:
-    PietySRM: 1
-  categories:
-  - StoreCategorySRMSupport
-
-- type: listing
-  id: StoreListingSRMMRE
-  name: ИРП
-  description: Ваш классический MRE, созданный не для вкуса, а для охотников в пути.
-  icon: { sprite: Objects/Consumable/Food/bay_food.rsi, state: meatmre }
-  productEntity: BoxMRE
-  cost:
-    PietySRM: 1
-  categories:
-  - StoreCategorySRMSupport
-
-- type: listing
-  id: StoreListingSRMHuntSupplies
-  name: Припасы для охоты
-  description: Ящик, набитый до отвала различным полезным для охоты снаряжением. Кажется, его собирали с любовью.
-  icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
-  productEntity: CrateSRMNLHuntSupplies
-  cost:
-    PietySRM: 8
-  categories:
-  - StoreCategorySRMSupport
-
-- type: listing
-  id: StoreListingSRMBolaShipment
-  name: Ящик с болой
-  description: Партия с несколькими обычными и парой энергобол для эффективного отлова рабов... я имел ввиду реквизиции активов!
-  icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
-  productEntity: CrateSRMBolaShipment
-  cost:
-    PietySRM: 3
-  categories:
-  - StoreCategorySRMSupport
-
-- type: listing
-  id: StoreListingSRMDisablerShipment
-  name: Ящик дизайблеров
-  description: Ящик с несколькими дизейплерами и дизейблер-пулемётом. Если кому-то не хватило в оружейке, жадины!
-  icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
-  productEntity: CrateSRMDisablerShipment
-  cost:
-    PietySRM: 3
-  categories:
-  - StoreCategorySRMSupport
-
-#Support End
-
-#Materials
-
-- type: listing
-  id: StoreListingSRMPlasteel
-  name: Поставка пластали
-  description: Партия пластали, пригодной для различных строительных целей.
-  icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
-  productEntity: CrateMaterialPlasteel
-  cost:
-    PietySRM: 1
-  categories:
-  - StoreCategorySRMMaterials
-
-- type: listing
-  id: StoreListingSRMPlastic
-  name: Поставка пластика
-  description: Партия пластика для любого способа уничтожения черепах, который вы только пожелаете.
-  icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
-  productEntity: CrateMaterialPlastic
-  cost:
-    PietySRM: 1
-  categories:
-  - StoreCategorySRMMaterials
-
-- type: listing
-  id: StoreListingSRMSteel
-  name: Поставка стали
-  description: Партия стали, пригодная для различных ремонтных работ.
-  icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
-  productEntity: CrateMaterialSteel
-  cost:
-    PietySRM: 1
-  categories:
-  - StoreCategorySRMMaterials
-
-- type: listing
-  id: StoreListingSRMGlass
-  name: Поставка стекла
-  description: Осторожно, не наткнись на него, он хрупкий.
-  icon: { sprite: _Nuclear14/Structures/Storage/Crates/woodencrates.rsi, state: army_crate }
-  productEntity: CrateMaterialGlass
-  cost:
-    PietySRM: 1
-  categories:
-  - StoreCategorySRMMaterials
-
-#Materials End
+#Explosives End
 
 #Piety Redeemable
 
 - type: listing
-  id: StoreListingSRMPRLowSerraine
-  name: Часть писания
-  description: Предмет благочестия, используемый охотниками для обмена различных товаров и услуг. Этот предмет выглядит довольно изношенным и поврежденным.
+  id: StoreListingSRMPRLowRomaine
+  name: Piety Scrap
+  description: A scrap of piety, used by hunters to redeem various goods and services. This one appears to be rather worn and damaged.
   icon: { sprite: _Crescent/Objects/TradeGoods/deed.rsi, state: icon }
   productEntity: PietyRedeemableLow
   cost:
     PietySRM: 1
   categories:
-  - StoreCategorySRMPietySerraine
+  - StoreCategorySRMPietyRomaine
 
 - type: listing
-  id: StoreListingSRMPRSerraine
-  name: Часть писания
-  description: Частичка благочестия, используемая охотниками для выкупа различных товаров и услуг. Этот, похоже, в приличном состоянии.
+  id: StoreListingSRMPRRomaine
+  name: Piety Scrap
+  description: A scrap of piety, used by hunters to redeem various goods and services. This one appears to be in decent shape.
   icon: { sprite: _Crescent/Objects/TradeGoods/deed.rsi, state: icon }
   productEntity: PietyRedeemable
   cost:
     PietySRM: 5
   categories:
-  - StoreCategorySRMPietySerraine
+  - StoreCategorySRMPietyRomaine
 
 - type: listing
-  id: StoreListingSRMPRHighSerraine
-  name: Часть писания
-  description: Частичка благочестия, используемая охотниками для выкупа различных товаров и услуг. Этот, похоже, почти не тронут.
+  id: StoreListingSRMPRHighRomaine
+  name: Piety Scrap
+  description: A scrap of piety, used by hunters to redeem various goods and services. This one appears to be almost untouched.
   icon: { sprite: _Crescent/Objects/TradeGoods/deed.rsi, state: icon }
   productEntity: PietyRedeemableHigh
   cost:
     PietySRM: 10
   categories:
-  - StoreCategorySRMPietySerraine
+  - StoreCategorySRMPietyRomaine
 
-# Piety Redeemable End
+#Piety Redeemable End

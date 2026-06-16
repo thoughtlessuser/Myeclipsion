@@ -1,6 +1,6 @@
 - type: gameMap
   id: IronRing
-  mapName: 'НТ Европа'
+  mapName: 'NT Ragged Outpost'
   mapPath: /Maps/_Rat/Stations/ironring.yml
   minPlayers: 0
   stations:
@@ -16,11 +16,11 @@
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: outpost
         - type: StationNameSetup
-          mapNameTemplate: 'НТ Европа'
+          mapNameTemplate: 'NT Ragged Outpost'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: VesselDescription
-          description: Когда-то это место было важным местом обитания шахтеров Тайпана, а теперь это заброшенный пристанище для отбросов.
+          description: Once this place was an important mining settlement of Taypan, but now it is an abandoned refuge for outcasts.
         #- type: VesselMusic
           #ambientMusicPrototype: CountsmanMusic
         - type: Grammar

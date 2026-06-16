@@ -3,31 +3,28 @@
 #
 - type: vessel
   id: Matabele
-  name: БИ Матабел
-  description: Скрытная капсула скорой помощи.
-  price: 45000
+  name: IPM Matabele
+  description: A stealth-capable ambulance pod.
+  price: 21000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/NCSP/matabele.yml
 
 - type: gameMap
   id: Matabele
-  mapName: 'БИ Матабел'
+  mapName: 'IPM Matabele'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/matabele.yml
   minPlayers: 0
   stations:
     Matabele:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'БИ Матабел {1}'
+          mapNameTemplate: 'IPM Matabele {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -3,9 +3,9 @@
   alias:
   - adventure
   - ratadventure
-  name: Свободная игра
+  name: Freeplay
   showInVote: true
-  description: Последние дни Тайпана. Длится 2-4 часа.
+  description: The final hours of Taypan. Last 2-4 hours.
   rules:
   - RatAdventure
   - HullrotEventScheduler
@@ -35,14 +35,6 @@
         posY: 1000
         IFFColor: White
         IFFFaction: SHI
-      Refuge:
-        gameMapID: Refuge
-        posX: -3000
-        posY: 7000
-        IFFColor: Green
-        IFFFaction: SRM
-        randomOffsetX: 2000
-        randomOffsetY: 2000
       Dochenskaya:
         gameMapID: Dochenskaya
         posX: 6000
@@ -67,18 +59,6 @@
         posY: -4000
         IFFColor: IndianRed
         IFFFaction: TFSC
-      TribalHideout:
-        gameMapID: TribalHideout
-        posX: 2000
-        posY: -7000
-        IFFColor: White
-        IFFFaction: TAP
-        randomOffsetX: 2000
-        randomOffsetY: 2000
-      IronRing:
-        gameMapID: IronRing
-        posX: -3000
-        posY: 500
       RatFakel:
         gameMapID: RatFakel
         posX: 0
@@ -100,9 +80,9 @@
   id: RatAdventureFreeport
   alias:
   - ratadventurefreeport
-  name: Свободная игра (Фрипорт)
+  name: Free Play (Freeport)
   showInVote: true
-  description: Последние дни Тайпана. Длится 2-4 часа.
+  description: The final hours of Taypan. Last 2-4 hours.
   rules:
   - RatAdventureFreeport
   - HullrotEventScheduler
@@ -179,9 +159,9 @@
   id: RatAdventureWar
   alias:
   - ratwar
-  name: ЛРНП vs БМС
+  name: Freeplay (DSM,NCWL and Gliess Santo)
   showInVote: true
-  description: Последние дни Тайпана. Длится 2-4 часа.
+  description: The final hours of Taypan. Last 2-4 hours.
   rules:
   - RatAdventureWar
   - HullrotEventScheduler
@@ -195,25 +175,100 @@
     gameMapsByID:
       PortBalreska:
         gameMapID: PortBalreska
-        posX: -3000
+        posX: 0
         posY: -5000
         IFFColor: Orange
         IFFFaction: NCWL
       AuroraImperialis:
         gameMapID: AuroraImperialis
-        posX: 3000
+        posX: 0
         posY: 5000
         IFFColor: "#C677A5"
         IFFFaction: DSM
+      GliessSanto:
+        gameMapID: GliessSanto
+        posX: -3000
+        posY: 0
+        IFFColor: "#429cbd"
       RatFakel:
         gameMapID: RatFakel
         posX: 0
         posY: 0
       RatBuran:
         gameMapID: RatBuran
-        posX: -2500
-        posY: 3500
+        posX: -3000
+        posY: 3000
       RatKovf:
         gameMapID: RatKovf
-        posX: 500
-        posY: -4300
+        posX: 3000
+        posY: -3000
+
+
+- type: gamePreset
+  id: RatAdventureWarSHI
+  alias:
+  - ratwarshi
+  - ratshiw
+  name: Freeplay (SHI vs TFSC)
+  showInVote: true
+  description: Brutal war between corporations. Last 2-4 hours.
+  rules:
+  - RatAdventureWarSHI
+  - HullrotEventScheduler
+
+- type: entity
+  id: RatAdventureWarSHI
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AdventureRule
+    gameMapsByID:
+      Tatsumoto:
+        gameMapID: Tatsumoto
+        posX: -5000
+        posY: 0
+        IFFColor: White
+        IFFFaction: SHI
+
+      Dochenskaya:
+        gameMapID: Dochenskaya
+        posX: 5000
+        posY: 0
+        IFFColor: IndianRed
+        IFFFaction: TFSC
+
+      Jackal:
+        gameMapID: Jackal
+        posX: 5000
+        posY: 500
+        IFFColor: IndianRed
+        IFFFaction: TFSC
+
+      Dawnbreaker:
+        gameMapID: Dawnbreaker
+        posX: 5000
+        posY: -500
+        IFFColor: IndianRed
+        IFFFaction: TFSC
+
+      Hayes:
+        gameMapID: Hayes
+        posX: 5500
+        posY: 0
+        IFFColor: IndianRed
+        IFFFaction: TFSC
+
+      RatFakel:
+        gameMapID: RatFakel
+        posX: 0
+        posY: 0
+
+      RatBuran:
+        gameMapID: RatBuran
+        posX: -3000
+        posY: 3000
+
+      RatKovf:
+        gameMapID: RatKovf
+        posX: 3000
+        posY: -3000

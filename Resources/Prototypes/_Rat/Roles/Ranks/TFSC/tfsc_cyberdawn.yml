@@ -1,63 +1,63 @@
 # Patriarch
 - type: rank
   id: RatRankTFSCPatriarchSenior
-  name: Секториальный патриарх
-  prefix: Сект. Пат.
+  name: Sector Patriarch
+  prefix: Sect. Pat.
   paygrade: CD-P3
 
 - type: rank
   id: RatRankTFSCPatriarchMiddle
-  name: Патриарх
-  prefix: Патриарх
+  name: Patriarch
+  prefix: Patriarch
   paygrade: CD-P2
 
 - type: rank
   id: RatRankTFSCPatriarchJunior
-  name: Младший патриарх
-  prefix: Мл. Пат.
+  name: Junior Patriarch
+  prefix: Jr. Pat.
   paygrade: CD-P1
 
 # Operative
 - type: rank
   id: RatRankTFSCOperativeLead
-  name: Ведущий оперативник
-  prefix: Вед. опер.
+  name: Lead Operative
+  prefix: Lead Op.
   paygrade: CD-O4
 
 - type: rank
   id: RatRankTFSCOperativeSenior
-  name: Старший оператор
-  prefix: Ст. опер.
+  name: Senior Operator
+  prefix: Sr. Op.
   paygrade: CD-O3
 
 - type: rank
   id: RatRankTFSCOperativeMiddle
-  name: Оператор
-  prefix: Опер.
+  name: Operator
+  prefix: Op.
   paygrade: CD-O2
 
 - type: rank
   id: RatRankTFSCOperativeJunior
-  name: Младший оператор
-  prefix: Мл. опер.
+  name: Junior Operator
+  prefix: Jr. Op.
   paygrade: CD-O1
 
 # Researcher
 
 - type: rank
   id: RatRankTFSCResearcherSenior
-  name: Старший исследователь
-  prefix: Ст. иссл.
+  name: Senior Researcher
+  prefix: Sr. Res.
   paygrade: CD-R3
 
 - type: rank
   id: RatRankTFSCResearcherMiddle
-  name: Исследователь
-  prefix: Иссл.
+  name: Researcher
+  prefix: Res.
   paygrade: CD-R2
 
 - type: rank
   id: RatRankTFSCResearcherJunior
-  name: Младший исследователь
-  prefix: Мл. иссл.
+  name: Junior Researcher
+  prefix: Jr. Res.
   paygrade: CD-R1

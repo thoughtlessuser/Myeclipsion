@@ -3,9 +3,9 @@
 #
 - type: vessel
   id: Rokh
-  name: ПК Рок
+  name: SAW Rokh
   description: |
-    Переоборудованный грузовой тягач.
+    A converted cargo hauler.
     LOADOUT: 7x 20mm 'Screamer' light carbine reapeater cannons, 4x 90mm 'Resolute' tri-barreled repeaters, 1x 48mm 'Shortbow' SRM rocket systems, 2x 120mm Anvil mono barreled artillery cannons
     MINIMUM CREW: 1x Pilot, 1x Gunner 
   price: 125000
@@ -15,22 +15,19 @@
 
 - type: gameMap
   id: Rokh
-  mapName: 'ПК Рок'
+  mapName: 'SAW Rokh'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/rokh.yml
   minPlayers: 0
   stations:
     Rokh:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: battleship
         - type: StationNameSetup
-          mapNameTemplate: 'ПК Рок {1}'
+          mapNameTemplate: 'SAW Rokh {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

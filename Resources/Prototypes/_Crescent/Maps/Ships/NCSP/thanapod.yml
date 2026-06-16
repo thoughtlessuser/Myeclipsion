@@ -3,36 +3,33 @@
 #
 - type: vessel
   id: Thanapod
-  name: ПК Танапод
+  name: SAW Thanapod
   description: |
-    Вооруженное добывающее судно.
+    An armed mining vessel.
     LOADOUT: 2x 250c Exhumer mining guns, 2x Hardpoints, 2x 20mm 'Screamer' light carbine repeater cannons
     MINIMUM CREW: 1x Pilot
-  price: 90000
+  price: 65000
   category: Medium
   group: None
   path: /Maps/_Crescent/Shuttles/NCSP/thanapod.yml
 
 - type: gameMap
   id: Thanapod
-  mapName: 'ПК Танапод'
+  mapName: 'SAW Thanapod'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/thanapod.yml
   minPlayers: 0
   stations:
     Thanapod:
       stationProto: StandardCrescentExpeditionVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'ПК Танапод {1}'
+          mapNameTemplate: 'SAW Thanapod{1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
-          designation: vessel-designation-utility 
+          designation: vessel-designation-utility

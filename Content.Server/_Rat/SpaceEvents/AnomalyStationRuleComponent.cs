@@ -19,8 +19,8 @@ public sealed partial class AnomalyStationRuleComponent : Component
     [DataField(required: true)]
     public LocId Announcement;
 
-    [DataField("anomalySpawnerPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string AnomalySpawnerPrototype = "RandomAnomalySpawner";
+    [DataField("artifactSpawnerPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string ArtifactSpawnerPrototype = "RandomArtifactSpawner";
 
     public Vector2 Coordinates;
 }

@@ -6,4 +6,4 @@
 - type: guideEntry
   id: HullrotRuleset
   name: RatGore Rules
-  text: "/ServerInfo/_Rat/ServerRules/RatRuleset.xml"
+  text: "/ServerRules/HullrotRuleset.xml"

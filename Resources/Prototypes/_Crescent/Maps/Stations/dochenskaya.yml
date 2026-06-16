@@ -1,6 +1,6 @@
 - type: gameMap
   id: Dochenskaya
-  mapName: 'ПК Доченская'
+  mapName: 'SAW Dochenskaya'
   mapPath: /Maps/_Crescent/Stations/dochenskaya.yml
   minPlayers: 0
   stations:
@@ -12,9 +12,11 @@
         - type: PreventPilot
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'ПК Доченская'
+          mapNameTemplate: 'SAW Dochenskaya'
         - type: VesselMusic
           ambientMusicPrototype: DochenskayaMusic
+        - type: VesselDescription
+          description: Ship Breakers main station. 
         - type: Grammar
           attributes:
             proper: true

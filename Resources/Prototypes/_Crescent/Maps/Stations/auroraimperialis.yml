@@ -1,6 +1,6 @@
 - type: gameMap
   id: AuroraImperialis
-  mapName: 'БМС Аврора'
+  mapName: 'DSM Aurora İmperialis'
   mapPath: /Maps/_Rat/Stations/aurora.yml # taleryn-version
   minPlayers: 0
   stations:
@@ -17,11 +17,11 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'БМС Аврора'
+          mapNameTemplate: 'DSM Aurora'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: VesselDescription
-          description: Могущественная имперская крепость, являющаяся последним оплотом порядка в системе.
+          description: A powerful imperial fortress, serving as the last bastion of order in the system.
         - type: VesselMusic
           ambientMusicPrototype: CountsmanMusic
         - type: Grammar

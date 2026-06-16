@@ -202,9 +202,9 @@
   alias:
   - unionfall
   - ratbiteunionfall
-  name: Падение Союза | ЛРНП против БМС
+  name: Unionfall | NCWL VS DSM
   showInVote: true
-  description: Домашняя гвардия ЛРНП бежит к новому дому после разрушения Марсовы. Карательный полк БМС перехватывает их, чтобы вернуть свою честь.
+  description: The NCWL Homeguard flees to a new home, after the destruction of Nova Belraska. A DSM punishment regimen intercepts them to regain their honor.
   rules:
   - Unionfall
 
@@ -217,52 +217,52 @@
     gameMapsByID:
       UnionfallNemesis:
         gameMapID: UnionfallNemesis
-        posX: 3000
+        posX: 53000
         posY: 0
         IFFColor: Cyan
       UnionfallLaelaps1:
         gameMapID: UnionfallLaelaps
-        posX: 3030
+        posX: 53030
         posY: 0
         IFFColor: Cyan
       UnionfallLaelaps2:
         gameMapID: UnionfallLaelaps
-        posX: 2970
+        posX: 52970
         posY: 0
         IFFColor: Cyan
       UnionfallClementine:
         gameMapID: UnionfallClementine
-        posX: -3000
+        posX: 47000
         posY: 0
         IFFColor: Orange
       UnionfallGargut:
         gameMapID: UnionfallGargut
-        posX: -3030
+        posX: 46970
         posY: 0
         IFFColor: Orange
       UnionfallSasha:
         gameMapID: UnionfallSasha
-        posX: -2970
+        posX: 47030
         posY: 0
         IFFColor: Orange
       UnionfallGraceBarrierDSM:
         gameMapID: UnionfallGraceBarrierDSM
-        posX: 3000
+        posX: 53000
         posY: 0
         IFFColor: Blue
       UnionfallBiomeEmitterDSM:
-        gameMapID: UnionfallBiomeEmitterDSM #THIS IS ALSO THE ANNOUNCER
-        posX: 1500
+        gameMapID: UnionfallBiomeEmitterDSM
+        posX: 51500
         posY: 0
         HideIFF: true
       UnionfallGraceBarrierNCWL:
         gameMapID: UnionfallGraceBarrierNCWL
-        posX: -3000
+        posX: 47000
         posY: 0
         IFFColor: Blue
       UnionfallBiomeEmitterNCWL:
         gameMapID: UnionfallBiomeEmitterNCWL
-        posX: -1500
+        posX: 48500
         posY: 0
         HideIFF: true
 

@@ -3,8 +3,8 @@
 #
 - type: vessel
   id: Rattler
-  name: ПК Гремучник
-  description: Импровизированная орудийная платформа, разработанная "Кораблекрушителями".
+  name: SAW Rattler
+  description: An ad-hoc guns platform developed by the Shipbreakers.
   price: 45000
   category: Small
   group: None
@@ -12,18 +12,15 @@
 
 - type: gameMap
   id: Rattler
-  mapName: 'ПК Гремучник'
+  mapName: 'SAW Rattler'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/rattler.yml
   minPlayers: 0
   stations:
     Rattler:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'ПК Гремучник {1}'
+          mapNameTemplate: 'SAW Rattler {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

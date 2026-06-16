@@ -1,17 +1,17 @@
 - type: rank
   id: RatRankFreeholderSenior
-  name: Прониар
-  prefix: Прониар
+  name: Pronoiar
+  prefix: Pronoiar
   paygrade: IC3
 
 - type: rank
   id: RatRankFreeholderMiddle
-  name: Йомен
-  prefix: Йомен
+  name: Yeoman
+  prefix: Yeoman
   paygrade: IC2
 
 - type: rank
   id: RatRankFreeholderJunior
-  name: Фригольдер
-  prefix: Фригольдер
+  name: Freeholder
+  prefix: Freeholder
   paygrade: IC1

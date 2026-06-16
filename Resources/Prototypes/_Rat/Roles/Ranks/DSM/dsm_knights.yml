@@ -1,43 +1,43 @@
 # Knights
 - type: rank
   id: RatRankKnightLead
-  name: Рыцарь-грандмастер
-  prefix: Сир
+  name: Knight Grandmaster
+  prefix: High Knight
   paygrade: K4
 
 - type: rank
   id: RatRankKnightSenior
-  name: Рыцарь-мастер
-  prefix: Сир
+  name: Knight Master
+  prefix: Master Knight
   paygrade: K3
 
 - type: rank
   id: RatRankKnightMiddle
-  name: Рыцарь-баннерет
-  prefix: Сир
+  name: Knight Banneret
+  prefix: Sire
   paygrade: K2
 
 - type: rank
   id: RatRankKnightJunior
-  name: Рыцарь
-  prefix: Сир
+  name: Knight
+  prefix: Sir
   paygrade: K1
-  
+
 # Templar
 - type: rank
   id: RatRankTemplarSenior
-  name: Ординатор
-  prefix: Ординатор
+  name: Ordinator
+  prefix: Ordinator
   paygrade: T3
 
 - type: rank
   id: RatRankTemplarMiddle
-  name: Претор
-  prefix: Претор
+  name: Praetor
+  prefix: Praetor
   paygrade: T2
 
 - type: rank
   id: RatRankTemplarJunior
-  name: Экзекутор
-  prefix: Экзекутор
+  name: Executor
+  prefix: Executor
   paygrade: T1

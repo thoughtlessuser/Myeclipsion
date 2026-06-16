@@ -3,31 +3,28 @@
 #
 - type: vessel
   id: Reaver
-  name: МГ Разоритель
-  description: Средний истребитель Синдиката.
-  price: 25000 #26000 appraisegrid
+  name: GSC Reaver
+  description: A medium Syndicate fighter.
+  price: 25000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/NCSP/reaver.yml
 
 - type: gameMap
   id: Reaver
-  mapName: 'МГ Разоритель'
+  mapName: 'GSC Reaver'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/reaver.yml
   minPlayers: 0
   stations:
     Reaver:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'МГ Разоритель {1}'
+          mapNameTemplate: 'GSC Reaver {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

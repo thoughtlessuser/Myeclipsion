@@ -3,8 +3,8 @@
 #
 - type: vessel
   id: Wolf
-  name: МГ Волк
-  description: Переделанный имперский крейсер.
+  name: GSC Wolf
+  description: A converted Imperial cruiser.
   price: 110000 #107000 appraisegrid
   category: Medium
   group: None
@@ -12,22 +12,19 @@
 
 - type: gameMap
   id: Wolf
-  mapName: 'МГ Волк'
+  mapName: 'GSC Wolf'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/wolf.yml
   minPlayers: 0
   stations:
     Wolf:
       stationProto: StandardCrescentCivilianVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: cruiser
         - type: StationNameSetup
-          mapNameTemplate: 'МГ Волк {1}'
+          mapNameTemplate: 'GSC Wolf {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

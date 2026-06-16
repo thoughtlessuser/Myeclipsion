@@ -101,7 +101,7 @@ namespace Content.Client._Crescent
 
                 var factionButton = new Button();
                 // SHORTENED FOR UI's sake
-                factionButton.Text = faction.Name;
+                factionButton.Text = faction.ID;
 
                 factionButton.ModulateSelfOverride = faction.FactionButtonColor;
 

@@ -13,9 +13,9 @@
             <Label Name="RadiusValueLabel" Text="200 м" Margin="6 0 0 0" MinSize="70 0" VerticalAlignment="Center"/>
         </BoxContainer>
 
-        <!-- Faction channel -->
+        <!-- Faction channel (auto) -->
         <Label Text="{Loc 'alert-console-channel-label'}" Margin="0 0 0 2"/>
-        <LineEdit Name="ChannelEdit" PlaceHolder="Common" Margin="0 0 0 6"/>
+        <Label Name="ChannelLabel" StyleClasses="LabelKeyText" Margin="0 0 0 6"/>
 
         <!-- Cooldown -->
         <Label Text="{Loc 'alert-console-cooldown-label'}" Margin="0 0 0 2"/>

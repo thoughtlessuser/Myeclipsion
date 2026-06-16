@@ -1,7 +1,7 @@
 - type: vessel
   id: Wisp
-  name: ТК Мираж
-  description: Переоборудованный гражданский корпус, превращенный в проворный контрабандистский шаттл.
+  name: CD Wisp
+  description: A repurposed civilian hull, converted into a nimble smuggling shuttle.
   price: 35000
   category: Small
   group: None
@@ -9,22 +9,19 @@
 
 - type: gameMap
   id: Wisp
-  mapName: 'ТК Мираж'
+  mapName: 'CD Wisp'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/wisp.yml
   minPlayers: 0
   stations:
     Wisp:
       stationProto: StandardCrescentVessel
-      gridComponents:
-        - type: MapIcon
-          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'ТК Мираж {1}'
+          mapNameTemplate: 'CD Wisp {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
