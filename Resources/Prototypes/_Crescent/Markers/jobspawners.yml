@@ -114,7 +114,7 @@
   name: NCWLCoordinator
   components:
   - type: SpawnPoint
-    job_id: CoordinatorNCWL
+    job_id: WorkerOverbossNCWL
   - type: Sprite
     layers:
       - state: green

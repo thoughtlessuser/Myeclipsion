@@ -68142,6 +68142,13 @@ entities:
     - type: Transform
       pos: 13.5,60.5
       parent: 1
+- proto: SpawnPointExecutive
+  entities:
+  - uid: 8528
+    components:
+    - type: Transform
+      pos: 15.5,61.5
+      parent: 1
 - proto: SpawnPointCorpSec
   entities:
   - uid: 7015
