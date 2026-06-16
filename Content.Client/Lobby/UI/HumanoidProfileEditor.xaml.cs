@@ -127,7 +127,6 @@ namespace Content.Client.Lobby.UI
         )
         {
             RobustXamlLoader.Load(this);
-            
             _cfgManager = cfgManager;
             _entManager = entManager;
             _dialogManager = dialogManager;
@@ -561,7 +560,6 @@ namespace Content.Client.Lobby.UI
 
             RefreshFlavorText();
 
-
             #endregion Left
 
             ShowClothes.OnToggled += _ => { SetProfile(Profile, CharacterSlot); };
@@ -925,7 +923,6 @@ namespace Content.Client.Lobby.UI
             RefreshEmployers();
             RefreshLifepaths();
             RefreshFlavorText();
-
             ReloadPreview();
 
             if (Profile != null)

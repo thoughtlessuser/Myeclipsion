@@ -139,14 +139,8 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     [DataField]
     public long BankBalance { get; private set; } = 0;
 
-    /// <summary>
-    /// Основная фракция (БМС, ДСМ, Нанотрейзен и т.д.) - из FactionPrototype
-    /// </summary>
     [DataField]
     public string Faction { get; private set; } = "";
-
-    [DataField]
-    public string Subfaction { get; private set; } = "";
 
     [DataField]
     public List<string> CharacterFlags { get; private set; } = new();
@@ -180,7 +174,6 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         HashSet<LoadoutPreference> loadoutPreferences,
         long bankWealth,
         string proFaction,
-        string proSubfaction,
         List<string> characterFlags
     )
     {
@@ -211,7 +204,6 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
         _loadoutPreferences = loadoutPreferences;
         BankBalance = bankWealth;
         Faction = proFaction;
-        Subfaction = proSubfaction;
         CharacterFlags = characterFlags;
     }
 
@@ -245,7 +237,6 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
             new HashSet<LoadoutPreference>(other.LoadoutPreferences),
             other.BankBalance,
             other.Faction,
-            other.Subfaction,
             other.CharacterFlags) { }
 
     /// <summary>
@@ -456,7 +447,6 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     }
 
     public HumanoidCharacterProfile WithFaction(string newFaction) => new(this) { Faction = newFaction };
-    public HumanoidCharacterProfile WithSubfaction(string newSubfaction) => new(this) { Subfaction = newSubfaction };
     public HumanoidCharacterProfile WithBank(long amount) => new(this) { BankBalance = amount };
     public HumanoidCharacterProfile WithCharacterFlags(List<string> characterFlags) => new(this) { CharacterFlags = characterFlags };
 
@@ -492,7 +482,6 @@ public string Summary =>
             && Appearance.MemberwiseEquals(other.Appearance)
             && FlavorText == other.FlavorText
             && Faction == other.Faction
-            && Subfaction == other.Subfaction
             && BankBalance == other.BankBalance
             && CharacterFlags.SequenceEqual(other.CharacterFlags);
     }
@@ -722,7 +711,6 @@ public string Summary =>
         hashCode.Add((int) PreferenceUnavailable);
         hashCode.Add(Customspeciename);
         hashCode.Add(Faction);
-        hashCode.Add(Subfaction);
         hashCode.Add(BankBalance);
         hashCode.Add(CharacterFlags);
         return hashCode.ToHashCode();

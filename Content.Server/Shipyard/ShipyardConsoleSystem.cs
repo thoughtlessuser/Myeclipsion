@@ -33,7 +33,7 @@ public sealed class ShipyardConsoleSystem : SharedShipyardConsoleSystem
         */
     }
 
-    protected override void TryPurchase(Entity<ShipyardConsoleComponent> ent, EntityUid user, VesselPrototype vessel, string? customName = null)
+    protected override void TryPurchase(Entity<ShipyardConsoleComponent> ent, EntityUid user, VesselPrototype vessel)
     {
         // client prevents asking for this so dont need feedback for validation
         if (_whitelist.IsWhitelistFail(vessel.Whitelist, ent))
@@ -60,14 +60,7 @@ public sealed class ShipyardConsoleSystem : SharedShipyardConsoleSystem
             return;
         }
 
-        if (!string.IsNullOrWhiteSpace(customName))
-        {
-            _meta.SetEntityName(shuttle, $"{vessel.Name} - {customName}");
-        }
-        else
-        {
-            _meta.SetEntityName(shuttle, $"{vessel.Name} {_random.Next(1000):000}");
-        }
+        _meta.SetEntityName(shuttle, $"{vessel.Name} {_random.Next(1000):000}");
 
         _cargo.UpdateBankAccount(bank, bank.Comp, -vesselPrice);
 

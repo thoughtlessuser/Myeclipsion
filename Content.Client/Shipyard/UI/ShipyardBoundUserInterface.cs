@@ -79,8 +79,8 @@ public sealed class ShipyardConsoleBoundUserInterface : BoundUserInterface
             _menu?.Dispose();
     }
 
-    private void Purchase(string id, string? customName)
+    private void Purchase(string id)
     {
-        SendMessage(new ShipyardConsolePurchaseMessage(id, customName));
+        SendMessage(new ShipyardConsolePurchaseMessage(id));
     }
 }
