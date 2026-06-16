@@ -3,8 +3,8 @@
 #
 - type: vessel
   id: Velator
-  name: CD Velator
-  description: A light Syndicate electronic warfare corvette with an onboard saboteur's armory.
+  name: ТК Велатор
+  description: Легкий корвет радиоэлектронной борьбы Синдиката с бортовым арсеналом саботажника.
   price: 60000
   category: Medium
   group: None
@@ -12,19 +12,22 @@
 
 - type: gameMap
   id: Velator
-  mapName: 'CD Velator'
+  mapName: 'КВСТ Велатор'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/velator.yml
   minPlayers: 0
   stations:
     Velator:
       stationProto: StandardCrescentVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'CD Velator {1}'
+          mapNameTemplate: 'ТК Велатор {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

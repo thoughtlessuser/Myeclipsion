@@ -46,7 +46,6 @@ public sealed class AnomalyStationRule : StationEventSystem<AnomalyStationRuleCo
                 ("y", (int)component.Coordinates.Y)),
             colorOverride: Color.DeepPink);
     }
-
     protected override void Started(EntityUid uid,
      AnomalyStationRuleComponent comp, GameRuleComponent gameRule,
      GameRuleStartedEvent args)
@@ -55,21 +54,19 @@ public sealed class AnomalyStationRule : StationEventSystem<AnomalyStationRuleCo
 
         SpawnAnomalyStation(comp);
     }
-
     private void SpawnAnomalyStation(AnomalyStationRuleComponent comp)
     {
-        var map = _gameTicker.DefaultMap;
+        MapId map = _gameTicker.DefaultMap;
 
         if (_loader.TryLoadGrid(map, new ResPath(comp.StationMapPath), out var grid,
          offset: comp.Coordinates))
         {
             if (grid is null) return;
 
-            var amountToSpawn = 4;
-
-            // TODO: Fuck AnomalySystem dependence
-            for (var i = 0; i < amountToSpawn; i++)
-                _anomaly.SpawnOnRandomGridLocation(grid.Value, comp.ArtifactSpawnerPrototype);
+            for (int i = 0; i < 4; i++)
+            {
+                _anomaly.SpawnOnRandomGridLocation(grid.Value, comp.AnomalySpawnerPrototype);
+            }
         }
 
         return;

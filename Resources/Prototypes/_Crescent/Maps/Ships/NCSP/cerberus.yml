@@ -3,28 +3,31 @@
 #
 - type: vessel
   id: Cerberus
-  name: GSC Cerberus
-  description: A shielded Syndicate destroyer.
-  price: 70000
+  name: МГ Цербер
+  description: Защищенный эсминец Синдиката.
+  price: 90000 #77000 appraisegrid
   category: Medium
   group: None
   path: /Maps/_Crescent/Shuttles/NCSP/cerberus.yml
 
 - type: gameMap
   id: Cerberus
-  mapName: 'GSC Cerberus'
+  mapName: 'МГ Цербер'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/cerberus.yml
   minPlayers: 0
   stations:
     Cerberus:
       stationProto: StandardCrescentCivilianVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: cruiser
         - type: StationNameSetup
-          mapNameTemplate: 'GSC Cerberus {1}'
+          mapNameTemplate: 'МГ Цербер {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -3,31 +3,34 @@
 
 - type: vessel
   id: Kite
-  name: ICM Kite
+  name: ГПИ Коршун
   description: |
-    A small all-rounder shuttle with expedition capabilities for beginner pilots, armed with dual plasmacasters.
+    Малый универсальный шаттл с возможностями для экспедиций, предназначенный для новичков-пилотов.
     LOADOUT: 2x 20mm 'Screamer' light autocannons
     MINIMUM CREW: 1x Pilot
-  price: 29000
+  price: 35000
   category: Small
   group: Civilian
   path: /Maps/_Crescent/Shuttles/Civilian/kite.yml
 
 - type: gameMap
   id: Kite
-  mapName: 'ICM Kite'
+  mapName: 'ГПИ Коршун'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/kite.yml
   minPlayers: 0
   stations:
     Kite:
       stationProto: StandardCrescentExpeditionVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: civilian
         - type: StationNameSetup
-          mapNameTemplate: 'ICM Kite {1}'
+          mapNameTemplate: 'ГПИ Коршун {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -3,10 +3,10 @@
 
 - type: vessel
   id: Warthog
-  name: Warthog
+  name: ШТ Бородавочник
   description: |
-    A scrap pod put together from welded rods and other bits of waste, cheapest option for when you must escape or get to a location, lacks EVA.
-    MINIMUM CREW: 1x Pilot
+    Собранный из сварных прутьев и прочего хлама, самый дешевый вариант, когда нужно сбежать или добраться до места, не имеет выхода в открытый космос (EVA).
+    МИНИМАЛЬНЫЙ ЭКИПАЖ: 1x Пилот
   price: 6000
   category: Small
   group: Scrap
@@ -14,19 +14,22 @@
 
 - type: gameMap
   id: Warthog
-  mapName: 'Warthog'
+  mapName: 'Бородавочник'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/warthog.yml
   minPlayers: 0
   stations:
     Warthog:
       stationProto: StandardCrescentCivilianVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'Warthog {1}'
+          mapNameTemplate: 'Бородавочник {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

@@ -1,8 +1,8 @@
 - type: vessel
   id: Perigale
-  name: DSM Perigale
+  name: БМС Перигей
   description: |
-    An imperial ultralight fighter armed with two pressure gatlings.
+    Имперский сверхлёгкий истребитель.
     LOADOUT: 2x 200cc energy gatlings
     MINIMUM CREW: 1x Pilot
   price: 10000
@@ -12,19 +12,22 @@
 
 - type: gameMap
   id: Perigale
-  mapName: 'DSM Perigale'
+  mapName: 'БМС Перигей'
   mapPath: /Maps/_Crescent/Shuttles/DSM/perigale.yml
   minPlayers: 0
   stations:
     Perigale:
       stationProto: StandardCrescentVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'DSM Perigale {1}'
+          mapNameTemplate: 'БМС Перигей {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

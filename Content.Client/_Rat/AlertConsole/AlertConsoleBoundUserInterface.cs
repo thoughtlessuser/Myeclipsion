@@ -23,6 +23,7 @@ public sealed class AlertConsoleBoundUserInterface : BoundUserInterface
             SendMessage(new AlertConsoleSaveSettingsMessage(
                 settings.Enabled,
                 settings.DetectionRadius,
+                settings.FactionChannel,
                 settings.StationAlertMessage,
                 settings.BroadcastToShuttle,
                 settings.ShuttleAlertMessage,

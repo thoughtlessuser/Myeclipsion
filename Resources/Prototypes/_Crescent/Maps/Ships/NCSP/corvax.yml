@@ -3,28 +3,31 @@
 #
 - type: vessel
   id: Corvax
-  name: GSC Corvax
-  description: A light missile corvette. Devastating at long range.
-  price: 35000
+  name: МГ Корвакс
+  description: Легкий ракетный корвет. Сокрушителен на дальних дистанциях.
+  price: 50000 #47000 appraisegrid
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/NCSP/corvax.yml
 
 - type: gameMap
   id: Corvax
-  mapName: 'GSC Corvax'
+  mapName: 'МГ Корвакс'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/corvax.yml
   minPlayers: 0
   stations:
     Corvax:
       stationProto: StandardCrescentVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'GSC Corvax {1}'
+          mapNameTemplate: 'МГ Корвакс {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

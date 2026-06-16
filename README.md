@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🐀 Eclipsion
+# 🐀 Encore
 
 **The English fork of Ratgore, a Russian fork of HULLROT, which itself is a fork of Space Station 14.**
 (when will it end)

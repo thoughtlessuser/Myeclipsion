@@ -3,11 +3,11 @@
 #
 - type: vessel
   id: Gnat
-  name: GSC Gnat
+  name: МГ Гнус
   description: | 
-    An ultralight Syndicate fighter, brandishing two 20mm Vulcans for quickly destroying opposing ULs or piercing vulnerable hull components.
-    LOADOUT: 2x NT 20mm Vulcans
-    CREW: 1x Pilot
+    Сверхлегкий истребитель Синдиката, оснащенный двумя 20-мм "Вулканами" для быстрого уничтожения вражеских сверхлегких кораблей или поражения уязвимых элементов корпуса.
+    ВООРУЖЕНИЕ: 2x 20-мм "Вулканы" НТ
+    ЭКИПАЖ: 1x Пилот
   price: 12500 #10000 appraisegrig
   category: Small
   group: None
@@ -15,23 +15,26 @@
 
 - type: gameMap
   id: Gnat
-  mapName: 'GSC Gnat'
+  mapName: 'МГ Гнус'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/gnat.yml
   minPlayers: 0
   stations:
     Gnat:
       stationProto: StandardCrescentVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'GSC Gnat {1}'
+          mapNameTemplate: 'МГ Гнус {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-fighter
         - type: VesselDescription
-          description: A cramped little cage, it has just enough space for its pilot to climb past its console and reload external weaponry.
+          description: Тесная маленькая кабина, в которой хватает места только на то, чтобы пилот мог пробраться к консоли и перезарядить внешнее вооружение.

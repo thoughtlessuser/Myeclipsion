@@ -1,6 +1,6 @@
 - type: gameMap
   id: RatFakel
-  mapName: 'NT Torch'
+  mapName: 'НТ Факел'
   mapPath: /Maps/_Crescent/POI/defunctminingpost.yml
   minPlayers: 0
   stations:
@@ -15,11 +15,11 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'NT Torch'
+          mapNameTemplate: 'НТ Факел'
 
 - type: gameMap
   id: RatBuran
-  mapName: 'NT Buran'
+  mapName: 'НТ Буран'
   mapPath: /Maps/_Rat/POI/miniminingpost.yml
   minPlayers: 0
   stations:
@@ -34,11 +34,11 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'NT Buran'
+          mapNameTemplate: 'НТ Буран'
 
 - type: gameMap
   id: RatKovf
-  mapName: 'NT Kovsh'
+  mapName: 'НТ Ковш'
   mapPath: /Maps/_Rat/POI/miniminingpost.yml
   minPlayers: 0
   stations:
@@ -53,4 +53,4 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'NT Kovsh'
+          mapNameTemplate: 'НТ Ковш'

@@ -1,27 +1,30 @@
 - type: vessel
   id: Chanchu
-  name: SHI Chanchu
+  name: ТПШ Чанчи
   description: A lightly armed mobile storefront meant to boost the sales of Shinohara.
-  price: 84000
+  price: 80000
   category: Medium
   group: None
   path: /Maps/_Crescent/Shuttles/SHI/chanchu.yml
 
 - type: gameMap
   id: Chanchu
-  mapName: 'SHI Chanchu'
+  mapName: 'ТПШ Чанчи'
   mapPath: /Maps/_Crescent/Shuttles/SHI/chanchu.yml
   minPlayers: 0
   stations:
     Chanchu:
       stationProto: StandardCrescentVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: civilian
         - type: StationNameSetup
-          mapNameTemplate: 'SHI Chanchu {1}'
+          mapNameTemplate: 'ТПШ Чанчи {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

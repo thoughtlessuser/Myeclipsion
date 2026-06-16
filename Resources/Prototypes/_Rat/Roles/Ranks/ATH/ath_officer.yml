@@ -1,29 +1,29 @@
 - type: rank
   id: RatRankATHOfficerHigh
-  name: Commodore
-  prefix: Commodore
+  name: Коммодор
+  prefix: Коммодор
   paygrade: O5
 
 - type: rank
   id: RatRankATHOfficerLead
-  name: Captain
-  prefix: Captain
+  name: Капитан
+  prefix: Капитан
   paygrade: O4
 
 - type: rank
   id: RatRankATHOfficerSenior
-  name: Lieutenant Captain
-  prefix: Lt. Captain
+  name: Капитан-лейтенант
+  prefix: Капитан-лейтенант
   paygrade: O3
 
 - type: rank
   id: RatRankATHOfficerMiddle
-  name: Oberleutnant
-  prefix: Oberleutnant
+  name: Оберлейтенант
+  prefix: Оберлейтенант
   paygrade: O2
 
 - type: rank
   id: RatRankATHOfficerJunior
-  name: Lieutenant
-  prefix: Lieutenant
+  name: Лейтенант
+  prefix: Лейтенант
   paygrade: O1

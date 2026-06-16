@@ -7,17 +7,17 @@
         - to: transmitter
           steps:
             - tag: TransmitterPartCircuitBoard
-              name: Broken transmitter circuit board
+              name: Обломок платы передатчика
               icon:
                 sprite: Objects/Materials/Scrap/generic.rsi
                 state: junk-intercom-1
             - tag: TransmitterPartAntenna
-              name: Broken antenna
+              name: Обломок антенны
               icon:
                 sprite: Objects/Materials/Scrap/generic.rsi
                 state: junk-camera
             - tag: TransmitterPartPowerModule
-              name: Broken power module
+              name: Обломок модуля питания
               icon:
                 sprite: Objects/Materials/Scrap/generic.rsi
                 state: junk-intercom-3

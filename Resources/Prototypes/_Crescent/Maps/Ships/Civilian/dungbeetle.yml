@@ -3,11 +3,11 @@
 
 - type: vessel
   id: Dungbeetle
-  name: Dungbeetle
+  name: Навук
   description: |
-    A derelict mining drone, recycled to be a mobile salvage platform. Has a trash cart for handy storage of your scrap.
-    LOADOUT: N/A
-    MINIMUM CREW: 1x Salvager.
+    Заброшенный добывающий дрон, переработанный в мобильную платформу для сборки. Имеет тележку для мусора для удобного хранения вашего лома.
+    ВООРУЖЕНИЕ: Отсутствует
+    МИНИМАЛЬНЫЙ ЭКИПАЖ: 1x Сборщик.
   price: 9000
   category: Small
   group: Scrap
@@ -15,19 +15,22 @@
 
 - type: gameMap
   id: Dungbeetle
-  mapName: 'Dungbeetle'
+  mapName: 'Навук'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/dungbeetle.yml
   minPlayers: 0
   stations:
     Dungbeetle:
       stationProto: StandardCrescentExpeditionVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'Dungbeetle {1}'
+          mapNameTemplate: 'Навук {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'

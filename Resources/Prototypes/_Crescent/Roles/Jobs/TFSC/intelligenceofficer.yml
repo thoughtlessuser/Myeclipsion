@@ -31,8 +31,7 @@
     - !type:FactionRequirement
       factionID: "TFSC"
     - !type:SexRequirement
-      inverted: true
-      sex: Female
+      sex: Male
     - !type:CharacterTraitRequirement
       inverted: true
       traits:

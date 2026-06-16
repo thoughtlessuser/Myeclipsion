@@ -3,8 +3,8 @@
 
 - type: vessel
   id: Suzerain
-  name: DSM Suzerain
-  description: A robust siege battlecruiser developed as a response to the Stern-class. Fares very well at long range.
+  name: БМС Сузерен
+  description: Надёжный штурмовой линкор, разработанный в ответ на класс Stern. Отлично работает на дальних дистанциях.
   price: 226750
   category: Large
   group: None
@@ -12,19 +12,22 @@
 
 - type: gameMap
   id: Suzerain
-  mapName: 'DSM Suzerain'
+  mapName: 'БМС Сузерен'
   mapPath: /Maps/_Crescent/Shuttles/DSM/suzerain.yml
   minPlayers: 0
   stations:
     Suzerain:
       stationProto: StandardCrescentVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: battleship
         - type: StationNameSetup
-          mapNameTemplate: 'DSM Suzerain {1}'
+          mapNameTemplate: 'БМС Сузерен {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

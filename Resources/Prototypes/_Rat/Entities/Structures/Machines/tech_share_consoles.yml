@@ -1,7 +1,7 @@
 - type: entity
   id: TechShareRequestConsole
-  name: Technology Transfer Console
-  description: Allows transferring technology access to other stations.
+  name: Консоль запроса технологий
+  description: Позволяет передавать доступ к технологиям на другие станции.
   suffix: Ratgore, TechShare
   parent: BaseComputer
   components:
@@ -28,8 +28,8 @@
 
 - type: entity
   id: TechShareReceiverConsole
-  name: Technology Reception Console
-  description: Accepts connections and grants access to another stations technologies.
+  name: Консоль приёма технологий
+  description: Принимает подключения и открывает доступ к технологиям другой станции.
   suffix: Ratgore, TechShare
   parent: BaseComputer
   components:

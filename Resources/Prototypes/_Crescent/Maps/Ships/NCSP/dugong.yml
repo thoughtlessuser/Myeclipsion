@@ -2,12 +2,11 @@
 # Discord: ChangelingRUES
 - type: vessel
   id: Dugong
-  name: SAW Dugongmk2
+  name: ПК Дюгонь
   description: |
-   Once a peaceful trading ship that died in the expanses of Taipan. It was resurrected to serve PC as a wandering merchant of their goods.
-
-   ARMAMENT: 2x 20mm guns.
-   MINIMUM CREW: 1 pilot
+    Когда-то мирный торговый корабль, что умер на просторах Тайпана. Он был воскрешён, выполняя для ПК роль странствующего торговца их товаром.
+    ВООРУЖЕНИЕ: 2x 20мм орудия.
+    МИНИМАЛЬНЫЙ ЭКИПАЖ: 1 пилот  
   price: 40000
   category: Medium
   group: Civilian
@@ -15,7 +14,7 @@
 
 - type: gameMap
   id: Dugong
-  mapName: 'SAW Dugongmk2'
+  mapName: 'ПК Дюгонь'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/dugong.yml
   minPlayers: 0
   stations:
@@ -30,7 +29,7 @@
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: hauler
         - type: StationNameSetup
-          mapNameTemplate: 'SAW Dugongmk2 {1}'
+          mapNameTemplate: 'ПК Дюгонь {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'

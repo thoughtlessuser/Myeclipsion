@@ -1,17 +1,18 @@
 - type: rank
   id: RatRankKommandantSenior
-  name: Grand Admiral
-  prefix: Grand Admiral
+  name: Гранд-адмирал
+  prefix: Гранд-адмирал
   paygrade: O8
 
 - type: rank
   id: RatRankKommandantMiddle
-  name: Admiral
-  prefix: Admiral
+  name: Адмирал
+  prefix: Адмирал
   paygrade: O7
 
 - type: rank
   id: RatRankKommandantJunior
-  name: Rear Admiral
-  prefix: Rear Admiral
+  name: Контр-адмирал
+  prefix: Контр-адмирал
   paygrade: O6
+

@@ -3,28 +3,31 @@
 #
 - type: vessel
   id: Ouroboros
-  name: GSC Ouroboros
-  description: A Syndicate stealth carrier.
-  price: 80000 
+  name: МГ Уроборос
+  description: Скрытный авианосец Синдиката.
+  price: 110000 #65000 appraisegrid
   category: Medium
   group: None
   path: /Maps/_Crescent/Shuttles/NCSP/ouroboros.yml
 
 - type: gameMap
   id: Ouroboros
-  mapName: 'GSC Ouroboros'
+  mapName: 'МГ Уроборос'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/ouroboros.yml
   minPlayers: 0
   stations:
     Ouroboros:
       stationProto: StandardCrescentCivilianVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: carrier
         - type: StationNameSetup
-          mapNameTemplate: 'GSC Ouroboros {1}'
+          mapNameTemplate: 'МГ Уроборос {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

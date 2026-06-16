@@ -1,6 +1,6 @@
 - type: gameMap
   id: TribalHideout
-  mapName: 'TAP Tribe'
+  mapName: 'ТАП Племя'
   mapPath: /Maps/_Crescent/Stations/tribalhideout.yml
   minPlayers: 0
   stations:
@@ -13,7 +13,7 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'TAP Tribe'
+          mapNameTemplate: 'ТАП Племя'
         - type: Grammar
           attributes:
             proper: true

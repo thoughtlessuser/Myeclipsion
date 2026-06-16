@@ -1,59 +1,60 @@
 - type: rank
   id: RatRankATHEnlistedFirst
-  name: Staff Ensign
-  prefix: Staff Ensign
+  name: Штабсфанрих
+  prefix: Штабсфанрих
   paygrade: E10
 
 - type: rank
   id: RatRankATHEnlistedSecond
-  name: Senior Ensign
-  prefix: Senior Ensign
+  name: Оберфанрих
+  prefix: Оберфанрих
   paygrade: E9
 
 - type: rank
   id: RatRankATHEnlistedThird
-  name: Ensign
-  prefix: Ensign
+  name: Фанрих
+  prefix: Фанрих
   paygrade: E8
 
 - type: rank
   id: RatRankATHEnlistedBased
-  name: Staff Feldwebel
-  prefix: Staff Feldwebel
+  name: Штабс-фельдфебель
+  prefix: Штабс-фельдфебель
   paygrade: E7
 
 - type: rank
   id: RatRankATHEnlistedHigh
-  name: Senior Feldwebel
-  prefix: Senior Feldwebel
+  name: Обер-фельдфебель
+  prefix: Обер-фельдфебель
   paygrade: E6
-
+  
 - type: rank
   id: RatRankATHEnlistedLead
-  name: Feldwebel
-  prefix: Feldwebel
+  name: Фельдфебель
+  prefix: Фельдфебель
   paygrade: E5
 
 - type: rank
   id: RatRankATHEnlistedSenior
-  name: Staff Corporal
-  prefix: Staff Corporal
+  name: Штабс-ефрейтор
+  prefix: Штабс-ефрейтор
   paygrade: E4
 
 - type: rank
   id: RatRankATHEnlistedMiddle
-  name: Senior Corporal
-  prefix: Senior Corporal
+  name: Обер-ефрейтор
+  prefix: Обер-ефрейтор
   paygrade: E3
 
 - type: rank
   id: RatRankATHEnlistedJunior
-  name: Corporal
-  prefix: Corporal
+  name: Ефрейтор
+  prefix: Ефрейтор
   paygrade: E2
 
 - type: rank
   id: RatRankATHEnlistedNovice
-  name: Sailor
-  prefix: Sailor
+  name: Матрос
+  prefix: Матрос
   paygrade: E1
+

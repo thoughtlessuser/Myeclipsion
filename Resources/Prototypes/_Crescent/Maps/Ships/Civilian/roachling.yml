@@ -3,11 +3,11 @@
 
 - type: vessel
   id: Roachling
-  name: Roachling
+  name: Роучлинг
   description: |
-    The Roachling is made from a decommisioned mining drone for cheap, retrofitting it for organic use, with little thought for the person piloting it.
-    LOADOUT: 2x Exhumer Miner Guns
-    MINIMUM CREW: 1x Miner
+    "Тараканчик" создан из списанного добывающего дрона задешево, переоборудованного для использования органическим пилотом, с минимальной заботой о пилотирующем его человеке.
+    ВООРУЖЕНИЕ: 2x Добывающие орудия "Экскаватор"
+    МИНИМАЛЬНЫЙ ЭКИПАЖ: 1x Шахтер
   price: 11000
   category: Small
   group: Scrap
@@ -15,19 +15,22 @@
 
 - type: gameMap
   id: Roachling
-  mapName: 'Roachling'
+  mapName: 'Роучлинг'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/roachling.yml
   minPlayers: 0
   stations:
     Roachling:
       stationProto: StandardCrescentExpeditionVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: fighter
         - type: StationNameSetup
-          mapNameTemplate: 'Roachling {1}'
+          mapNameTemplate: 'Роучлинг {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'

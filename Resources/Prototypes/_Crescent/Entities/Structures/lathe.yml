@@ -313,7 +313,7 @@
       - MagazinePistol
       - MagazinePistol6mm
       - MagazinePistolSubMachineGunTopMounted
-      # - BoomboxCraft  Do not tuch until fix
+      - BoomboxCraft
       - Wirecutter
       - Igniter
       - Signaller

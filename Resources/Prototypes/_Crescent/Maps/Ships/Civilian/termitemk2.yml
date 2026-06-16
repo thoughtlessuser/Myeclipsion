@@ -3,11 +3,11 @@
 
 - type: vessel
   id: Termitemk2
-  name: Termite MKII
+  name: Термит МКII
   description: |
-    The Termite MKII has undergone some questionable combat retrofits, capable of fitting 3 guns in it's meager hold. Guns sold seperately.
-    LOADOUT: 3x Fixed Universal hardpoints
-    MINIMUM CREW: 1x Pilot
+    "Термит МКII" прошел сомнительные боевые доработки, способные вместить 3 орудия в свой скромный отсек. Орудия продаются отдельно.
+    ВООРУЖЕНИЕ: 3x Стационарные универсальные точки крепления
+    МИНИМАЛЬНЫЙ ЭКИПАЖ: 1x Пилот
   price: 16000
   category: Small
   group: Civilian
@@ -15,19 +15,22 @@
 
 - type: gameMap
   id: Termitemk2
-  mapName: 'Termite MKII'
+  mapName: 'Термит М'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/termitemk2.yml
   minPlayers: 0
   stations:
     Termitemk2:
       stationProto: StandardCrescentExpeditionVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'Termite MKII {1}'
+          mapNameTemplate: 'Термит М {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'

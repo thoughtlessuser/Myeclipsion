@@ -3,8 +3,8 @@
 
 - type: vessel
   id: Chelubey
-  name: NCWL Chelubey
-  description: The antiquated Flagship of the Union fleet in Taypan.
+  name: ЛРНП Челубей
+  description: Устаревший флагман флота Союза в Тайпане.
   price: 600000
   category: Large
   group: None
@@ -12,23 +12,26 @@
 
 - type: gameMap
   id: Chelubey
-  mapName: 'NCWL Dear Chelubey'
+  mapName: 'ЛРНП Челубей'
   mapPath: /Maps/_Crescent/Shuttles/NCWL/chelubey.yml
   minPlayers: 0
   stations:
     Chelubey:
       stationProto: StandardCrescentVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: capital
         - type: StationNameSetup
-          mapNameTemplate: 'NCWL Dear Chelubey {1}'
+          mapNameTemplate: 'ЛРНП Челубей {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
           designation: vessel-designation-flagship
         - type: VesselDescription
-          description: This behemoth once carried the last hope of the League. What once held hope and determination, now only hosts the old cry of revolution.
+          description: Этот исполин когда-то нёс последнюю надежду Лиги. То, что когда-то было полно надежды и решимости, ныне хранит лишь старый клич революции.

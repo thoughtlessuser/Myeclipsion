@@ -17,7 +17,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 using System.Linq;
 using Content.Shared.Research.Prototypes;
-using Content.Server._Rat.Economy;
 
 namespace Content.Server.Cargo.Systems;
 
@@ -32,7 +31,6 @@ public sealed class PricingSystem : EntitySystem
     [Dependency] private readonly BodySystem _bodySystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
-    [Dependency] private readonly EconomyPriceSystem _economyPrice = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -106,12 +104,7 @@ public sealed class PricingSystem : EntitySystem
         var partRatio = totalPartsPresent / (double) totalParts;
         var partPenalty = component.Price * (1 - partRatio) * component.MissingBodyPartPenalty;
 
-        var protoId = MetaData(uid).EntityPrototype?.ID;
-        var basePrice = protoId != null && _economyPrice.TryGetItemOverride(protoId, out var overridePrice)
-            ? overridePrice
-            : component.Price;
-
-        args.Price += (basePrice - partPenalty) * (_mobStateSystem.IsAlive(uid, state) ? 1.0 : component.DeathPenalty);
+        args.Price += (component.Price - partPenalty) * (_mobStateSystem.IsAlive(uid, state) ? 1.0 : component.DeathPenalty);
     }
 
     private double GetSolutionPrice(Entity<SolutionContainerManagerComponent> entity)
@@ -335,11 +328,7 @@ public sealed class PricingSystem : EntitySystem
             TryComp<StackComponent>(uid, out var stack) &&
             !HasComp<MaterialComponent>(uid)) // don't double count material prices
         {
-            var protoId = MetaData(uid).EntityPrototype?.ID;
-            var unitPrice = protoId != null && _economyPrice.TryGetItemOverride(protoId, out var overridePrice)
-                ? overridePrice
-                : stackPrice.Price;
-            price += stack.Count * unitPrice;
+            price += stack.Count * stackPrice.Price;
         }
 
         return price;
@@ -355,8 +344,7 @@ public sealed class PricingSystem : EntitySystem
         {
             var stackPrice = (StackPriceComponent) stackpriceProto.Component;
             var stack = (StackComponent) stackProto.Component;
-            var unitPrice = _economyPrice.GetEffectiveItemPrice(prototype.ID, stackPrice.Price);
-            price += stack.Count * unitPrice;
+            price += stack.Count * stackPrice.Price;
         }
 
         return price;
@@ -368,11 +356,7 @@ public sealed class PricingSystem : EntitySystem
 
         if (TryComp<StaticPriceComponent>(uid, out var staticPrice))
         {
-            var protoId = MetaData(uid).EntityPrototype?.ID;
-            if (protoId != null && _economyPrice.TryGetItemOverride(protoId, out var overridePrice))
-                price += overridePrice;
-            else
-                price += staticPrice.Price;
+            price += staticPrice.Price;
         }
 
         return price;
@@ -385,7 +369,7 @@ public sealed class PricingSystem : EntitySystem
         if (prototype.Components.TryGetValue(_factory.GetComponentName(typeof(StaticPriceComponent)), out var staticProto))
         {
             var staticPrice = (StaticPriceComponent) staticProto.Component;
-            price += _economyPrice.GetEffectiveItemPrice(prototype.ID, staticPrice.Price);
+            price += staticPrice.Price;
         }
 
         return price;

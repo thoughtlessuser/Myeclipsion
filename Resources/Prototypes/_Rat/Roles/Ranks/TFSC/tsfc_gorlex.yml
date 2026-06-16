@@ -1,83 +1,84 @@
+# GSC Ranks
 ## GSC - Ringleader
 
 - type: rank
   id: RatRankGSCRingleaderSenior
-  name: Warlord of the Order
-  prefix: Warlord
+  name: Военачальник ордена
+  prefix: Военачальник
   paygrade: GSC-R3
 
 - type: rank
   id: RatRankGSCRingleaderMiddle
-  name: Grandmaster of the Order
-  prefix: Grandmaster
+  name: Магистр ордена
+  prefix: Магистр
   paygrade: GSC-R2
 
 - type: rank
   id: RatRankGSCRingleaderJunior
-  name: Leader of the Order
-  prefix: Leader
+  name: Главарь ордена
+  prefix: Главарь
   paygrade: GSC-R1
 
 ## GSC - Officer
 
 - type: rank
   id: RatRankGSCOfficerSenior
-  name: Knight Commander of the Order
-  prefix: Knight Cmdr.
+  name: Рыцарь-коммандор ордена
+  prefix: Рыцарь-ком.
   paygrade: GSC-O3
 
 - type: rank
   id: RatRankGSCOfficerMiddle
-  name: Knight Captain of the Order
-  prefix: Knight Capt.
+  name: Рыцарь-капитан ордена
+  prefix: Рыцарь-кап.
   paygrade: GSC-O2
 
 - type: rank
   id: RatRankGSCOfficerJunior
-  name: Knight Lieutenant of the Order
-  prefix: Knight Lt.
+  name: Рыцарь-лейтенант ордена
+  prefix: Рыцарь-лейт.
   paygrade: GSC-O1
 
 ## GSC - Soldiers
 
 - type: rank
   id: RatRankGSCSoldierTop
-  name: Knight Sergeant of the Order
-  prefix: Knight Sgt.
+  name: Рыцарь-сержант ордена
+  prefix: Рыцарь-серж.
   paygrade: GSC7
 
 - type: rank
   id: RatRankGSCSoldierHead
-  name: Veteran Knight of the Order
-  prefix: Knight
+  name: Рыцарь-ветеран ордена
+  prefix: Рыцарь
   paygrade: GSC6
 
 - type: rank
   id: RatRankGSCSoldierSrLead
-  name: Knight of the Order
-  prefix: Knight
+  name: Рыцарь ордена
+  prefix: Рыцарь
   paygrade: GSC5
 
 - type: rank
   id: RatRankGSCSoldierLead
-  name: Junior Knight of the Order
-  prefix: Jr. Knight
+  name: Младший рыцарь ордена
+  prefix: Мл. рыцарь
   paygrade: GSC4
 
 - type: rank
   id: RatRankGSCSoldierHigh
-  name: Squire of the Order
-  prefix: Squire
+  name: Оруженосец ордена
+  prefix: Сквайр
   paygrade: GSC3
 
 - type: rank
   id: RatRankGSCSoldierMiddle
-  name: Warrior of the Order
-  prefix: Warrior
+  name: Воин ордена
+  prefix: Воин
   paygrade: GSC2
 
 - type: rank
   id: RatRankGSCSoldierJunior
-  name: Initiate of the Order
-  prefix: Initiate
+  name: Новобранец ордена
+  prefix: Послушник
   paygrade: GSC1

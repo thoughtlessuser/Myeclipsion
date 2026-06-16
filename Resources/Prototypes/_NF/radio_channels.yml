@@ -1,7 +1,7 @@
 - type: radioChannel
   id: Traffic
   name: chat-radio-traffic
-  keycode: 'd'
+  keycode: 'д'
   frequency: 1022
   color: "#CC6633"
   # long range so it functions without a telecom server
@@ -11,6 +11,8 @@
 - type: radioChannel
   id: Nfsd
   name: chat-radio-nfsd
-  keycode: 's'
+  keycode: 'ш'
   frequency: 1023
   color: "#5191e0"
+
+

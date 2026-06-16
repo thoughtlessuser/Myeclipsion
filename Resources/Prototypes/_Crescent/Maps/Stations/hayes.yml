@@ -1,6 +1,6 @@
 - type: gameMap
   id: Hayes
-  mapName: 'IPM Hayes'
+  mapName: 'БИ Эпитафия'
   mapPath: /Maps/_Crescent/Stations/hayes.yml
   minPlayers: 0
   stations:
@@ -12,7 +12,7 @@
         - type: PreventPilot
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'IPM Hayes'
+          mapNameTemplate: 'БИ Эпитафия'
         - type: VesselDesignation
           designation: vessel-designation-outpost
         - type: StationJobs

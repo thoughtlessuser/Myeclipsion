@@ -3,9 +3,9 @@
 
 - type: vessel
   id: Hive
-  name: Hive
+  name: Улей
   description: |
-    The Hive is made from the remains of a derelict superfreighter, what was once it's cargobays now serving has hangars for it's complement of fighters.
+    "Улей" создан из остатков заброшенного супергрузовика; то, что когда-то было его грузовыми отсеками, теперь служит ангарами для его парка истребителей.
     LOADOUT: 1x 120mm 'Anvil' mono-barreled artillery cannon, 2x 48mm 'Shortbow' rocket pods, 2x 90mm 'Resolute' artillery cannons, 2x 20mm 'Screamer' light autocannons, 6x Small Ballistic Hardpoints
     MINIMUM CREW: 1x Captain, 1x Gunner/Loader, 4x Fighter Pilots
   price: 90000
@@ -15,19 +15,22 @@
 
 - type: gameMap
   id: Hive
-  mapName: 'Hive'
+  mapName: 'Улей'
   mapPath: /Maps/_Crescent/Shuttles/Civilian/hive.yml
   minPlayers: 0
   stations:
     Hive:
       stationProto: StandardCrescentExpeditionVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: carrier
         - type: StationNameSetup
-          mapNameTemplate: 'Hive {1}'
+          mapNameTemplate: 'Улей {1}'
           nameGenerator:
            !type:NanotrasenNameGenerator
             prefixCreator: '14'

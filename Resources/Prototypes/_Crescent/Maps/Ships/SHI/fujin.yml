@@ -1,7 +1,7 @@
 - type: vessel
   id: Fujin
-  name: SHI Fujin
-  description: The CSEC Fujin is a battlecruiser containing impressive frontal armament.
+  name: ТПШ Фуджин
+  description: ТПШ "Фуджин" — легкий эсминец с впечатляющим лобовым вооружением.
   price: 90000
   category: Medium
   group: None
@@ -9,19 +9,22 @@
 
 - type: gameMap
   id: Fujin
-  mapName: 'SHI Fujin'
+  mapName: 'ТПШ Фуджин'
   mapPath: /Maps/_Crescent/Shuttles/SHI/fujin.yml
   minPlayers: 0
   stations:
     Fujin:
       stationProto: StandardCrescentVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: battlecruiser
         - type: StationNameSetup
-          mapNameTemplate: 'SHI Fujin {1}'
+          mapNameTemplate: 'ТПШ Фуджин {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

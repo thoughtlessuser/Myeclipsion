@@ -293,7 +293,7 @@
   - type: ShipyardListing
     iffColor: IndianRed
     shuttles:
-    # - Dugong (Ratgore's strong mapping. It has scrap vendor on board for some fucking reason...)
+    - Dugong
     - Shanty
     - Rockchipper
     - Hyena

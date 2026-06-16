@@ -3,28 +3,31 @@
 #
 - type: vessel
   id: Sinn
-  name: GSC Sinn
-  description: An uparmed Syndicate destroyer.
-  price: 73000
+  name: МГ Злоба
+  description: Усиленно вооруженный эсминец Синдиката.
+  price: 85000 #84000 appraisegrid
   category: Medium
   group: None
   path: /Maps/_Crescent/Shuttles/NCSP/sinn.yml
 
 - type: gameMap
   id: Sinn
-  mapName: 'GSC Sinn'
+  mapName: 'КВСТ Злоба'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/sinn.yml
   minPlayers: 0
   stations:
     Sinn:
       stationProto: StandardCrescentCivilianVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: destroyer
         - type: StationNameSetup
-          mapNameTemplate: 'GSC Sinn {1}'
+          mapNameTemplate: 'МГ Злоба {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

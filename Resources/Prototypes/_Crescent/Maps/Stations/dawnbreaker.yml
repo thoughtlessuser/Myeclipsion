@@ -1,6 +1,6 @@
 - type: gameMap
   id: Dawnbreaker
-  mapName: 'CD Anvil'
+  mapName: 'ТК Анвил'
   mapPath: /Maps/_Rat/Stations/byblik.yml # Rat-change
   minPlayers: 0
   stations:
@@ -13,11 +13,9 @@
         - type: PreventPilot
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'CD Anvil'
+          mapNameTemplate: 'ТК Анвил'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
-        - type: VesselDescription
-          description: Cyberdawn research station.
         - type: VesselMusic
           ambientMusicPrototype: JackalMusic
         - type: Grammar

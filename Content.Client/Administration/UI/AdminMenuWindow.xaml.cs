@@ -28,7 +28,6 @@ public sealed partial class AdminMenuWindow : DefaultWindow
         MasterTabContainer.SetTabTitle((int) TabIndex.BabyJail, _localization.GetString("admin-menu-baby-jail-tab"));
         MasterTabContainer.SetTabTitle((int) TabIndex.Players, _localization.GetString("admin-menu-players-tab"));
         MasterTabContainer.SetTabTitle((int) TabIndex.Objects, _localization.GetString("admin-menu-objects-tab"));
-        MasterTabContainer.SetTabTitle((int) TabIndex.Economy, _localization.GetString("admin-menu-economy-tab"));
         MasterTabContainer.OnTabChanged += OnTabChanged;
     }
 
@@ -37,8 +36,6 @@ public sealed partial class AdminMenuWindow : DefaultWindow
         var tabEnum = (TabIndex)tabIndex;
         if (tabEnum == TabIndex.Objects)
             ObjectsTabControl.RefreshObjectList();
-        else if (tabEnum == TabIndex.Economy)
-            EconomyTabControl.RefreshList();
     }
 
     protected override void Dispose(bool disposing)
@@ -59,6 +56,5 @@ public sealed partial class AdminMenuWindow : DefaultWindow
         BabyJail,
         Players,
         Objects,
-        Economy,
     }
 }

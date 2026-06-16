@@ -118,8 +118,8 @@ public sealed class DiplomacySystem : EntitySystem
 
         SetRelation(myFaction, msg.TargetFactionId, FactionRelation.War);
 
-        var fromName = Loc.GetString($"diplomacy-faction-{myFaction}");
-        var toName = Loc.GetString($"diplomacy-faction-{msg.TargetFactionId}");
+        var fromName = Loc.GetString($"faction-{myFaction}");
+        var toName = Loc.GetString($"faction-{msg.TargetFactionId}");
         Announce(Loc.GetString("diplomacy-announce-war", ("faction1", fromName), ("faction2", toName)),
             new Color(1f, 0.27f, 0.27f), _announcer.GetAnnouncementId("diplomacy-war"));
 
@@ -149,8 +149,8 @@ public sealed class DiplomacySystem : EntitySystem
             Type = PendingProposalType.Peace
         });
 
-        var fromName = Loc.GetString($"diplomacy-faction-{myFaction}");
-        var toName = Loc.GetString($"diplomacy-faction-{msg.TargetFactionId}");
+        var fromName = Loc.GetString($"faction-{myFaction}");
+        var toName = Loc.GetString($"faction-{msg.TargetFactionId}");
         Announce(Loc.GetString("diplomacy-announce-peace-proposal", ("from", fromName), ("to", toName)),
             new Color(0.53f, 0.8f, 1f));
 
@@ -180,8 +180,8 @@ public sealed class DiplomacySystem : EntitySystem
             Type = PendingProposalType.Alliance
         });
 
-        var fromName = Loc.GetString($"diplomacy-faction-{myFaction}");
-        var toName = Loc.GetString($"diplomacy-faction-{msg.TargetFactionId}");
+        var fromName = Loc.GetString($"faction-{myFaction}");
+        var toName = Loc.GetString($"faction-{msg.TargetFactionId}");
         Announce(Loc.GetString("diplomacy-announce-alliance-proposal", ("from", fromName), ("to", toName)),
             new Color(0.53f, 0.8f, 1f));
 
@@ -211,8 +211,8 @@ public sealed class DiplomacySystem : EntitySystem
             Type = PendingProposalType.Trade
         });
 
-        var fromName = Loc.GetString($"diplomacy-faction-{myFaction}");
-        var toName = Loc.GetString($"diplomacy-faction-{msg.TargetFactionId}");
+        var fromName = Loc.GetString($"faction-{myFaction}");
+        var toName = Loc.GetString($"faction-{msg.TargetFactionId}");
         Announce(Loc.GetString("diplomacy-announce-trade-proposal", ("from", fromName), ("to", toName)),
             new Color(0.53f, 0.8f, 1f));
 
@@ -233,8 +233,8 @@ public sealed class DiplomacySystem : EntitySystem
 
         SetRelation(myFaction, msg.TargetFactionId, FactionRelation.Neutral);
 
-        var fromName = Loc.GetString($"diplomacy-faction-{myFaction}");
-        var toName = Loc.GetString($"diplomacy-faction-{msg.TargetFactionId}");
+        var fromName = Loc.GetString($"faction-{myFaction}");
+        var toName = Loc.GetString($"faction-{msg.TargetFactionId}");
         Announce(Loc.GetString("diplomacy-announce-trade-broken", ("faction1", fromName), ("faction2", toName)),
             new Color(1f, 0.53f, 0.27f));
 
@@ -267,8 +267,8 @@ public sealed class DiplomacySystem : EntitySystem
         };
         SetRelation(myFaction, proposal.FromFactionId, newRelation);
 
-        var fromName = Loc.GetString($"diplomacy-faction-{proposal.FromFactionId}");
-        var toName = Loc.GetString($"diplomacy-faction-{myFaction}");
+        var fromName = Loc.GetString($"faction-{proposal.FromFactionId}");
+        var toName = Loc.GetString($"faction-{myFaction}");
         var (key, soundId) = msg.Type switch
         {
             PendingProposalType.Peace => ("diplomacy-announce-peace-accepted", _announcer.GetAnnouncementId("diplomacy-peace")),
@@ -300,8 +300,8 @@ public sealed class DiplomacySystem : EntitySystem
 
         myPending.Remove(proposal);
 
-        var fromName = Loc.GetString($"diplomacy-faction-{proposal.FromFactionId}");
-        var toName = Loc.GetString($"diplomacy-faction-{myFaction}");
+        var fromName = Loc.GetString($"faction-{proposal.FromFactionId}");
+        var toName = Loc.GetString($"faction-{myFaction}");
         var key = msg.Type switch
         {
             PendingProposalType.Peace => "diplomacy-announce-peace-rejected",

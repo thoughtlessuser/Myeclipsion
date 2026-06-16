@@ -1,6 +1,6 @@
 - type: gameMap
   id: PortBalreska
-  mapName: 'NCWL Nova Balreska'
+  mapName: 'ЛРНП Марсова'
   mapPath: /Maps/_Rat/Stations/marsova.yml
   minPlayers: 0
   stations:
@@ -17,11 +17,11 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'NCWL Nova Balreska'
+          mapNameTemplate: 'ЛРНП Марсова'
         - type: VesselDesignation
           designation: vessel-designation-headquarters
         - type: VesselDescription
-          description: A fortified communard stronghold built inside an asteroid.
+          description: Прочная коммунарская крепость, построенная вокруг кровоточащего разрыва в нашей реальности.
         - type: VesselMusic
           ambientMusicPrototype: PortBalreskaMusic
         - type: Grammar

@@ -1035,52 +1035,5 @@ Entries:
     id: 124
     time: '2026-05-27T12:28:44.0000000+00:00'
     url: https://github.com/ss14-art/ratgore/pull/242
-  - author: NEirotoXiN00
-    changes:
-      - type: Add
-        message: Петушок на палочке (15u сахара + 10u воды + 5s в микроволновке). Можно вставить в слот маски. Скушать к сожалению только через ПКМ :(
-    id: 125
-    time: '2026-06-03T09:10:35.0000000+00:00'
-    url: https://github.com/ss14-art/ratgore/pull/262
-  - author: NEirotoXiN00
-    changes:
-      - type: Add
-        message: ЕМП зоны  и аномальная станция теперь будут спавнится в процессе игры.
-      - type: Tweak
-        message: Вместо аномалий на ивентовой станции будут артефакты.
-      - type: Remove
-        message: Артефакты больше не спавнят сингулярность и теслу.
-    id: 126
-    time: '2026-06-05T23:18:15.0000000+00:00'
-    url: https://github.com/ss14-art/ratgore/pull/269
-  - author: nabegator220
-    changes:
-      - type: Tweak
-        message: IPM suit is steel now.
-      - type: Tweak
-        message: EMP and buckshot nerf
-      - type: Tweak
-        message: Mercury Mk2 and Torturer armor nerf
-    id: 127
-    time: '2026-06-06T15:23:19.0000000+00:00'
-    url: https://github.com/ss14-art/ratgore/pull/271
-  - author: ChangelingRUES
-    changes:
-      - type: Tweak
-        message: Станция ОСР получила мелкие фиксы, навроде исправление мусорных труб, добавление ХимВенда, морга с крематорием и т.д.
-      - type: Tweak
-        message: Станция КД Бублик получила консоль связи для оповещений.
-      - type: Fix
-        message: Исправлено название станции ТПШ, Татсумо снова стала Татсумото.
-    id: 128
-    time: '2026-06-07T11:07:15.0000000+00:00'
-    url: https://github.com/ss14-art/ratgore/pull/270
-  - author: ChangelingRUES
-    changes:
-      - type: Fix
-        message: Станции ОСР дочинили всю проводку.
-    id: 129
-    time: '2026-06-07T15:49:13.0000000+00:00'
-    url: https://github.com/ss14-art/ratgore/pull/273
 Name: Rat
 Order: -1

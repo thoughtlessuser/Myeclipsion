@@ -1,27 +1,30 @@
 - type: vessel
   id: gazpachov
-  name: SHI Gazpachov
-  description: The SHI Gazpachov is a cost-effective mining ship designed for 2 miners and one foreman.
-  price: 45000
+  name: ТПШ Газпачов
+  description: ТПШ "Газпачов" - экономичное добывающее судно, предназначенное для 2 шахтеров и одного бригадира.
+  price: 52000
   category: Small
   group: Civilian
   path: /Maps/_Crescent/Shuttles/SHI/gazpachov.yml
 
 - type: gameMap
   id: gazpachov
-  mapName: 'SHI Gazpachov'
+  mapName: 'ТПШ Газпачов'
   mapPath: /Maps/_Crescent/Shuttles/SHI/gazpachov.yml
   minPlayers: 0
   stations:
     gazpachov:
       stationProto: StandardCrescentCivilianVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: miner
         - type: StationNameSetup
-          mapNameTemplate: 'SHI Gazpachov {1}'
+          mapNameTemplate: 'ТПШ Газпачов {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

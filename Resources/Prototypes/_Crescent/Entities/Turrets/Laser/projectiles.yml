@@ -48,7 +48,7 @@
     visualType: Circle
     color: Blue
   - type: EmpOnTrigger
-    range: 4
+    range: 7
     energyConsumption: 3500
     disableDuration: 10
   - type: PointLight

@@ -1,4 +1,3 @@
-using Content.Server._Rat.Economy;
 using Content.Server.Cargo.Components;
 using Content.Server.Cargo.Systems;
 using Content.Server.Radio.EntitySystems;
@@ -20,7 +19,6 @@ public sealed class ShipyardConsoleSystem : SharedShipyardConsoleSystem
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private readonly ShipyardSystem _shipyard = default!;
     [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly EconomyPriceSystem _economyPrice = default!;
 
     public override void Initialize()
     {
@@ -42,11 +40,9 @@ public sealed class ShipyardConsoleSystem : SharedShipyardConsoleSystem
         if (GetBankAccount(ent) is not {} bank)
             return;
 
-        var vesselPrice = _economyPrice.GetVesselPrice(vessel);
-
-        if (bank.Comp.Balance < vesselPrice)
+        if (bank.Comp.Balance < vessel.Price)
         {
-            var popup = Loc.GetString("cargo-console-insufficient-funds", ("cost", vesselPrice));
+            var popup = Loc.GetString("cargo-console-insufficient-funds", ("cost", vessel.Price));
             Popup.PopupEntity(popup, ent, user);
             Audio.PlayPvs(ent.Comp.DenySound, ent);
             return;
@@ -62,7 +58,7 @@ public sealed class ShipyardConsoleSystem : SharedShipyardConsoleSystem
 
         _meta.SetEntityName(shuttle, $"{vessel.Name} {_random.Next(1000):000}");
 
-        _cargo.UpdateBankAccount(bank, bank.Comp, -vesselPrice);
+        _cargo.UpdateBankAccount(bank, bank.Comp, -vessel.Price);
 
         var message = Loc.GetString("shipyard-console-docking", ("vessel", vessel.Name.ToString()));
         _radio.SendRadioMessage(ent, message, ent.Comp.Channel, ent);

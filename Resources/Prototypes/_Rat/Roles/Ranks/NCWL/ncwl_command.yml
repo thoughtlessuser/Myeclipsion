@@ -1,18 +1,18 @@
 - type: rank
   id: RatRankNCWLCommandSenior
-  name: Colonel General
-  prefix: Col. Gen.
+  name: Генерал-полковник
+  prefix: Генерал-полк.
   paygrade: O10
 
 - type: rank
   id: RatRankNCWLCommandMiddle
-  name: Lieutenant General
-  prefix: Lt. Gen.
+  name: Генерал-лейтенант
+  prefix: Генерал-лейт.
   paygrade: O9
 
 - type: rank
   id: RatRankNCWLCommandJunior
-  name: Major General
-  prefix: Maj. Gen.
+  name: Генерал-майор
+  prefix: Генерал-майор
   paygrade: O8
-  
+

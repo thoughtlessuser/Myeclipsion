@@ -1,41 +1,41 @@
 - type: rank
   id: RatRankNCWLOfficerTop
-  name: Colonel
-  prefix: Colonel
+  name: Полковник
+  prefix: Полковник
   paygrade: O7
 
 - type: rank
   id: RatRankNCWLOfficerHigher
-  name: Lieutenant Colonel
-  prefix: Lt. Col.
+  name: Подполковник
+  prefix: Подполковник
   paygrade: O6
 
 - type: rank
   id: RatRankNCWLOfficerHigh
-  name: Major
-  prefix: Major
+  name: Майор
+  prefix: Майор
   paygrade: O5
 
 - type: rank
   id: RatRankNCWLOfficerLead
-  name: Captain
-  prefix: Captain
+  name: Капитан
+  prefix: Капитан
   paygrade: O4
 
 - type: rank
   id: RatRankNCWLOfficerSenior
-  name: Senior Lieutenant
-  prefix: Sr. Lt.
+  name: Старший лейтенант
+  prefix: Ст. лейт.
   paygrade: O3
 
 - type: rank
   id: RatRankNCWLOfficerMiddle
-  name: Lieutenant
-  prefix: Lieutenant
+  name: Лейтенант
+  prefix: Лейтенант
   paygrade: O2
 
 - type: rank
   id: RatRankNCWLOfficerJunior
-  name: Junior Lieutenant
-  prefix: Jr. Lt.
+  name: Младший лейтенант
+  prefix: Мл. лейт.
   paygrade: O1

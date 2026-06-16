@@ -1,30 +1,33 @@
 - type: vessel
   id: Covetor
-  name: DSM Covetor
+  name: БМС Коветор
   description: |
-    A well-stocked Imperial mining, salvaging, and munitions production Destroyer-sized Industrial Platform. Through a minaturized ultralight gantry, it is capable producing vessels that can preform greater mining or resource harvesting operations. Lightly armed and sluggish.
+    Хорошо оснащенная имперская промышленный шаттл размером с эсминец, предназначенный для добычи полезных ископаемых, разборки завалов и производства боеприпасов. Легковооружена и неповоротлива.
     LOADOUT: 1x 300w 'Curse' energized ion bolt cannon, 4x 200cc 'Retribution' small laser gatling, 1x SHI 250c "Exhumer" kinetic Pulser
     MINIMUM CREW: 1x Captain, 1x Gunner, 2x Miner Crew
-  price: 70000
+  price: 50000
   category: Small
   group: None
   path: /Maps/_Crescent/Shuttles/DSM/covetor.yml
 
 - type: gameMap
   id: Covetor
-  mapName: 'DSM Covetor'
+  mapName: 'БМС Коветор'
   mapPath: /Maps/_Crescent/Shuttles/DSM/covetor.yml
   minPlayers: 0
   stations:
     Covetor:
       stationProto: StandardCrescentStation
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: large_industrial
         - type: StationNameSetup
-          mapNameTemplate: 'DSM Covetor {1}'
+          mapNameTemplate: 'БМС Коветор {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

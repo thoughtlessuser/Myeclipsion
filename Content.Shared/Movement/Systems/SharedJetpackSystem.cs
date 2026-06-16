@@ -172,8 +172,6 @@ public abstract class SharedJetpackSystem : EntitySystem
         {
             if (enabled)
             {
-			    if (HasComp<JetpackUserComponent>(user.Value))
-      	            return;
                 SetupUser(user.Value, uid);
             }
             else

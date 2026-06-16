@@ -2,29 +2,28 @@
 # Discord: @ninruB
 
 - type: vessel
-  id: Lister
-  name: NCWL Lister
-  description: A light communard assault battlecruiser.
+  id: Sunder
+  name: ЛРНП Сандер
+  description: Лёгкий энергетический крейсер.
   price: 90000
-  category: Medium
+  category: Large
   group: None
-  path: /Maps/_Crescent/Shuttles/NCWL/lister.yml
+  path: /Maps/_Crescent/Shuttles/NCWL/sunder.yml
 
 - type: gameMap
-  id: Lister
-  mapName: 'NCWL Lister'
-  mapPath: /Maps/_Crescent/Shuttles/NCWL/lister.yml
+  id: Sunder
+  mapName: 'ЛРНП Сандер'
+  mapPath: /Maps/_Crescent/Shuttles/NCWL/sunder.yml
   minPlayers: 0
   stations:
-    Lister:
+    Sunder:
       stationProto: StandardCrescentVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
-        - type: VesselIcon
-          iffIcon:
-            sprite: _Crescent/ShipIcons/ifficons.rsi
-            state: battlecruiser
         - type: StationNameSetup
-          mapNameTemplate: 'NCWL Lister {1}'
+          mapNameTemplate: 'ЛРНП Сандер {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'

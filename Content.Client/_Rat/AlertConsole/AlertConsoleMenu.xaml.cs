@@ -29,8 +29,7 @@ public sealed partial class AlertConsoleMenu : DefaultWindow
             OnSavePressed?.Invoke(new AlertConsoleBuiState(
                 EnabledCheck.Pressed,
                 RadiusSlider.Value,
-                string.Empty,
-                false,
+                ChannelEdit.Text,
                 StationMessageEdit.Text,
                 BroadcastCheck.Pressed,
                 ShuttleMessageEdit.Text,
@@ -45,9 +44,7 @@ public sealed partial class AlertConsoleMenu : DefaultWindow
         RadiusSlider.SetValueWithoutEvent(Math.Clamp(state.DetectionRadius, 10f, 2000f));
         RadiusValueLabel.Text = $"{(int) state.DetectionRadius} м";
 
-        ChannelLabel.Text = state.FactionChannelResolved
-            ? Loc.GetString("alert-console-channel-value", ("channel", state.FactionChannel))
-            : Loc.GetString("alert-console-channel-unknown");
+        ChannelEdit.Text = state.FactionChannel;
 
         CooldownSlider.SetValueWithoutEvent(Math.Clamp(state.AlertCooldownSeconds, 5f, 3600f));
         CooldownValueLabel.Text = $"{(int) state.AlertCooldownSeconds} сек";

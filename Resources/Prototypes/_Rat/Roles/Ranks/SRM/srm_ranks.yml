@@ -2,109 +2,109 @@
 
 - type: rank
   id: RatRankSRMOverseerSenior
-  name: Hunter’s Overlord
-  prefix: Overlord
+  name: Владыка охоты
+  prefix: Владыка
   paygrade: SRM-C6
 
 - type: rank
   id: RatRankSRMOverseerMiddle
-  name: Grand Hunting Overseer
-  prefix: Grand Overseer
+  name: Великий надзиратель охоты
+  prefix: Великий надзиратель
   paygrade: SRM-C5
 
 - type: rank
   id: RatRankSRMOverseerJunior
-  name: Hunting Overseer
-  prefix: Overseer
+  name: Надзиратель охоты
+  prefix: Надзиратель
   paygrade: SRM-C4
 
 - type: rank
   id: RatRankSRMMontagneSenior
-  name: Hunting Seneschal
-  prefix: Seneschal
+  name: Сенешаль охоты
+  prefix: Сенешаль
   paygrade: SRM-C3
 
 - type: rank
   id: RatRankSRMMontagneMiddle
-  name: Hunting Steward
-  prefix: Steward
+  name: Распорядитель охоты
+  prefix: Распорядитель
   paygrade: SRM-C2
 
 - type: rank
   id: RatRankSRMMontagneJunior
-  name: Junior Hunting Steward
-  prefix: Jr. Steward
+  name: Младший распорядитель охоты
+  prefix: Мл. распорядитель
   paygrade: SRM-C1
 
 - type: rank
   id: RatRankSRMHunterSrLead
-  name: Hunting Elder
-  prefix: Elder
+  name: Старейшина охоты
+  prefix: Старейшина
   paygrade: SRM9
 
 - type: rank
   id: RatRankSRMHunterHigh
-  name: Master Hunter
-  prefix: Master
+  name: Мастер-охотник
+  prefix: Мастер
   paygrade: SRM8
 
 - type: rank
   id: RatRankSRMHunterLead
-  name: Veteran Hunter
-  prefix: Veteran Brother
+  name: Ветеран охоты
+  prefix: Брат-ветеран
   paygrade: SRM7
 
 - type: rank
   id: RatRankSRMHunterSenior
-  name: Senior Hunter
-  prefix: Senior Brother-Hunter
+  name: Старший охотник
+  prefix: Ст. брат-охотник
   paygrade: SRM6
 
 - type: rank
   id: RatRankSRMHunterMiddle
-  name: Experienced Hunter
-  prefix: Brother-Hunter
+  name: Опытный охотник
+  prefix: Брат-охотник
   paygrade: SRM5
 
 - type: rank
   id: RatRankSRMHunterJunior
-  name: Hunter
-  prefix: Brother-Hunter
+  name: Охотник
+  prefix: Брат-охотник
   paygrade: SRM4
 
 - type: rank
   id: RatRankSRMApprenticeHigh
-  name: Young Hunter
-  prefix: Young Brother
+  name: Юный охотник
+  prefix: Брат-юнец
   paygrade: SRM3
 
 - type: rank
   id: RatRankSRMApprenticeMiddle
-  name: Hunting Apprentice
-  prefix: Apprentice
+  name: Ученик охоты
+  prefix: Ученик
   paygrade: SRM2
 
 - type: rank
   id: RatRankSRMApprenticeJunior
-  name: Fresh Blood
-  prefix: Pup
+  name: Свежая кровь
+  prefix: Щенок
   paygrade: SRM1
 
 # SRM - Sisters
 - type: rank
   id: RatRankSRMTenderSenior
-  name: Warden of Saint Serreyn
-  prefix: Sister Warden
+  name: Смотрительница святой Серрейн
+  prefix: Сестра-смотрительница
   paygrade: SRM-S3
 
 - type: rank
   id: RatRankSRMTenderMiddle
-  name: Hospitalier Sister
-  prefix: Sister Hospitalier
+  name: Сестра культа Госпитальер
+  prefix: Сестра-госпитальер
   paygrade: SRM-S2
 
 - type: rank
   id: RatRankSRMTenderJunior
-  name: Novice Hospitalier
-  prefix: Sister of Mercy
+  name: Ученица культа Госпитальер
+  prefix: Сестра милосердия
   paygrade: SRM-S1

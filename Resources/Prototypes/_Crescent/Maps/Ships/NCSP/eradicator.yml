@@ -3,8 +3,8 @@
 #
 - type: vessel
   id: Eradicator
-  name: GSC Eradicator
-  description: A Syndicate stealth destroyer.
+  name: МГ Дикатор
+  description: Скрытный эсминец Синдиката.
   price: 115000 #115000 appraisegrid
   category: Medium
   group: None
@@ -12,19 +12,22 @@
 
 - type: gameMap
   id: Eradicator
-  mapName: 'GSC Eradicator'
+  mapName: 'МГ Дикатор'
   mapPath: /Maps/_Crescent/Shuttles/NCSP/eradicator.yml
   minPlayers: 0
   stations:
     Eradicator:
       stationProto: StandardCrescentCivilianVessel
+      gridComponents:
+        - type: MapIcon
+          iconType: Shuttle
       components:
         - type: VesselIcon
           iffIcon:
             sprite: _Crescent/ShipIcons/ifficons.rsi
             state: corvette
         - type: StationNameSetup
-          mapNameTemplate: 'GSC Eradicator {1}'
+          mapNameTemplate: 'МГ Дикатор {1}'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
