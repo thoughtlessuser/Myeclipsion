@@ -48,6 +48,8 @@ public sealed class SpawnPointSystem : EntitySystem
                     default:
                         continue;
                 }
+
+                continue;
             }
 
             if (_gameTicker.RunLevel == GameRunLevel.InRound && spawnPoint.SpawnType == SpawnPointType.LateJoin)
