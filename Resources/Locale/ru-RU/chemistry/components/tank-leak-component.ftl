@@ -1,2 +1,2 @@
-﻿tank-leak-popup = В {  } образовалась дырка!
-tank-leak-destroy-popup = { CAPITALIZE() } разваливается, разливая содержимое!
+tank-leak-popup = В { $entity } образовалась дырка!
+tank-leak-destroy-popup = { CAPITALIZE($entity) } разваливается, разливая содержимое!
