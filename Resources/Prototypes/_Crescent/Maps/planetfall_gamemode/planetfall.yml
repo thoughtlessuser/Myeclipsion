@@ -1,0 +1,32 @@
+- type: gameMap
+  id: Planetfall
+  mapName: 'Planetfall'
+  mapPath: \Maps\_Crescent\Planetfall\planetfallmap.yml
+  minPlayers: 0
+  stations:
+    Planetfall:
+      stationProto: FlagshipCrescentVessel
+      components:
+        - type: StationNameSetup
+          mapNameTemplate: 'Planetfall'
+          nameGenerator:
+            !type:NanotrasenNameGenerator
+            prefixCreator: '14'
+        - type: VesselDesignation
+          designation: vessel-designation-headquarters
+        - type: VesselDescription
+          description: Olywier's fiefdom planet.
+        - type: StationJobs
+          overflowJobs: []
+          availableJobs:
+            GovernorDSM: [ 1, 1 ]
+            KnightDSM: [ 4, 4 ]
+            LevymanDSM: [ -1, -1 ]
+            CourtierDSM: [ 10, 10 ]
+            FreeholderDSM: [ -1, -1 ]
+
+            MVDOfficerNCWL: [ 1, 1 ]
+            MVDGruntNCWL: [ 4, 4 ]
+            FleetkapitanNCWL: [ 5, 5 ]
+            PartisanNCWL: [ -1, -1 ]
+            ArtificerNCWL: [ 5, 5 ]

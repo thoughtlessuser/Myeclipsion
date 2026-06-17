@@ -202,3 +202,25 @@
         gameMapID: RatKovf
         posX: 3000
         posY: -3000
+
+- type: gamePreset
+  id: Planetfall
+  alias:
+  - planetfall
+  name: Planetfall
+  showInVote: true
+  description: Something isn't right in olywier's planet...
+  rules:
+  - Planetfall
+  
+- type: entity
+  id: Planetfall
+  parent: BaseGameRule
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AdventureRule
+    gameMapsByID:
+      Planetfall:
+        gameMapID: Planetfall
+        posX: 0 
+        posY: 0
