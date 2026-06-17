@@ -244,9 +244,6 @@ namespace Content.Server.GameTicking
 
             DebugTools.AssertNotNull(data);
 
-            var newMind = _mind.CreateMind(data!.UserId, character.Name);
-            _mind.SetUserId(newMind, data.UserId);
-
             var jobPrototype = _prototypeManager.Index<JobPrototype>(jobId);
 
             _playTimeTrackings.PlayerRolesChanged(player);
@@ -260,8 +257,19 @@ namespace Content.Server.GameTicking
                 jobId,
                 character,
                 spawnPointType: spawnPointType);
-            DebugTools.AssertNotNull(mobMaybe);
+
+            if (mobMaybe == null)
+            {
+                PlayerJoinLobby(player);
+                _chatManager.DispatchServerMessage(player,
+                    Loc.GetString("game-ticker-player-no-spawn-point-available-when-joining"));
+                return;
+            }
+
             var mob = mobMaybe!.Value;
+
+            var newMind = _mind.CreateMind(data!.UserId, character.Name);
+            _mind.SetUserId(newMind, data.UserId);
 
             if (jobPrototype.NameDataset == AiNamesDataset)
             {
