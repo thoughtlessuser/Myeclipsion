@@ -42,6 +42,14 @@
   color: "#cbc3e3"
 
 - type: radioChannel
+  id: SyndicateCommand
+  name: chat-radio-syndicatecommand
+  keycode: 'з'
+  frequency: 1453
+  color: "#d34d4f"
+  longRange: true
+
+- type: radioChannel
   id: Gorlex
   name: chat-radio-syndiegorlex
   keycode: "г"

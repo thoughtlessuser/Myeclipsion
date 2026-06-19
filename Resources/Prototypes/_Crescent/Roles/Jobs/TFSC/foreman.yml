@@ -58,7 +58,7 @@
     shoes: ClothingShoesBootsCombat
     head: ClothingHeadHatHardhatSyndicateForeman
     id: ForemanPDA
-    ears: ClothingHeadsetNCSPSaws
+    ears: ClothingHeadsetNCSPSawsCommand
     outerClothing: ClothingOuterArmorSyndicateForeman
     belt: ClothingBeltUtilityEngineering
     pocket1: WeaponPistolViperWood
