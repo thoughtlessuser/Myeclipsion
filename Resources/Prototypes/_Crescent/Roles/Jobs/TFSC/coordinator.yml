@@ -27,6 +27,12 @@
   whitelisted: true # Rat
   requireAdminNotify: true
   icon: "JobIconSyndieCoordinator"
+  chatNameColor: "#e2e2e2"
+  chatAmplification:
+    bubbleScale: 1.09
+    shoutBubbleScale: 1.32
+    radioScale: 1.23
+    radioBold: true
   supervisors: You answer to the interests of the Interdyne Pharmaceuticals company. Organize your employees. Secure stakeholders and profit.
   canBeAntag: false
   requirements:
