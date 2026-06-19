@@ -1971,9 +1971,6 @@ entities:
       parent: 1
     - type: DeviceLinkSource
       linkedPorts:
-        invalid:
-        - - Pressed
-          - Toggle
         302:
         - - Pressed
           - Toggle
@@ -2801,11 +2798,4 @@ entities:
       startingCharge: 995
     - type: ApcPowerReceiverBattery
       enabled: True
-- proto: Wrench
-  entities:
-  - uid: 328
-    components:
-    - type: Transform
-      pos: 6.583562,-0.4181602
-      parent: 1
 ...
