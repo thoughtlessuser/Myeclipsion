@@ -25,13 +25,13 @@ public sealed partial class AlertConsoleComponent : Component
     public float MinDetectionVelocity = 0.5f;
 
     [DataField, AutoNetworkedField]
-    public string StationAlertMessage = "{name} приближается к станции на {dist} метров!";
+    public string StationAlertMessage = "{name} is approaching the station at {dist} meters!";
 
     [DataField, AutoNetworkedField]
     public bool BroadcastToShuttle = true;
 
     [DataField, AutoNetworkedField]
-    public string ShuttleAlertMessage = "{name}, вы вошли в охраняемую зону. Назовите принадлежность к фракции и цель визита.";
+    public string ShuttleAlertMessage = "{name}, you have entered a secured zone. State your faction affiliation and purpose of visit.";
 
     [DataField, AutoNetworkedField]
     public float AlertCooldownSeconds = 60f;
