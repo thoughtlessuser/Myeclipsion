@@ -52,3 +52,10 @@ rat-faction-admin-player-not-found = Player '{ $playerName }' not found.
 rat-faction-admin-faction-not-found = Failed to set manager for subfaction ID { $factionId }. Subfaction may not exist or player is already a manager.
 rat-faction-admin-remove-failed = Failed to remove manager from subfaction ID { $factionId }. Subfaction or manager may not exist.
 rat-faction-admin-use-factionlist = Use 'factionlist' to see subfaction IDs
+
+# Eclipsion Localization Fixes
+rat-faction-window-description = Choose a guild. Guilds are player-created groups where members can invite others and organize together.
+rat-faction-window-title = Guild Selection
+rat-faction-label = Select Guild
+rat-faction-apply = Join
+rat-faction-cancel = Cancel
