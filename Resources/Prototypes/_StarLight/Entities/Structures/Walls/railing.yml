@@ -865,9 +865,9 @@
     - trigger:
         !type:DamageTrigger
         damage: 200
-        behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Climbable
   - type: RCDDeconstructable
     cost: 2
@@ -904,9 +904,9 @@
     - trigger:
         !type:DamageTrigger
         damage: 200
-        behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Climbable
 
 - type: entity
@@ -948,9 +948,9 @@
     - trigger:
         !type:DamageTrigger
         damage: 200
-        behaviors:
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Climbable
 
 
