@@ -12,9 +12,9 @@
     drawdepth: FloorTiles
   - type: Transform
     anchored: true
-  - type: Tag
-    tags:
-      - Stairs
+  # - type: Tag
+  #   tags:
+  #     - Stairs
   - type: Anchorable
     flags:
     - Anchorable
