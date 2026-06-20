@@ -1107,5 +1107,12 @@ Entries:
     id: 132
     time: '2026-06-20T17:08:53.0000000+00:00'
     url: https://github.com/ss14-art/ratgore/pull/281
+  - author: Gr-avity
+    changes:
+      - type: Tweak
+        message: Изменён овервотч (он кому-то нужен?)
+    id: 133
+    time: '2026-06-20T17:09:18.0000000+00:00'
+    url: https://github.com/ss14-art/ratgore/pull/282
 Name: Rat
 Order: -1
