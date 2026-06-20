@@ -1,10 +1,10 @@
 using Content.Server.Administration;
 using Content.Shared.Administration;
-using Content.Shared._Ratgore.Factions;
+using Content.Shared._Rat.Factions;
 using Robust.Shared.Console;
 using Content.Server.Database;
 
-namespace Content.Server._Ratgore.Factions.Commands;
+namespace Content.Server._Rat.Factions.Commands;
 
 [AdminCommand(AdminFlags.Admin)]
 public sealed class SendFactionsCommand : LocalizedCommands

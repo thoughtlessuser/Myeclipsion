@@ -1,10 +1,10 @@
-using Content.Shared._Ratgore.Factions;
+using Content.Shared._Rat.Factions;
 using Content.Shared.Examine;
 using Content.Shared.Humanoid;
 using Content.Shared.Preferences;
 using Robust.Shared.GameObjects;
 
-namespace Content.Server._Ratgore.Factions;
+namespace Content.Server._Rat.Factions;
 
 public sealed class RatFactionExamineSystem : EntitySystem
 {

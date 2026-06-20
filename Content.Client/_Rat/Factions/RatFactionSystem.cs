@@ -1,9 +1,9 @@
-using Content.Shared._Ratgore.Factions;
+using Content.Shared._Rat.Factions;
 using Robust.Shared.GameObjects;
 using System;
 using System.Collections.Generic;
 
-namespace Content.Client._Ratgore.Factions;
+namespace Content.Client._Rat.Factions;
 
 public sealed class RatFactionSystem : EntitySystem
 {

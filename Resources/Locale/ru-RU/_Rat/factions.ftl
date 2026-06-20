@@ -1,18 +1,11 @@
 # Faction Selection UI
 rat-faction-selector-none = Без подфракции
-rat-faction-selector-no-factions = Подфракции не созданы или не загружены.
+rat-faction-selector-no-factions = Подфракции не созданы или не загружены. Используйте команду: factioncreate <название> <вайтлист:true/false> <описание> для создания подфракций.
 
-Используйте команду:
-factioncreate <название> <вайтлист:true/false> <описание>
-
-для создания подфракций.
-
-Подфракция - это дополнительная организация внутри основной фракции
+# Подфракция - это дополнительная организация внутри основной фракции
 rat-faction-selector-select = Выберите подфракцию из списка
 rat-faction-selector-no-subfaction = Без подфракции
-rat-faction-selector-whitelist-required = 
-
-[color=yellow]Требуется вайтлист[/color]
+rat-faction-selector-whitelist-required = [color=yellow]Требуется вайтлист[/color]
 rat-faction-selector-invalid-index = Недопустимый индекс подфракции: { $idx } (всего: { $total })
 rat-faction-selector-reset = Подфракция сброшена.
 rat-faction-selector-selected = Выбрана подфракция: { $factionName }
@@ -21,9 +14,7 @@ rat-faction-selector-selected = Выбрана подфракция: { $factionN
 rat-faction-command-no-factions = Нет доступных фракций. Подключитесь к серверу сначала.
 rat-faction-command-available = Доступные фракции:
 rat-faction-command-none =   none - Без фракции
-rat-faction-command-usage = 
-
-Используйте: selectfaction <название> или selectfaction none
+rat-faction-command-usage = Используйте: selectfaction <название> или selectfaction none
 rat-faction-command-reset = Фракция сброшена.
 rat-faction-command-not-found = Фракция '{ $factionName }' не найдена.
 rat-faction-command-selected = Выбрана фракция: { $factionName }
@@ -34,9 +25,7 @@ rat-faction-examine = [color=gold]Подфракция: { $faction }[/color]
 # Admin Faction Commands
 rat-faction-admin-no-factions = Нет фракций в базе данных.
 rat-faction-admin-list-header = Фракции:
-rat-faction-admin-total = 
-
-Всего фракций: { $count }
+rat-faction-admin-total = Всего фракций: { $count }
 rat-faction-admin-created = Создана фракция '{ $name }' (вайтлист: { $whitelisted }).
 rat-faction-admin-deleted = Удалена фракция ID { $id }.
 rat-faction-admin-delete-failed = Не удалось удалить фракцию ID { $id }. Возможно, фракция не существует.

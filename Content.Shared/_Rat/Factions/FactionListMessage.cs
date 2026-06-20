@@ -1,6 +1,6 @@
 using Robust.Shared.Serialization;
 
-namespace Content.Shared._Ratgore.Factions;
+namespace Content.Shared._Rat.Factions;
 
 [Serializable, NetSerializable]
 public sealed class FactionListMessage : EntityEventArgs

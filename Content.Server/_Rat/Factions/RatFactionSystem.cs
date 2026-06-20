@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Database;
-using Content.Shared._Ratgore.Factions;
+using Content.Shared._Rat.Factions;
 using Content.Shared.GameTicking;
 using Robust.Server.Player;
 using Robust.Shared.GameObjects;
@@ -9,7 +9,7 @@ using Robust.Shared.IoC;
 using Robust.Shared.Player;
 using Robust.Shared.Enums;
 
-namespace Content.Server._Ratgore.Factions;
+namespace Content.Server._Rat.Factions;
 
 public sealed class RatFactionSystem : EntitySystem
 {

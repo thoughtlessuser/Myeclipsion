@@ -3,7 +3,7 @@ using Robust.Shared.Console;
 using Content.Client.UserInterface.Systems.Chat;
 using System.Linq;
 
-namespace Content.Client._Ratgore.Factions.Commands;
+namespace Content.Client._Rat.Factions.Commands;
 
 [AnyCommand]
 public sealed class SelectFactionCommand : LocalizedCommands
