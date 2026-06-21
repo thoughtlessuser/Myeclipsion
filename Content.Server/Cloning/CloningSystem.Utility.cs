@@ -47,15 +47,12 @@ public sealed partial class CloningSystem
             return;
 
         var source = beingCloned.BodyToClone;
-        BankAccountComponent? sourceAccount = null;
         BankTransferHistoryComponent? sourceHistory = null;
-        long? balance = null;
+        var sourceHasAccount = false;
         List<BankTransferHistoryRecord>? history = null;
         if (EntityManager.EntityExists(source))
         {
-            if (TryComp<BankAccountComponent>(source, out sourceAccount))
-                balance = sourceAccount.Balance;
-
+            sourceHasAccount = HasComp<BankAccountComponent>(source);
             if (TryComp<BankTransferHistoryComponent>(source, out sourceHistory))
                 history = sourceHistory.Entries.Select(entry => new BankTransferHistoryRecord
                 {
@@ -72,13 +69,6 @@ public sealed partial class CloningSystem
         if (mind.OwnedEntity != entity)
             return;
 
-        if (balance is { } transferredBalance)
-        {
-            var targetAccount = EnsureComp<BankAccountComponent>(entity);
-            targetAccount.Balance = transferredBalance;
-            Dirty(entity, targetAccount);
-        }
-
         if (history is not null)
         {
             var targetHistory = EnsureComp<BankTransferHistoryComponent>(entity);
@@ -87,7 +77,7 @@ public sealed partial class CloningSystem
 
         if (EntityManager.EntityExists(source))
         {
-            if (sourceAccount is not null)
+            if (sourceHasAccount)
                 RemComp<BankAccountComponent>(source);
             if (sourceHistory is not null)
                 RemComp<BankTransferHistoryComponent>(source);
