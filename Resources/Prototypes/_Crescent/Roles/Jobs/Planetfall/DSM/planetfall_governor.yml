@@ -1,0 +1,111 @@
+- type: job
+  id: planetfall_governor
+  name: Olywier
+  description: job-description-governor
+  playTimeTracker: JobGovernorDSM
+  ranks:
+    RatRankNobleEmperor: []
+    RatRankNobleArchduke: []
+    RatRankNobleGrandDuke: []
+  weight: 100
+  startingGear: planetfall_governor_gear
+  alwaysUseSpawner: true
+  requireAdminNotify: true
+  whitelisted: true # Rat
+  icon: "JobIconImperialGovernor"
+  chatNameColor: "#ffd000"
+  chatAmplification:
+    bubbleScale: 1.095
+    shoutBubbleScale: 1.35
+    radioScale: 1.39
+    radioBold: true
+  supervisors: job-supervisors-imperial
+  canBeAntag: false
+  requirements:
+    - !type:FactionRequirement
+      factionID: "DSM"
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+    - !type:SexRequirement
+      sex : Male
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Muted
+        - Pacifist
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: HullrotFaction
+        faction: DSM
+      - type: LanguageAdder
+        addSpoken:
+          - HighImperial
+          - LowImperial
+          - Tradeband
+        addUnderstood:
+          - HighImperial
+          - LowImperial
+          - Tradeband
+  access:
+  - EmergencyShuttleRepealAll
+  - Captain
+  - HeadOfPersonnel
+  - ChiefEngineer
+  - ChiefMedicalOfficer
+  - HeadOfSecurity
+  - ResearchDirector
+  - Frontier # Frontier
+  - Cryogenics
+  - Security
+  - Detective
+  - Armory
+  - Brig
+  - Lawyer
+  - Engineering
+  - Mail # Frontier
+  - Medical
+  - Quartermaster
+  - Salvage
+  - Cargo
+  - Research
+  - StationTrafficController # Frontier
+  - Maintenance
+  - External
+  - Theatre
+  - Bar
+  - Chemistry
+  - Kitchen
+  - Chapel
+  - Hydroponics
+  - Atmospherics
+  - Command
+  - Maintenance
+  - Service
+  - External
+  - LogisticsWealth
+  - ScribesGuild
+  - Archmaester
+  - Maintenance
+  - Advocatus
+  - EmpireNoble
+  - EmpireAdjutant
+  - DSMFunds
+  - EmpireGovernor
+  - EmpireSoldier
+  - Service
+  - Empire
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: planetfall_governor_gear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitImperialGovernor
+    shoes: ClothingShoesBootsImperialGovernorBoots
+    back: ClothingBackpackSatchelLeather
+    id: GovernorPDA
+    ears: ClothingHeadsetEmpire
+    pocket2: RomaineBible

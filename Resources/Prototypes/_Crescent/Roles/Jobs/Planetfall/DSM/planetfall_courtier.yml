@@ -1,0 +1,73 @@
+- type: job
+  id: planetfall_courtier
+  name: job-name-courtier
+  description: job-description-courtier
+  playTimeTracker: JobCourtierDSM
+  ranks:
+    RatRankNobleDuke:
+    - !type:CharacterPlaytimeRequirement
+      tracker: JobCourtierDSM
+      min: 180000 # 50 hours
+    RatRankNobleMarquis:
+    - !type:CharacterPlaytimeRequirement
+      tracker: JobCourtierDSM
+      min: 144000 # 40 hours
+    RatRankNobleCount:
+    - !type:CharacterPlaytimeRequirement
+      tracker: JobCourtierDSM
+      min: 108000 # 30 hours
+    RatRankNobleViscount:
+    - !type:CharacterPlaytimeRequirement
+      tracker: JobCourtierDSM
+      min: 72000 # 20 hours
+    RatRankNobleBaron:
+    - !type:CharacterPlaytimeRequirement
+      tracker: JobCourtierDSM
+      min: 36000 # 10 hours
+    RatRankNoblePatrician: []
+  weight: 52
+  startingGear: planetfall_courtier_gear
+  alwaysUseSpawner: true
+  requireAdminNotify: false
+  icon: "JobIconImperialCourtier"
+  chatNameColor: "#b5af00"
+  supervisors: job-supervisors-imperial
+  canBeAntag: false
+  requirements:
+    - !type:FactionRequirement
+      factionID: "DSM"
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Human
+  special:
+  - !type:AddComponentSpecial
+    components:
+      - type: HullrotFaction
+        faction: DSM
+      - type: LanguageAdder
+        addSpoken:
+          - HighImperial
+          - LowImperial
+          - Tradeband
+        addUnderstood:
+          - HighImperial
+          - LowImperial
+          - Tradeband
+  access:
+  - Command
+  - Empire
+  - EmpireNoble
+  - Maintenance
+  - Service
+  - EmpireSoldier
+  - External
+  - Mercenary # Frontier
+  - Captain # Frontier
+
+- type: startingGear
+  id: planetfall_courtier_gear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitImperialNobleMale
+    shoes: ClothingShoesBootsImperialLaceup
+    id: CourtierPDA
+    ears: ClothingHeadsetEmpire

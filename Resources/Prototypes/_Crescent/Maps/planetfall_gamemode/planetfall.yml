@@ -19,11 +19,12 @@
         - type: StationJobs
           overflowJobs: []
           availableJobs:
-            GovernorDSM: [ 1, 1 ]
-            KnightDSM: [ 4, 4 ]
-            LevymanDSM: [ -1, -1 ]
-            CourtierDSM: [ 10, 10 ]
-            FreeholderDSM: [ -1, -1 ]
+            planetfall_governor: [ 1, 1 ]
+            planetfall_advocatus: [ 1, 1 ]
+            planetfall_levyman: [ 12, 12 ]
+            planetfall_surgeon: [ 5, 5 ]
+            planetfall_courtier: [ 6, 6 ]
+            planetfall_freeholder: [ -1, -1 ]
 
             MVDOfficerNCWL: [ 1, 1 ]
             MVDGruntNCWL: [ 4, 4 ]
