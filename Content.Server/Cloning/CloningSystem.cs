@@ -242,6 +242,7 @@ public sealed partial class CloningSystem : EntitySystem
         var cloneMindReturn = EntityManager.AddComponent<BeingClonedComponent>(mob);
         cloneMindReturn.Mind = mindEnt.Comp;
         cloneMindReturn.Parent = uid;
+        cloneMindReturn.BodyToClone = bodyToClone;
         _containerSystem.Insert(mob, clonePod.BodyContainer);
         ClonesWaitingForMind.Add(mindEnt.Comp, mob);
         UpdateStatus(uid, CloningPodStatus.NoMind, clonePod);
