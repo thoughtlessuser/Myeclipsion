@@ -147,7 +147,7 @@ job-name-unionfall-ncwl-cadet = Cadet
 # unionfall-dsm
 job-name-unionfall-dsm-ship-captain = Ship Grand Steward
 job-name-unionfall-dsm-ship-crew = Ship Steward
-job-name-unionfall-dsm-leader = Knight-Bannaret
+job-name-unionfall-dsm-leader = Knight Banneret
 job-name-unionfall-dsm-officer = Knight
 job-name-unionfall-dsm-doctor = Medicant
 job-name-unionfall-dsm-rifleman = Man-at-arms
