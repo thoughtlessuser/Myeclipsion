@@ -103,7 +103,17 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitImperialGovernor
     shoes: ClothingShoesBootsImperialGovernorBoots
+    head: ClothingHeadHoodMysta
+    neck: ClothingNeckCloakImperialGovernor
     back: ClothingBackpackSatchelLeather
+    gloves: ClothingHandsGlovesImperialGovernorGloves
     id: GovernorPDA
-    ears: ClothingHeadsetEmpire
+    ears: ClothingHeadsetEmpire_Planetfall
     pocket2: RomaineBible
+  storage:
+    back:
+    - CigarRoyalCase
+    - FlippoEngravedLighter
+    - LuxuryPen
+    - BoxFolderBlack
+

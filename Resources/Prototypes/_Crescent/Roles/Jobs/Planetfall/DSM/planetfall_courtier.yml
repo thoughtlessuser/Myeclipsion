@@ -47,5 +47,8 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitImperialNobleMale
     shoes: ClothingShoesBootsImperialLaceup
+    back: ClothingBackpackSatchelLeather
     id: CourtierPDA
-    ears: ClothingHeadsetEmpire
+    ears: ClothingHeadsetEmpire_Planetfall
+    gloves: ClothingHandsGlovesImperialGovernorGloves
+    pocket1: SpaceCash5000

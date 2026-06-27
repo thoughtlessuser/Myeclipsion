@@ -8,14 +8,14 @@
       stationProto: FlagshipCrescentVessel
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Dominion Planet'
+          mapNameTemplate: 'Domain of Olywier'
           nameGenerator:
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
-          designation: vessel-designation-headquarters
+          designation: Olywier's Domain Planet
         - type: VesselDescription
-          description: Olywier's fiefdom planet.
+          description: Capital of Divine Sol Mandate
         - type: StationBiome
           biome: Grasslands
           biomeLayers: []
@@ -34,8 +34,8 @@
             planetfall_freeholder: [ -1, -1 ]
 
             planetfall_mvdofficer: [ 1, 1 ]
-            planetfall_mvdgrunt: [ 3, 3 ]
-            planetfall_kapitan: [ 4, 4 ]
+            planetfall_mvdgrunt: [ 2, 2 ]
+            planetfall_kapitan: [ 5, 5 ]
             planetfall_partisan: [ 12, 12 ]
             planetfall_doctor: [ 3, 3 ]
             planetfall_worker: [ -1, -1 ]

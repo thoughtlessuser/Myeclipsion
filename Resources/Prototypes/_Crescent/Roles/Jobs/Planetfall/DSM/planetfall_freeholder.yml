@@ -41,6 +41,8 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitImperialFreeholder
     id: FreeholderPDA
-    ears: ClothingHeadsetEmpireCiv
+    ears: ClothingHeadsetEmpireCiv_Planetfall
     shoes: ClothingShoesBootsImperialLongboots
     back: ClothingBackpackDSM
+    gloves: ClothingHandsGlovesImperialWorkerGloves
+    pocket1: SpaceCash100

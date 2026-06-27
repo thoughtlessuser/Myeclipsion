@@ -7,7 +7,6 @@
   - type: EncryptionKey
     channels:
     - NCWL
-    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -23,7 +22,6 @@
   - type: EncryptionKey
     channels:
     - NCWL
-    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -126,7 +124,6 @@
     channels:
     - Imperial
     - EmpireCiv
-    - Common
     defaultChannel: Common
   - type: Sprite
     layers:
@@ -142,7 +139,6 @@
   - type: EncryptionKey
     channels:
     - EmpireCiv
-    - Common
     defaultChannel: Common
   - type: Sprite
     layers:

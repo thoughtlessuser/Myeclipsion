@@ -1,4 +1,5 @@
 chat-radio-ncwl = NCWL
+chat-radio-ncwlcommand = NCWL Command
 chat-radio-empire = Imperial Command
 chat-radio-hunter = Sixth Subjugation Fireteam
 chat-radio-shi = Shinohara
@@ -11,3 +12,4 @@ chat-radio-pact = The Atyrian Pact
 chat-radio-authoritat = 43rd Battlegroup
 chat-radio-clarizian = Clarizian Expeditionary
 chat-radio-american = New American Protectorate
+chat-radio-syndicatecommand = TFSC Command

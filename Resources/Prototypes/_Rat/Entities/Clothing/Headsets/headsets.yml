@@ -76,7 +76,24 @@
       containers:
         key_slots:
           - EncryptionKeyNCWLCommand
+          - EncryptionKeyNCWL
           - EncryptionKeyTraffic
+    - type: Sprite
+      sprite: _Crescent/Clothing/Headsets/ncwl.rsi
+    - type: Clothing
+      sprite: _Crescent/Clothing/Headsets/ncwl.rsi
+  
+- type: entity
+  parent: ClothingHeadsetPlanetfall
+  id: ClothingHeadsetNCWLCommand_Planetfall
+  name: union headset
+  description: To communicate with your comrades.
+  components:
+    - type: ContainerFill
+      containers:
+        key_slots:
+          - EncryptionKeyNCWLCommand
+          - EncryptionKeyNCWL
     - type: Sprite
       sprite: _Crescent/Clothing/Headsets/ncwl.rsi
     - type: Clothing

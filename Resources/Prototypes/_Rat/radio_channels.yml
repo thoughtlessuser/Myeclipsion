@@ -1,7 +1,7 @@
 - type: radioChannel
   id: NCWLCommand
   name: chat-radio-ncwlcommand
-  keycode: 'п'
+  keycode: 'h'
   frequency: 3483
   color: "#d66113"
   longRange: true
@@ -9,7 +9,7 @@
 - type: radioChannel
   id: SyndicateCommand
   name: chat-radio-syndicatecommand
-  keycode: 'з'
+  keycode: '7'
   frequency: 1453
   color: "#d34d4f"
   longRange: true

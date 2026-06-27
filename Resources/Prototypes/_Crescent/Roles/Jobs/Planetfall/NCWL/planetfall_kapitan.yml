@@ -94,13 +94,12 @@
     pocket1: WeaponPistolT91
     back: ClothingBackpackNCWL
     gloves: ClothingHandsGlovesCombat
-    head: ClothingHeadHatNCWLBeret
-    mask: ClothingMaskNCWLGasmask
-    ears: ClothingHeadsetNCWLCommand
+    head: ClothingHeadHelmetNCWLHeavy
+    suitstorage: WeaponRifleNCWLBatanya
+    ears: ClothingHeadsetNCWLCommand_Planetfall
     eyes: ClothingEyesHudSecurity
   storage:
     back:
-      - Flash
-      - Tourniquet
-      - Zipties
-      - CombatKnife
+      - MagazineRifle
+      - MagazineRifle
+      - MedkitCombatFilled

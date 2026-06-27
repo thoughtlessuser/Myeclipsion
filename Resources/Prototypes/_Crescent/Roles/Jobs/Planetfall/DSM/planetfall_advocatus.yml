@@ -99,7 +99,10 @@
   id: AdvocatusGear
   equipment:
     id: AdvocatusPDA
-    ears: ClothingHeadsetEmpire
+    ears: ClothingHeadsetEmpire_Planetfall
     outerClothing: ClothingOuterCoatImperialAdvocatus
+    neck: ClothingNeckCloakInspector
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesImperialGovernorGloves
     shoes: ClothingShoesBootsJack
     jumpsuit: ClothingUniformJumpsuitImperialNobleMale

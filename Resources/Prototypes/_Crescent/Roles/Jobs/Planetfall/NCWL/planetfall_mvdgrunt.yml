@@ -82,8 +82,17 @@
     jumpsuit: ClothingUniformJumpsuitMVD
     id: NCWLMVDGruntPDA
     outerClothing: ClothingOuterArmorMVDJacket
-    pocket1: WeaponPistolComrade
+    pocket1: WeaponRevolverPythonSecurity
     back: ClothingBackpackNCWL
     gloves: ClothingHandsGlovesMVD
-    ears: ClothingHeadsetNCWL
-    suitstorage: WeaponSubMachineGunMilitant
+    belt: ClothingBeltSheathNCWLKukriFilled
+    ears: ClothingHeadsetNCWLCommand_Planetfall
+    suitstorage: WeaponSniperMolot
+    pocket2: BookOfKane
+    storage:
+     back:
+      - MagazineAntiMateriel
+      - MagazineAntiMateriel
+      - SpeedLoaderMagnum
+      - SpeedLoaderMagnum
+      - CigarNCWLCase

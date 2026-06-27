@@ -57,14 +57,15 @@
     pocket1: WeaponPistolComrade
     back: ClothingBackpackNCWL
     gloves: ClothingHandsGlovesCombat
+    suitstorage: WeaponRifleFAL
     head: ClothingHeadHelmetNCWLBasic
     mask: ClothingMaskNCWLGasmask
-    ears: ClothingHeadsetNCWL
+    ears: ClothingHeadsetNCWL_Planetfall
     belt: ClothingBeltNCWLPouches
   storage:
     belt:
-      - Flash
-      - Tourniquet
+      - MagazineLightRifle
+      - MagazineLightRifle
       - MagazinePistol
-      - CombatKnife
-      - Zipties
+      - MagazineLightRifle
+      - MagazineLightRifle

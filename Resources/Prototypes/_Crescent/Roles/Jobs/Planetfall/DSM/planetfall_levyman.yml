@@ -51,8 +51,12 @@
   id: planetfall_levyman_gear
   equipment:
     id: LevymanPDA
-    ears: ClothingHeadsetEmpireCiv
+    ears: ClothingHeadsetEmpireCiv_Planetfall
     shoes: ClothingShoesBootsImperialJackboots
     back: ClothingBackpackDSM
     jumpsuit: ClothingUniformJumpsuitImperialCombat
+    belt: ClothingBeltSecurityFilled
+    head: ClothingHeadHatDSMCapsoft
+    gloves: ClothingHandsGlovesImperialLonggloves
+    pocket1: WeaponDisabler
     pocket2: RomaineBible
