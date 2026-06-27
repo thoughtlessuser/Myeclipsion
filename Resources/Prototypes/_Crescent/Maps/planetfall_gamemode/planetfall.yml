@@ -22,6 +22,7 @@
           dungeons: []
           seed: 8675309
           mapLightColor: '#D8B059'
+          enableLightCycle: false
         - type: StationJobs
           overflowJobs: []
           availableJobs:
