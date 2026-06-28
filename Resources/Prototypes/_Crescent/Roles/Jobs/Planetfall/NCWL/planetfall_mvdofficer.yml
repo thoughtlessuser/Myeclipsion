@@ -99,9 +99,9 @@
     gloves: ClothingHandsGlovesMVD
     head: ClothingHeadHatMVDHat
     ears: ClothingHeadsetNCWLCommand_Planetfall
-    pocket1: BookOfKane
     pocket2: FlippoEngravedLighter
-    storage:
-      back:
-       - MagazineCaselessRifle
-       - CigarNCWLCase
+  storage:
+    back:
+    - MagazineCaselessRifle
+    - CigarNCWLCase
+    - BookOfKane

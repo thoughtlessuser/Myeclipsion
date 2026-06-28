@@ -89,10 +89,10 @@
     ears: ClothingHeadsetNCWLCommand_Planetfall
     suitstorage: WeaponSniperMolot
     pocket2: BookOfKane
-    storage:
-     back:
-      - MagazineAntiMateriel
-      - MagazineAntiMateriel
-      - SpeedLoaderMagnum
-      - SpeedLoaderMagnum
-      - CigarNCWLCase
+  storage:
+    back:
+    - MagazineAntiMateriel
+    - MagazineAntiMateriel
+    - SpeedLoaderMagnum
+    - SpeedLoaderMagnum
+    - CigarNCWLCase

@@ -5,7 +5,7 @@ meta:
   forkId: ""
   forkVersion: ""
   time: 06/27/2026 22:48:59
-  entityCount: 18037
+  entityCount: 18038
 maps: []
 grids:
 - 1
@@ -8820,8 +8820,7 @@ entities:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - invalid
+          ents: []
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -8836,8 +8835,7 @@ entities:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - invalid
+          ents: []
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -8852,8 +8850,7 @@ entities:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - invalid
+          ents: []
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -8868,8 +8865,7 @@ entities:
         entity_storage: !type:Container
           showEnts: False
           occludes: True
-          ents:
-          - invalid
+          ents: []
         paper_label: !type:ContainerSlot
           showEnts: False
           occludes: True
@@ -110281,5 +110277,12 @@ entities:
     components:
     - type: Transform
       pos: 218.99785,-29.460003
+      parent: 1
+- proto: PlanetfallBarrierAnnouncerEntity
+  entities:
+  - uid: 18038
+    components:
+    - type: Transform
+      pos: 0,0
       parent: 1
 ...
