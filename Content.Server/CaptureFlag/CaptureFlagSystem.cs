@@ -34,6 +34,7 @@ public sealed class CaptureFlagSystem : EntitySystem
         comp.Radius = MathF.Max(0.25f, comp.Radius);
         comp.CaptureTime = MathF.Max(1f, comp.CaptureTime);
         comp.NeutralizeTime = MathF.Max(1f, comp.NeutralizeTime);
+        comp.DecayRate = MathF.Max(0f, comp.DecayRate);
         comp.DominationHoldTime = MathF.Max(30f, comp.DominationHoldTime);
         Dirty(uid, comp);
     }
@@ -87,6 +88,10 @@ public sealed class CaptureFlagSystem : EntitySystem
 
         if (singleTeam is null || contested)
         {
+            var oldActiveTeam = flag.ActiveTeam;
+            var oldStage = flag.Stage;
+            var oldProgress = flag.ProgressSeconds;
+
             flag.ActiveTeam = null;
             flag.Stage = contested ? CaptureFlagStage.Contested : CaptureFlagStage.Idle;
 
@@ -98,7 +103,9 @@ public sealed class CaptureFlagSystem : EntitySystem
                     flag.ProgressSeconds = 0f;
             }
 
-            Dirty(uid, flag);
+            if (oldActiveTeam != flag.ActiveTeam || oldStage != flag.Stage || oldProgress != flag.ProgressSeconds)
+                Dirty(uid, flag);
+
             return;
         }
 
@@ -171,14 +178,14 @@ public sealed class CaptureFlagSystem : EntitySystem
         var total = 0;
         var counts = new Dictionary<string, int>(StringComparer.Ordinal);
         float? holdTime = null;
-        var dominationEnabled = false;
-
         var query = EntityQueryEnumerator<CaptureFlagComponent>();
         while (query.MoveNext(out _, out var flag))
         {
+            if (!flag.DominationEnabled)
+                continue;
+
             total++;
 
-            dominationEnabled |= flag.DominationEnabled;
             holdTime ??= flag.DominationHoldTime;
 
             if (flag.OwnerTeam is null)
@@ -188,7 +195,7 @@ public sealed class CaptureFlagSystem : EntitySystem
                 counts[flag.OwnerTeam]++;
         }
 
-        if (!dominationEnabled || total <= 0 || holdTime is null)
+        if (total <= 0 || holdTime is null)
             return;
 
         var majorityThreshold = total / 2;

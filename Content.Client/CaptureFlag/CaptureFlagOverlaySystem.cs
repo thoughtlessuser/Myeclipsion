@@ -44,9 +44,6 @@ public sealed class CaptureFlagOverlay : Overlay
     {
         foreach ((var xform, var flag) in _entMan.EntityQuery<TransformComponent, CaptureFlagComponent>(true))
         {
-            if (xform.GridUid == null)
-                continue;
-
             var worldPos = _xform.GetWorldPosition(xform);
 
             var color = flag.Stage switch
