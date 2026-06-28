@@ -60,3 +60,6 @@
     gloves: ClothingHandsGlovesImperialLonggloves
     pocket1: WeaponDisabler
     pocket2: RomaineBible
+  storage:
+    back:
+    - MedkitFilled

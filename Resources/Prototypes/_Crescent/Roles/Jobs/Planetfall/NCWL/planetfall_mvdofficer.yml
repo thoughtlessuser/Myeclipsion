@@ -95,9 +95,10 @@
     pocket1: WeaponRevolverPythonSecurity
     back: ClothingBackpackNCWL
     belt: ClothingBeltSheathNCWLKukriFilled
+    eyes: ClothingEyesGlassesSecurity
     suitstorage: WeaponSniperMolot
     gloves: ClothingHandsGlovesMVD
-    head: ClothingHeadHatMVDHat
+    head: ClothingHeadHatAuthorityKommandant
     ears: ClothingHeadsetNCWLCommand_Planetfall
     pocket2: FlippoEngravedLighter
   storage:

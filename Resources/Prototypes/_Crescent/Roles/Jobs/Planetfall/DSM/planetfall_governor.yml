@@ -26,7 +26,7 @@
     - !type:CharacterOverallTimeRequirement
       min: 100000
     - !type:SexRequirement
-      sex : Male
+      sex: Male
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
@@ -54,7 +54,7 @@
   - ChiefMedicalOfficer
   - HeadOfSecurity
   - ResearchDirector
-  - Frontier # Frontier
+  - Frontier
   - Cryogenics
   - Security
   - Detective
@@ -62,13 +62,13 @@
   - Brig
   - Lawyer
   - Engineering
-  - Mail # Frontier
+  - Mail
   - Medical
   - Quartermaster
   - Salvage
   - Cargo
   - Research
-  - StationTrafficController # Frontier
+  - StationTrafficController
   - Maintenance
   - External
   - Theatre
@@ -79,24 +79,18 @@
   - Hydroponics
   - Atmospherics
   - Command
-  - Maintenance
   - Service
-  - External
   - LogisticsWealth
   - ScribesGuild
   - Archmaester
-  - Maintenance
   - Advocatus
   - EmpireNoble
   - EmpireAdjutant
   - DSMFunds
   - EmpireGovernor
   - EmpireSoldier
-  - Service
   - Empire
-  - External
-  - Mercenary # Frontier
-  - Captain # Frontier
+  - Mercenary
 
 - type: startingGear
   id: planetfall_governor_gear
@@ -115,5 +109,3 @@
     - CigarRoyalCase
     - FlippoEngravedLighter
     - LuxuryPen
-    - BoxFolderBlack
-

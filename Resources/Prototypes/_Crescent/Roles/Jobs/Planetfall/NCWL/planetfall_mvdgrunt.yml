@@ -87,12 +87,14 @@
     gloves: ClothingHandsGlovesMVD
     belt: ClothingBeltSheathNCWLKukriFilled
     ears: ClothingHeadsetNCWLCommand_Planetfall
-    suitstorage: WeaponSniperMolot
+    eyes: ClothingEyesGlassesSecurity
+    head: ClothingHeadHatMVDHat
+    suitstorage: WeaponSubMachineGunMilitant
     pocket2: BookOfKane
   storage:
     back:
-    - MagazineAntiMateriel
-    - MagazineAntiMateriel
-    - SpeedLoaderMagnum
-    - SpeedLoaderMagnum
-    - CigarNCWLCase
+     - MagazineCaselessRifle
+     - MagazineCaselessRifle
+     - SpeedLoaderMagnum
+     - SpeedLoaderMagnum
+     - CigarNCWLCase

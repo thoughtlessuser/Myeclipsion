@@ -97,7 +97,7 @@
     head: ClothingHeadHelmetNCWLHeavy
     suitstorage: WeaponRifleNCWLBatanya
     ears: ClothingHeadsetNCWLCommand_Planetfall
-    eyes: ClothingEyesHudSecurity
+    eyes: ClothingEyesGlassesNCWL
   storage:
     back:
       - MagazineRifle

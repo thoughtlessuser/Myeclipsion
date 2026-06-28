@@ -13,7 +13,7 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
-          designation: Olywier's Domain Planet
+          designation: 
         - type: VesselDescription
           description: Capital of Divine Sol Mandate
         - type: StationBiome

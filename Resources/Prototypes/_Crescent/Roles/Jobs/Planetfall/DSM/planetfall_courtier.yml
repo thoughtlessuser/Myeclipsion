@@ -50,5 +50,7 @@
     back: ClothingBackpackSatchelLeather
     id: CourtierPDA
     ears: ClothingHeadsetEmpire_Planetfall
+    head: ClothingHeadHatImperialBeret
+    neck: ClothingNeckCloakImperialCapelet
     gloves: ClothingHandsGlovesImperialGovernorGloves
     pocket1: SpaceCash5000

@@ -59,7 +59,7 @@
     gloves: ClothingHandsGlovesCombat
     suitstorage: WeaponRifleFAL
     head: ClothingHeadHelmetNCWLBasic
-    mask: ClothingMaskNCWLGasmask
+    eyes: ClothingEyesGlassesNCWL
     ears: ClothingHeadsetNCWL_Planetfall
     belt: ClothingBeltNCWLPouches
   storage:

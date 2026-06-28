@@ -63,3 +63,7 @@
     head: ClothingHeadHatNCWLCapsoftMedical
     eyes: ClothingEyesHudMedical
     ears: ClothingHeadsetNCWL_Planetfall
+  storage:
+     back:
+      - Portafib
+      - MedkitFilled

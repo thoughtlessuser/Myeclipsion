@@ -1294,3 +1294,140 @@
       - state: green
       - state: passenger
 
+#planetfall
+
+#dsm
+
+- type: entity
+  id: SpawnPointPlanetfallGovernorDSM
+  parent: SpawnPointJobBase
+  name: PlanetfallGovernorDSM
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_governor
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallAdvocatusDSM
+  parent: SpawnPointJobBase
+  name: PlanetfallAdvocatusDSM
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_advocatus
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallCourtierDSM
+  parent: SpawnPointJobBase
+  name: PlanetfallCourtierDSM
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_courtier
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallFreeholderDSM
+  parent: SpawnPointJobBase
+  name: PlanetfallFreeholderDSM
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_freeholder
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallLevymanDSM
+  parent: SpawnPointJobBase
+  name: PlanetfallLevymanDSM
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_levyman
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+#ncwl
+
+- type: entity
+  id: SpawnPointPlanetfallKapitanNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallKapitanNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_kapitan
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallMVDOfficerNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallMVDOfficerNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_mvdofficer
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallMVDGruntNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallMVDGruntNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_mvdgrunt
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallPartisanNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallPartisanNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_partisan
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallDoctorNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallDoctorNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_doctor
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger
+
+- type: entity
+  id: SpawnPointPlanetfallWorkerNCWL
+  parent: SpawnPointJobBase
+  name: PlanetfallWorkerNCWL
+  components:
+  - type: SpawnPoint
+    job_id: planetfall_worker
+  - type: Sprite
+    layers:
+      - state: green
+      - state: passenger

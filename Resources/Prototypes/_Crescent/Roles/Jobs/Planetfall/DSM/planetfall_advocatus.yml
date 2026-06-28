@@ -103,6 +103,8 @@
     outerClothing: ClothingOuterCoatImperialAdvocatus
     neck: ClothingNeckCloakInspector
     eyes: ClothingEyesGlassesSecurity
+    head: ClothingHeadHatAdvocatus
+    back: ClothingBackpackSatchelLeather
     gloves: ClothingHandsGlovesImperialGovernorGloves
     shoes: ClothingShoesBootsJack
     jumpsuit: ClothingUniformJumpsuitImperialNobleMale
