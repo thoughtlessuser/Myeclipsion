@@ -693,7 +693,9 @@
     sprite: _Crescent/Objects/Weapons/Guns/proletar.rsi
   - type: GunRequiresWield
   - type: Gun
+    fireRate: 2.5
     damageModifier: 0.75 
+    shotgunSpreadMultiplier: 3.5
   - type: BallisticAmmoProvider
     capacity: 8
     autoCycle: false
@@ -707,7 +709,7 @@
 
 - type: entity
   name: IRM DA-2 Matusa 12g (Surplus)
-  parent: [BaseWeaponSniper]
+  parent: [BaseWeaponShotgun, BaseGunWieldable]
   id: WeaponShotgunDSMMatusaWorn
   description: >
     A Matusa dredged out of a long-forgotten Unionfall armory crate. The cylinder 
@@ -716,31 +718,26 @@
     cycles — barely — and that is apparently enough for the front line.
   components:
   - type: Item
-    size: Ginormous
+    size: Normal
   - type: Sprite
     sprite: _Crescent/Objects/Weapons/Guns/surplus_dsm_shotgun.rsi
   - type: Clothing
     sprite: _Crescent/Objects/Weapons/Guns/surplus_dsm_shotgun.rsi
-    slots:
-    - Back
-    - suitStorage
+  - type: GunRequiresWield
   - type: Gun
     fireRate: 2.5
     damageModifier: 0.75 
     shotgunSpreadMultiplier: 3.5
-    selectedMode: SemiAuto
-    availableModes:
-    - SemiAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/UnionfallWeapons/shotgun_fire_1.ogg
     fireOnDropChance: 1
   - type: BallisticAmmoProvider
-    capacity: 6
+    capacity: 8
     autoCycle: false
-    proto: ShellShotgun
-    whitelist:
-      tags:
-      - ShellShotgun
+  - type: Tag
+    tags:
+    - WeaponShotgunKammerer
+  - type: Wieldable
   - type: ReverseEngineering
     recipes:
       - WeaponShotgunDSMMatusaWorn
