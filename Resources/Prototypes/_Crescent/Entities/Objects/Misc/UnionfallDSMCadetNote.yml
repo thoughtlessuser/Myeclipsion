@@ -1,7 +1,7 @@
 - type: entity
   parent: Paper
   id: UnionfallDSMCadetNote
-  name: брифинг дисциплинарного полка Мандата
+  name: Mandate Disciplinary Regiment Briefing
   components:
   - type: Paper
     content: |

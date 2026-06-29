@@ -20,9 +20,9 @@
           overflowJobs: []
           availableJobs:
             UnionfallShipCaptainDSM: [ 1, 1 ]
-            UnionfallShipCrewDSM: [ 3, 3 ]
             UnionfallLeaderDSM: [ 1, 1 ]
             UnionfallOfficerDSM: [ 5, 5 ]
+            UnionfallShipCrewDSM: [ 3, 3 ]
             UnionfallDoctorDSM: [ 10, 10 ]
             UnionfallRiflemanDSM: [ 30, 30 ]
             UnionfallCadetDSM: [ 50, 50 ]

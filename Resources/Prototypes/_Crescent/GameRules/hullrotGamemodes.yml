@@ -7,9 +7,9 @@
   alias:
   - adventure
   - bigratbiteadventure
-  name: Свободная игра
+  name: Freeplay
   showInVote: true
-  description: Последние дни Тайпана. Длится 2-4 часа. Большая карта.
+  description: The last days of Taypan. Lasts 2-4 hours. Large map.
   rules:
   - OverworldRemap
   - HullrotEventScheduler
@@ -317,9 +317,9 @@
   alias:
   - hyperwarBots
   - ratbitehyperwarBots
-  name: Гипервойна | Остатки НТ - ЛРНП - БМС
+  name: Hyperwar | NT Remnants - NCWL - DSM
   showInVote: true
-  description: Эскадрон остатков НаноТрейзен стремится уничтожить весь Тайпан. ЛРНП и БМС видят возможность ослабить друг друга или потенциально завершить вечную войну.
+  description: A NanoTrasen remnant squadron seeks to destroy all of Taypan. NCWL and DSM see an opportunity to weaken each other or potentially end the eternal war.
   rules:
   - HyperwarBots
   - HullrotEventScheduler

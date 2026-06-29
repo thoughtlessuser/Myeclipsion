@@ -37,4 +37,4 @@
         - type: VesselDesignation
           designation: vessel-designation-mining
         - type: VesselDescription
-          description: Добро пожаловать в ваш личный шахтерский рай.
+          description: Welcome to your personal mining paradise.

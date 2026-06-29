@@ -59,4 +59,4 @@
     powerLoad: 10000 # 10 kW per one
   - type: ExtensionCableReceiver
   - type: StaticPrice
-    price: 1000 # заребалансить надо
+    price: 1000 # needs rebalancing

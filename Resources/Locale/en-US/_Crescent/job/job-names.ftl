@@ -137,7 +137,7 @@ job-name-planetfall-team2-member = PTA Infantry
 # unionfall-ncwl
 
 job-name-unionfall-ncwl-ship-captain = Ship Captain
-job-name-unionfall-ncwl-ship-crew = Ship Crew
+job-name-unionfall-ncwl-ship-crew = Ship Engineer
 job-name-unionfall-ncwl-leader = Fleet Kommandant
 job-name-unionfall-ncwl-officer = Kommissar
 job-name-unionfall-ncwl-doctor = Doktor
@@ -146,7 +146,7 @@ job-name-unionfall-ncwl-cadet = Cadet
 
 # unionfall-dsm
 job-name-unionfall-dsm-ship-captain = Ship Grand Steward
-job-name-unionfall-dsm-ship-crew = Ship Steward
+job-name-unionfall-dsm-ship-crew = Ship Engineer
 job-name-unionfall-dsm-leader = Knight Banneret
 job-name-unionfall-dsm-officer = Knight
 job-name-unionfall-dsm-doctor = Medicant

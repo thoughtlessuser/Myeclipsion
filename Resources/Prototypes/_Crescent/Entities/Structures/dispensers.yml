@@ -112,15 +112,15 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     dynamicInventory:
-    ### Производство
-      # БМС
+    ### Production
+      # DSM
       TradeGoodWine: 24000
       TradeGoodImperialArmor: 16000
       TradeGoodCybernetics: 24000
       TradeGoodImperialScrap: 16000
       TradeGoodImperialQualitySalvage: 24000
 
-      # КВСТ
+      # Syndicate
       TradeGoodGunparts: 8000
       TradeGoodAntibiotics: 8000
       TradeGoodPlasma: 16000
@@ -129,13 +129,13 @@
       TradeGoodValuableScrapTFSC: 16000
       TradeGoodOrgans: 16000
 
-      # Шиногара + Глисс Санто
+      # Shinogara + Gliss Santo
       TradeGoodSilks: 16000
       TradeGoodAlcohol: 8000
       TradeGoodScrap: 8000
       TradeGoodAmmo: 8000
 
-      # Шиногара
+      # Shinogara
       TradeGoodAlloys: 16000
       TradeGoodGoodScrap: 16000
       TradeGoodScop: 16000
@@ -160,15 +160,15 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     dynamicInventory:
-    ### Производство
-      # ЛРНП
+    ### Production
+      # NCWL
       TradeGoodUnionWeapon: 16000
       TradeGoodUnionVodka: 24000
       TradeGoodUnionBallistic: 24000
       TradeGoodUnionQualitySalvage: 24000
       TradeGoodCommunardScrap: 16000
 
-      # КВСТ
+      # Syndicate
       TradeGoodGunparts: 8000
       TradeGoodAntibiotics: 8000
       TradeGoodPlasma: 16000
@@ -177,13 +177,13 @@
       TradeGoodValuableScrapTFSC: 16000
       TradeGoodOrgans: 16000
 
-      # Шиногара + Глисс Санто
+      # Shinogara + Gliss Santo
       TradeGoodSilks: 16000
       TradeGoodAlcohol: 8000
       TradeGoodScrap: 8000
       TradeGoodAmmo: 8000
 
-      # Шиногара
+      # Shinogara
       TradeGoodAlloys: 16000
       TradeGoodGoodScrap: 16000
       TradeGoodScop: 16000
@@ -208,28 +208,28 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     dynamicInventory:
-    ### Производство
-      # БМС
+    ### Production
+      # DSM
       TradeGoodWine: 16000
       TradeGoodImperialArmor: 8000
       TradeGoodCybernetics: 16000
       TradeGoodImperialScrap: 8000
       TradeGoodImperialQualitySalvage: 16000
 
-      # ЛРНП
+      # NCWL
       TradeGoodUnionWeapon: 8000
       TradeGoodUnionVodka: 16000
       TradeGoodUnionBallistic: 16000
       TradeGoodUnionQualitySalvage: 16000
       TradeGoodCommunardScrap: 8000
 
-      # Шиногара + Глисс Санто
+      # Shinogara + Gliss Santo
       TradeGoodSilks: 16000
       TradeGoodAlcohol: 8000
       TradeGoodScrap: 8000
       TradeGoodAmmo: 8000
 
-      # Шиногара
+      # Shinogara
       TradeGoodAlloys: 16000
       TradeGoodGoodScrap: 16000
       TradeGoodScop: 16000
@@ -254,22 +254,22 @@
   - type: Dispenser
     defaultItem: TradeDeedStub
     dynamicInventory:
-    ### Производство
-      # БМС
+    ### Production
+      # DSM
       TradeGoodWine: 16000
       TradeGoodImperialArmor: 8000
       TradeGoodCybernetics: 16000
       TradeGoodImperialScrap: 8000
       TradeGoodImperialQualitySalvage: 16000
 
-      # ЛРНП
+      # NCWL
       TradeGoodUnionWeapon: 8000
       TradeGoodUnionVodka: 16000
       TradeGoodUnionBallistic: 16000
       TradeGoodUnionQualitySalvage: 16000
       TradeGoodCommunardScrap: 8000
 
-      # КВСТ
+      # Syndicate
       TradeGoodGunparts: 8000
       TradeGoodAntibiotics: 8000
       TradeGoodDrugs: 16000

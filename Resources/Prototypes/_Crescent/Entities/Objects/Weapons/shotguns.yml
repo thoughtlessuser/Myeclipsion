@@ -370,7 +370,7 @@
     fireOnDropChance: 1
   - type: BallisticAmmoProvider
     capacity: 6
-    autoCycle: true
+    autoCycle: false
     proto: ShellShotgun
     whitelist:
       tags:
@@ -671,3 +671,76 @@
     difficulty: 2
     recipes:
       - WeaponShotgunHarba
+
+- type: entity
+  name: NCWL Toz-97 Proletar 12g (Worn)
+  parent: [BaseWeaponShotgun, BaseGunWieldable]
+  id: WeaponShotgunProletarWorn
+  description: >
+    A Proletar pulled from decades of active service and never properly retired. 
+    The stock is cracked, the barrel bands are spotted with rust, and the pump 
+    action catches on every other stroke. Unionfall quartermasters stamp these 
+    'fit for duty' and hand them to anyone without a better option.
+  components:
+  - type: Item
+    size: Normal
+    shape:
+    - 0,0,4,1
+    sprite: _Crescent/Objects/Weapons/Guns/proletar.rsi
+  - type: Sprite
+    sprite: _Crescent/Objects/Weapons/Guns/proletar.rsi
+  - type: Clothing
+    sprite: _Crescent/Objects/Weapons/Guns/proletar.rsi
+  - type: GunRequiresWield
+  - type: Gun
+    damageModifier: 0.75 
+  - type: BallisticAmmoProvider
+    capacity: 8
+    autoCycle: false
+  - type: Tag
+    tags:
+    - WeaponShotgunKammerer
+  - type: Wieldable
+  - type: ReverseEngineering
+    recipes:
+      - WeaponShotgunProletarWorn
+
+- type: entity
+  name: IRM DA-2 Matusa 12g (Surplus)
+  parent: [BaseWeaponSniper]
+  id: WeaponShotgunDSMMatusaWorn
+  description: >
+    A Matusa dredged out of a long-forgotten Unionfall armory crate. The cylinder 
+    wobbles on its axis, the finish has surrendered entirely to oxidation, and the 
+    grip tape is held together by electrical tape over electrical tape. It still 
+    cycles — barely — and that is apparently enough for the front line.
+  components:
+  - type: Item
+    size: Ginormous
+  - type: Sprite
+    sprite: _Crescent/Objects/Weapons/Guns/surplus_dsm_shotgun.rsi
+  - type: Clothing
+    sprite: _Crescent/Objects/Weapons/Guns/surplus_dsm_shotgun.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: Gun
+    fireRate: 2.5
+    damageModifier: 0.75 
+    shotgunSpreadMultiplier: 3.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns/UnionfallWeapons/shotgun_fire_1.ogg
+    fireOnDropChance: 1
+  - type: BallisticAmmoProvider
+    capacity: 6
+    autoCycle: false
+    proto: ShellShotgun
+    whitelist:
+      tags:
+      - ShellShotgun
+  - type: ReverseEngineering
+    recipes:
+      - WeaponShotgunDSMMatusaWorn

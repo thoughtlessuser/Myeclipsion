@@ -1,7 +1,7 @@
 - type: entity
   id: PokerTable
-  name: покерный стол
-  description: Стационарный стол для игры в Техасский Холдем. Нужны деньги чтобы сыграть.
+  name: Poker Table
+  description: A stationary table for playing Texas Hold'em. You need money to play.
   parent: BaseStructure
   components:
   - type: Icon

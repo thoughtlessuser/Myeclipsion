@@ -1,7 +1,7 @@
 - type: entity
   id: CMVendorBundleRiflemanApparelNCWL
-  name: базовое снаряжение лрнп
-  description: базовое снаряжение ЛРНП. Включает в себя ГПС, джетпак, магнитные сапоги и остальное.
+  name: NCWL basic gear
+  description: Basic NCWL equipment. Includes a GPS, jetpack, magboots and more.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -18,8 +18,8 @@
 
 - type: entity
   id: CMVendorBundleRiflemanApparelDSM
-  name: базовое снаряжение бмс
-  description: базовое снаряжение БМС. Включает в себя ГПС, джетпак, магнитные сапоги и остальное.
+  name: DSM basic gear
+  description: Basic DSM equipment. Includes a GPS, jetpack, magboots and more.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -36,8 +36,8 @@
 
 - type: entity
   id: CMVendorBundleRiflemanApparelCMM
-  name: базовое снаряжение минитменов
-  description: базовое снаряжение минитменов. Включает в себя ГПС, джетпак, магнитные сапоги и остальное.
+  name: Minutemen basic gear
+  description: Basic Minutemen equipment. Includes a GPS, jetpack, magboots and more.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -54,8 +54,8 @@
 
 - type: entity
   id: CMVendorBundleCorpSecApparel
-  name: базовое снаряжение корпоративной охраны
-  description: базовое снаряжение агентов службы корпоративной безопасности Шиногары. Включает в себя ГПС, джетпак, магнитные сапоги и остальное.
+  name: Corporate security gear
+  description: Basic Shinogara corporate security equipment. Includes a GPS, jetpack, magboots and more.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -72,8 +72,8 @@
 
 - type: entity
   id: CMVendorBundleGSCApparel
-  name: базовое снаряжение вольного наёмника
-  description: базовое снаряжение вольных наёмников Горлекс. Включает в себя ГПС, джетпак, магнитные сапоги и остальное.
+  name: Freelance mercenary gear
+  description: Basic Gorlex freelance mercenary equipment. Includes a GPS, jetpack, magboots and more.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
@@ -90,8 +90,8 @@
 
 - type: entity
   id: CMVendorBundleIPMApparel
-  name: базовое снаряжение оперативника Интердайн
-  description: базовое снаряжение агентов Интердайн. Включает в себя ГПС, джетпак, магнитные сапоги и остальное.
+  name: Interdyne operative gear
+  description: Basic Interdyne operative equipment. Includes a GPS, jetpack, magboots and more.
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite

@@ -226,7 +226,7 @@
   name: naiser autoinjector
   parent: ChemicalMedipen
   id: NaiserAutoinjector
-  description: не такой утончённый как кайзер, но все ещё боевой препарат - обладающий эфектами Изгнания с малым числом недостатков. Является дешёвым аналогом Кайзера
+  description: Not as refined as the Kaiser, but still a combat drug — possessing the effects of Exile with fewer drawbacks. A cheap Kaiser alternative.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/kaiser.rsi
@@ -260,7 +260,7 @@
   name: JV-102 autoinjector
   parent: ChemicalMedipen
   id: JV102AutoInjector
-  description: дешёвый, но все ещё универсальный гель-лубрикант. Он повышает эффективность работы живых тканей, даже если это происходит против воли организма. Изготовлен компанией Carthage Industries.
+  description: A cheap but still versatile gel-lubricant. It enhances the efficiency of living tissue, even against the body's will. Manufactured by Carthage Industries.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/jv201.rsi
@@ -296,7 +296,7 @@
   name: exileminus autoinjector
   parent: ChemicalMedipen
   id: ExileminusAutoinjector
-  description: Дешёвый и распространённый боевой стимулятор, используемыйдля лечения ран, полученных в бою, и поддержания оперативника на ногах в течение некоторого времени.
+  description: A cheap and common combat stimulant, used to treat wounds sustained in combat and keep operatives on their feet for a while.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/exile.rsi
@@ -330,7 +330,7 @@
   name: fall autoinjector
   parent: ChemicalMedipen
   id: FallAutoinjector
-  description: Ещё более дешёвый, легко производимый боевой стимулятор, чаще всего используемый боевыми пилотами. Известен тем, что вызывает продолжительную дрожь.
+  description: An even cheaper, easily manufactured combat stimulant, most commonly used by fighter pilots. Known for causing prolonged tremors.
   components:
   - type: Sprite
     sprite: _Crescent/Objects/Autoinjectors/crash.rsi

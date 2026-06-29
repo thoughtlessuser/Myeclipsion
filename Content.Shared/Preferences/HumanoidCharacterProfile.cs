@@ -24,7 +24,7 @@ namespace Content.Shared.Preferences;
 [Serializable, NetSerializable]
 public sealed partial class HumanoidCharacterProfile : ICharacterProfile
 {
-    private static readonly Regex RestrictedNameRegex = new("[^А-Яа-яёЁ0-9' -]"); // RU-Localization
+    private static readonly Regex RestrictedNameRegex = new("[^A-Za-z0-9' -]");
     private static readonly Regex ICNameCaseRegex = new(@"^(?<word>\w)|\b(?<word>\w)(?=\w*$)");
 
     public const int MaxNameLength = 64;
@@ -140,7 +140,7 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     public long BankBalance { get; private set; } = 0;
 
     /// <summary>
-    /// Основная фракция (БМС, ДСМ, Нанотрейзен и т.д.) - из FactionPrototype
+    /// Primary faction (DSM, NCWL, NanoTrasen, etc.) - from FactionPrototype
     /// </summary>
     [DataField]
     public string Faction { get; private set; } = "";

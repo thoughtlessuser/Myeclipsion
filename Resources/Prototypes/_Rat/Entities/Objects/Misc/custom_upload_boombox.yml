@@ -1,9 +1,9 @@
 # - type: entity  TODO: Need rework
 #   id: CustomUploadBoombox
-#   name: Старый Бумбокс
+#   name: Old Boombox
 #   parent: BaseItem
 #   suffix: Ratgore, Mirage
-#   description: Бумбокс, играющий песни вашей молодости
+#   description: A boombox playing songs from your youth
 #   components:
 #   - type: Sprite
 #     sprite: _Crescent/Objects/Misc/boombox.rsi

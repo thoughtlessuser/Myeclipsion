@@ -1,6 +1,6 @@
 - type: gameMap
   id: RatResearchLabratory
-  mapName: 'НТ Раски'
+  mapName: 'NT Raski'
   mapPath: /Maps/_Rat/POI/researchlabratory.yml
   minPlayers: 0
   stations:
@@ -15,4 +15,4 @@
           iconType: Station
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'НТ Раски'
+          mapNameTemplate: 'NT Raski'

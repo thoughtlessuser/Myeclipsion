@@ -160,10 +160,10 @@
   - type: Appearance
   - type: Explosive
     explosionType: Default
-    intensitySlope: 5
-    maxIntensity: 50
-    tileBreakScale: 0.2 # until MLG makes grid pieces not spam the map, then keep this 
-    totalIntensity: 5000 # slips most ships in half
+    intensitySlope: 2
+    maxIntensity: 200
+    tileBreakScale: 0.2 # until MLG makes grid pieces not spam the map, then keep this
+    totalIntensity: 20000
   - type: UnionfallShipNode
     gracePeriod: 600
     timeToCapture: 60
