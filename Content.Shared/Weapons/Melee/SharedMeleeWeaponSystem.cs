@@ -540,6 +540,9 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (targetMap.MapId != userXform.MapID)
             return false;
 
+        if (component.HeavyStaminaCost > 0 && TryComp<StaminaComponent>(user, out var stamina))
+            _stamina.TakeStaminaDamage(user, component.HeavyStaminaCost, stamina, visual: false);
+
         var userPos = TransformSystem.GetWorldPosition(userXform);
         var direction = targetMap.Position - userPos;
         var distance = Math.Min(component.Range * component.HeavyRangeModifier, direction.Length());

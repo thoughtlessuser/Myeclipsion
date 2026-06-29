@@ -139,7 +139,7 @@ public sealed class SharedParrySystem : EntitySystem
                 _color.RaiseEffect(Color.Yellow, new List<EntityUid> { target }, Filter.Pvs(target, entityManager: EntityManager));
                 _color.RaiseEffect(Color.Yellow, new List<EntityUid> { attacker }, Filter.Pvs(attacker, entityManager: EntityManager));
 
-                _stun.TryStun(attacker, TimeSpan.FromSeconds(1.5), true);
+                _stun.TrySlowdown(attacker, TimeSpan.FromSeconds(1.0), true, 0f, 0f);
             }
             else
             {
