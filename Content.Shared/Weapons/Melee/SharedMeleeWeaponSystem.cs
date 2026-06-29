@@ -48,6 +48,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _protoManager = default!;
     [Dependency] private readonly StaminaSystem _stamina = default!;
     [Dependency] private readonly ContestsSystem _contests = default!;
+    [Dependency] private readonly SharedParrySystem _parry = default!;
 
     private const int AttackMask = (int) (CollisionGroup.MobMask | CollisionGroup.Opaque);
 
@@ -460,6 +461,17 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (hitEvent.Handled)
             return;
 
+        // Parry check
+        if (_parry.TryParry(target.Value, user, meleeUid))
+        {
+            _meleeSound.PlaySwingSound(user, meleeUid, component);
+            return;
+        }
+
+        // Apply riposte bonus if attacker just parried successfully
+        var riposteMultiplier = _parry.GetRiposteMultiplier(user);
+        damage *= riposteMultiplier;
+
         var targets = new List<EntityUid>(1)
         {
             target.Value
@@ -511,6 +523,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (damageResult?.GetTotal() > FixedPoint2.Zero)
         {
             DoDamageEffect(targets, user, targetXform);
+            _parry.TryPlayFinisher(target.Value, user);
         }
     }
 
@@ -526,17 +539,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
 
         if (targetMap.MapId != userXform.MapID)
             return false;
-
-        if (TryComp<StaminaComponent>(user, out var stamina))
-        {
-            if (stamina.CritThreshold - stamina.StaminaDamage <= component.HeavyStaminaCost)
-            {
-                PopupSystem.PopupClient(Loc.GetString("melee-heavy-no-stamina"), meleeUid, user);
-                return false;
-            }
-
-            _stamina.TakeStaminaDamage(user, component.HeavyStaminaCost, stamina, visual: false);
-        }
 
         var userPos = TransformSystem.GetWorldPosition(userXform);
         var direction = targetMap.Position - userPos;
@@ -614,6 +616,10 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (hitEvent.Handled)
             return true;
 
+        // Apply riposte bonus if attacker just parried successfully
+        var riposteMultiplier = _parry.GetRiposteMultiplier(user);
+        damage *= riposteMultiplier;
+
         var weapon = GetEntity(ev.Weapon);
 
         Interaction.DoContactInteraction(user, weapon);
@@ -633,6 +639,14 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         for (var i = targets.Count - 1; i >= 0; i--)
         {
             var entity = targets[i];
+
+            // Parry check — each target in the swing is checked individually
+            if (_parry.TryParry(entity, user, meleeUid))
+            {
+                targets.RemoveAt(i);
+                continue;
+            }
+
             // We raise an attack attempt here as well,
             // primarily because this was an untargeted wideswing: if a subscriber to that event cared about
             // the potential target (such as for pacifism), they need to be made aware of the target here.
@@ -686,6 +700,9 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (appliedDamage.GetTotal() > FixedPoint2.Zero)
         {
             DoDamageEffect(targets, user, Transform(targets[0]));
+
+            foreach (var target in targets)
+                _parry.TryPlayFinisher(target, user);
         }
 
         return true;

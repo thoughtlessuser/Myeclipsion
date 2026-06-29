@@ -27,7 +27,7 @@
     maxTargets: 2
     angle: 40
     soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
+      collection: SwordHit
   - type: DamageOtherOnHit
     staminaCost: 5
   - type: EmbeddableProjectile

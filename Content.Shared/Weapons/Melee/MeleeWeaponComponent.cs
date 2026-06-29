@@ -83,7 +83,7 @@ public sealed partial class MeleeWeaponComponent : Component
     ///     When power attacking, the required cooldown between swings is multiplied by this amount.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float HeavyRateModifier = 1.2f;
+    public float HeavyRateModifier = 1.75f;
     /// <summary>
     /// Are we currently holding down the mouse for an attack.
     /// Used so we can't just hold the mouse button and attack constantly.
@@ -111,7 +111,7 @@ public sealed partial class MeleeWeaponComponent : Component
     public DamageSpecifier Damage = default!;
 
     [DataField, AutoNetworkedField]
-    public FixedPoint2 BluntStaminaDamageFactor = FixedPoint2.New(1f);
+    public FixedPoint2 BluntStaminaDamageFactor = FixedPoint2.New(0.5f);
 
     /// <summary>
     /// Multiplies damage by this amount for single-target attacks.
@@ -222,6 +222,7 @@ public sealed partial class MeleeWeaponComponent : Component
     {
         DoStaminaInteraction = true,
         StaminaDisadvantage = true,
+        StaminaRangeModifier = 0.4f,
         DoHealthInteraction = true,
     };
 

@@ -1467,11 +1467,11 @@ namespace Content.Client.Stylesheets
                 // Lobby translucent panels
                 Element<PanelContainer>().Class("LobbyPanel")
                     .Prop(PanelContainer.StylePropertyPanel, BaseAngleRect)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#252525E8")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#252525CC")),
 
                 Element<PanelContainer>().Class("LobbyPanelLight")
                     .Prop(PanelContainer.StylePropertyPanel, BaseAngleRect)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252588")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252570")),
 
                 Element<PanelContainer>().Class("BackgroundOpenRight")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenRight)

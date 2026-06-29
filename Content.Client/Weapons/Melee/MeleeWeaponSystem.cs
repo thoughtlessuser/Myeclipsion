@@ -6,6 +6,7 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.StatusEffect;
 using Content.Shared.Weapons.Melee;
+using Content.Shared.Weapons.Melee.Components;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Wieldable.Components;
@@ -39,7 +40,31 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         base.Initialize();
         _xformQuery = GetEntityQuery<TransformComponent>();
         SubscribeNetworkEvent<MeleeLungeEvent>(OnMeleeLunge);
+        SubscribeNetworkEvent<ParryVisualEvent>(OnParryVisual);
+        SubscribeNetworkEvent<RiposteVisualEvent>(OnRiposteVisual);
         UpdatesOutsidePrediction = true;
+    }
+
+    private void OnParryVisual(ParryVisualEvent ev)
+    {
+        var ent = GetEntity(ev.Parrier);
+        if (!Exists(ent))
+            return;
+
+        DoParryAnimation(ent);
+    }
+
+    private void OnRiposteVisual(RiposteVisualEvent ev)
+    {
+        var ent = GetEntity(ev.Attacker);
+        if (!Exists(ent))
+            return;
+
+        _color.RaiseEffect(Color.Gold, new List<EntityUid> { ent }, Filter.Local());
+
+        var weapon = GetEntity(ev.Weapon);
+        if (weapon.Valid && Exists(weapon))
+            DoRiposteAnimation(ent, weapon);
     }
 
     public override void FrameUpdate(float frameTime)
@@ -86,70 +111,34 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
                 altDown = false;
         }
 
-        if ((weapon.AutoAttack || !useDown && !altDown) && weapon.Attacking)
+        // Right-click: Parry attempt (requires holding a weapon, not unarmed)
+        if (altDown && !useDown)
+        {
+            if (weaponUid != entity
+                && TryComp<ParryComponent>(entity, out var parry)
+                && !parry.IsParrying
+                && parry.NextParryTime <= Timing.CurTime)
+            {
+                RaisePredictiveEvent(new ParryAttemptEvent(GetNetEntity(weaponUid)));
+                DoParryAnimation(entity);
+            }
+            return;
+        }
+
+        if ((weapon.AutoAttack || !useDown) && weapon.Attacking)
             RaisePredictiveEvent(new StopAttackEvent(GetNetEntity(weaponUid)));
 
-        if (weapon.Attacking || weapon.NextAttack > Timing.CurTime || !useDown && !altDown)
+        if (weapon.Attacking || weapon.NextAttack > Timing.CurTime || !useDown)
             return;
-
-        // TODO using targeted actions while combat mode is enabled should NOT trigger attacks.
 
         var mousePos = _eyeManager.PixelToMap(_inputManager.MouseScreenPosition);
         var coordinates = TransformSystem.ToCoordinates(mousePos);
 
-        // Heavy attack.
-        if (!weapon.DisableHeavy &&
-            (!weapon.SwapKeys ? altDown : useDown))
+        // Left-click: Wide slash attack
+        if (!weapon.DisableHeavy && useDown)
         {
-            // If it's an unarmed attack then do a disarm
-            if (weapon.AltDisarm && weaponUid == entity)
-            {
-                EntityUid? target = null;
-
-                if (_stateManager.CurrentState is GameplayStateBase screen)
-                {
-                    target = screen.GetClickedEntity(mousePos);
-                }
-
-                EntityManager.RaisePredictiveEvent(new DisarmAttackEvent(GetNetEntity(target), GetNetCoordinates(coordinates)));
-                return;
-            }
-
             ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
             return;
-        }
-
-        // Light attack
-        if (!weapon.DisableClick &&
-            (!weapon.SwapKeys ? useDown : altDown))
-        {
-            var attackerPos = TransformSystem.GetMapCoordinates(entity);
-
-            if (mousePos.MapId != attackerPos.MapId ||
-                (attackerPos.Position - mousePos.Position).Length() > weapon.Range * weapon.LightRangeModifier)
-            {
-                if (weapon.HeavyOnLightMiss)
-                    ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
-
-                return;
-            }
-
-            EntityUid? target = null;
-
-            if (_stateManager.CurrentState is GameplayStateBase screen)
-                target = screen.GetClickedEntity(mousePos);
-
-            // Don't light-attack if interaction will be handling this instead
-            if (Interaction.CombatModeCanHandInteract(entity, target))
-                return;
-
-            if (weapon.HeavyOnLightMiss && !CanDoLightAttack(entity, target, weapon, out _))
-            {
-                ClientHeavyAttack(entity, coordinates, weaponUid, weapon);
-                return;
-            }
-
-            RaisePredictiveEvent(new LightAttackEvent(GetNetEntity(target), GetNetEntity(weaponUid), GetNetCoordinates(coordinates)));
         }
     }
 
@@ -220,10 +209,9 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
         var ent = GetEntity(ev.Entity);
         var entWeapon = GetEntity(ev.Weapon);
 
-        // Entity might not have been sent by PVS.
-        if (!Exists(ent) || Exists(entWeapon))
+        if (!Exists(ent))
             return;
 
-        DoLunge(ent, entWeapon, ev.Angle, ev.LocalPos, ev.Animation);
+        DoLunge(ent, entWeapon, ev.Angle, ev.LocalPos, ev.Animation, false);
     }
 }

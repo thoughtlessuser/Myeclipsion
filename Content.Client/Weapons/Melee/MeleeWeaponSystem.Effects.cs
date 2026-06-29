@@ -14,6 +14,8 @@ public sealed partial class MeleeWeaponSystem
     private const string FadeAnimationKey = "melee-fade";
     private const string SlashAnimationKey = "melee-slash";
     private const string ThrustAnimationKey = "melee-thrust";
+    private const string ParryAnimationKey = "melee-parry";
+    private const string RiposteAnimationKey = "melee-riposte";
 
     /// <summary>
     /// Does all of the melee effects for a player that are predicted, i.e. character lunge and weapon animation.
@@ -69,7 +71,7 @@ public sealed partial class MeleeWeaponSystem
                 track.User = user;
                 _animation.Play(animationUid, GetSlashAnimation(sprite, angle, spriteRotation), SlashAnimationKey);
                 if (arcComponent.Fadeout)
-                    _animation.Play(animationUid, GetFadeAnimation(sprite, 0.065f, 0.065f + 0.05f), FadeAnimationKey);
+                    _animation.Play(animationUid, GetFadeAnimation(sprite, 0.2f, 0.3f), FadeAnimationKey);
                 break;
             case WeaponArcAnimation.Thrust:
                 track = EnsureComp<TrackUserComponent>(animationUid);
@@ -91,9 +93,9 @@ public sealed partial class MeleeWeaponSystem
 
     private Animation GetSlashAnimation(SpriteComponent sprite, Angle arc, Angle spriteRotation)
     {
-        const float slashStart = 0.03f;
-        const float slashEnd = 0.065f;
-        const float length = slashEnd + 0.05f;
+        const float slashStart = 0.08f;
+        const float slashEnd = 0.2f;
+        const float length = slashEnd + 0.1f;
         var startRotation = sprite.Rotation + arc / 2;
         var endRotation = sprite.Rotation - arc / 2;
         var startRotationOffset = startRotation.RotateVec(new Vector2(0f, -1f));
@@ -215,6 +217,91 @@ public sealed partial class MeleeWeaponSystem
                 }
             }
         };
+    }
+
+    public void DoParryAnimation(EntityUid user)
+    {
+        if (!Timing.IsFirstTimePredicted)
+            return;
+
+        if (!_xformQuery.TryGetComponent(user, out var userXform) || userXform.MapID == MapId.Nullspace)
+            return;
+
+        var animationUid = Spawn("WeaponArcParry", userXform.Coordinates);
+
+        if (!TryComp<SpriteComponent>(animationUid, out var sprite))
+            return;
+
+        var track = EnsureComp<TrackUserComponent>(animationUid);
+        track.User = user;
+
+        sprite.Rotation = Angle.FromDegrees(90);
+
+        var parryHoldTime = 0.5f;
+
+        _animation.Stop(animationUid, ParryAnimationKey);
+        _animation.Play(animationUid, GetParryAnimation(sprite, parryHoldTime), ParryAnimationKey);
+        _animation.Play(animationUid, GetFadeAnimation(sprite, parryHoldTime * 0.7f, parryHoldTime), FadeAnimationKey);
+    }
+
+    private Animation GetParryAnimation(SpriteComponent sprite, float holdTime)
+    {
+        var sideOffset = new Vector2(-0.5f, 0f);
+        var readyOffset = new Vector2(-0.4f, -0.15f);
+        var rotation = sprite.Rotation;
+        const float raiseTime = 0.06f;
+
+        return new Animation
+        {
+            Length = TimeSpan.FromSeconds(holdTime),
+            AnimationTracks =
+            {
+                new AnimationTrackComponentProperty
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Rotation),
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(rotation, 0f),
+                        new AnimationTrackProperty.KeyFrame(rotation, holdTime),
+                    }
+                },
+                new AnimationTrackComponentProperty
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Offset),
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(sideOffset, 0f),
+                        new AnimationTrackProperty.KeyFrame(readyOffset, raiseTime),
+                        new AnimationTrackProperty.KeyFrame(readyOffset, holdTime),
+                    }
+                },
+            }
+        };
+    }
+
+    public void DoRiposteAnimation(EntityUid user, EntityUid weapon)
+    {
+        if (!_xformQuery.TryGetComponent(user, out var userXform) || userXform.MapID == MapId.Nullspace)
+            return;
+
+        var animationUid = Spawn("WeaponArcSlash", userXform.Coordinates);
+
+        if (!TryComp<SpriteComponent>(animationUid, out var sprite))
+            return;
+
+        if (TryComp<SpriteComponent>(weapon, out var weaponSprite))
+            sprite.CopyFrom(weaponSprite);
+
+        sprite.Color = Color.Gold;
+
+        var track = EnsureComp<TrackUserComponent>(animationUid);
+        track.User = user;
+
+        _animation.Stop(animationUid, RiposteAnimationKey);
+        _animation.Play(animationUid, GetSlashAnimation(sprite, Angle.FromDegrees(100), Angle.Zero), RiposteAnimationKey);
+        _animation.Play(animationUid, GetFadeAnimation(sprite, 0.1f, 0.35f), FadeAnimationKey);
     }
 
     /// <summary>

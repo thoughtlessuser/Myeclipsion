@@ -166,7 +166,7 @@
     lightRangeModifier: 1.25
     angle: 80
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
   - type: DamageOtherOnHit
     staminaCost: 5
   - type: EmbeddableProjectile
@@ -199,7 +199,7 @@
     maxTargets: 4
     angle: 200
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
   - type: DamageOtherOnHit
     staminaCost: 10
   - type: EmbeddableProjectile
@@ -234,7 +234,7 @@
     lightRangeModifier: 1.25
     angle: 40
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
   - type: DamageOtherOnHit
     staminaCost: 5
   - type: EmbeddableProjectile

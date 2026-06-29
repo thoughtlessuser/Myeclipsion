@@ -16,7 +16,7 @@
       types:
         Slash: 34
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
     heavyDamageBaseModifier: 1
     heavyStaminaCost: 10
     heavyRateModifier: 1.2
@@ -71,7 +71,7 @@
     maxTargets: 2
     angle: 45
     soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
+      collection: SwordHit
   - type: Item
     sprite: _Crescent/Objects/Weapons/Melee/mantis_blade.rsi
   - type: MultiHandedItem
@@ -99,23 +99,23 @@
     sprite: _Crescent/Objects/Weapons/Melee/noble_rapier.rsi
     state: icon
   - type: MeleeWeapon
-    wideAnimationRotation: -135
+    wideAnimationRotation: 0
     range: 1.75
     attackRate: 1.15
     damage:
       types:
-        Slash: 18
-        Piercing: 22
+        Piercing: 40
     heavyDamageBaseModifier: 1
-    heavyStaminaCost: 10
+    heavyStaminaCost: 0
     heavyRateModifier: 1.13
     clickPartDamageMultiplier: 1.5
     lightRangeModifier: 1.15
-    maxTargets: 3
+    maxTargets: 1
     angle: 0.1
     animation: WeaponArcThrust
+    wideAnimation: WeaponArcThrust
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
   - type: Item
     size: Normal
     shape:
@@ -160,7 +160,7 @@
     maxTargets: 4
     animation: WeaponArcThrust
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
   - type: Reflect
     reflectProb: .1
     spread: 90
@@ -288,7 +288,7 @@
     lightRangeModifier: 1.2
     maxTargets: 3
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
   - type: ThrowingAngle
     angle: 300
   - type: Item
@@ -382,7 +382,7 @@
     lightRangeModifier: 1.15
     maxTargets: 3
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
   - type: Item
     size: Normal
     shape:
@@ -420,7 +420,7 @@
       types:
         Slash: 40
     soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
+        collection: SwordHit
     heavyDamageBaseModifier: 1
     heavyStaminaCost: 10
     heavyRateModifier: 1.2
@@ -480,7 +480,7 @@
     maxTargets: 3
     angle: 100
     soundHit:
-      path: /Audio/Weapons/bladeslice.ogg
+      collection: SwordHit
   - type: DamageOtherOnHit
     damage:
       types:
