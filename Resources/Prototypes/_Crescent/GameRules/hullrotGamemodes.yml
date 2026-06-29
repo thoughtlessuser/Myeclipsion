@@ -10,6 +10,33 @@
   name: Freeplay
   showInVote: true
   description: The last days of Taypan. Lasts 2-4 hours. Large map.
+  excludedJobs:
+  - UnionfallCadetDSM
+  - UnionfallRiflemanDSM
+  - UnionfallDoctorDSM
+  - UnionfallOfficerDSM
+  - UnionfallLeaderDSM
+  - UnionfallShipCaptainDSM
+  - UnionfallShipCrewDSM
+  - UnionfallCadetNCWL
+  - UnionfallRiflemanNCWL
+  - UnionfallDoctorNCWL
+  - UnionfallOfficerNCWL
+  - UnionfallLeaderNCWL
+  - UnionfallShipCaptainNCWL
+  - UnionfallShipCrewNCWL
+  - planetfall_worker
+  - planetfall_partisan
+  - planetfall_mvdofficer
+  - planetfall_mvdgrunt
+  - planetfall_kapitan
+  - planetfall_doctor
+  - planetfall_courtier
+  - planetfall_advocatus
+  - planetfall_governor
+  - planetfall_freeholder
+  - planetfall_levyman
+  - planetfall_surgeon
   rules:
   - OverworldRemap
   - HullrotEventScheduler
@@ -205,6 +232,21 @@
   name: Unionfall | NCWL VS DSM
   showInVote: true
   description: The NCWL Homeguard flees to a new home, after the destruction of Nova Belraska. A DSM punishment regimen intercepts them to regain their honor.
+  availableJobs:
+  - UnionfallCadetDSM
+  - UnionfallRiflemanDSM
+  - UnionfallDoctorDSM
+  - UnionfallOfficerDSM
+  - UnionfallLeaderDSM
+  - UnionfallShipCaptainDSM
+  - UnionfallShipCrewDSM
+  - UnionfallCadetNCWL
+  - UnionfallRiflemanNCWL
+  - UnionfallDoctorNCWL
+  - UnionfallOfficerNCWL
+  - UnionfallLeaderNCWL
+  - UnionfallShipCaptainNCWL
+  - UnionfallShipCrewNCWL
   rules:
   - Unionfall
 

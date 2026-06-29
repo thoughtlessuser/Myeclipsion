@@ -10,7 +10,7 @@
 
 - type: storeCategory
   id: StoreCategorySRMSupport
-  name: Medical & Support
+  name: Medical and Support
   priority: 8
 
 - type: storeCategory

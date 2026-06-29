@@ -49,7 +49,7 @@
 
 - type: listing
   id: StoreListingSRMRifleHunter
-  name: "Hunter" Rifle
+  name: Hunter Rifle
   description: A hunting rifle — reliable but poorly constructed firearm for use by hunters. Comes with a rifle and two magazines.
   icon: { sprite: _Crescent/Objects/Weapons/Guns/hunter.rsi, state: icon }
   productEntity: CrateSRMHunterDMR
@@ -60,7 +60,7 @@
 
 - type: listing
   id: StoreListingSRMBeetleSMG
-  name: "Beetle" SMG
+  name: Beetle SMG
   description: The Beetle submachine gun — a compact, yet decently designed firearm for use by hunters. Comes with several SMGs and ammunition.
   icon: { sprite: _Crescent/Objects/Weapons/Guns/beetle.rsi, state: icon }
   productEntity: CrateSRMBeetleSMG

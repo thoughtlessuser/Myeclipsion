@@ -1008,7 +1008,7 @@
     MagazinePistol: 50
     WeaponAntimaterielNCWLHayha: 2
     BoxRoundsAntiMateriel: 4
-    WeaponShotgunKammerer: 2
+    WeaponShotgunProletarWorn: 2
     BoxLethalshot: 4
     WeaponHPSterilizerFlamethrower: 2
     KukriKnife: 100
@@ -1022,7 +1022,7 @@
     MagazinePistol: 50
     WeaponAntimaterielDSMLeveller: 2
     BoxRoundsAntiMateriel: 4
-    WeaponShotgunKammerer: 2
+    WeaponShotgunDSMMatusaWorn: 2
     BoxLethalshot: 4
     WeaponHPSterilizerFlamethrower: 2
     KukriKnife: 100

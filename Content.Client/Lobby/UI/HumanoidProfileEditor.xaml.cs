@@ -15,6 +15,7 @@ using Content.Shared.Clothing.Loadouts.Prototypes;
 using Content.Shared.Clothing.Loadouts.Systems;
 using Content.Shared.Customization.Systems;
 using Content.Shared.Dataset;
+using Content.Client.GameTicking.Managers;
 using Content.Shared.GameTicking;
 using Content.Shared.Guidebook;
 using Content.Shared.Humanoid;
@@ -60,6 +61,7 @@ namespace Content.Client.Lobby.UI
         private readonly LobbyUIController _controller;
         private readonly IRobustRandom _random;
         private readonly SponsorManager _sponsorMan; // Forge-Change
+        private readonly ClientGameTicker _gameTicker;
 
         private FlavorText.FlavorText? _flavorText;
         private BoxContainer _ccustomspecienamecontainerEdit => CCustomSpecieName;
@@ -140,6 +142,7 @@ namespace Content.Client.Lobby.UI
             _sponsorMan = sponsorMan;
 
             _characterRequirementsSystem = _entManager.System<CharacterRequirementsSystem>();
+            _gameTicker = _entManager.System<ClientGameTicker>();
             _controller = UserInterfaceManager.GetUIController<LobbyUIController>();
 
             ImportButton.OnPressed += args => { ImportProfile(); };
@@ -1036,8 +1039,14 @@ namespace Content.Client.Lobby.UI
                     JobList.AddChild(category);
                 }
 
+                var gamemodeJobs = _gameTicker.GamemodeAvailableJobs;
+                var excludedJobs = _gameTicker.GamemodeExcludedJobs;
+                var hasGamemodeFilter = gamemodeJobs.Count > 0;
+
                 var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
                     .Where(job => job.SetPreference)
+                    .Where(job => !hasGamemodeFilter || gamemodeJobs.Contains(job.ID))
+                    .Where(job => !excludedJobs.Contains(job.ID))
                     .ToArray();
 
                 Array.Sort(jobs, JobUIComparer.Instance);

@@ -214,6 +214,12 @@ namespace Content.Server.GameTicking
             RaiseNetworkEvent(new TickerJoinLobbyEvent(), client);
             RaiseNetworkEvent(GetStatusMsg(session), client);
             RaiseNetworkEvent(GetInfoMsg(), client);
+
+            var preset = CurrentPreset ?? Preset;
+            var gamemodeJobs = preset?.AvailableJobs?.Select(j => j.Id).ToList() ?? new List<string>();
+            var excludedJobs = preset?.ExcludedJobs?.Select(j => j.Id).ToList() ?? new List<string>();
+            RaiseNetworkEvent(new TickerGamemodeJobsEvent(gamemodeJobs, excludedJobs), client);
+
             RaiseLocalEvent(new PlayerJoinedLobbyEvent(session));
         }
 

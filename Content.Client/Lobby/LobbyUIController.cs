@@ -29,6 +29,7 @@ using static Content.Shared.Humanoid.SharedHumanoidAppearanceSystem;
 using CharacterSetupGui = Content.Client.Lobby.UI.CharacterSetupGui;
 using HumanoidProfileEditor = Content.Client.Lobby.UI.HumanoidProfileEditor;
 using Content.Client._Forge.Sponsors;
+using Content.Client.GameTicking.Managers;
 
 namespace Content.Client.Lobby;
 
@@ -50,6 +51,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     [UISystemDependency] private readonly GuidebookSystem _guide = default!;
     [UISystemDependency] private readonly SharedLoadoutSystem _loadouts = default!;
     [UISystemDependency] private readonly StationSpawningSystem _stationSpawning = default!;
+    [UISystemDependency] private readonly ClientGameTicker _gameTicker = default!;
 
     private CharacterSetupGui? _characterSetup;
     private HumanoidProfileEditor? _profileEditor;
@@ -69,6 +71,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         _prototypeManager.PrototypesReloaded += OnPrototypesReloaded;
         _preferencesManager.OnServerDataLoaded += PreferencesDataLoaded;
         _jobRequirements.Updated += OnRequirementsUpdated;
+        _gameTicker.GamemodeJobsUpdated += OnGamemodeJobsUpdated;
 
         _configurationManager.OnValueChanged(CCVars.FlavorText, _ => _profileEditor?.RefreshFlavorText());
         _configurationManager.OnValueChanged(CCVars.GameRoleTimers, _ => RefreshProfileEditor());
@@ -115,6 +118,11 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
 
         _profileEditor.RefreshAntags();
         _profileEditor.RefreshJobs();
+    }
+
+    private void OnGamemodeJobsUpdated()
+    {
+        _profileEditor?.RefreshJobs();
     }
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs obj)
