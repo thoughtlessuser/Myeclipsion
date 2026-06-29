@@ -1,10 +1,10 @@
 - type: gameMap
-  id: Planetfall
+  id: PlanetfallMap
   mapName: 'Dominion Planet'
   mapPath: /Maps/_Crescent/Planetfall/planetfallmap.yml
   minPlayers: 0
   stations:
-    Planetfall:
+    PlanetfallMap:
       stationProto: FlagshipCrescentVessel
       components:
         - type: StationNameSetup
@@ -13,7 +13,7 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: VesselDesignation
-          designation: 
+          designation: vessel-designation-planet
         - type: VesselDescription
           description: Capital of Divine Sol Mandate
         - type: StationBiome

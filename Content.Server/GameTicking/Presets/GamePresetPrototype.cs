@@ -56,5 +56,19 @@ namespace Content.Server.GameTicking.Presets
         /// </summary>
         [DataField("excludedJobs")]
         public List<ProtoId<JobPrototype>>? ExcludedJobs;
+
+        /// <summary>
+        /// Custom round-start announcement message for this gamemode.
+        /// When set, this replaces the default sector-wide announcement.
+        /// </summary>
+        [DataField("roundStartMessage")]
+        public string? RoundStartMessage;
+
+        /// <summary>
+        /// Custom sender name for the round-start announcement.
+        /// When set, this replaces the default announcer name (e.g. "Sector-Wide Announcement").
+        /// </summary>
+        [DataField("roundStartSender")]
+        public string? RoundStartSender;
     }
 }

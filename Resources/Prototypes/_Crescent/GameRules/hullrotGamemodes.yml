@@ -232,6 +232,8 @@
   name: Unionfall | NCWL VS DSM
   showInVote: true
   description: The NCWL Homeguard flees to a new home, after the destruction of Nova Belraska. A DSM punishment regimen intercepts them to regain their honor.
+  roundStartMessage: "Imperial forces detected. Enemy vessels confirmed on intercept. There is no route forward but through them. We either destroy them, or we die trying. All personnel to battle stations. Prepare for immediate engagement."
+  roundStartSender: "Homeguard Fleet"
   availableJobs:
   - UnionfallCadetDSM
   - UnionfallRiflemanDSM

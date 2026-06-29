@@ -130,6 +130,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
     /// <param name="hideIFF">a boolean to set wether this is visible on the map screen or not</param>
     private void SpawnMapElementByID(MapId mapid, string gameMapID, float posX, float posY, float randomOffsetX, float randomOffsetY, Color color, string? iffFaction, bool hideIFF)
     {
+        _sawmill.Info($"Attempting to spawn map element: {gameMapID} at ({posX}, {posY})");
         if (_prototypeManager.TryIndex<GameMapPrototype>(gameMapID, out var stationProto))
         {
             if (_map.TryLoadGrid(mapid, new ResPath(stationProto.MapPath.ToString()), out var stationGridUid, null, new Vector2(posX, posY) + _random.NextVector2(randomOffsetX, randomOffsetY)))
@@ -152,6 +153,10 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
                 _sawmill.Error($"Failed to load {gameMapID} in map {mapid}");
             }
         }
+        else
+        {
+            _sawmill.Error($"GameMap prototype '{gameMapID}' not found!");
+        }
     }
 
     protected override void Started(EntityUid uid, AdventureRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
@@ -159,6 +164,7 @@ public sealed class NfAdventureRuleSystem : GameRuleSystem<AdventureRuleComponen
         var mapId = GameTicker.DefaultMap;
         base.Started(uid, component, gameRule, args);
 
+        _sawmill.Info($"AdventureRule Started for {uid}. GameMapsID count: {component.GameMapsID.Count}");
         foreach (var gamemap in component.GameMapsID)
         {
             SpawnMapElementByID(mapId,
