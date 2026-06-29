@@ -51,7 +51,7 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
     [UISystemDependency] private readonly GuidebookSystem _guide = default!;
     [UISystemDependency] private readonly SharedLoadoutSystem _loadouts = default!;
     [UISystemDependency] private readonly StationSpawningSystem _stationSpawning = default!;
-    [UISystemDependency] private readonly ClientGameTicker _gameTicker = default!;
+    private ClientGameTicker? _gameTicker;
 
     private CharacterSetupGui? _characterSetup;
     private HumanoidProfileEditor? _profileEditor;
@@ -71,7 +71,6 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
         _prototypeManager.PrototypesReloaded += OnPrototypesReloaded;
         _preferencesManager.OnServerDataLoaded += PreferencesDataLoaded;
         _jobRequirements.Updated += OnRequirementsUpdated;
-        _gameTicker.GamemodeJobsUpdated += OnGamemodeJobsUpdated;
 
         _configurationManager.OnValueChanged(CCVars.FlavorText, _ => _profileEditor?.RefreshFlavorText());
         _configurationManager.OnValueChanged(CCVars.GameRoleTimers, _ => RefreshProfileEditor());
@@ -82,12 +81,21 @@ public sealed class LobbyUIController : UIController, IOnStateEntered<LobbyState
 
     public void OnStateEntered(LobbyState state)
     {
+        _gameTicker = EntityManager.System<ClientGameTicker>();
+        _gameTicker.GamemodeJobsUpdated += OnGamemodeJobsUpdated;
+
         PreviewPanel?.SetLoaded(_preferencesManager.ServerDataLoaded);
         ReloadCharacterSetup();
     }
 
     public void OnStateExited(LobbyState state)
     {
+        if (_gameTicker != null)
+        {
+            _gameTicker.GamemodeJobsUpdated -= OnGamemodeJobsUpdated;
+            _gameTicker = null;
+        }
+
         PreviewPanel?.SetLoaded(false);
         _characterSetup?.Dispose();
         _profileEditor?.Dispose();
