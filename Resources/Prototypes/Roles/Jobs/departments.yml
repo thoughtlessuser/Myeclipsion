@@ -234,6 +234,38 @@
   editorHidden: true
   primary: false
 
+  # UNIONFALL
+
+- type: department
+  id: UnionfallNCWL
+  description: department-UnionfallNCWL-description
+  color: "#FFD580"
+  weight: 13
+  roles:
+  - UnionfallLeaderNCWL
+  - UnionfallOfficerNCWL
+  - UnionfallShipCaptainNCWL
+  - UnionfallShipCrewNCWL
+  - UnionfallDoctorNCWL
+  - UnionfallRiflemanNCWL
+  - UnionfallCadetNCWL
+  editorHidden: false
+
+- type: department
+  id: UnionfallDSM
+  description: department-UnionfallDSM-description
+  color: "#684871"
+  weight: 12
+  roles:
+  - UnionfallLeaderDSM
+  - UnionfallOfficerDSM
+  - UnionfallShipCaptainDSM
+  - UnionfallShipCrewDSM
+  - UnionfallDoctorDSM
+  - UnionfallRiflemanDSM
+  - UnionfallCadetDSM
+  editorHidden: false
+
   # CONSCRIPT
 
 - type: department

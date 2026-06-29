@@ -6,4 +6,6 @@ department-SHI-description = Wholesale and profit.
 department-CMM-description = Protect the little folk.
 department-TAP-description = A family of nomadic starfarers.
 department-ATH-description = A fascist regime from Sol.
+department-UnionfallNCWL-description = The NCWL Homeguard flees to a new home after the destruction of Nova Belraska.
+department-UnionfallDSM-description = A DSM punishment regimen intercepts the fleeing NCWL to regain their honor.
 department-Independents-description = Survival is not guaranteed, keep your head low and your friends close.
