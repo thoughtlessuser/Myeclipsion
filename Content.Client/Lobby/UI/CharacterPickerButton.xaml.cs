@@ -49,7 +49,7 @@ public sealed partial class CharacterPickerButton : ContainerButton
                 .LoadProfileEntity(humanoid, true, true);
             var hum = (HumanoidCharacterProfile) profile;
 
-            var highPriorityJob = humanoid.JobPriorities.SingleOrDefault(p => p.Value == JobPriority.High).Key;
+            var highPriorityJob = humanoid.JobPriorities.FirstOrDefault(p => p.Value == JobPriority.High).Key;
             if (highPriorityJob != null)
             {
                 var jobName = prototypeManager.Index<JobPrototype>(highPriorityJob).LocalizedName;

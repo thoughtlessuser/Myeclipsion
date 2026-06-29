@@ -1008,10 +1008,103 @@ namespace Content.Client.Lobby.UI
                 ("humanoid-profile-editor-job-priority-high-button", (int) JobPriority.High),
             };
 
+            var gamemodeJobs = _gameTicker.GamemodeAvailableJobs;
+            var excludedJobs = _gameTicker.GamemodeExcludedJobs;
+            var hasGamemodeFilter = gamemodeJobs.Count > 0;
+            var shownJobIds = new HashSet<string>();
+
+            if (Profile != null)
+            {
+                var dirty = false;
+                foreach (var (jobId, priority) in Profile.JobPriorities.ToArray())
+                {
+                    if (priority == JobPriority.Never)
+                        continue;
+
+                    if ((hasGamemodeFilter && !gamemodeJobs.Contains(jobId)) ||
+                        excludedJobs.Contains(jobId))
+                    {
+                        Profile = Profile.WithJobPriority(jobId, JobPriority.Never);
+                        dirty = true;
+                    }
+                }
+
+                if (dirty)
+                    SetDirty();
+            }
+
+            void AddJobToCategory(BoxContainer cat, JobPrototype job)
+            {
+                var jobContainer = new BoxContainer { Orientation = LayoutOrientation.Horizontal, HorizontalExpand = true, };
+                var selector = new RequirementsSelector { Margin = new(3f, 3f, 3f, 0f), HorizontalExpand = true, };
+                selector.OnOpenGuidebook += OnOpenGuidebook;
+
+                var icon = new TextureRect
+                {
+                    TextureScale = new(2, 2),
+                    VerticalAlignment = VAlignment.Center
+                };
+                var jobIcon = _prototypeManager.Index<JobIconPrototype>(job.Icon);
+                icon.Texture = jobIcon.Icon.Frame0();
+                selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides);
+
+                if (!_requirements.CheckJobWhitelist(job, out var reason))
+                    selector.LockRequirements(reason);
+                else if (!_characterRequirementsSystem.CheckRequirementsValid(
+                     job.Requirements ?? new(),
+                     job,
+                     Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
+                     _requirements.GetRawPlayTimeTrackers(),
+                     _requirements.IsWhitelisted(),
+                     job,
+                     _entManager,
+                     _prototypeManager,
+                     _cfgManager,
+                     out var reasons))
+                    selector.LockRequirements(_characterRequirementsSystem.GetRequirementsText(reasons));
+                else
+                    selector.UnlockRequirements();
+
+                selector.OnSelected += selectedPrio =>
+                {
+                    var selectedJobPrio = (JobPriority) selectedPrio;
+                    Profile = Profile?.WithJobPriority(job.ID, selectedJobPrio);
+
+                    foreach (var (jobId, other) in _jobPriorities)
+                    {
+                        if (jobId == job.ID)
+                            other.Select(selectedPrio);
+                        else if (selectedJobPrio == JobPriority.High &&
+                                 (JobPriority) other.Selected == JobPriority.High)
+                        {
+                            other.Select((int) JobPriority.Medium);
+                            Profile = Profile?.WithJobPriority(jobId, JobPriority.Medium);
+                        }
+                    }
+
+                    ReloadPreview();
+                    UpdateJobPriorities();
+                    SetDirty();
+                };
+
+                _jobPriorities.Add((job.ID, selector));
+                jobContainer.AddChild(selector);
+                cat.AddChild(jobContainer);
+            }
+
             var firstCategory = true;
             foreach (var department in departments)
             {
                 var departmentName = Loc.GetString($"department-{department.ID}");
+
+                var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
+                    .Where(job => job.SetPreference)
+                    .Where(job => !hasGamemodeFilter || gamemodeJobs.Contains(job.ID))
+                    .Where(job => !excludedJobs.Contains(job.ID))
+                    .ToArray();
+
+                if (jobs.Length == 0)
+                    continue;
 
                 if (!_jobCategories.TryGetValue(department.ID, out var category))
                 {
@@ -1039,78 +1132,50 @@ namespace Content.Client.Lobby.UI
                     JobList.AddChild(category);
                 }
 
-                var gamemodeJobs = _gameTicker.GamemodeAvailableJobs;
-                var excludedJobs = _gameTicker.GamemodeExcludedJobs;
-                var hasGamemodeFilter = gamemodeJobs.Count > 0;
-
-                var jobs = department.Roles.Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
-                    .Where(job => job.SetPreference)
-                    .Where(job => !hasGamemodeFilter || gamemodeJobs.Contains(job.ID))
-                    .Where(job => !excludedJobs.Contains(job.ID))
-                    .ToArray();
-
                 Array.Sort(jobs, JobUIComparer.Instance);
 
                 foreach (var job in jobs)
                 {
-                    var jobContainer = new BoxContainer { Orientation = LayoutOrientation.Horizontal, HorizontalExpand = true, };
-                    var selector = new RequirementsSelector { Margin = new(3f, 3f, 3f, 0f), HorizontalExpand = true, };
-                    selector.OnOpenGuidebook += OnOpenGuidebook;
+                    shownJobIds.Add(job.ID);
+                    AddJobToCategory(category, job);
+                }
+            }
 
-                    var icon = new TextureRect
+            if (hasGamemodeFilter)
+            {
+                var remainingJobs = gamemodeJobs
+                    .Where(jobId => !shownJobIds.Contains(jobId) && _prototypeManager.TryIndex<JobPrototype>(jobId, out _))
+                    .Select(jobId => _prototypeManager.Index<JobPrototype>(jobId))
+                    .Where(job => job.SetPreference)
+                    .ToArray();
+
+                if (remainingJobs.Length > 0)
+                {
+                    Array.Sort(remainingJobs, JobUIComparer.Instance);
+
+                    var gmCategory = new AlternatingBGContainer
                     {
-                        TextureScale = new(2, 2),
-                        VerticalAlignment = VAlignment.Center
-                    };
-                    var jobIcon = _prototypeManager.Index<JobIconPrototype>(job.Icon);
-                    icon.Texture = jobIcon.Icon.Frame0();
-                    selector.Setup(items, job.LocalizedName, 200, job.LocalizedDescription, icon, job.Guides);
-
-                    if (!_requirements.CheckJobWhitelist(job, out var reason))
-                        selector.LockRequirements(reason);
-                    else if (!_characterRequirementsSystem.CheckRequirementsValid(
-                         job.Requirements ?? new(),
-                         job,
-                         Profile ?? HumanoidCharacterProfile.DefaultWithSpecies(),
-                         _requirements.GetRawPlayTimeTrackers(),
-                         _requirements.IsWhitelisted(),
-                         job,
-                         _entManager,
-                         _prototypeManager,
-                         _cfgManager,
-                         out var reasons))
-                        selector.LockRequirements(_characterRequirementsSystem.GetRequirementsText(reasons));
-                    else
-                        selector.UnlockRequirements();
-
-                    selector.OnSelected += selectedPrio =>
-                    {
-                        var selectedJobPrio = (JobPriority) selectedPrio;
-                        Profile = Profile?.WithJobPriority(job.ID, selectedJobPrio);
-
-                        foreach (var (jobId, other) in _jobPriorities)
+                        Orientation = LayoutOrientation.Vertical,
+                        Name = "GamemodeRoles",
+                        Margin = new(0, firstCategory ? 0 : 20, 0, 0),
+                        Children =
                         {
-                            // Sync other selectors with the same job in case of multiple department jobs
-                            if (jobId == job.ID)
-                                other.Select(selectedPrio);
-                            else if (selectedJobPrio == JobPriority.High &&
-                                     (JobPriority) other.Selected == JobPriority.High)
+                            new Label
                             {
-                                // Lower any other high priorities to medium.
-                                other.Select((int) JobPriority.Medium);
-                                Profile = Profile?.WithJobPriority(jobId, JobPriority.Medium);
-                            }
-                        }
-
-                        // TODO: Only reload on high change (either to or from).
-                        ReloadPreview();
-                        UpdateJobPriorities();
-                        SetDirty();
+                                Text = Loc.GetString("humanoid-profile-editor-department-jobs-label",
+                                    ("departmentName", "Roles")),
+                                StyleClasses = { StyleBase.StyleClassLabelHeading, },
+                                Margin = new(5f, 0, 0, 0),
+                            },
+                        },
                     };
 
-                    _jobPriorities.Add((job.ID, selector));
-                    jobContainer.AddChild(selector);
-                    category.AddChild(jobContainer);
+                    JobList.AddChild(gmCategory);
+
+                    foreach (var job in remainingJobs)
+                    {
+                        AddJobToCategory(gmCategory, job);
+                    }
                 }
             }
 
