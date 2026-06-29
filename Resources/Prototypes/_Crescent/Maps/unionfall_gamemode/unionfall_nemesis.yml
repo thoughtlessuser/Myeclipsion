@@ -21,8 +21,8 @@
           availableJobs:
             UnionfallShipCaptainDSM: [ 1, 1 ]
             UnionfallLeaderDSM: [ 1, 1 ]
-            UnionfallOfficerDSM: [ 5, 5 ]
-            UnionfallShipCrewDSM: [ 3, 3 ]
-            UnionfallDoctorDSM: [ 10, 10 ]
-            UnionfallRiflemanDSM: [ 30, 30 ]
-            UnionfallCadetDSM: [ 50, 50 ]
+            UnionfallOfficerDSM: [ 2, 2 ]
+            UnionfallShipCrewDSM: [ 2, 2 ]
+            UnionfallDoctorDSM: [ 4, 4 ]
+            UnionfallRiflemanDSM: [ 10, 10 ]
+            UnionfallCadetDSM: [ 20, 20 ]
