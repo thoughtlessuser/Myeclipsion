@@ -1,11 +1,27 @@
-- type: lobbyBackground
-  id: Gazer
-  background: /Textures/_Crescent/LobbyScreens/gazer.png
-  name: The Final Days
-  artist: Aisha
+#- type: lobbyBackground
+#  id: Gazer
+#  background: /Textures/_Crescent/LobbyScreens/gazer.png
+#  name: The Final Days
+#  artist: Aisha
+
+#- type: lobbyBackground
+#  id: Rotter
+#  background: /Textures/_Crescent/LobbyScreens/rotter.png
+#  name: Death
+#  artist: Aisha
 
 - type: lobbyBackground
-  id: Rotter
-  background: /Textures/_Crescent/LobbyScreens/rotter.png
-  name: Death
-  artist: Aisha
+  id: Animated
+  animatedBackground:
+    sprite: /Textures/_Crescent/LobbyScreens/animated.rsi
+    state: animated
+  name: Animated
+  artist: vibkaze
+
+- type: lobbyBackground
+  id: Animated2
+  animatedBackground:
+    sprite: /Textures/_Crescent/LobbyScreens/animated2.rsi
+    state: animated
+  name: Animated 2
+  artist: anasabdin

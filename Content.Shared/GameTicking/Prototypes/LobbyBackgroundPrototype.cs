@@ -16,10 +16,16 @@ public sealed partial class LobbyBackgroundPrototype : IPrototype
     public string ID { get; set; } = default!;
 
     /// <summary>
-    /// The sprite to use as the background. This should ideally be 1920x1080.
+    /// The static sprite to use as the background. This should ideally be 1920x1080.
     /// </summary>
-    [DataField("background", required: true)]
+    [DataField("background")]
     public ResPath Background = default!;
+
+    /// <summary>
+    /// An animated RSI sprite to use as the background. Takes priority over <see cref="Background"/>.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? AnimatedBackground;
 
     [DataField]
     public string? Name;

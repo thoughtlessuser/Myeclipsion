@@ -12,6 +12,8 @@
     <!-- Background -->
     <TextureRect Access="Public" VerticalExpand="True" HorizontalExpand="True" Name="Background"
                  Stretch="KeepAspectCovered" />
+    <AnimatedTextureRect Access="Public" VerticalExpand="True" HorizontalExpand="True" Name="AnimatedBg"
+                         Visible="False" />
     <BoxContainer Name="MainContainer" VerticalExpand="True" HorizontalExpand="True" Orientation="Horizontal"
                   Margin="10 10 10 10" SeparationOverride="2" Modulate="#FFFFFFE0">
         <SplitContainer State="Auto" ResizeMode="NotResizable" HorizontalExpand="True">

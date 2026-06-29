@@ -19,6 +19,12 @@ public sealed partial class GameTicker
     {
         foreach (var prototype in _prototypeManager.EnumeratePrototypes<LobbyBackgroundPrototype>())
         {
+            if (prototype.AnimatedBackground != null)
+            {
+                _lobbyBackgrounds.Add(prototype);
+                continue;
+            }
+
             if (!WhitelistedBackgroundExtensions.Contains(prototype.Background.Extension))
             {
                 _sawmill.Warning($"Lobby background '{prototype.ID}' has an invalid extension '{prototype.Background.Extension}' and will be ignored.");
