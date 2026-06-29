@@ -1,7 +1,7 @@
 - type: gameMap
   id: Planetfall
   mapName: 'Dominion Planet'
-  mapPath: \Maps\_Crescent\Planetfall\planetfallmap.yml
+  mapPath: /Maps/_Crescent/Planetfall/planetfallmap.yml
   minPlayers: 0
   stations:
     Planetfall:
