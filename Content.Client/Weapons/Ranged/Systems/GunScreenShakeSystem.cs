@@ -30,7 +30,7 @@ public sealed class GunScreenShakeSystem : EntitySystem
 
     // --- Regular per-shot shake ---
     private const float ShakeDuration  = 0.12f;
-    private const float ShakeCooldown  = 0.18f;
+    private const float ShakeCooldown  = 0.40f;
     private const float FreqX          = 11f;
     private const float FreqY          = 8.5f;
     private const float MagnitudeScale = 0.4f;
