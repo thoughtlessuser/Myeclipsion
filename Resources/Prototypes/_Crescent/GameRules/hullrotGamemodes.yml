@@ -60,6 +60,8 @@
   parent: BaseGameRule
   categories: [ HideSpawnMenu ]
   components:
+  - type: GamemodeRespawnTime
+    respawnTimeMinutes: 10
   - type: AdventureRule
     gameMapsByID:
       PortBalreska:
@@ -257,6 +259,8 @@
   parent: BaseGameRule
   categories: [ HideSpawnMenu ]
   components:
+  - type: GamemodeRespawnTime
+    respawnTimeMinutes: 5
   - type: AdventureRule
     gameMapsByID:
       UnionfallNemesis:
@@ -373,6 +377,8 @@
   parent: BaseGameRule
   categories: [ HideSpawnMenu ]
   components:
+  - type: GamemodeRespawnTime
+    respawnTimeMinutes: 10
   - type: AdventureRule
     gameMapsByID:
       PortBalreska:
@@ -439,6 +445,8 @@
   parent: BaseGameRule
   categories: [ HideSpawnMenu ]
   components:
+  - type: GamemodeRespawnTime
+    respawnTimeMinutes: 10
   - type: AdventureRule
     gameMapsByID:
       PortBalreska:
@@ -565,6 +573,8 @@
   parent: BaseGameRule
   categories: [ HideSpawnMenu ]
   components:
+  - type: GamemodeRespawnTime
+    respawnTimeMinutes: 10
   - type: AdventureRule
     gameMapsByID:
       PortBalreska:
@@ -613,6 +623,8 @@
   parent: BaseGameRule
   categories: [ HideSpawnMenu ]
   components:
+  - type: GamemodeRespawnTime
+    respawnTimeMinutes: 10
   - type: AdventureRule
     gameMapsByID:
       Dochenskaya:

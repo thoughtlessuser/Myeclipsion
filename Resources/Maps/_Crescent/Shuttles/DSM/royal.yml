@@ -104,7 +104,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
-      baseMaxLinearVelocity: 15
+      baseMaxLinearVelocity: 20
       angularDamping: 0
       linearDamping: 0
     - type: GridPathfinding

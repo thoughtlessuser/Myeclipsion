@@ -24,6 +24,9 @@ public sealed partial class ParryComponent : Component
     [DataField, AutoNetworkedField]
     public float BlockStaminaDamage = 2f;
 
+    [DataField, AutoNetworkedField]
+    public float PerfectParryStaminaRestore = 15f;
+
     // --- Riposte ---
 
     [DataField, AutoNetworkedField]

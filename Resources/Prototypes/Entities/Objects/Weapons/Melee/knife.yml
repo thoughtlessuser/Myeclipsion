@@ -26,6 +26,7 @@
     lightRangeModifier: 1.25
     maxTargets: 2
     angle: 40
+    meleeStaminaDamage: 5
     soundHit:
       collection: SwordHit
   - type: DamageOtherOnHit

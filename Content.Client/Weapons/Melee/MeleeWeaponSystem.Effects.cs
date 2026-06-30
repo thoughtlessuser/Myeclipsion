@@ -80,6 +80,13 @@ public sealed partial class MeleeWeaponSystem
                 if (arcComponent.Fadeout)
                     _animation.Play(animationUid, GetFadeAnimation(sprite, 0.05f, 0.15f), FadeAnimationKey);
                 break;
+            case WeaponArcAnimation.RapierThrust:
+                track = EnsureComp<TrackUserComponent>(animationUid);
+                track.User = user;
+                _animation.Play(animationUid, GetRapierThrustAnimation(sprite, distance, spriteRotation), ThrustAnimationKey);
+                if (arcComponent.Fadeout)
+                    _animation.Play(animationUid, GetFadeAnimation(sprite, 0.18f, 0.30f), FadeAnimationKey);
+                break;
             case WeaponArcAnimation.None:
                 var (mapPos, mapRot) = TransformSystem.GetWorldPositionRotation(userXform);
                 var worldPos = mapPos + (mapRot - userXform.LocalRotation).RotateVec(localPos);
@@ -163,6 +170,48 @@ public sealed partial class MeleeWeaponSystem
                     KeyFrames =
                     {
                         new AnimationTrackProperty.KeyFrame(startOffset, 0f),
+                        new AnimationTrackProperty.KeyFrame(endOffset, thrustEnd),
+                        new AnimationTrackProperty.KeyFrame(endOffset, length),
+                    }
+                },
+            }
+        };
+    }
+
+    private Animation GetRapierThrustAnimation(SpriteComponent sprite, float distance, Angle spriteRotation)
+    {
+        const float windupEnd = 0.10f;
+        const float thrustEnd = 0.18f;
+        const float length = 0.30f;
+
+        var rotation = sprite.Rotation + spriteRotation;
+        var forwardDir = sprite.Rotation.ToWorldVec();
+        var pullbackOffset = -forwardDir * (distance * 0.25f);
+        var endOffset = forwardDir * distance;
+
+        return new Animation()
+        {
+            Length = TimeSpan.FromSeconds(length),
+            AnimationTracks =
+            {
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Rotation),
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(rotation, 0f),
+                    }
+                },
+                new AnimationTrackComponentProperty()
+                {
+                    ComponentType = typeof(SpriteComponent),
+                    Property = nameof(SpriteComponent.Offset),
+                    InterpolationMode = AnimationInterpolationMode.Linear,
+                    KeyFrames =
+                    {
+                        new AnimationTrackProperty.KeyFrame(pullbackOffset, 0f),
+                        new AnimationTrackProperty.KeyFrame(pullbackOffset, windupEnd),
                         new AnimationTrackProperty.KeyFrame(endOffset, thrustEnd),
                         new AnimationTrackProperty.KeyFrame(endOffset, length),
                     }
@@ -290,9 +339,6 @@ public sealed partial class MeleeWeaponSystem
 
         if (!TryComp<SpriteComponent>(animationUid, out var sprite))
             return;
-
-        if (TryComp<SpriteComponent>(weapon, out var weaponSprite))
-            sprite.CopyFrom(weaponSprite);
 
         sprite.Color = Color.Gold;
 

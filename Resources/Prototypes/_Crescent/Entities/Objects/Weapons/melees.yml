@@ -23,9 +23,11 @@
     clickPartDamageMultiplier: 1.25
     lightRangeModifier: 1.15
     maxTargets: 4
+    meleeStaminaDamage: 10
   - type: Reflect
     reflectProb: .6 #nerf
     spread: 75
+  - type: DeflectMastery
   - type: Item
     size: Normal
     shape:
@@ -101,19 +103,20 @@
   - type: MeleeWeapon
     wideAnimationRotation: 0
     range: 1.75
-    attackRate: 1.15
+    attackRate: 1.25
     damage:
       types:
-        Piercing: 40
+        Piercing: 34
     heavyDamageBaseModifier: 1
     heavyStaminaCost: 0
     heavyRateModifier: 1.13
-    clickPartDamageMultiplier: 1.5
+    clickPartDamageMultiplier: 1.85
     lightRangeModifier: 1.15
     maxTargets: 1
     angle: 0.1
-    animation: WeaponArcThrust
-    wideAnimation: WeaponArcThrust
+    animation: WeaponArcRapierThrust
+    wideAnimation: WeaponArcRapierThrust
+    meleeStaminaDamage: 7
     soundHit:
         collection: SwordHit
   - type: Item
@@ -147,11 +150,11 @@
     state: icon
   - type: MeleeWeapon
     wideAnimationRotation: -135
-    attackRate: 1
+    attackRate: 1.1
     range: 1.4
     damage:
       types:
-        Slash: 36
+        Slash: 37
     heavyDamageBaseModifier: 1
     heavyStaminaCost: 8
     heavyRateModifier: 1.15
@@ -159,10 +162,11 @@
     lightRangeModifier: 1.15
     maxTargets: 4
     animation: WeaponArcThrust
+    meleeStaminaDamage: 10
     soundHit:
         collection: SwordHit
   - type: Reflect
-    reflectProb: .1
+    reflectProb: .18
     spread: 90
   - type: Item
     size: Normal
@@ -287,6 +291,7 @@
     clickPartDamageMultiplier: 1.5
     lightRangeModifier: 1.2
     maxTargets: 3
+    meleeStaminaDamage: 7
     soundHit:
         collection: SwordHit
   - type: ThrowingAngle
@@ -374,13 +379,14 @@
     range: 1.4
     damage:
       types:
-        Slash: 33
-    heavyDamageBaseModifier: 1
-    heavyStaminaCost: 10
+        Slash: 38
+    heavyDamageBaseModifier: 1.35
+    heavyStaminaCost: 12
     heavyRateModifier: 1.25
     clickPartDamageMultiplier: 1.5
     lightRangeModifier: 1.15
     maxTargets: 3
+    meleeStaminaDamage: 10
     soundHit:
         collection: SwordHit
   - type: Item
@@ -427,6 +433,7 @@
     clickPartDamageMultiplier: 1.25
     lightRangeModifier: 1.15
     maxTargets: 3
+    meleeStaminaDamage: 10
   - type: EmbeddableProjectile
     sound: /Audio/Weapons/star_hit.ogg
   - type: LandAtCursor
@@ -438,6 +445,7 @@
   - type: Reflect
     reflectProb: .25
     spread: 75
+  - type: DeflectMastery
   - type: Item
     size: Normal
     shape:
@@ -468,17 +476,18 @@
   - type: MeleeWeapon
     wideAnimationRotation: 200
     swingLeft: true
-    attackRate: 1.5
+    attackRate: 1.8
     range: 2
     damage:
       types:
         Slash: 15 # es heist das ZWEI hander, hanz # LARP
     heavyDamageBaseModifier: 0.8
     heavyStaminaCost: 20
-    heavyRateModifier: 1.167 # 1.75 attack rate with 1.5 base
+    heavyRateModifier: 1.2
     clickPartDamageMultiplier: 1.2 # Any higher and it oblitorates limbs
     maxTargets: 3
     angle: 100
+    meleeStaminaDamage: 20
     soundHit:
       collection: SwordHit
   - type: DamageOtherOnHit
@@ -486,7 +495,7 @@
       types:
         Slash: 55
         Piercing: 20
-    staminaCost: 50
+    staminaCost: 15
   - type: ThrowingAngle
     angle: 225
   - type: EmbeddableProjectile

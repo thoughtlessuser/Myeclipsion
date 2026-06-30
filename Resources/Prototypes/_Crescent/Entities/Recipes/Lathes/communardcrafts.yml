@@ -1,6 +1,15 @@
 # MARK: Uniforms
 
 - type: latheRecipe
+  id: ClothingOuterArmorMVDCoat
+  result: ClothingOuterArmorMVDCoat
+  completetime: 4
+  materials:
+    Cloth: 2000
+    Gold: 1000
+    Plastic: 500
+
+- type: latheRecipe
   id: ClothingOuterNCWLEVA
   result: ClothingOuterNCWLEVA
   completetime: 2

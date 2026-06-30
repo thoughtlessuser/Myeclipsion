@@ -114,6 +114,12 @@ public sealed partial class MeleeWeaponComponent : Component
     public FixedPoint2 BluntStaminaDamageFactor = FixedPoint2.New(0.5f);
 
     /// <summary>
+    /// Flat stamina damage applied to the target on every melee hit, regardless of damage type.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float MeleeStaminaDamage = 0f;
+
+    /// <summary>
     /// Multiplies damage by this amount for single-target attacks.
     /// </summary>
     [DataField, AutoNetworkedField]

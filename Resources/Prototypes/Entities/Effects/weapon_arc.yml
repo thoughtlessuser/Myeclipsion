@@ -62,6 +62,16 @@
       lifetime: 0.5
 
 - type: entity
+  id: WeaponArcRapierThrust
+  parent: WeaponArcStatic
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: WeaponArcVisuals
+      animation: RapierThrust
+    - type: TimedDespawn
+      lifetime: 0.30
+
+- type: entity
   id: WeaponArcBite
   parent: WeaponArcStatic
   categories: [ HideSpawnMenu ]

@@ -111,10 +111,11 @@ public sealed partial class MeleeWeaponSystem : SharedMeleeWeaponSystem
                 altDown = false;
         }
 
-        // Right-click: Parry attempt (requires holding a weapon, not unarmed)
+        // Right-click: Parry attempt (requires holding a melee weapon, not unarmed or gun)
         if (altDown && !useDown)
         {
             if (weaponUid != entity
+                && !HasComp<GunComponent>(weaponUid)
                 && TryComp<ParryComponent>(entity, out var parry)
                 && !parry.IsParrying
                 && parry.NextParryTime <= Timing.CurTime)

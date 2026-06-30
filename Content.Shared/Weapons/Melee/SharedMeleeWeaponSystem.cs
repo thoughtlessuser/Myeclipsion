@@ -503,6 +503,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 _stamina.TakeStaminaDamage(target.Value, (bluntDamage * component.BluntStaminaDamageFactor).Float(), visual: false, source: user, with: meleeUid == user ? null : meleeUid);
             }
 
+            if (component.MeleeStaminaDamage > 0f)
+            {
+                _stamina.TakeStaminaDamage(target.Value, component.MeleeStaminaDamage, visual: false, source: user, with: meleeUid == user ? null : meleeUid);
+            }
+
             if (meleeUid == user)
             {
                 AdminLogger.Add(LogType.MeleeHit,
@@ -675,6 +680,11 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 if (damageResult.DamageDict.TryGetValue("Blunt", out var bluntDamage))
                 {
                     _stamina.TakeStaminaDamage(entity, (bluntDamage * component.BluntStaminaDamageFactor).Float(), visual: false, source: user, with: meleeUid == user ? null : meleeUid);
+                }
+
+                if (component.MeleeStaminaDamage > 0f)
+                {
+                    _stamina.TakeStaminaDamage(entity, component.MeleeStaminaDamage, visual: false, source: user, with: meleeUid == user ? null : meleeUid);
                 }
 
                 appliedDamage += damageResult;

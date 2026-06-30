@@ -7,6 +7,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Melee.Components;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Stunnable;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -53,6 +54,9 @@ public sealed class SharedParrySystem : EntitySystem
             return;
 
         if (!_melee.TryGetWeapon(user, out var weaponUid, out _) || weaponUid == user)
+            return;
+
+        if (HasComp<GunComponent>(weaponUid))
             return;
 
         var curTime = _timing.CurTime;
@@ -119,7 +123,7 @@ public sealed class SharedParrySystem : EntitySystem
 
         Dirty(target, parry);
 
-        var ev = new ParrySuccessEvent(attacker, target, attackerWeapon);
+        var ev = new ParrySuccessEvent(attacker, target, attackerWeapon, isPerfect);
         RaiseLocalEvent(target, ev);
 
         if (_net.IsServer)
@@ -140,6 +144,9 @@ public sealed class SharedParrySystem : EntitySystem
                 _color.RaiseEffect(Color.Yellow, new List<EntityUid> { attacker }, Filter.Pvs(attacker, entityManager: EntityManager));
 
                 _stun.TrySlowdown(attacker, TimeSpan.FromSeconds(1.0), true, 0f, 0f);
+
+                if (TryComp<StaminaComponent>(target, out _))
+                    _stamina.TakeStaminaDamage(target, -parry.PerfectParryStaminaRestore, visual: false);
             }
             else
             {

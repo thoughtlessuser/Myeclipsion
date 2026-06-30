@@ -44,11 +44,13 @@ public sealed class ParrySuccessEvent : EntityEventArgs
     public EntityUid Attacker;
     public EntityUid Parrier;
     public EntityUid AttackerWeapon;
+    public bool IsPerfect;
 
-    public ParrySuccessEvent(EntityUid attacker, EntityUid parrier, EntityUid attackerWeapon)
+    public ParrySuccessEvent(EntityUid attacker, EntityUid parrier, EntityUid attackerWeapon, bool isPerfect)
     {
         Attacker = attacker;
         Parrier = parrier;
         AttackerWeapon = attackerWeapon;
+        IsPerfect = isPerfect;
     }
 }

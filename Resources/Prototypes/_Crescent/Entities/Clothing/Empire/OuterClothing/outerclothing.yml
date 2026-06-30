@@ -382,9 +382,12 @@
       flatReductions:
         Blunt: 25
         Slash: 25
-        Piercing: 60
+        Piercing: 65
         Heat: 25
         Caustic: 25
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.85
   - type: ExplosionResistance
     damageCoefficient: 0.90
   - type: AllowSuitStorage
@@ -420,6 +423,9 @@
         Piercing: 65
         Heat: 25
         Caustic: 25
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.85
   - type: ExplosionResistance
     damageCoefficient: 0.80
   - type: StaticPrice
@@ -454,6 +460,9 @@
         Piercing: 65
         Heat: 25
         Caustic: 25
+  - type: ClothingSpeedModifier
+    walkModifier: 0.90
+    sprintModifier: 0.90
   - type: ExplosionResistance
     damageCoefficient: 0.80
   - type: StaticPrice
@@ -482,17 +491,19 @@
     sprite: _Crescent/Clothing/Empire/OuterClothing/mandateadjutant.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/OuterClothing/mandateadjutant.rsi
+    equipDelay: 0
+    unequipDelay: 0
   - type: DegradeableArmor
     armorMaxHealth: 1000
     armorType: Metallic
     armorRepair: DuraThread
     initialModifiers:
       flatReductions:
-        Blunt: 5
-        Slash: 10
+        Blunt: 25
+        Slash: 25
         Piercing: 45
-        Heat: 5
-        Caustic: 25
+        Heat: 25
+        Caustic: 30
   - type: StaticPrice
     price: 1500
   - type: ClothingAddFaction
@@ -508,6 +519,8 @@
     sprite: _Crescent/Clothing/Empire/OuterClothing/advocatus.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/OuterClothing/advocatus.rsi
+    equipDelay: 0
+    unequipDelay: 0
   - type: DegradeableArmor
     armorMaxHealth: 1000
     armorType: Metallic
@@ -516,9 +529,9 @@
       flatReductions:
         Blunt: 25
         Slash: 25
-        Piercing: 65
+        Piercing: 45
         Heat: 25
-        Caustic: 25
+        Caustic: 30
   - type: StaticPrice
     price: 1500
   - type: ClothingAddFaction
@@ -554,25 +567,27 @@
   parent: ClothingOuterStorageBase
   id: ClothingOuterCoatImperialGovernor
   name: governor's formal coat
-  description: An ornate coat bedecked in Imperial livery and medals, clearly intended for the Imperial Governor.
+  description: An ornate coat bedecked in Imperial livery and medals, clearly intended for the Imperial Governor. Reinforced with advanced composite weave.
   components:
   - type: Sprite
     sprite: _Crescent/Clothing/Empire/OuterClothing/mandategovernor.rsi
   - type: Clothing
     sprite: _Crescent/Clothing/Empire/OuterClothing/mandategovernor.rsi
+    equipDelay: 0
+    unequipDelay: 0
   - type: DegradeableArmor
     armorMaxHealth: 1000
     armorType: Metallic
     armorRepair: NTPolymer
     initialModifiers:
       flatReductions:
-        Blunt: 25
-        Slash: 25
-        Piercing: 65
-        Heat: 25
+        Blunt: 20
+        Slash: 20
+        Piercing: 55
+        Heat: 20
         Caustic: 25
   - type: StaticPrice
-    price: 2000
+    price: 4000
   - type: ClothingAddFaction
     faction: DSM
   - type: ReverseEngineering # Sector Crescent

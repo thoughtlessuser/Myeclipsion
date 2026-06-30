@@ -88,7 +88,7 @@ entities:
     - type: OccluderTree
     - type: SpreaderGrid
     - type: Shuttle
-      baseMaxLinearVelocity: 15
+      baseMaxLinearVelocity: 20
     - type: VesselDesignation
       designation: vessel-designation-assault-carrier
     - type: GridPathfinding

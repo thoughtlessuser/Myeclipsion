@@ -114,9 +114,11 @@
 - type: latheRecipe
   id: ClothingOuterCoatImperialGovernor
   result: ClothingOuterCoatImperialGovernor
-  completetime: 2
+  completetime: 4
   materials:
-    Cloth: 500
+    Cloth: 2000
+    Gold: 1000
+    Plastic: 500
 
 - type: latheRecipe
   id: ClothingNeckImperialGreatcoat
