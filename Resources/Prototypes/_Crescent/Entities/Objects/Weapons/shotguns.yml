@@ -228,9 +228,6 @@
       gun_chamber: !type:ContainerSlot
   - type: ChamberMagazineAmmoProvider
     autoCycle: false #its a lever gun its not semi auto....
-    autoEject: true
-    soundAutoEject:
-      path: /Audio/Weapons/Guns/EmptyAlarm/M1_empty_alarm.ogg
   - type: Appearance
   - type: StaticPrice
     price: 2000

@@ -6,7 +6,7 @@
   abstract: true
   components:
   - type: GunCameraShake
-    magnitude: 0.13
+    magnitude: 0.11
   - type: Sprite
     layers:
     - state: base

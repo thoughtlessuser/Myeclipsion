@@ -1,5 +1,6 @@
 using System;
 using System.Numerics;
+using Content.Shared._Crescent.Weapons;
 using Content.Shared.Camera;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
@@ -33,7 +34,7 @@ public sealed class GunScreenShakeSystem : EntitySystem
     private const float FreqX          = 11f;
     private const float FreqY          = 8.5f;
     private const float MagnitudeScale = 0.4f;
-    private const float MagnitudeMax   = 0.08f;
+    private const float MagnitudeMax   = 0.15f;
 
     private float _remaining = 0f;
     private float _elapsed   = 0f;
@@ -79,8 +80,10 @@ public sealed class GunScreenShakeSystem : EntitySystem
         if (!_timing.IsFirstTimePredicted) return;
         if (args.User != _playerManager.LocalEntity) return;
 
-        // Regular per-shot shake
-        var magnitude = gun.CameraRecoilScalarModified * 0.09f;
+        // Per-weapon magnitude via GunCameraShakeComponent; fall back to scalar formula.
+        var magnitude = TryComp<GunCameraShakeComponent>(uid, out var shakeComp)
+            ? shakeComp.Magnitude
+            : gun.CameraRecoilScalarModified * 0.09f;
         StartShake(MathF.Min(magnitude, MagnitudeMax));
 
         // Sustained vibration: accumulate shots, trigger every 3rd
@@ -139,7 +142,7 @@ public sealed class GunScreenShakeSystem : EntitySystem
         if (_cooldown > 0f)
             _cooldown -= frameTime;
 
-        var offset = Vector2.Zero;
+        var shakeOffset = Vector2.Zero;
 
         // --- Regular per-shot shake ---
         if (_remaining > 0f)
@@ -150,7 +153,7 @@ public sealed class GunScreenShakeSystem : EntitySystem
             if (_remaining > 0f)
             {
                 var decay = _remaining / ShakeDuration;
-                offset += new Vector2(
+                shakeOffset += new Vector2(
                     MathF.Sin(_elapsed * FreqX * MathF.Tau + _phaseX) * _magnitude * decay,
                     MathF.Sin(_elapsed * FreqY * MathF.Tau + _phaseY) * _magnitude * decay
                 );
@@ -172,31 +175,22 @@ public sealed class GunScreenShakeSystem : EntitySystem
             {
                 // Smooth fade-out in the last VibeFadeOut seconds of the window
                 var alpha = MathF.Min(1f, _vibeTimeout / VibeFadeOut);
-                offset += new Vector2(
+                shakeOffset += new Vector2(
                     MathF.Sin(_vibeElapsed * VibeFreqX * MathF.Tau + _vibePhaseX) * VibeMagnitude * alpha,
                     MathF.Sin(_vibeElapsed * VibeFreqY * MathF.Tau + _vibePhaseY) * VibeMagnitude * alpha
                 );
             }
         }
 
-        // Nothing active — zero out and return
-        if (_remaining <= 0f && _vibeTimeout <= 0f)
-        {
-            ClearShake(player.Value, eye);
+        // When no active shake, don't touch the offset — telescope and recoil systems own it.
+        if (shakeOffset == Vector2.Zero)
             return;
-        }
 
-        _eyeSystem.SetOffset(player.Value, offset, eye);
-
+        // Add shake oscillation on top of the base offset (telescope look-ahead) + current recoil kick.
+        // Never overwrite recoil.BaseOffset — that belongs to the telescope system.
         if (TryComp<CameraRecoilComponent>(player.Value, out var recoil))
-            recoil.BaseOffset = offset;
-    }
-
-    private void ClearShake(EntityUid player, EyeComponent eye)
-    {
-        _eyeSystem.SetOffset(player, Vector2.Zero, eye);
-
-        if (TryComp<CameraRecoilComponent>(player, out var recoil) && recoil.BaseOffset != Vector2.Zero)
-            recoil.BaseOffset = Vector2.Zero;
+            _eyeSystem.SetOffset(player.Value, recoil.BaseOffset + recoil.CurrentKick + shakeOffset, eye);
+        else
+            _eyeSystem.SetOffset(player.Value, eye.Offset + shakeOffset, eye);
     }
 }

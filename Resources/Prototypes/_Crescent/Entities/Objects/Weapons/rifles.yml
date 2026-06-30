@@ -232,7 +232,6 @@
     burstFireRate: 7
     fireRate: 5
   - type: ChamberMagazineAmmoProvider
-    autoEject: true
   - type: MagazineVisuals
     magState: mag
     steps: 1

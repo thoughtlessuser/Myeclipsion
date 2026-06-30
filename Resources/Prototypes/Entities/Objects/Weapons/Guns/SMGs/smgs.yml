@@ -155,7 +155,6 @@
           tags:
             - CartridgeHeavyPistol
   - type: ChamberMagazineAmmoProvider
-    autoEject: true
   - type: MagazineVisuals
     magState: mag
     steps: 1
