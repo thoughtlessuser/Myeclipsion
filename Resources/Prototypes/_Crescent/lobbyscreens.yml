@@ -18,13 +18,6 @@
   name: Animated
   artist: kirokaze
 
-- type: lobbyBackground
-  id: Animated2
-  animatedBackground:
-    sprite: /Textures/_Crescent/LobbyScreens/animated2.rsi
-    state: animated
-  name: Animated 2
-  artist: v78
 
 - type: lobbyBackground
   id: Animated3

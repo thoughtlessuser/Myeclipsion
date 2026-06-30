@@ -1,52 +1,38 @@
 light_mode unshaded;
 
 uniform sampler2D SCREEN_TEXTURE;
-uniform highp vec2 playerPixel;   // player viewport position in pixels (Y flipped)
-uniform highp vec2 facingDir;     // unit facing direction in screen space (Y flipped vs world)
-uniform highp float halfFovCos;   // cos(halfFovAngle): -0.5 = 120 deg each side = 240 deg forward FOV
-uniform highp float edgeSoftness; // smoothstep transition width in dot-product units
-uniform highp float darkAlpha;    // back zone darkness: 0=clear, 1=solid black
-uniform highp float blurStrength; // blur kernel spread in pixels
+uniform highp vec2  playerPixelPos; // player in FRAGCOORD space (Y=0 at bottom)
+uniform highp vec2  facingDir;       // world-space unit vector (Y+ = north = up in FRAGCOORD)
+uniform highp float halfFovCos;      // cos(130°) ≈ -0.643
 
 void fragment() {
-    highp vec2 fragPos = FRAGCOORD.xy;
-    highp vec2 ps      = SCREEN_PIXEL_SIZE.xy;
-    highp vec2 uv      = fragPos * ps;
-    highp vec4 base    = texture(SCREEN_TEXTURE, uv);
+    highp vec2  fragPos = FRAGCOORD.xy;
+    highp vec2  uv      = fragPos * SCREEN_PIXEL_SIZE.xy;
+    highp vec4  base    = texture(SCREEN_TEXTURE, uv);
 
-    highp vec2  toPixel  = fragPos - playerPixel;
-    highp float dist     = length(toPixel);
+    highp vec2  toPixel = fragPos - playerPixelPos;
+    highp float dist    = length(toPixel);
 
-    if (dist < 1.0) {
+    // Dead zone — keep player sprite in colour
+    if (dist < 36.0) {
         COLOR = base;
         return;
     }
 
+    // d > halfFovCos → front (colour), d < halfFovCos → back (greyscale)
     highp float d       = dot(normalize(toPixel), facingDir);
-    highp float backness = smoothstep(halfFovCos + edgeSoftness, halfFovCos - edgeSoftness, d);
+    // ±0.12 in dot-space ≈ ±7° soft edge
+    highp float backness = smoothstep(halfFovCos + 0.12, halfFovCos - 0.12, d);
 
     if (backness < 0.001) {
         COLOR = base;
         return;
     }
 
-    // Weighted 3x3 Gaussian kernel + 4 outer ring samples for stronger blur
-    highp float s = blurStrength;
-    highp vec4 blurred = base * 4.0;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2( s,  0.0)) * ps) * 2.0;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2(-s,  0.0)) * ps) * 2.0;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2( 0.0,  s)) * ps) * 2.0;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2( 0.0, -s)) * ps) * 2.0;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2( s,   s )) * ps) * 1.0;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2(-s,   s )) * ps) * 1.0;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2( s,  -s )) * ps) * 1.0;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2(-s,  -s )) * ps) * 1.0;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2(s * 2.0,   0.0 )) * ps) * 1.5;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2(-s * 2.0,  0.0 )) * ps) * 1.5;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2(0.0,  s * 2.0  )) * ps) * 1.5;
-    blurred += texture(SCREEN_TEXTURE, (fragPos + vec2(0.0, -s * 2.0  )) * ps) * 1.5;
-    blurred /= 22.0;
+    // Greyscale + slight darkening so the back zone feels shadowed
+    highp float lum        = 0.299 * base.r + 0.587 * base.g + 0.114 * base.b;
+    highp float darkFactor = 0.55; // 1.0 = pure grey, 0.0 = black
+    highp vec4  gray       = vec4(lum * darkFactor, lum * darkFactor, lum * darkFactor, base.a);
 
-    highp vec4 backColor = mix(blurred, vec4(0.0, 0.0, 0.0, 1.0), darkAlpha);
-    COLOR = mix(base, backColor, backness);
+    COLOR = mix(base, gray, backness);
 }

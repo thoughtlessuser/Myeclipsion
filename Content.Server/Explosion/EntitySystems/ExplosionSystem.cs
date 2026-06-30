@@ -419,6 +419,11 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
 
     private void CameraShake(float range, MapCoordinates epicenter, float totalIntensity)
     {
+        // Determine which grid the explosion is on (EntityUid.Invalid = open space / no grid).
+        _mapManager.TryFindGridAt(epicenter, out var explosionGridUid, out _);
+        // Convert to nullable so null == null comparison works for the in-space case.
+        EntityUid? explosionGrid = explosionGridUid.IsValid() ? explosionGridUid : null;
+
         var players = Filter.Empty();
         players.AddInRange(epicenter, range, _playerManager, EntityManager);
 
@@ -427,7 +432,14 @@ public sealed partial class ExplosionSystem : SharedExplosionSystem
             if (player.AttachedEntity is not EntityUid uid)
                 continue;
 
-            var playerPos = Transform(player.AttachedEntity!.Value).WorldPosition;
+            // Only shake players on the same grid as the explosion.
+            // This prevents a ship explosion from shaking players on a nearby different ship.
+            // Players in open space only feel explosions that also happen in open space.
+            var playerXform = Transform(uid);
+            if (playerXform.GridUid != explosionGrid)
+                continue;
+
+            var playerPos = playerXform.WorldPosition;
             var delta = epicenter.Position - playerPos;
 
             if (delta.EqualsApprox(Vector2.Zero))

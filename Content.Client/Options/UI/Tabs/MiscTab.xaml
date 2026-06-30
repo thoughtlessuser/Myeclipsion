@@ -39,15 +39,7 @@
                             MinWidth="200" />
                     <Label Name="ChatWindowOpacityLabel" Margin="8 0" />
                 </BoxContainer>
-                <BoxContainer Orientation="Horizontal">
-                    <Label Text="{Loc 'ui-options-screen-shake-intensity'}" Margin="8 0" />
-                    <Slider Name="ScreenShakeIntensitySlider"
-                            MinValue="0"
-                            MaxValue="100"
-                            Rounded="True"
-                            MinWidth="200" />
-                    <Label Name="ScreenShakeIntensityLabel" Margin="8 0" />
-                </BoxContainer>
+
                 <Label Text="{Loc 'ui-options-general-discord'}"
                        FontColorOverride="{xNamespace:Static s:StyleNano.NanoGold}"
                        StyleClasses="LabelKeyText"/>

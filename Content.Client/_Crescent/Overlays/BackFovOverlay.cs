@@ -9,116 +9,110 @@ using Robust.Shared.Enums;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Maths;
+using Robust.Shared.Prototypes;
 
 namespace Content.Client._Crescent.Overlays;
 
+/// <summary>
+/// Desaturates (greyscale) the area behind the player using a screen-texture shader.
+/// The transition has a soft ±7° edge so it never looks like a hard cut.
+/// </summary>
 public sealed class BackFovOverlay : Overlay
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
+    [Dependency] private readonly IPlayerManager    _playerManager = default!;
+    [Dependency] private readonly IEntityManager    _entityManager = default!;
+    [Dependency] private readonly IPrototypeManager _protoManager  = default!;
 
-    public override OverlaySpace Space => OverlaySpace.WorldSpace;
+    public override OverlaySpace Space              => OverlaySpace.WorldSpace;
+    public override bool         RequestScreenTexture => true;
 
-    // 130° each side = 260° forward FOV, 100° back dark zone
-    internal const double HalfFovRad = 130.0 * Math.PI / 180.0;
+    // 132° half-FOV → 264° visible, 96° back zone
+    internal const  double HalfFovRad = 132.0 * Math.PI / 180.0;
+    internal static readonly float HalfFovCos = (float) Math.Cos(HalfFovRad);
 
-    private const float Alpha = 0.45f;
-    private const float InnerRadius = 1.1f;
-    private const float OuterRadius = 65f;
-    private const int Segments = 72;
-
+    private readonly ShaderInstance        _shader;
     private readonly SharedTransformSystem _xformSys;
 
     public BackFovOverlay()
     {
         IoCManager.InjectDependencies(this);
         _xformSys = _entityManager.System<SharedTransformSystem>();
+        _shader   = _protoManager.Index<ShaderPrototype>("BackFov").InstanceUnique();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        if (!_entityManager.TryGetComponent(_playerManager.LocalEntity, out EyeComponent? eyeComp))
+        if (!_entityManager.TryGetComponent(_playerManager.LocalEntity, out EyeComponent? eye))
             return false;
-        return args.Viewport.Eye == eyeComp.Eye;
+        return args.Viewport.Eye == eye.Eye;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
     {
+        if (ScreenTexture == null) return;
+
         var player = _playerManager.LocalEntity;
-        if (player == null)
-            return;
+        if (player == null) return;
 
         if (!_entityManager.TryGetComponent<TransformComponent>(player.Value, out var xform))
             return;
 
-        if (xform.MapID != args.MapId)
-            return;
+        if (xform.MapID != args.MapId) return;
 
-        var worldPos = _xformSys.GetWorldPosition(xform);
-        var worldRotRad = _xformSys.GetWorldRotation(xform).Theta;
+        var worldPos  = _xformSys.GetWorldPosition(xform);
+        var worldRot  = _xformSys.GetWorldRotation(xform).Theta;
+        // facingDir: same Y convention as FRAGCOORD (Y+ = up), no flip needed
+        var facingDir = new Angle(worldRot).ToWorldVec();
 
-        var backStart = worldRotRad + HalfFovRad;
-        var backArc = 2.0 * Math.PI - 2.0 * HalfFovRad;
+        // WorldToLocal: Y=0 at top (screen-down). FRAGCOORD: Y=0 at bottom (OpenGL). Flip Y.
+        var viewportLocal  = args.Viewport.WorldToLocal(worldPos);
+        var playerPixelPos = new Vector2(viewportLocal.X, args.ViewportBounds.Height - viewportLocal.Y);
 
-        DrawDonutArc(args.WorldHandle, worldPos, backStart, backArc, Segments, Alpha);
-    }
+        _shader.SetParameter("SCREEN_TEXTURE",  ScreenTexture);
+        _shader.SetParameter("playerPixelPos",  playerPixelPos);
+        _shader.SetParameter("facingDir",        facingDir);
+        _shader.SetParameter("halfFovCos",       HalfFovCos);
 
-    private static void DrawDonutArc(DrawingHandleWorld handle, Vector2 origin,
-        double startRad, double arcRad, int segs, float alpha)
-    {
-        var triangles = new Vector2[segs * 6];
-
-        for (var i = 0; i < segs; i++)
-        {
-            var t0 = i / (double) segs;
-            var t1 = (i + 1) / (double) segs;
-            var angle0 = new Angle(startRad + arcRad * t0);
-            var angle1 = new Angle(startRad + arcRad * t1);
-            var dir0 = angle0.ToWorldVec();
-            var dir1 = angle1.ToWorldVec();
-
-            var innerA = origin + dir0 * InnerRadius;
-            var outerA = origin + dir0 * OuterRadius;
-            var innerB = origin + dir1 * InnerRadius;
-            var outerB = origin + dir1 * OuterRadius;
-
-            var idx = i * 6;
-            triangles[idx]     = innerA;
-            triangles[idx + 1] = outerA;
-            triangles[idx + 2] = outerB;
-            triangles[idx + 3] = innerA;
-            triangles[idx + 4] = outerB;
-            triangles[idx + 5] = innerB;
-        }
-
-        handle.DrawPrimitives(DrawPrimitiveTopology.TriangleList, triangles, Color.Black.WithAlpha(alpha));
+        var handle = args.WorldHandle;
+        handle.UseShader(_shader);
+        handle.DrawRect(args.WorldBounds, Color.White);
+        handle.UseShader(null);
     }
 }
 
 /// <summary>
-/// Manages the back-FOV overlay and hides mob entity sprites (players, NPCs, robots)
-/// that are in the player's back zone. Terrain tiles remain visible.
+/// Manages the back-FOV overlay and smoothly fades mob entity sprites
+/// as they enter the back zone. Fade starts at the visual boundary (130°),
+/// entities fully hidden at 150°.
 /// </summary>
 public sealed class BackFovSystem : EntitySystem
 {
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IOverlayManager _overlayMan    = default!;
+    [Dependency] private readonly IPlayerManager  _playerManager = default!;
 
-    private SharedTransformSystem _xformSys = default!;
+    private SharedTransformSystem           _xformSys    = default!;
     private EntityQuery<TransformComponent> _xformQuery;
-    private EntityQuery<SpriteComponent> _spriteQuery;
+    private EntityQuery<SpriteComponent>    _spriteQuery;
 
-    private readonly HashSet<EntityUid> _hiddenEntities = new();
-    private readonly HashSet<EntityUid> _currentBackZone = new();
-    private readonly List<EntityUid> _toRestore = new();
+    // entity → current rendered alpha (1 = fully visible, 0 = fully hidden)
+    private readonly Dictionary<EntityUid, float> _smoothAlphas = new();
+    private readonly HashSet<EntityUid>            _seenThisFrame = new();
+    private readonly List<EntityUid>               _toClean       = new();
 
     private const float LookupRadius = 30f;
+
+    private const float FadeNearCos = -0.669f; // cos(132°) — fully visible
+    private const float FadeFarCos  = -0.866f; // cos(150°) — fully hidden
+
+    // alpha units per second; asymmetric: hide quickly, reveal slowly for a dramatic feel
+    private const float HideSpeed   = 5.0f;  // ~0.2 s to fully hide
+    private const float RevealSpeed = 2.5f;  // ~0.4 s to fully reveal
 
     public override void Initialize()
     {
         base.Initialize();
-        _xformSys = EntityManager.System<SharedTransformSystem>();
-        _xformQuery = GetEntityQuery<TransformComponent>();
+        _xformSys    = EntityManager.System<SharedTransformSystem>();
+        _xformQuery  = GetEntityQuery<TransformComponent>();
         _spriteQuery = GetEntityQuery<SpriteComponent>();
         _overlayMan.AddOverlay(new BackFovOverlay());
     }
@@ -133,11 +127,7 @@ public sealed class BackFovSystem : EntitySystem
     public override void FrameUpdate(float frameTime)
     {
         var localPlayer = _playerManager.LocalEntity;
-        if (localPlayer == null)
-        {
-            RestoreAll();
-            return;
-        }
+        if (localPlayer == null) { RestoreAll(); return; }
 
         if (!_xformQuery.TryGetComponent(localPlayer.Value, out var playerXform))
         {
@@ -147,71 +137,91 @@ public sealed class BackFovSystem : EntitySystem
 
         var playerPos = _xformSys.GetWorldPosition(playerXform);
         var playerRot = _xformSys.GetWorldRotation(playerXform).Theta;
-        var mapId = playerXform.MapID;
-
-        _currentBackZone.Clear();
-
-        // Use the same vector math as the overlay to avoid coordinate convention mismatches
+        var mapId     = playerXform.MapID;
         var facingVec = new Angle(playerRot).ToWorldVec();
-        // Entity is in back zone when dot(facing, dirToEntity) < cos(HalfFovRad)
-        // cos(130°) ≈ -0.643
-        var frontCos = (float) Math.Cos(BackFovOverlay.HalfFovRad);
+
+        _seenThisFrame.Clear();
 
         var enumerator = EntityManager.EntityQueryEnumerator<MobStateComponent, SpriteComponent, TransformComponent>();
-        while (enumerator.MoveNext(out var uid, out _, out _, out var xform))
+        while (enumerator.MoveNext(out var uid, out _, out var sprite, out var xform))
         {
-            if (uid == localPlayer.Value)
-                continue;
-
-            if (xform.MapID != mapId)
-                continue;
+            if (uid == localPlayer.Value) continue;
+            if (xform.MapID != mapId) continue;
 
             var entityPos = _xformSys.GetWorldPosition(xform);
-            var diff = entityPos - playerPos;
-            var distSq = diff.LengthSquared();
+            var diff      = entityPos - playerPos;
+            var distSq    = diff.LengthSquared();
 
             if (distSq > LookupRadius * LookupRadius || distSq < 0.01f)
-                continue;
-
-            var dist = MathF.Sqrt(distSq);
-            var dirToEntity = diff / dist;
-            var dot = facingVec.X * dirToEntity.X + facingVec.Y * dirToEntity.Y;
-
-            if (dot < frontCos)
-                _currentBackZone.Add(uid);
-        }
-
-        foreach (var uid in _currentBackZone)
-        {
-            if (!_hiddenEntities.Contains(uid) && _spriteQuery.TryGetComponent(uid, out var sprite))
             {
-                sprite.Visible = false;
-                _hiddenEntities.Add(uid);
+                if (_smoothAlphas.ContainsKey(uid))
+                    RestoreEntity(uid, sprite);
+                continue;
+            }
+
+            var dist      = MathF.Sqrt(distSq);
+            var dir       = diff / dist;
+            var dot       = facingVec.X * dir.X + facingVec.Y * dir.Y;
+            var targetAlpha = MathF.Max(0f, MathF.Min(1f, (dot - FadeFarCos) / (FadeNearCos - FadeFarCos)));
+
+            // Retrieve or initialise the smooth alpha for this entity
+            if (!_smoothAlphas.TryGetValue(uid, out var current))
+                current = 1.0f;
+
+            // Move current toward target — different speed for hiding vs revealing
+            var speed = targetAlpha > current ? RevealSpeed : HideSpeed;
+            current = targetAlpha > current
+                ? MathF.Min(current + speed * frameTime, targetAlpha)
+                : MathF.Max(current - speed * frameTime, targetAlpha);
+
+            if (current >= 0.999f)
+            {
+                // Fully visible — stop tracking
+                if (_smoothAlphas.ContainsKey(uid))
+                    RestoreEntity(uid, sprite);
+            }
+            else
+            {
+                _smoothAlphas[uid] = current;
+                sprite.Visible     = current > 0.01f;
+                sprite.Color       = Color.White.WithAlpha(current);
+                _seenThisFrame.Add(uid);
             }
         }
 
-        _toRestore.Clear();
-        foreach (var uid in _hiddenEntities)
+        // Clean up entries that left the query (deleted, teleported, etc.)
+        _toClean.Clear();
+        foreach (var uid in _smoothAlphas.Keys)
         {
-            if (!_currentBackZone.Contains(uid))
-                _toRestore.Add(uid);
+            if (!_seenThisFrame.Contains(uid))
+                _toClean.Add(uid);
         }
-
-        foreach (var uid in _toRestore)
+        foreach (var uid in _toClean)
         {
             if (_spriteQuery.TryGetComponent(uid, out var sprite))
-                sprite.Visible = true;
-            _hiddenEntities.Remove(uid);
+                RestoreEntity(uid, sprite);
+            else
+                _smoothAlphas.Remove(uid);
         }
+    }
+
+    private void RestoreEntity(EntityUid uid, SpriteComponent sprite)
+    {
+        sprite.Visible = true;
+        sprite.Color   = Color.White;
+        _smoothAlphas.Remove(uid);
     }
 
     private void RestoreAll()
     {
-        foreach (var uid in _hiddenEntities)
+        foreach (var uid in _smoothAlphas.Keys)
         {
             if (_spriteQuery.TryGetComponent(uid, out var sprite))
+            {
                 sprite.Visible = true;
+                sprite.Color   = Color.White;
+            }
         }
-        _hiddenEntities.Clear();
+        _smoothAlphas.Clear();
     }
 }
