@@ -189,6 +189,7 @@
     price: 5500
   - type: UseDelay
     delay: 1
+  - type: UseDelayBlockShoot
   - type: Contraband
   - type: DisarmMalus
     malus: -1

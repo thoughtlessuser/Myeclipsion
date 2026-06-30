@@ -16,6 +16,9 @@ namespace Content.Client.Weapons.Ranged.Systems;
 /// Triggers from GunShotEvent (client-predicted, immediate) and CameraKickEvent
 /// (server-confirmed, covers explosions and other sources too).
 /// Runs after SharedCameraRecoilSystem so our final SetOffset wins each frame.
+///
+/// Also adds a sustained micro-vibration layer for automatic fire: every 3rd shot
+/// starts a tiny continuous tremble that persists as long as rapid fire continues.
 /// </summary>
 public sealed class GunScreenShakeSystem : EntitySystem
 {
@@ -24,19 +27,35 @@ public sealed class GunScreenShakeSystem : EntitySystem
 
     private SharedEyeSystem _eyeSystem = default!;
 
-    private const float ShakeDuration = 0.12f;
-    private const float ShakeCooldown = 0.18f; // min time before a new shake can start
-    private const float FreqX = 11f;
-    private const float FreqY = 8.5f;
-    private const float MagnitudeScale = 0.4f; // scales CameraKickEvent recoil
-    private const float MagnitudeMax = 0.08f; // world-unit cap — keeps it subtle
+    // --- Regular per-shot shake ---
+    private const float ShakeDuration  = 0.12f;
+    private const float ShakeCooldown  = 0.18f;
+    private const float FreqX          = 11f;
+    private const float FreqY          = 8.5f;
+    private const float MagnitudeScale = 0.4f;
+    private const float MagnitudeMax   = 0.08f;
 
     private float _remaining = 0f;
-    private float _elapsed = 0f;
+    private float _elapsed   = 0f;
     private float _magnitude = 0f;
-    private float _phaseX = 0f;
-    private float _phaseY = 0f;
-    private float _cooldown = 0f; // blocks new shakes during rapid fire
+    private float _phaseX    = 0f;
+    private float _phaseY    = 0f;
+    private float _cooldown  = 0f;
+
+    // --- Sustained auto-fire micro-vibration ---
+    // Triggers every AutoFireEvery shots; stays active while rapid fire continues.
+    private const int   AutoFireEvery       = 3;     // how many shots before a vibration trigger
+    private const float VibeTimeoutDuration = 0.28f; // how long vibe stays active after each trigger
+    private const float VibeFadeOut         = 0.07f; // smooth fade-out window at end of timeout
+    private const float VibeMagnitude       = 0.014f; // world-unit amplitude — very subtle
+    private const float VibeFreqX           = 24f;
+    private const float VibeFreqY           = 19f;
+
+    private int   _autoShotCount = 0;
+    private float _vibeTimeout   = 0f;
+    private float _vibeElapsed   = 0f;
+    private float _vibePhaseX    = 0f;
+    private float _vibePhaseY    = 0f;
 
     private readonly Random _rng = new();
 
@@ -60,9 +79,26 @@ public sealed class GunScreenShakeSystem : EntitySystem
         if (!_timing.IsFirstTimePredicted) return;
         if (args.User != _playerManager.LocalEntity) return;
 
-        // Use a moderate default magnitude for gun shots
+        // Regular per-shot shake
         var magnitude = gun.CameraRecoilScalarModified * 0.09f;
         StartShake(MathF.Min(magnitude, MagnitudeMax));
+
+        // Sustained vibration: accumulate shots, trigger every 3rd
+        _autoShotCount++;
+        if (_autoShotCount >= AutoFireEvery)
+        {
+            _autoShotCount = 0;
+
+            if (_vibeTimeout <= 0f)
+            {
+                // Fresh start — randomise phase so it doesn't feel mechanical
+                _vibePhaseX  = _rng.NextSingle() * MathF.Tau;
+                _vibePhaseY  = _rng.NextSingle() * MathF.Tau;
+                _vibeElapsed = 0f;
+            }
+
+            _vibeTimeout = VibeTimeoutDuration; // refresh / extend the active window
+        }
     }
 
     private void OnCameraKick(CameraKickEvent ev)
@@ -81,10 +117,10 @@ public sealed class GunScreenShakeSystem : EntitySystem
 
         _magnitude = magnitude;
         _remaining = ShakeDuration;
-        _elapsed = 0f;
-        _cooldown = ShakeCooldown;
-        _phaseX = _rng.NextSingle() * MathF.Tau;
-        _phaseY = _rng.NextSingle() * MathF.Tau;
+        _elapsed   = 0f;
+        _cooldown  = ShakeCooldown;
+        _phaseX    = _rng.NextSingle() * MathF.Tau;
+        _phaseY    = _rng.NextSingle() * MathF.Tau;
     }
 
     public override void FrameUpdate(float frameTime)
@@ -92,7 +128,9 @@ public sealed class GunScreenShakeSystem : EntitySystem
         var player = _playerManager.LocalEntity;
         if (player == null)
         {
-            _remaining = 0f;
+            _remaining     = 0f;
+            _vibeTimeout   = 0f;
+            _autoShotCount = 0;
             return;
         }
 
@@ -101,31 +139,55 @@ public sealed class GunScreenShakeSystem : EntitySystem
         if (_cooldown > 0f)
             _cooldown -= frameTime;
 
-        if (_remaining <= 0f)
+        var offset = Vector2.Zero;
+
+        // --- Regular per-shot shake ---
+        if (_remaining > 0f)
+        {
+            _remaining -= frameTime;
+            _elapsed   += frameTime;
+
+            if (_remaining > 0f)
+            {
+                var decay = _remaining / ShakeDuration;
+                offset += new Vector2(
+                    MathF.Sin(_elapsed * FreqX * MathF.Tau + _phaseX) * _magnitude * decay,
+                    MathF.Sin(_elapsed * FreqY * MathF.Tau + _phaseY) * _magnitude * decay
+                );
+            }
+        }
+
+        // --- Sustained micro-vibration ---
+        if (_vibeTimeout > 0f)
+        {
+            _vibeTimeout -= frameTime;
+            _vibeElapsed += frameTime;
+
+            if (_vibeTimeout <= 0f)
+            {
+                // Window expired — reset counter so next burst starts fresh
+                _autoShotCount = 0;
+            }
+            else
+            {
+                // Smooth fade-out in the last VibeFadeOut seconds of the window
+                var alpha = MathF.Min(1f, _vibeTimeout / VibeFadeOut);
+                offset += new Vector2(
+                    MathF.Sin(_vibeElapsed * VibeFreqX * MathF.Tau + _vibePhaseX) * VibeMagnitude * alpha,
+                    MathF.Sin(_vibeElapsed * VibeFreqY * MathF.Tau + _vibePhaseY) * VibeMagnitude * alpha
+                );
+            }
+        }
+
+        // Nothing active — zero out and return
+        if (_remaining <= 0f && _vibeTimeout <= 0f)
         {
             ClearShake(player.Value, eye);
             return;
         }
 
-        _remaining -= frameTime;
-        _elapsed   += frameTime;
-
-        if (_remaining <= 0f)
-        {
-            _magnitude = 0f;
-            ClearShake(player.Value, eye);
-            return;
-        }
-
-        var decay  = _remaining / ShakeDuration;
-        var ox     = MathF.Sin(_elapsed * FreqX * MathF.Tau + _phaseX) * _magnitude * decay;
-        var oy     = MathF.Sin(_elapsed * FreqY * MathF.Tau + _phaseY) * _magnitude * decay;
-        var offset = new Vector2(ox, oy);
-
-        // SetOffset runs AFTER SharedCameraRecoilSystem (UpdatesAfter), so our value wins.
         _eyeSystem.SetOffset(player.Value, offset, eye);
 
-        // Keep BaseOffset in sync for the recoil component.
         if (TryComp<CameraRecoilComponent>(player.Value, out var recoil))
             recoil.BaseOffset = offset;
     }

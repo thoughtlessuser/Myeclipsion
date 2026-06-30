@@ -1,0 +1,63 @@
+// Blood vein / tissue border effect that radiates from all four screen edges.
+// Uses FBM noise for organic tendril shapes and a two-beat heartbeat pulse.
+// Spread is intentionally tight — even at max damage it only reaches ~12% inward.
+
+light_mode unshaded;
+
+// 0.0 = no damage, 1.0 = maximum brute damage
+uniform highp float bruteLevel;
+
+void fragment() {
+    highp vec2 screenSize = vec2(1.0 / SCREEN_PIXEL_SIZE.x, 1.0 / SCREEN_PIXEL_SIZE.y);
+    highp vec2 uv = FRAGCOORD.xy / screenSize;
+
+    highp float t = TIME * 0.28;
+
+    // Subtle FBM distortion — makes the border look like organic tissue/membrane
+    highp float nx = zFBM(uv * 4.0 + vec2(t, 1.73));
+    highp float ny = zFBM(uv * 4.0 + vec2(3.14, t));
+    highp vec2 distort = vec2(nx - 0.5, ny - 0.5) * 0.055 * bruteLevel;
+
+    // Distance from nearest screen EDGE (0 at any edge, 0.5 at center).
+    // Using edges instead of corners means all 4 sides light up uniformly.
+    highp vec2 du = uv + distort;
+    highp float edgeDist = min(
+        min(du.x, 1.0 - du.x),
+        min(du.y, 1.0 - du.y)
+    );
+
+    // Clean (undistorted) edge distance for placing the vein strands
+    highp float edgeDistClean = min(
+        min(uv.x, 1.0 - uv.x),
+        min(uv.y, 1.0 - uv.y)
+    );
+
+    // Spread: 0.15 at low damage → 0.45 at full damage
+    highp float spread = 0.15 + bruteLevel * 0.30;
+
+    // Soft vignette from all edges with organic distorted border
+    highp float vignette = 1.0 - smoothstep(0.0, spread, edgeDist);
+
+    // Vein tendrils using high-frequency FBM — thin ridges where sin ≈ 0
+    highp float veinFbm = zFBM(uv * 10.0 + vec2(TIME * 0.05, 0.0));
+    highp float veins = 1.0 - abs(sin(veinFbm * 11.0 + edgeDistClean * 32.0));
+    veins = pow(veins, 9.0);
+    // Veins reach slightly further than the base vignette
+    highp float veinReach = 1.0 - smoothstep(0.0, spread * 1.6, edgeDistClean);
+    veins *= veinReach;
+
+    // Two-beat heartbeat: strong beat followed by a softer echo
+    highp float beat = TIME * 2.8;
+    highp float pulse = max(
+        max(0.0, sin(beat)),
+        max(0.0, sin(beat - 0.62)) * 0.52
+    );
+    highp float heartbeat = 0.68 + 0.32 * pulse;
+
+    // Combine and scale by damage level
+    highp float alpha = clamp((vignette * 0.86 + veins * 0.55) * heartbeat, 0.0, 0.93);
+    alpha *= bruteLevel;
+
+    // Dark blood red
+    COLOR = vec4(0.70, 0.0, 0.04, alpha);
+}

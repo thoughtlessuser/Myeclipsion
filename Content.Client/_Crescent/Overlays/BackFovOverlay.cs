@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Content.Shared.Ghost;
 using Content.Shared.Mobs.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -42,9 +43,15 @@ public sealed class BackFovOverlay : Overlay
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        if (!_entityManager.TryGetComponent(_playerManager.LocalEntity, out EyeComponent? eye))
+        var player = _playerManager.LocalEntity;
+        if (!_entityManager.TryGetComponent(player, out EyeComponent? eye))
             return false;
-        return args.Viewport.Eye == eye.Eye;
+        if (args.Viewport.Eye != eye.Eye)
+            return false;
+        // Ghosts have 360° vision — skip the back-FOV darkening.
+        if (_entityManager.HasComponent<GhostComponent>(player))
+            return false;
+        return true;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -128,6 +135,13 @@ public sealed class BackFovSystem : EntitySystem
     {
         var localPlayer = _playerManager.LocalEntity;
         if (localPlayer == null) { RestoreAll(); return; }
+
+        // Ghosts see everything — restore all faded entities and skip processing.
+        if (EntityManager.HasComponent<GhostComponent>(localPlayer.Value))
+        {
+            RestoreAll();
+            return;
+        }
 
         if (!_xformQuery.TryGetComponent(localPlayer.Value, out var playerXform))
         {
