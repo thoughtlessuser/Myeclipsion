@@ -435,8 +435,6 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         var target = GetEntity(ev.Target);
         var resistanceBypass = GetResistanceBypass(meleeUid, user, component);
 
-        if (component.LightStaminaCost > 0 && TryComp<StaminaComponent>(user, out var userStamina))
-            _stamina.TakeStaminaDamage(user, component.LightStaminaCost, userStamina, visual: false);
 
         // For consistency with wide attacks stuff needs damageable.
         if (!CanDoLightAttack(user, target, component, out var targetXform, session))
@@ -648,8 +646,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         if (targetMap.MapId != userXform.MapID)
             return false;
 
-        if (component.HeavyStaminaCost > 0 && TryComp<StaminaComponent>(user, out var stamina))
-            _stamina.TakeStaminaDamage(user, component.HeavyStaminaCost, stamina, visual: false);
+        if (TryComp<StaminaComponent>(user, out var stamina))
+            _stamina.TakeStaminaDamage(user, 4f + component.HeavyStaminaCost, stamina, visual: false);
 
         var userPos = TransformSystem.GetWorldPosition(userXform);
         var direction = targetMap.Position - userPos;

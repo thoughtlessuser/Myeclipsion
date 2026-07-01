@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Numerics;
+using Content.Shared.CombatMode;
 using Content.Shared.Ghost;
 using Content.Shared.Mobs.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.GameObjects;
@@ -23,6 +25,8 @@ public sealed class BackFovOverlay : Overlay
     [Dependency] private readonly IPlayerManager    _playerManager = default!;
     [Dependency] private readonly IEntityManager    _entityManager = default!;
     [Dependency] private readonly IPrototypeManager _protoManager  = default!;
+    [Dependency] private readonly IInputManager     _input         = default!;
+    [Dependency] private readonly IEyeManager       _eye           = default!;
 
     public override OverlaySpace Space              => OverlaySpace.WorldSpace;
     public override bool         RequestScreenTexture => true;
@@ -70,6 +74,22 @@ public sealed class BackFovOverlay : Overlay
         var worldRot  = _xformSys.GetWorldRotation(xform).Theta;
         // facingDir: same Y convention as FRAGCOORD (Y+ = up), no flip needed
         var facingDir = new Angle(worldRot).ToWorldVec();
+        // In combat mode, override with smooth mouse direction for 360° FOV tracking.
+        if (_entityManager.TryGetComponent<CombatModeComponent>(player.Value, out var combatComp) && combatComp.IsInCombatMode)
+        {
+            var mouseScreen = _input.MouseScreenPosition;
+            if (mouseScreen.IsValid)
+            {
+                var mouseMap = _eye.PixelToMap(mouseScreen);
+                if (mouseMap.MapId == xform.MapID)
+                {
+                    var toMouse = mouseMap.Position - worldPos;
+                    var lenSq = toMouse.LengthSquared();
+                    if (lenSq > 0.01f)
+                        facingDir = toMouse / MathF.Sqrt(lenSq);
+                }
+            }
+        }
 
         // WorldToLocal: Y=0 at top (screen-down). FRAGCOORD: Y=0 at bottom (OpenGL). Flip Y.
         var viewportLocal  = args.Viewport.WorldToLocal(worldPos);
@@ -96,6 +116,8 @@ public sealed class BackFovSystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlayMan    = default!;
     [Dependency] private readonly IPlayerManager  _playerManager = default!;
+    [Dependency] private readonly IInputManager   _input         = default!;
+    [Dependency] private readonly IEyeManager     _eye           = default!;
 
     private SharedTransformSystem           _xformSys    = default!;
     private EntityQuery<TransformComponent> _xformQuery;
@@ -150,9 +172,24 @@ public sealed class BackFovSystem : EntitySystem
         }
 
         var playerPos = _xformSys.GetWorldPosition(playerXform);
-        var playerRot = _xformSys.GetWorldRotation(playerXform).Theta;
         var mapId     = playerXform.MapID;
-        var facingVec = new Angle(playerRot).ToWorldVec();
+        var facingVec = new Angle(_xformSys.GetWorldRotation(playerXform).Theta).ToWorldVec();
+        // In combat mode, override with smooth mouse direction for 360° FOV tracking.
+        if (EntityManager.TryGetComponent<CombatModeComponent>(localPlayer.Value, out var combatComp) && combatComp.IsInCombatMode)
+        {
+            var mouseScreen = _input.MouseScreenPosition;
+            if (mouseScreen.IsValid)
+            {
+                var mouseMap = _eye.PixelToMap(mouseScreen);
+                if (mouseMap.MapId == mapId)
+                {
+                    var toMouse = mouseMap.Position - playerPos;
+                    var lenSq = toMouse.LengthSquared();
+                    if (lenSq > 0.01f)
+                        facingVec = toMouse / MathF.Sqrt(lenSq);
+                }
+            }
+        }
 
         _seenThisFrame.Clear();
 

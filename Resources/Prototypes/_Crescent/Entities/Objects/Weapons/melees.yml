@@ -2,7 +2,7 @@
   name: hunter's vibrokhopesh
   parent: [BaseItem, StreeCredRedeemableHigh]
   id: SRMKhopesh
-  description: A vibro-alloy khopesh issued to veteran Hunters of the SRM. The broad curved blade is built to catch and redirect incoming fire - and in the hands of a skilled wielder, each parried shot builds into the next. Deflect chance stacks per parry from 60% up to 95%. Decays out of combat.
+  description: A vibro-alloy khopesh issued to veteran Hunters of the SRM. The broad curved blade is built to catch and redirect incoming fire - and in the hands of a skilled wielder, each parried shot builds into the next. Requires both hands to wield. Deflect chance stacks per parry from 65% up to 100%. Decays out of combat.
   components:
   - type: Sharp
   - type: Sprite
@@ -31,7 +31,7 @@
     maxTargets: 4
     meleeStaminaDamage: 10
   - type: Reflect
-    reflectProb: .6 #nerf
+    reflectProb: .65
     spread: 75
   - type: DeflectMastery
   - type: Item
@@ -448,7 +448,7 @@
   name: chengridz jaeger's vibrokukri
   parent: [BaseItem, StreeCredRedeemableHigh]
   id: NCWLKukri
-  description: Taking the shape of a worker's tool, this vibro-alloy kukri was built by Chengridz from stolen Imperial blueprints. Like the khopesh it imitates, each parried shot sharpens the wielder's deflection. Can also be thrown and embeds itself in targets, dealing damage over time. Deflect chance stacks per parry from 25% up to 60%. Decays out of combat.
+  description: Taking the shape of a worker's tool, this vibro-alloy kukri was built by Chengridz from stolen Imperial blueprints. Like the khopesh it imitates, each parried shot sharpens the wielder's deflection. Can also be thrown and embeds itself in targets, dealing damage over time. Requires both hands to wield. Deflect chance stacks per parry from 55% up to 90%. Decays out of combat.
   components:
   - type: Sharp
   - type: Sprite
@@ -460,7 +460,7 @@
     attackRate: 1
     damage:
       types:
-        Slash: 45
+        Slash: 55
     soundHit:
         collection: SwordHit
     soundHitFlesh:
@@ -485,7 +485,7 @@
         Slash: 40
   - type: EmbedPassiveDamage
   - type: Reflect
-    reflectProb: .25
+    reflectProb: .55
     spread: 75
   - type: DeflectMastery
   - type: Item
@@ -497,6 +497,7 @@
     tags:
     - Kukri
   - type: DisarmMalus
+  - type: MultiHandedItem
   - type: ReverseEngineering # SectorCrescent
     difficulty: 4
     recipes:

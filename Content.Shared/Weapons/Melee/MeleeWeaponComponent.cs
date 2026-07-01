@@ -120,18 +120,11 @@ public sealed partial class MeleeWeaponComponent : Component
     public float MeleeStaminaDamage = 0f;
 
     /// <summary>
-    /// Stamina cost applied to the attacker each time they perform a light attack, hit or miss.
-    /// Missing punishes the attacker; hitting recoups most of it via StaminaOnHitRestore.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public float LightStaminaCost = 3f;
-
-    /// <summary>
     /// Stamina restored to the attacker when they land a successful hit that deals damage.
     /// Keeps skilled fighters sustainable while unskilled fighters who miss will tire out.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float StaminaOnHitRestore = 3f;
+    public float StaminaOnHitRestore = 5f;
 
     /// <summary>
     /// Multiplies damage by this amount for single-target attacks.
