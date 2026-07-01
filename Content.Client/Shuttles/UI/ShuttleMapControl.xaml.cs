@@ -224,16 +224,16 @@ public sealed partial class ShuttleMapControl : BaseShuttleControl
         worldOrigin = worldOrigin with { Y = -worldOrigin.Y };
         var screenOrigin = ScalePosition(worldOrigin);
 
-        // Центр
+        // Center
         handle.DrawCircle(screenOrigin, 500f * MinimapScale, new Color(1f, 0f, 0f, 0.03f));
         handle.DrawCircle(screenOrigin, 500f * MinimapScale, new Color(1f, 0f, 0f, 0.2f), filled: false);
 
-        // Внешнее кольцо
+        // Outer ring
         DrawFilledRing(handle, screenOrigin,
             4000f * MinimapScale, 4500f * MinimapScale,
             new Color(0f, 1f, 0f, 0.03f), new Color(0f, 1f, 0f, 0.2f));
 
-        // Хадал
+        // Hadal zone
         DrawFilledRing(handle, screenOrigin,
             10000f * MinimapScale, 20000f * MinimapScale,
             new Color(1f, 0f, 0f, 0.01f), new Color(1f, 0f, 0f, 0.1f));

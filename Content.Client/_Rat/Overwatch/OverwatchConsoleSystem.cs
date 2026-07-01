@@ -15,13 +15,11 @@ using System.Numerics;
 namespace Content.Client._Rat.Overwatch;
 
 /// <summary>
-/// Клиентская система для ретрансляции звуков при наблюдении через камеру Overwatch.
+/// Client system that relays ambient sounds to the local player while spectating via the Overwatch camera.
 /// </summary>
 public sealed class OverwatchConsoleSystem : EntitySystem
 {
-    /// <summary>
-    /// Максимальное расстояние для проверки звуков (оптимизация производительности).
-    /// </summary>
+    // Performance guard: sounds beyond this range are ignored entirely.
     private const float MaxSoundRelayDistance = 50f;
 
     [Dependency] private readonly AudioSystem _audio = default!;
@@ -32,14 +30,10 @@ public sealed class OverwatchConsoleSystem : EntitySystem
     [Dependency] private readonly IResourceCache _cache = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    /// <summary>
-    /// Кэш ретранслируемых звуков для отслеживания активных ретрансляций.
-    /// </summary>
+    // Maps original sound entities to their relayed client-side counterparts.
     private readonly Dictionary<EntityUid, EntityUid> _relayedSounds = new();
 
-    /// <summary>
-    /// Временный список звуков для ретрансляции в текущем кадре.
-    /// </summary>
+    // Scratch list built each frame before spawning relayed audio entities.
     private readonly List<(EntityUid Uid, AudioComponent Audio, RatOverwatchRelayedSoundComponent? Relay, EntityCoordinates Position)> _toRelay = new();
 
     private OverwatchAnnouncementOverlay _announcementOverlay = default!;
@@ -65,9 +59,6 @@ public sealed class OverwatchConsoleSystem : EntitySystem
         _overlay.RemoveOverlay(_announcementOverlay);
     }
 
-    /// <summary>
-    /// Обработчик события объявления Overwatch.
-    /// </summary>
     private void OnAnnouncement(OverwatchAnnouncementEvent ev)
     {
         var title = Loc.GetString("overwatch-announcement-title",
@@ -96,17 +87,11 @@ public sealed class OverwatchConsoleSystem : EntitySystem
         CleanupAllRelayedSounds();
     }
 
-    /// <summary>
-    /// Обработчик удаления компонента ретрансляции звука.
-    /// </summary>
     private void OnRelayedRemove<T>(Entity<RatOverwatchRelayedSoundComponent> ent, ref T args)
     {
         TryDeleteRelayed(ent.Comp.Relay);
     }
 
-    /// <summary>
-    /// Удаляет ретранслируемую сущность звука если она клиентская.
-    /// </summary>
     private void TryDeleteRelayed(EntityUid? relay)
     {
         if (relay == null)
@@ -116,9 +101,6 @@ public sealed class OverwatchConsoleSystem : EntitySystem
             QueueDel(relay);
     }
 
-    /// <summary>
-    /// Удаляет ретранслируемый звук из кэша и очищает сущность.
-    /// </summary>
     private void RemoveRelayedSound(EntityUid soundUid)
     {
         if (_relayedSounds.Remove(soundUid, out var relayedUid) && relayedUid.Valid)
@@ -128,9 +110,6 @@ public sealed class OverwatchConsoleSystem : EntitySystem
         }
     }
 
-    /// <summary>
-    /// Очищает все ретранслируемые звуки при выходе из режима наблюдения.
-    /// </summary>
     private void CleanupAllRelayedSounds()
     {
         foreach (var relayedUid in _relayedSounds.Values)
@@ -148,9 +127,6 @@ public sealed class OverwatchConsoleSystem : EntitySystem
         }
     }
 
-    /// <summary>
-    /// Очищает устаревшие ретранслируемые звуки которые больше не слышны.
-    /// </summary>
     private void CleanupStaleRelayedSounds(HashSet<EntityUid> activeSounds)
     {
         var toRemove = new List<EntityUid>();
@@ -166,9 +142,6 @@ public sealed class OverwatchConsoleSystem : EntitySystem
         }
     }
 
-    /// <summary>
-    /// Создаёт или обновляет ретранслируемый звук на новой позиции.
-    /// </summary>
     private void UpdateOrCreateRelayedSound(
         EntityUid uid,
         AudioComponent audio,

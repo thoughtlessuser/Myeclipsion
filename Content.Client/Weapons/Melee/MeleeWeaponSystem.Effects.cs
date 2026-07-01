@@ -185,9 +185,10 @@ public sealed partial class MeleeWeaponSystem
         const float length = 0.30f;
 
         var rotation = sprite.Rotation + spriteRotation;
-        var forwardDir = sprite.Rotation.ToWorldVec();
-        var pullbackOffset = -forwardDir * (distance * 0.25f);
-        var endOffset = forwardDir * distance;
+        // Use RotateVec like GetThrustAnimation so the offset direction matches the attack direction.
+        // Positive Y = backward (pullback), negative Y = forward (thrust).
+        var pullbackOffset = sprite.Rotation.RotateVec(new Vector2(0f, distance * 0.25f));
+        var endOffset = sprite.Rotation.RotateVec(new Vector2(0f, -distance));
 
         return new Animation()
         {

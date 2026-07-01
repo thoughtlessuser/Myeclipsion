@@ -63,6 +63,7 @@ ui-options-enable-color-name = Add colors to character names
 ui-options-colorblind-friendly = Colorblind friendly mode
 ui-options-no-filters = Disable species vision filters
 ui-options-reduced-motion = Reduce motion of visual effects
+ui-options-screen-shake-enabled = Enable screen shake
 ui-options-chat-window-opacity = Chat window opacity
 ui-options-chat-window-opacity-percent = { TOSTRING($opacity, "P0") }
 ui-options-screen-shake-intensity = Screen shake intensity

@@ -1,6 +1,7 @@
-// Blood vein / tissue border effect that radiates from all four screen edges.
-// Uses FBM noise for organic tendril shapes and a two-beat heartbeat pulse.
-// Spread is intentionally tight — even at max damage it only reaches ~12% inward.
+// Blood effect: irregular patches at screen corners rather than a uniform border.
+// Each corner has an independent intensity that drifts very slowly, so some
+// corners are heavy and others light — giving a scattered, non-square look.
+// Domain warp makes every patch organically shaped (not a clean circle).
 
 light_mode unshaded;
 
@@ -11,53 +12,75 @@ void fragment() {
     highp vec2 screenSize = vec2(1.0 / SCREEN_PIXEL_SIZE.x, 1.0 / SCREEN_PIXEL_SIZE.y);
     highp vec2 uv = FRAGCOORD.xy / screenSize;
 
-    highp float t = TIME * 0.28;
+    highp float t = TIME * 0.18;
 
-    // Subtle FBM distortion — makes the border look like organic tissue/membrane
-    highp float nx = zFBM(uv * 4.0 + vec2(t, 1.73));
-    highp float ny = zFBM(uv * 4.0 + vec2(3.14, t));
-    highp vec2 distort = vec2(nx - 0.5, ny - 0.5) * 0.055 * bruteLevel;
+    // Domain warp — irregular, organic deformation so patches are never circular
+    highp float wx = zFBM(uv * 4.0 + vec2(t, 0.7));
+    highp float wy = zFBM(uv * 4.0 + vec2(2.3, t));
+    highp vec2 wuv = uv + vec2(wx - 0.5, wy - 0.5) * 0.20;
 
-    // Distance from nearest screen EDGE (0 at any edge, 0.5 at center).
-    // Using edges instead of corners means all 4 sides light up uniformly.
-    highp vec2 du = uv + distort;
-    highp float edgeDist = min(
-        min(du.x, 1.0 - du.x),
-        min(du.y, 1.0 - du.y)
-    );
+    // ── Per-corner intensities ──
+    // Very slow drift (changes noticeably only after ~2 minutes of combat)
+    // so during a fight the active corners feel stable but over time they shift.
+    highp float drift = TIME * 0.008;
+    highp float iTL = 0.30 + 0.70 * zFBM(vec2(1.1,  2.3) + drift); // top-left
+    highp float iTR = 0.30 + 0.70 * zFBM(vec2(8.5,  1.7) + drift); // top-right
+    highp float iBL = 0.30 + 0.70 * zFBM(vec2(0.9,  9.2) + drift); // bottom-left
+    highp float iBR = 0.30 + 0.70 * zFBM(vec2(7.3,  8.8) + drift); // bottom-right
 
-    // Clean (undistorted) edge distance for placing the vein strands
-    highp float edgeDistClean = min(
+    // Distance from each corner in warped space — makes patches non-circular
+    highp float dTL = length(wuv - vec2(0.0, 0.0));
+    highp float dTR = length(wuv - vec2(1.0, 0.0));
+    highp float dBL = length(wuv - vec2(0.0, 1.0));
+    highp float dBR = length(wuv - vec2(1.0, 1.0));
+
+    // Patch radius grows with damage
+    highp float radius = 0.35 + bruteLevel * 0.20;
+
+    highp float pTL = iTL * (1.0 - smoothstep(0.0, radius, dTL));
+    highp float pTR = iTR * (1.0 - smoothstep(0.0, radius, dTR));
+    highp float pBL = iBL * (1.0 - smoothstep(0.0, radius, dBL));
+    highp float pBR = iBR * (1.0 - smoothstep(0.0, radius, dBR));
+
+    // Take the brightest corner at each pixel
+    highp float cornerPatch = max(max(pTL, pTR), max(pBL, pBR));
+    cornerPatch = pow(cornerPatch, 0.70); // soften falloff so patches feel solid near edges
+
+    // ── Vein tendrils ── masked to the active corner regions
+    highp float edgeClean = min(
         min(uv.x, 1.0 - uv.x),
         min(uv.y, 1.0 - uv.y)
     );
 
-    // Spread: 0.15 at low damage → 0.45 at full damage
-    highp float spread = 0.15 + bruteLevel * 0.30;
+    // Coarse branches
+    highp float fbmC   = zFBM(wuv * 6.0 + vec2(TIME * 0.06, 0.0));
+    highp float coarse = pow(max(0.0, sin(fbmC * 9.0 + edgeClean * 18.0) * 0.5 + 0.5), 6.0);
 
-    // Soft vignette from all edges with organic distorted border
-    highp float vignette = 1.0 - smoothstep(0.0, spread, edgeDist);
+    // Fine tendrils between branches
+    highp float fbmF = zFBM(wuv * 13.0 + vec2(0.0, TIME * 0.09));
+    highp float fine  = pow(max(0.0, sin(fbmF * 15.0 + edgeClean * 40.0) * 0.5 + 0.5), 10.0);
 
-    // Vein tendrils using high-frequency FBM — thin ridges where sin ≈ 0
-    highp float veinFbm = zFBM(uv * 10.0 + vec2(TIME * 0.05, 0.0));
-    highp float veins = 1.0 - abs(sin(veinFbm * 11.0 + edgeDistClean * 32.0));
-    veins = pow(veins, 9.0);
-    // Veins reach slightly further than the base vignette
-    highp float veinReach = 1.0 - smoothstep(0.0, spread * 1.6, edgeDistClean);
-    veins *= veinReach;
+    highp float veins = (coarse * 0.85 + fine * 0.55) * cornerPatch;
 
-    // Two-beat heartbeat: strong beat followed by a softer echo
-    highp float beat = TIME * 2.8;
+    // ── Heartbeat pulse ──
+    highp float beat = TIME * 2.6;
     highp float pulse = max(
         max(0.0, sin(beat)),
-        max(0.0, sin(beat - 0.62)) * 0.52
+        max(0.0, sin(beat - 0.65)) * 0.52
     );
-    highp float heartbeat = 0.68 + 0.32 * pulse;
+    highp float heartbeat = 0.70 + 0.30 * pulse;
 
-    // Combine and scale by damage level
-    highp float alpha = clamp((vignette * 0.86 + veins * 0.55) * heartbeat, 0.0, 0.93);
-    alpha *= bruteLevel;
+    // ── Alpha composition ──
+    highp float fillAlpha  = clamp(cornerPatch * 0.78 * heartbeat, 0.0, 0.88) * bruteLevel;
+    highp float veinAlpha  = clamp(veins       * 1.00 * heartbeat, 0.0, 0.96) * bruteLevel;
+    highp float totalAlpha = clamp(fillAlpha + veinAlpha * 0.55, 0.0, 0.93);
 
-    // Dark blood red
-    COLOR = vec4(0.70, 0.0, 0.04, alpha);
+    // ── Two-tone colour ──
+    // Near-black dark blood for the filled zone, vivid red for vein highlights
+    highp vec3 fillColor = vec3(0.28, 0.0, 0.02);
+    highp vec3 veinColor = vec3(0.85, 0.03, 0.04);
+    highp float veinRatio = clamp(veinAlpha / (fillAlpha + veinAlpha + 0.001), 0.0, 1.0);
+    highp vec3 color = mix(fillColor, veinColor, veinRatio);
+
+    COLOR = vec4(color, totalAlpha);
 }

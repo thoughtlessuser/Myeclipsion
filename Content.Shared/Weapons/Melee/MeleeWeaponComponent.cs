@@ -11,7 +11,7 @@ namespace Content.Shared.Weapons.Melee;
 /// <summary>
 /// When given to a mob lets them do unarmed attacks, or when given to an item lets someone wield it to do attacks.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), AutoGenerateComponentPause]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class MeleeWeaponComponent : Component
 {
     // TODO: This is becoming bloated as shit.
@@ -120,6 +120,20 @@ public sealed partial class MeleeWeaponComponent : Component
     public float MeleeStaminaDamage = 0f;
 
     /// <summary>
+    /// Stamina cost applied to the attacker each time they perform a light attack, hit or miss.
+    /// Missing punishes the attacker; hitting recoups most of it via StaminaOnHitRestore.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float LightStaminaCost = 3f;
+
+    /// <summary>
+    /// Stamina restored to the attacker when they land a successful hit that deals damage.
+    /// Keeps skilled fighters sustainable while unskilled fighters who miss will tire out.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float StaminaOnHitRestore = 3f;
+
+    /// <summary>
     /// Multiplies damage by this amount for single-target attacks.
     /// </summary>
     [DataField, AutoNetworkedField]
@@ -213,6 +227,25 @@ public sealed partial class MeleeWeaponComponent : Component
 
     [DataField, AutoNetworkedField]
     public SoundSpecifier? SoundHit;
+
+    /// <summary>
+    /// Plays when hitting an unarmored target (outer clothing piercing resistance ≤ 35).
+    /// Falls back to SoundHit if null.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? SoundHitFlesh;
+
+    /// <summary>
+    /// Plays when a hit puts the target into a critical state. Takes priority over SoundHit/SoundHitFlesh.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? SoundHitCrit;
+
+    /// <summary>
+    /// Plays when a hit kills the target. Takes highest priority.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public SoundSpecifier? SoundHitKill;
 
     /// <summary>
     /// Plays if no damage is done to the target entity.

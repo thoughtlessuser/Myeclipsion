@@ -2,10 +2,12 @@ using System;
 using System.Numerics;
 using Content.Shared._Crescent.Weapons;
 using Content.Shared.Camera;
+using Content.Shared.CCVar;
 using Content.Shared.Weapons.Ranged.Components;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
+using Robust.Shared.Configuration;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Timing;
@@ -23,10 +25,12 @@ namespace Content.Client.Weapons.Ranged.Systems;
 /// </summary>
 public sealed class GunScreenShakeSystem : EntitySystem
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IGameTiming    _timing        = default!;
+    [Dependency] private readonly IPlayerManager        _playerManager = default!;
+    [Dependency] private readonly IGameTiming           _timing        = default!;
+    [Dependency] private readonly IConfigurationManager _cfg           = default!;
 
     private SharedEyeSystem _eyeSystem = default!;
+    private bool _shakeEnabled = true;
 
     // --- Regular per-shot shake ---
     private const float ShakeDuration  = 0.12f;
@@ -65,6 +69,8 @@ public sealed class GunScreenShakeSystem : EntitySystem
         base.Initialize();
         _eyeSystem = EntityManager.System<SharedEyeSystem>();
 
+        Subs.CVar(_cfg, CCVars.ScreenShakeEnabled, v => _shakeEnabled = v, true);
+
         // Run after SharedCameraRecoilSystem so our offset wins the frame
         UpdatesAfter.Add(typeof(Content.Client.Camera.CameraRecoilSystem));
 
@@ -77,6 +83,7 @@ public sealed class GunScreenShakeSystem : EntitySystem
 
     private void OnGunShot(EntityUid uid, GunComponent gun, ref GunShotEvent args)
     {
+        if (!_shakeEnabled) return;
         if (!_timing.IsFirstTimePredicted) return;
         if (args.User != _playerManager.LocalEntity) return;
 
@@ -106,6 +113,7 @@ public sealed class GunScreenShakeSystem : EntitySystem
 
     private void OnCameraKick(CameraKickEvent ev)
     {
+        if (!_shakeEnabled) return;
         var player = _playerManager.LocalEntity;
         if (player == null) return;
         if (GetEntity(ev.NetEntity) != player.Value) return;

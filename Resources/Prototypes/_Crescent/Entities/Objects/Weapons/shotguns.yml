@@ -228,6 +228,8 @@
       gun_chamber: !type:ContainerSlot
   - type: ChamberMagazineAmmoProvider
     autoCycle: false #its a lever gun its not semi auto....
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: Appearance
   - type: StaticPrice
     price: 2000
@@ -367,11 +369,13 @@
     fireOnDropChance: 1
   - type: BallisticAmmoProvider
     capacity: 6
-    autoCycle: false
+    autoCycle: true
     proto: ShellShotgun
     whitelist:
       tags:
       - ShellShotgun
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: ReverseEngineering # Sector Crescent
     recipes:
       - WeaponShotgunDSMMatusa
@@ -413,6 +417,8 @@
     whitelist:
       tags:
       - ShellShotgun
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: ReverseEngineering
     recipes:
       - WeaponShotgunDoubleBarreledNCWL
@@ -480,6 +486,8 @@
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
   - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -584,6 +592,8 @@
       gun_magazine: !type:ContainerSlot
       gun_chamber: !type:ContainerSlot
   - type: ChamberMagazineAmmoProvider
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: MagazineVisuals
     magState: mag
     steps: 1

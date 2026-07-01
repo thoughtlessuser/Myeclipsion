@@ -42,6 +42,8 @@
     proto: ShellShotgun
     soundInsert:
       collection: ShellReload
+    soundRack:
+      path: /Audio/_Crescent/Weapons/Guns/shotgun_reload/shotgun_shell_insert.ogg
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container

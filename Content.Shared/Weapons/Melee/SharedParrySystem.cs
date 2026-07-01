@@ -31,7 +31,7 @@ public sealed class SharedParrySystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
 
-    private static readonly SoundPathSpecifier FinisherSound = new("/Audio/Weapons/Melee/Sword/finisher.ogg")
+    private static readonly SoundPathSpecifier FinisherSound = new("/Audio/Weapons/Melee/Sword/kill-sound.ogg")
     {
         Params = AudioParams.Default.WithVolume(5f),
     };

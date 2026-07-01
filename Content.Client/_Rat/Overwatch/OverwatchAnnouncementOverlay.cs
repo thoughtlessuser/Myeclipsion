@@ -9,7 +9,7 @@ using Robust.Shared.Timing;
 namespace Content.Client._Rat.Overwatch;
 
 /// <summary>
-/// Оверлей для отображения объявлений Overwatch.
+/// Screen-space overlay that renders Overwatch announcements with a typewriter effect.
 /// </summary>
 public sealed class OverwatchAnnouncementOverlay : Overlay
 {
@@ -53,7 +53,7 @@ public sealed class OverwatchAnnouncementOverlay : Overlay
     }
 
     /// <summary>
-    /// Сбрасывает все параметры оверлея.
+    /// Resets all overlay state, clearing any active announcement.
     /// </summary>
     public void Reset()
     {
@@ -73,11 +73,11 @@ public sealed class OverwatchAnnouncementOverlay : Overlay
     }
 
     /// <summary>
-    /// Устанавливает текст объявления для отображения с эффектом печатной машинки.
+    /// Starts displaying an announcement with a typewriter effect.
     /// </summary>
-    /// <param name="title">Заголовок объявления.</param>
-    /// <param name="message">Текст сообщения.</param>
-    /// <param name="color">Цвет текста.</param>
+    /// <param name="title">The announcement title.</param>
+    /// <param name="message">The message body.</param>
+    /// <param name="color">Text color.</param>
     public void SetText(string title, string message, Color color)
     {
         Title = title;
@@ -147,9 +147,6 @@ public sealed class OverwatchAnnouncementOverlay : Overlay
         _nextUpd += CharInterval;
     }
 
-    /// <summary>
-    /// Отрисовывает заголовок объявления с эффектом печатной машинки.
-    /// </summary>
     private void DrawTitle(in OverlayDrawArgs args)
     {
         if (string.IsNullOrEmpty(Title))
@@ -180,9 +177,6 @@ public sealed class OverwatchAnnouncementOverlay : Overlay
         _nextUpdTitle += TitleCharInterval;
     }
 
-    /// <summary>
-    /// Вычисляет позицию центрирования текста с учётом размера вьюпорта.
-    /// </summary>
     private Vector2 CalcPosition(Font font, string str, Vector2 viewport, int yOffset)
     {
         var strSize = CalcTextSize(font, str);
@@ -190,9 +184,6 @@ public sealed class OverwatchAnnouncementOverlay : Overlay
         return new Vector2((viewport.X - strSize.X) / 2, strSize.Y + yOffset);
     }
 
-    /// <summary>
-    /// Вычисляет размер текста в пикселях.
-    /// </summary>
     private Vector2 CalcTextSize(Font font, string? str)
     {
         Vector2 strSize = new();

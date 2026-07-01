@@ -16,7 +16,7 @@ using static Robust.Client.UserInterface.Controls.BoxContainer;
 namespace Content.Client._Rat.Overwatch;
 
 /// <summary>
-/// Окно консоли Overwatch для наблюдения за членами фракции.
+/// Overwatch console window for monitoring and spectating faction members.
 /// </summary>
 [GenerateTypedNameReferences]
 public sealed partial class OverwatchWindow : FancyWindow
@@ -35,9 +35,7 @@ public sealed partial class OverwatchWindow : FancyWindow
     private readonly Dictionary<NetEntity, OverwatchMemberRow> _memberRows = new();
     private List<OverwatchMemberData> _allMembers = new();
 
-    /// <summary>
-    /// Кэш для сохранения состояния наблюдения при обновлении UI.
-    /// </summary>
+    // Preserves per-member watch state so UI refreshes don't reset the camera view.
     private readonly Dictionary<NetEntity, bool> _watchingStateCache = new();
 
     private bool _anyDropdownOpen;
@@ -51,9 +49,6 @@ public sealed partial class OverwatchWindow : FancyWindow
     private Dictionary<int, string> _availableSquads = new();
     private Color _factionColor;
 
-    /// <summary>
-    /// Инициализирует окно Overwatch и настраивает обработчики событий.
-    /// </summary>
     public OverwatchWindow()
     {
         RobustXamlLoader.Load(this);
@@ -85,9 +80,6 @@ public sealed partial class OverwatchWindow : FancyWindow
         InitializeAdminPanel();
     }
 
-    /// <summary>
-    /// Инициализирует фильтры UI (статус, отряд, поиск).
-    /// </summary>
     private void InitializeFilters()
     {
         StatusFilter.AddItem(Loc.GetString("overwatch-status-all"), SquadFilterAllId);
@@ -130,19 +122,11 @@ public sealed partial class OverwatchWindow : FancyWindow
         };
     }
 
-    /// <summary>
-    /// Инициализирует BUI для взаимодействия с сервером.
-    /// </summary>
-    /// <param name="ui">BUI консоли Overwatch.</param>
     public void Initialize(OverwatchBoundUserInterface ui)
     {
         _ui = ui;
     }
 
-    /// <summary>
-    /// Обработчик начала наблюдения за участником - сбрасывает наблюдение у остальных.
-    /// </summary>
-    /// <param name="selectedRow">Выбранная строка участника.</param>
     private void OnMemberStartWatching(OverwatchMemberRow selectedRow)
     {
         foreach (var row in _memberRows.Values)
@@ -157,10 +141,6 @@ public sealed partial class OverwatchWindow : FancyWindow
         StopWatchingButton.Visible = true;
     }
 
-    /// <summary>
-    /// Обновляет состояние UI на основе данных от сервера.
-    /// </summary>
-    /// <param name="state">Состояние от сервера.</param>
     public void UpdateState(OverwatchUpdateState state)
     {
         if (_ui == null)
@@ -203,9 +183,6 @@ public sealed partial class OverwatchWindow : FancyWindow
         StopWatchingButton.Visible = GetCurrentWatchedEntity() != null;
     }
 
-    /// <summary>
-    /// Закрывает все открытые селекторы отрядов.
-    /// </summary>
     public void CloseAllSquadSelects()
     {
         var anyWasOpen = false;
@@ -231,18 +208,11 @@ public sealed partial class OverwatchWindow : FancyWindow
         }
     }
 
-    /// <summary>
-    /// Устанавливает флаг только что открытого селектора для предотвращения немедленного закрытия.
-    /// </summary>
     public void SetJustOpenedSquadSelect()
     {
         _justOpenedSquadSelect = true;
     }
 
-    /// <summary>
-    /// Обновляет фильтр отрядов на основе доступных отрядов.
-    /// </summary>
-    /// <param name="availableSquads">Словарь доступных отрядов (ID -> Название).</param>
     private void UpdateSquadFilter(Dictionary<int, string> availableSquads)
     {
         var currentSelection = SquadFilter.SelectedId;
@@ -262,10 +232,6 @@ public sealed partial class OverwatchWindow : FancyWindow
         UpdateAnnouncementTargets(currentAnnouncementSelection);
     }
 
-    /// <summary>
-    /// Обновляет список получателей объявлений.
-    /// </summary>
-    /// <param name="currentSelection">Текущий выбранный элемент.</param>
     private void UpdateAnnouncementTargets(int? currentSelection = null)
     {
         AnnouncementTarget.Clear();
@@ -284,10 +250,6 @@ public sealed partial class OverwatchWindow : FancyWindow
     AnnouncementTarget.SelectId(selection);
     }
 
-    /// <summary>
-    /// Обновляет список отрядов в админ-панели.
-    /// </summary>
-    /// <param name="squads">Словарь отрядов (ID -> Название).</param>
     private void UpdateSquadsList(Dictionary<int, string> squads)
     {
         SquadsList.DisposeAllChildren();
@@ -326,9 +288,6 @@ public sealed partial class OverwatchWindow : FancyWindow
         }
     }
 
-    /// <summary>
-    /// Инициализирует админ-панель (объявления, создание/удаление отрядов).
-    /// </summary>
     private void InitializeAdminPanel()
     {
         AnnouncementTarget.AddItem(Loc.GetString("overwatch-admin-announcement-to-all"), AnnouncementTargetAllId);
@@ -365,11 +324,6 @@ public sealed partial class OverwatchWindow : FancyWindow
         };
     }
 
-    /// <summary>
-    /// Получает ID отряда по индексу.
-    /// </summary>
-    /// <param name="index">Индекс отряда.</param>
-    /// <returns>ID отряда или null если выбрано "Всей фракции".</returns>
     private int? GetSquadIdByIndex(int index)
     {
         if (index == AnnouncementTargetAllId)
@@ -378,9 +332,6 @@ public sealed partial class OverwatchWindow : FancyWindow
         return index;
     }
 
-    /// <summary>
-    /// Применяет фильтры к списку участников и обновляет сетку.
-    /// </summary>
     private void ApplyFilters()
     {
         int? squadFilterId = null;
@@ -424,10 +375,6 @@ public sealed partial class OverwatchWindow : FancyWindow
         UpdateMembersGrid(filteredMembers);
     }
 
-    /// <summary>
-    /// Обновляет сетку участников с применением группировки по отрядам.
-    /// </summary>
-    /// <param name="members">Отфильтрованный список участников.</param>
     private void UpdateMembersGrid(List<OverwatchMemberData> members)
     {
         MembersGrid.DisposeAllChildren();
@@ -499,11 +446,6 @@ public sealed partial class OverwatchWindow : FancyWindow
         }
     }
 
-    /// <summary>
-    /// Устанавливает состояние наблюдения для участника.
-    /// </summary>
-    /// <param name="member">Сущность участника.</param>
-    /// <param name="isWatching">Флаг состояния наблюдения.</param>
     public void SetWatching(NetEntity member, bool isWatching)
     {
         _watchingStateCache[member] = isWatching;
@@ -597,7 +539,7 @@ public sealed partial class OverwatchWindow : FancyWindow
 }
 
 /// <summary>
-/// Строка с информацией о члене фракции в окне Overwatch.
+/// A single member row inside the Overwatch window grid.
 /// </summary>
 public sealed class OverwatchMemberRow : BoxContainer
 {
@@ -618,29 +560,14 @@ public sealed class OverwatchMemberRow : BoxContainer
     private int? _currentSquadId;
     private System.Numerics.Vector2? _coordinates;
 
-    /// <summary>
-    /// Флаг текущего состояния наблюдения за участником.
-    /// </summary>
     public bool IsWatching { get; private set; }
 
-    /// <summary>
-    /// Сущность участника.
-    /// </summary>
     public NetEntity Member => _member;
 
-    /// <summary>
-    /// Селектор отрядов для назначения участника.
-    /// </summary>
     public OptionButton SquadSelect => _squadSelect;
 
-    /// <summary>
-    /// Кнопка открытия селектора отрядов.
-    /// </summary>
     public Button SquadButton => _squadButton;
 
-    /// <summary>
-    /// Инициализирует строку участника.
-    /// </summary>
     public OverwatchMemberRow(
         OverwatchMemberData data,
         OverwatchBoundUserInterface ui,
@@ -720,9 +647,6 @@ public sealed class OverwatchMemberRow : BoxContainer
         Update(data);
     }
 
-    /// <summary>
-    /// Обновляет список отрядов в селекторе.
-    /// </summary>
     public void RefreshSquadSelect()
     {
         var squads = _availableSquadsCache ?? _getSquadsFunc();
@@ -745,9 +669,6 @@ public sealed class OverwatchMemberRow : BoxContainer
         }
     }
 
-    /// <summary>
-    /// Обновляет отображаемые данные участника.
-    /// </summary>
     public void Update(OverwatchMemberData data)
     {
         if (_squadSelect.Visible)
@@ -785,18 +706,12 @@ public sealed class OverwatchMemberRow : BoxContainer
         UpdateButtonState();
     }
 
-    /// <summary>
-    /// Устанавливает состояние наблюдения за участником.
-    /// </summary>
     public void SetWatching(bool isWatching)
     {
         IsWatching = isWatching;
         UpdateButtonState();
     }
 
-    /// <summary>
-    /// Обновляет текст и стиль кнопки просмотра в зависимости от состояния.
-    /// </summary>
     private void UpdateButtonState()
     {
         if (IsWatching)

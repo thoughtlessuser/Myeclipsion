@@ -16,3 +16,20 @@
   - /Audio/Weapons/Melee/Sword/sword_hit1.ogg
   - /Audio/Weapons/Melee/Sword/sword_hit2.ogg
   - /Audio/Weapons/Melee/Sword/sword_hit3.ogg
+
+- type: soundCollection
+  id: SwordHitFlesh
+  files:
+  - /Audio/Weapons/Melee/Sword/fleshcut-1.ogg
+  - /Audio/Weapons/Melee/Sword/fleshcut-2.ogg
+  - /Audio/Weapons/Melee/Sword/fleshcut3.ogg
+
+- type: soundCollection
+  id: SwordHitCrit
+  files:
+  - /Audio/Weapons/Melee/Sword/critsound.ogg
+
+- type: soundCollection
+  id: SwordHitKill
+  files:
+  - /Audio/Weapons/Melee/Sword/kill-sound.ogg

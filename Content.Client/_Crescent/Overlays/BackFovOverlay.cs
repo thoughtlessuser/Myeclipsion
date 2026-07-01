@@ -16,7 +16,7 @@ namespace Content.Client._Crescent.Overlays;
 
 /// <summary>
 /// Desaturates (greyscale) the area behind the player using a screen-texture shader.
-/// The transition has a soft ±7° edge so it never looks like a hard cut.
+/// The transition has a soft ±15° edge and a distance fade for a gentle look.
 /// </summary>
 public sealed class BackFovOverlay : Overlay
 {
@@ -27,8 +27,8 @@ public sealed class BackFovOverlay : Overlay
     public override OverlaySpace Space              => OverlaySpace.WorldSpace;
     public override bool         RequestScreenTexture => true;
 
-    // 132° half-FOV → 264° visible, 96° back zone
-    internal const  double HalfFovRad = 132.0 * Math.PI / 180.0;
+    // 140° half-FOV → 280° visible, 80° back zone
+    internal const  double HalfFovRad = 140.0 * Math.PI / 180.0;
     internal static readonly float HalfFovCos = (float) Math.Cos(HalfFovRad);
 
     private readonly ShaderInstance        _shader;
@@ -108,7 +108,7 @@ public sealed class BackFovSystem : EntitySystem
 
     private const float LookupRadius = 30f;
 
-    private const float FadeNearCos = -0.669f; // cos(132°) — fully visible
+    private const float FadeNearCos = -0.766f; // cos(140°) — fully visible
     private const float FadeFarCos  = -0.866f; // cos(150°) — fully hidden
 
     // alpha units per second; asymmetric: hide quickly, reveal slowly for a dramatic feel

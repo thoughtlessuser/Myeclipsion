@@ -50,6 +50,7 @@ public sealed class DamageOverlay : Overlay
     {
         // TODO: Replace
         IoCManager.InjectDependencies(this);
+        ZIndex = 1;
         _oxygenShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
         _critShader = _prototypeManager.Index<ShaderPrototype>("GradientCircleMask").InstanceUnique();
         _bruteShader = _prototypeManager.Index<ShaderPrototype>("BloodCorners").InstanceUnique();

@@ -21,8 +21,12 @@ void fragment() {
 
     // d > halfFovCos → front (colour), d < halfFovCos → back (greyscale)
     highp float d       = dot(normalize(toPixel), facingDir);
-    // ±0.12 in dot-space ≈ ±7° soft edge
-    highp float backness = smoothstep(halfFovCos + 0.12, halfFovCos - 0.12, d);
+    // ±0.25 in dot-space ≈ ±15° soft edge — wider than before for a gentler fade
+    highp float backness = smoothstep(halfFovCos + 0.25, halfFovCos - 0.25, d);
+
+    // Also fade in the effect with distance so it blends in gradually near the player
+    highp float distFade = smoothstep(36.0, 160.0, dist);
+    backness *= distFade;
 
     if (backness < 0.001) {
         COLOR = base;
@@ -31,7 +35,7 @@ void fragment() {
 
     // Greyscale + slight darkening so the back zone feels shadowed
     highp float lum        = 0.299 * base.r + 0.587 * base.g + 0.114 * base.b;
-    highp float darkFactor = 0.55; // 1.0 = pure grey, 0.0 = black
+    highp float darkFactor = 0.65; // slightly brighter than before for a softer feel
     highp vec4  gray       = vec4(lum * darkFactor, lum * darkFactor, lum * darkFactor, base.a);
 
     COLOR = mix(base, gray, backness);
